@@ -1,0 +1,237 @@
+\subsection{Класс и основная функция}
+Код на Java начинается с создания класса.\newline
+Название класса файла должно совпадать с названием файла. \par
+Используем \texttt{public class FileName}, чтобы создать класс.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// В файле "HelloWorld.java" создадим класс "HelloWorld"
+public class HelloWorld {}
+\end{minted}
+\vspace{0.3cm}
+
+Чтобы можно было запускать программу напрямую (как основной файл), в классе расположим функцию \texttt{main()}. Она задается как \texttt{public static void}.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// В классе "HellowWorld" расположим функцию "main"
+public class HelloWorld {
+    public static void main() {}
+}
+\end{minted}
+\vspace{0.3cm}
+
+Принятно передавать в \texttt{main()} аргументы, введенные при запуске. Это делается через массив строк, названный \texttt{args}.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class HelloWorld {
+    public static void main(String[] args) {}
+}
+\end{minted}
+\vspace{0.3cm}
+
+\subsection{Переменные}
+\begin{itemize}
+    \item \textbf{Основные типы данных в Java}
+    \begin{itemize}
+        \item \texttt{boolean}: хранит значение true или false.
+        \item \texttt{byte}: целое число от $-2^{7}$ до $2^{7} - 1$ (1 байт).
+        \item \texttt{short}: целое число от $-2^{15}$ до $2^{15} - 1$ (2 байт).
+        \item \texttt{int}: целое число от $-2^{31}$ до $2^{31} - 1$ (4 байт).
+        \item \texttt{long}: целое число от $-2^{63}$ до $2^{63} - 1$ (8 байт).
+        \item \texttt{float}: число с плавающей точкой (4 байта).
+        \item \texttt{double}: число с плавающей точкой двойной точности (8 байт).
+        \item \texttt{char}: символ Unicode (2 байта).
+    \end{itemize}
+    \item \textbf{Ссылочные типы данных}
+    \begin{itemize}
+        \item \texttt{variable[]}: массив, где \texttt{variable} — тип данных
+        \item \texttt{String}: строка
+    \end{itemize}
+\end{itemize}
+
+
+Переменные обявляются в помощью конструкции \texttt{variable: variableName;}.\\
+Переменную можно сразу инициализировать, придав ей значение.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class HelloWorld {
+    public static void main(String[] args) {
+        boolean firstBoolVariable;
+        boolean secondBoolVariable = true;
+        int intVariable = 123;
+        String stringVariable = "HelloWorld";
+    }
+}
+\end{minted}
+
+\subsection{Стандартный поток ввода и вывода}
+Стандартный поток осуществляется через класс \texttt{System}.
+\begin{itemize}
+    \item Через статические поле \texttt{out} производится поток вывода.
+    \item Через статические поле \texttt{err} производится поток ввода ошибок.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Это стандартное сообщение.");
+        System.err.println("Это сообщение об ошибке.");
+    }
+}
+    \end{minted}
+    \vspace{0.4cm}
+
+    \item Через статические поле \texttt{in} производится поток ввода.
+
+    Однако чтобы им воспользоваться, необходимо использовать специальный класс \texttt{Scanner}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.util.Scanner;
+public class HelloWorld {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите имя: ");
+        String name = scanner.nextLine();
+        System.out.println("Здравствуйте, " + name);
+    }
+}
+    \end{minted}
+    \vspace{0.4cm}
+\end{itemize}
+
+
+
+\subsection{Условные конструкции}
+В Java условные конструкции работают вполне стандартно.\par
+Условная конструкция начинается с \texttt{if}, потом круглых скобочках передается условие — некоторое выражение, возвращающее булевое значение (\texttt{true} или \texttt{false}).\newline
+В фигурных скобочках же указывается тело условной конструкции — то, что будет выполнено при значении true.\par
+С помощью конструкции \texttt{else if} можно прописать дополнительное условие, если в прошлом булевое выражение вернуло \texttt{false}.\newline
+Так же есть возможность прописать отдельное тело, если ни одно условие не вернуло true, это делается с помощью \texttt{else}.
+
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// Получим количество введенных при запуске агрументов с помощью метода .length
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        int numOfArgs = args.length 
+        
+        if (args.length == 0) {
+            System.out.println("Hello, World!");
+        } else if (args.length == 1) {
+            System.out.println("Hello, " + args[0]);
+        } else {
+            System.err.println("Expected zero or one argument, got: " + args.length);
+        }
+    }
+}
+\end{minted}
+
+\vspace{0.4cm}
+
+\subsection{Циклы}
+В Java существует несколько видов циклов. Они вполне стандартны и взаимозаменяемы, обычно есть в любом языке.
+\begin{itemize}
+    \item Цикл \texttt{for}: Этот цикл используется, когда известно количество итераций заранее.
+    
+    В круглых скобочках настроивается работа цикла.
+    \begin{itemize}
+        \item Сначала инициализируется переменная, которая будет выступать в качестве счетчика.
+        \item Далее указывается условие, при котором цикл продолжает запускать итерации.
+        \item И в конце указывается то, как счетчик будет меняться с каждой итерацией.
+    \end{itemize}
+
+    В фигурных скобочках размещается тело цикла. Код внутри будет запускаться каждую итерацию.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// Данный цикл будет работать 10 раз, выводя номер итерации.
+
+for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+}
+
+// Пример бесконечного цикла if
+
+if (;;) {
+    System.out.println("Беспокнечный цикл");
+}
+    \end{minted}
+    \vspace{0.4cm}
+
+    \item Цикл \texttt{while}: Этот цикл выполняется до тех пор, пока условие, указанное в круглых скобочках, истинно.\\
+    Он проверяет условие перед каждой итерацией.\par
+    Как и у цикла \texttt{if}, в фигурных скобочках размещается тело цикла. Код внутри будет запускаться каждую итерацию.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// Данный цикл будет работать пока i меньше 64, выводя степени двойки до 64.
+
+int i = 1;
+while (i < 64) {
+    System.out.println(i);
+    i = i * 2;
+}
+
+// Пример бесконечного цикла while
+
+while (true) {
+    System.out.println("Беспокнечный цикл");
+}
+    \end{minted}
+    \vspace{0.4cm}
+
+
+    \item Цикл \texttt{do...while}: Этот цикл похож на \texttt{while}, но условие проверяется после выполнения тела цикла, что гарантирует хотя бы одно выполнение действий.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// Данный цикл продолжает итерации пока i меньше 2
+// Несмотря на то, что i изначально задана как 2, цикл произведет первую итерацию.
+
+int i = 2
+do {
+    System.out.println(i);
+    i = i * 2;
+} while (i < 2);
+    \end{minted}
+    \vspace{0.4cm}
+
+    
+    \item Цикл \texttt{for-each}: Этот цикл используется для перебора элементов коллекции или массива.\par
+    В круглых скобочках указыватся тип элементов и сам объект, который нужно перебрать.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+// Этот цикл переберет все числа в массиве numbers.
+
+int[] numbers = {1, 2, 3, 4, 5};
+for (int number : numbers) {
+    System.out.println(number);
+}
+    \end{minted}
+\end{itemize}
+
+
+\subsection{Функции}
+В Java функции называются методами. Метод — это блок кода, который выполняет определенную задачу и может быть вызван по имени. Методы позволяют структурировать и переиспользовать код.
+
+\begin{enumerate}
+    \item Объявление метода: Методы объявляются внутри классов.
+    Если метод ничего не возвращает, используется ключевое слово \texttt{void}.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public static void printMessage() {
+    System.out.println("Hello, World!");
+}
+    \end{minted}
+    \vspace{0.4cm}
+
+
+    \item Параметры метода: Методы могут принимать параметры, которые передаются при вызове метода.
+    
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public void greet(String name) {
+    System.out.println("Hello, " + name);
+}
+    \end{minted}
+    \vspace{0.4cm}
+
+
+    \item Возвращаемый тип: Если метод возвращает значение, необходимо обозначить тип возвращаемых данных во время объявления метода. 
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public int sum(int a, int b) {
+    return a + b;
+}
+    \end{minted}
+
+    Метод возвращает \texttt{int}, поэтому и объявлен как \texttt{public int sum()}.    
+\end{enumerate}

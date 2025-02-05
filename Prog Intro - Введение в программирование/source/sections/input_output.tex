@@ -1,0 +1,327 @@
+\subsection{Исключения}
+\begin{itemize}
+    \item \textbf{try-catch} \par
+    Исключение — это событие, которое происходит во время выполнения программы и нарушает нормальный поток её инструкций. \newline
+    Когда в методе возникает ошибка, метод создает объект исключения и передает его системе выполнения. \par
+    Конструкция \texttt{try-catch} используется для обработки исключений в Java.\par
+    Код, который может вызвать исключение, помещается в блок \texttt{try}. Если возникает исключение, оно перехватывается блоком \texttt{catch}, где можно обработать ошибку.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try {
+    // Код, который может вызвать исключение
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    // Обработка исключения
+    System.out.println("Деление на ноль запрещено!");
+}
+    \end{minted}
+    Важно правильно определять тип исключения в блоке catch.\newline
+    Если исключение не будет поймано, программа завершится с ошибкой.
+
+    \item \textbf{Проверяемые исключения, throws} \par
+    Проверяемые исключения \texttt{(checked exceptions)} должны быть либо обработаны в блоке \texttt{try-catch}, либо объявлены в сигнатуре метода с помощью ключевого слова \texttt{throws}. \par
+    Ключевое слово \texttt{throws} в Java используется для указания того, что метод может выбросить одно или несколько исключений. Это позволяет информировать вызывающий метод о возможных исключениях, чтобы они могли быть обработаны соответствующим образом. \par
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public void readFile(String fileName) throws IOException {
+    FileReader file = new FileReader(fileName);
+    BufferedReader fileInput = new BufferedReader(file);
+    fileInput.close();
+}
+    \end{minted}
+    В данном случае метод readFile может выбросить IOException, это ошибку нужно обработать при вызове readFile. \par
+    Все исключения, кроме наследников \texttt{RuntimeException}, являются проверяемыми.
+
+    \item \textbf{Обработка исключений} \par
+    Обработка исключений позволяет программе продолжать выполнение после возникновения ошибки. Это достигается путем перехвата и обработки исключений, что предотвращает завершение программы.
+    
+    \begin{itemize}
+        \item \textbf{Несколько catch-блоков} \par
+        Можно использовать несколько блоков \texttt{catch} для обработки различных типов исключений.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try {
+    int[] numbers = {1, 2, 3};
+    System.out.println(numbers[10]);
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Ошибка: индекс вне границ массива");
+} catch (Exception e) {
+    System.out.println("Общая ошибка");
+}
+        \end{minted}
+        Блоки \texttt{catch} проверяются сверху вниз, поэтому более специфичные исключения должны быть выше.
+
+        \item \textbf{Сообщения об ошибках} \par
+        Сообщения об ошибках помогают понять причину исключения.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.err.println("Ошибка: " + e.getMessage());
+}
+        \end{minted}
+        Можно вручную писать текст ошибки, и выводить через стандартный поток вывода ошибок или ипользовать \texttt{e.getMessage()} для получения подробного сообщения об ошибке.
+
+        \item \textbf{Стек исполнения} \par
+        Стек исполнения (stack trace) показывает последовательность вызовов методов, которые привели к исключению. Используйте метод \texttt{e.printStackTrace();}.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    e.printStackTrace();
+}
+        \end{minted}
+        Полезно для отладки и понимания, где произошло исключение.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Ресурсы}
+Ресурсы в Java — это объекты, которые должны быть закрыты после использования. Примеры включают файлы, сетевые соединения и базы данных. Закрытие ресурсов важно для предотвращения утечек ресурсов.
+
+\begin{itemize}
+    \item \textbf{Закрытие и утечка ресурсов} \par
+    Если ресурсы не закрываются, это может привести к утечке ресурсов. \par Утечка ресурсов происходит, когда программа не освобождает ресурсы после их использования, что может привести к исчерпанию доступных ресурсов, снижению производительности и ошибкам.
+
+    \item \textbf{try-catch-finally} \par
+    Конструкция \texttt{try-catch-finally} используется для обработки исключений и гарантирует выполнение определенного кода независимо от того, произошло исключение или нет.
+
+    \begin{itemize}
+        \item \texttt{try}: Блок, в котором выполняется код, который может вызвать исключение.
+        \item \texttt{catch}: Блок, который обрабатывает исключения, возникшие в блоке \texttt{try}.
+        \item \texttt{finally}: Блок, который выполняется в любом случае, независимо от того, было ли исключение или нет. 
+    \end{itemize}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try {
+    // Код, который может вызвать исключение
+} catch (ExceptionType e) {
+    // Обработка исключения
+} finally {
+    // Код, который выполняется в любом случае (например закрытие ресурсов)
+}
+    \end{minted}
+    Обычно используется для освобождения ресурсов.
+
+    \item \textbf{Блок использования ресурса} \par
+    С Java 7 был введен \texttt{try-with-resources} — это специальная конструкция \texttt{try}, которая автоматически закрывает ресурсы по завершении блока.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    // Использование ресурса
+} catch (IOException e) {
+    // Обработка исключения
+}
+    \end{minted}
+    Ресурс должен реализовывать интерфейс \texttt{AutoCloseable}.
+
+    \item \textbf{Использование нескольких ресурсов одновременно} \par
+    Можно использовать несколько ресурсов в одном блоке try-with-resources.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+try (FileReader file1 = new FileReader("file1.txt");
+     FileReader file2 = new FileReader("file2.txt")) {
+    // работа с файлами
+} catch (IOException e) {
+    e.printStackTrace();
+}
+    \end{minted}
+    Все ресурсы будут закрыты в обратном порядке их объявления.
+\end{itemize}
+
+\subsection{Кодировки}
+Кодировки играют важную роль при работе с текстовыми данными в Java, особенно при чтении и записи файлов. Давайте рассмотрим основные аспекты работы с кодировками. 
+
+\begin{itemize}
+    \item \textbf{Кодировка по-умолчанию} \par
+    При работе с файлами в Java, кодировка по умолчанию зависит от операционной системы. Например, на Windows это может быть \texttt{Cp1251} для русского языка, а на Unix-подобных системах — \texttt{UTF-8}. Однако, начиная с Java 18, кодировка по умолчанию для всех платформ была изменена на \texttt{UTF-8}.
+    
+    \item \textbf{Явное указание кодировки}
+    Чтобы явно указать кодировку при работе с файлами, можно использовать соответствующие конструкторы и методы классов ввода-вывода. \par
+    Указание кодировки помогает избежать проблем с несовместимостью. \par
+\end{itemize}
+
+\subsection{Readers}
+\begin{itemize}
+    \item \textbf{Reader} \par 
+    \texttt{Reader} — это абстрактный класс, который используется для чтения потоков символов. \par
+    Он является родительским классом для многих других классов, таких как \texttt{FileReader}, \texttt{BufferedReader} и \texttt{InputStreamReader}. \par 
+    Основные методы включают \texttt{read()}, \texttt{close()}, \texttt{mark()}, \texttt{reset()} и \texttt{skip()}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.io.Reader;
+import java.io.StringReader;
+
+public class ReaderExample {
+    public static void main(String[] args) {
+        String data = "Hello, World!";
+        Reader reader = new StringReader(data);
+        try {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+    \end{minted}
+    \texttt{Reader} сам по себе не может быть использован напрямую, так как он абстрактный. Необходимо использовать его подклассы. \par
+    Важно закрывать Reader после использования, чтобы освободить ресурсы.
+
+    \item \textbf{FileReader} \par
+    \texttt{FileReader} используется для чтения текстовых файлов. Он является подклассом \texttt{InputStreamReader} и наследует все его методы. Предназначен для упрощения чтения файлов.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderExample {
+    public static void main(String[] args) {
+        try (FileReader reader = new FileReader("example.txt")) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+    \end{minted}
+    Использует кодировку по умолчанию для вашей системы.\newline
+    Если вам нужно использовать другую кодировку, \\ лучше использовать \texttt{InputStreamReader} с указанием кодировки. \par
+    \texttt{FileReader} бросает \texttt{FileNotFoundException}, если файл не существует,\\ и \texttt{IOException} для других ошибок ввода-вывода.
+
+    \item \textbf{BufferedReader} \par
+    Используется для более эффективного чтения текста из входного потока символов, буферизуя символы, чтобы обеспечить эффективное считывание строк и массивов символов. \par
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(
+            new FileReader("example.txt")
+        )) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+    \end{minted}
+    Значительно улучшает производительность при чтении больших файлов, так как уменьшает количество обращений к диску. \par
+    По умолчанию размер буфера составляет 8192 символа, но его можно изменить, указав второй параметр в конструкторе.
+    
+    \item \textbf{InputStreamReader} \par
+    \texttt{InputStreamReader} преобразует байтовый поток в поток символов, что позволяет читать текстовые данные из байтовых потоков. \par
+    Он является мостом между байтовыми и символьными потоками.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class InputStreamReaderExample {
+    public static void main(String[] args) {
+        try (InputStreamReader reader = new InputStreamReader(
+            new FileInputStream("example.txt"), "UTF-8"
+        )) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+    \end{minted}
+    \texttt{InputStreamReader} позволяет указать кодировку, что делает его более гибким по сравнению с \texttt{FileReader}.\par
+    Важно правильно указывать кодировку
+    
+    \item \textbf{InputStream} \par
+    \texttt{InputStream} — это абстрактный класс для чтения байтов из потока. Он является базовым классом для всех классов, которые читают байты из потока. \par
+    \texttt{InputStream} сам по себе не может быть использован напрямую, так как он абстрактный. Необходимо использовать его подклассы.
+\end{itemize}
+
+\subsection{Writers}
+\begin{itemize}
+    \item \textbf{Writer} \par
+    \texttt{Writer} — это абстрактный класс в пакете \texttt{java.io}, который представляет поток символов. Он является родительским классом для всех классов, которые пишут символы в выходной поток. \par
+    Основные методы включают:
+    \begin{itemize}
+        
+    \item \texttt{write(int c)}: записывает один символ.
+    \item \texttt{write(char[] cbuf, int off, int len)}: записывает часть массива символов.
+    \item \texttt{write(String str, int off, int len)}: записывает часть строки.
+    \item \texttt{flush()}: очищает поток.
+    \item \texttt{close()}: закрывает поток.
+    \end{itemize}
+
+
+    \item \textbf{FileWriter} \par
+    \texttt{FileWriter} — это подкласс \texttt{Writer}, который используется для записи текстовых данных в файл. Он использует кодировку символов по умолчанию для платформы, если не указано иное. \par
+    Основные методы:
+    \begin{enumerate}
+        \item \texttt{FileWriter(String fileName): создает объект FileWriter}, связанный с файлом.
+        \item \texttt{FileWriter(String fileName, boolean append)}: создает объект FileWriter, связанный с файлом, с возможностью добавления данных в конец файла.
+        \item Методы записи аналогичны методам \texttt{Writer}.
+    \end{enumerate}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+FileWriter writer = new FileWriter("output.txt");
+writer.write("Hello, World!");
+writer.close();
+    \end{minted}
+
+    \item \textbf{BufferedWriter} \par
+    \texttt{BufferedWriter} — это подкласс \texttt{Writer}, который буферизует символы для повышения эффективности записи. Он оборачивает другой объект \texttt{Writer} и добавляет буферизацию. \par
+    Основные методы.
+    \begin{enumerate}
+        \item \texttt{BufferedWriter(Writer out)}: создает буферизированный поток.
+        \item \texttt{BufferedWriter(Writer out, int sz)}: создает буферизированный поток с указанным размером буфера.
+        \item Методы записи аналогичны методам \texttt{Writer}.
+    \end{enumerate}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output.txt"));
+bufferedWriter.write("Hello, Buffered World!");
+bufferedWriter.close();
+    \end{minted}
+
+    \item \textbf{OutputStreamWriter} \par
+    \texttt{OutputStreamWriter} — это мост между потоками символов и байтов. Он преобразует символы в байты с использованием указанной кодировки.\par
+    Основные методы:
+    \begin{enumerate}
+        \item \texttt{OutputStreamWriter(OutputStream out)}: создает объект \texttt{OutputStreamWriter}, связанный с выходным потоком байтов.
+        \item \texttt{OutputStreamWriter(OutputStream out, String charsetName)}: создает объект \texttt{OutputStreamWriter} с указанной кодировкой.
+        \item Методы записи аналогичны методам \texttt{Writer}.
+    \end{enumerate}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+    new FileOutputStream("output.txt"), "UTF-8"
+);
+outputStreamWriter.write("Hello, UTF-8 World!");
+outputStreamWriter.close();
+    \end{minted}
+    
+    \item \textbf{OutputStream} \par
+    \texttt{OutputStream} — это абстрактный класс, представляющий поток байтов. Он является суперклассом для всех классов, которые пишут байты в выходной поток.
+
+    \item \textbf{PrintWriter} \par
+    PrintWriter — это подкласс Writer, который предоставляет удобные методы для форматированной записи данных в текстовый поток. Он поддерживает автоматическую очистку буфера и может быть обернут вокруг других объектов Writer.\par
+    Основные методы:
+    \begin{enumerate}
+        \item PrintWriter(Writer out): создает объект PrintWriter, связанный с другим объектом Writer.
+        \item \texttt{PrintWriter(OutputStream out)}: создает объект \texttt{PrintWriter}, связанный с выходным потоком байтов.
+        \item \texttt{print(...)}: методы для записи различных типов данных.
+        \item \texttt{printf(...)}: методы для форматированной записи данных.
+        \item \texttt{println(...)}: методы для записи данных с новой строки.
+    \end{enumerate}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+PrintWriter printWriter = new PrintWriter(new FileWriter("output.txt"));
+printWriter.println("Hello, PrintWriter!");
+printWriter.close();
+    \end{minted}
+\end{itemize}

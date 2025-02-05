@@ -1,0 +1,185 @@
+\subsection{Неизменяемые объекты}
+Неизменяемый объект — это объект, состояние которого не может измениться после его создания. Такие объекты особенно полезны в многопоточных приложениях, так как они безопасны для использования несколькими потоками без необходимости синхронизации.
+
+\begin{itemize}
+    \item \textbf{Как создать неизменяемый объект} \par
+    \begin{enumerate}
+        \item Сделайте все поля \texttt{final} и \texttt{private}.
+        \item Не предоставляйте методы для изменения состояния объекта.
+        \item Убедитесь, что класс не может быть расширен (объявите его \texttt{final}). Если объект содержит изменяемые поля, убедитесь, что они не могут быть изменены после создания объекта.
+    \end{enumerate}
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public final class ImmutablePerson {
+    private final String name;
+    private final int age;
+
+    public ImmutablePerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+    \end{minted}
+    
+\item \textbf{Конструкторы (Constructors)} \par
+    Конструкторы — это специальные методы, которые используются для инициализации объектов класса. Они вызываются автоматически при создании объекта и имеют то же имя, что и класс.
+    \begin{enumerate}
+        \item Простой конструктор
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class MyClass {
+    public MyClass() {
+        // Инициализация
+    }
+}
+        \end{minted}
+        \item Конструктор с параметрами
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class MyClass {
+    private int value;
+
+    public MyClass(int value) {
+        this.value = value;
+    }
+}
+        \end{minted}
+    \end{enumerate}
+    Есть возможность сделать несколько конструкторов, принимающих различные типы данных.  
+    
+    \item \textbf{Методы (Methods)} \par
+    Методы — это блоки кода, которые выполняют определенные действия и могут возвращать результат. Они позволяют повторно использовать код и структурировать проет.
+    \begin{enumerate}
+        \item Объявление метода
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class MyClass {
+    public void myMethod() {
+        // Действия
+    }
+}
+        \end{minted}
+        \item Вызов метода
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+MyClass obj = new MyClass();
+obj.myMethod();
+        \end{minted}
+    \end{enumerate}
+
+    \item \textbf{Статические методы (Static Methods)} \par
+    Статические методы принадлежат классу, а не экземпляру класса. Они могут быть вызваны без создания объекта. Отличается от обычных методов тем, что статические методы могут обращаться только к статическим полям и методам.
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class MyClass {
+    public static void myStaticMethod() {
+        // Действия
+    }
+}
+    \end{minted}
+
+    \item \textbf{@Override} \par
+    В Java есть аннотация \texttt{@Override}, необходимая для указания того, что метод в классе переопределяет метод родительского класса.\par
+    Она указывается перед функций, переназначающей другую.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+class SuperClass {
+    void display() {
+        System.out.println("Метод суперкласса");
+    }
+}
+
+class SubClass extends SuperClass {
+    @Override
+    void display() {
+        System.out.println("Переопределенный метод подкласса");
+    }
+}
+    \end{minted}
+    
+\end{itemize}
+
+\subsection{Изменяемые объекты}
+Изменяемые объекты — это объекты, состояние которых можно изменять после их создания. В отличие от неизменяемых объектов, изменяемые объекты позволяют изменять их внутренние данные в течение их жизненного цикла.
+
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class MutablePerson {
+    private String name;
+    private int age;
+
+    public MutablePerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+\end{minted}
+
+\begin{itemize}
+    \item \textbf{Основные отличия от неизменяемых объектов} \par
+    \begin{enumerate}
+        \item Состояние изменяемых объектов можно изменять после создания, тогда как состояние неизменяемых объектов остается постоянным.
+        \item Неизменяемые объекты безопасны для использования в многопоточных приложениях без дополнительной синхронизации, в то время как изменяемые объекты требуют синхронизации для обеспечения потокобезопасности.
+        \item Изменяемые объекты могут быть более эффективными в плане производительности, так как они не требуют создания новых объектов при каждом изменении состояния.
+    \end{enumerate}
+
+    \item \textbf{Инкапсуляция (Encapsulation)} \par
+    Инкапсуляция — это принцип объектно-ориентированного программирования, который заключается в сокрытии внутреннего состояния объекта и предоставлении доступа к нему только через публичные методы. Это помогает защитить данные от некорректного использования и упрощает управление сложностью программы. \par
+
+    Как реализовать инкапсуляцию:
+    \begin{enumerate}
+        \item Сделайте поля класса \texttt{private}
+        \item Предоставьте публичные методы для доступа к этим полям (геттеры и сеттеры)
+    \end{enumerate}
+
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class EncapsulatedPerson {
+    private String name;
+    private int age;
+
+    // Конструктор
+    public EncapsulatedPerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Геттер для имени
+    public String getName() {
+        return name;
+    }
+
+    // Сеттер для имени
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Геттер для возраста
+    public int getAge() {
+        return age;
+    }
+
+    // Сеттер для возраста
+    public void setAge(int age) {
+        this.age = age;
+    }
+}   
+    \end{minted}
+
+\end{itemize}

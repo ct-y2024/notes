@@ -1,0 +1,219 @@
+\subsection{Общие понятия}
+\begin{itemize}
+    \item \textbf{Интерфейсы} \\
+    Коллекции в \texttt{Java} представлены набором интерфейсов в пакете \texttt{java.util}, которые определяют основные методы работы с коллекциями данных. Основные интерфейсы:
+    
+    \begin{enumerate}
+        \item \texttt{Collection<E>}: базовый интерфейс, от которого наследуются другие коллекции, такие как \texttt{List}, \texttt{Set}, и \texttt{Queue}. Определяет методы добавления, удаления элементов, проверки на наличие элемента, получения размера и т.д.
+        
+        \item \texttt{List<E>}: расширяет \texttt{Collection}, представляя упорядоченные коллекции, поддерживающие доступ к элементам по индексу.
+        
+        \item \texttt{Set<E>}: расширяет \texttt{Collection}, представляя коллекции, которые не могут содержать дублирующихся элементов.
+        
+        \item \texttt{Map<K, V>}: интерфейс, который не наследует \texttt{Collection}, но представляет коллекции в виде пар "ключ-значение". Ассоциативные массивы, такие как HashMap, реализуют этот интерфейс.
+        
+        \item \texttt{Queue<E>}: интерфейс, представляющий коллекции для обработки элементов в порядке очереди.
+    \end{enumerate}
+    
+    \item \textbf{Параметры типов} \\
+    В \texttt{Java} коллекции обычно параметризованы, чтобы работать с объектами определенного типа, что реализуется с помощью обобщений (\texttt{generics}). Это обеспечивает безопасность типов на этапе компиляции:
+
+    \begin{minted}{java}
+List<String> list = new ArrayList<>();
+list.add("Hello"); // В list мы можем добавить только объект String
+    \end{minted}
+    
+    Использование обобщений позволяет избежать ошибок типа и устраняет необходимость приведения типов.
+    
+    \item \textbf{Равенство и equals()} \\
+    Метод \texttt{equals()} проверяет равенство объектов. Важно переопределить этот метод для объектов, которые будут использоваться в коллекциях, таких как \texttt{Set}, для правильного определения уникальности объектов.
+    
+    \item \textbf{Хеширование и hashCode()} \\
+    Метод \texttt{hashCode()} возвращает целочисленное значение, которое используется для хранения объектов в структурах данных, таких как \texttt{HashMap} и \texttt{HashSet}. Если два объекта равны по методу \texttt{equals()}, они должны иметь одинаковый хеш-код. Это необходимо для правильного функционирования коллекций, основанных на хешировании.
+\end{itemize}
+
+\subsection{Списки}
+\begin{itemize}
+    \item \textbf{Интерфейс List} \\
+    Определяет методы для работы с упорядоченными коллекциями: доступ к элементам по индексу, добавление и удаление элементов.
+    
+    \item \textbf{Класс ArrayList} \\
+    \texttt{ArrayList} реализует интерфейс \texttt{Lis}t и представляет собой динамически расширяющийся массив. Обеспечивает быстрый доступ к элементам по индексу (за \texttt{O(1)}), но вставка и удаление в середине списка требуют сдвига элементов (за \texttt{O(n)}).
+
+    \begin{minted}{java}
+List<String> arrayList = new ArrayList<>();
+arrayList.add("One");
+arrayList.add("Two");
+arrayList.remove(0);
+System.out.println(arrayList.get(0)); // Output: Two
+    \end{minted}
+    
+    \item \textbf{Класс LinkedList} \\
+    \texttt{LinkedList} также реализует интерфейс \texttt{List}, но основан на двусвязном списке. Вставка и удаление элементов быстрее, чем у \texttt{ArrayList} (за \texttt{O(1)}, но доступ по индексу занимает больше времени (за \texttt{O(n)}).
+    
+    \item \textbf{Добавление и удаление элементов} \\
+    Методы \texttt{add()}, \texttt{remove()}, \texttt{clear()}, \texttt{addAll()} позволяют добавлять и удалять элементы, а также работать с подмножествами.
+    
+    \item \textbf{Индексированный доступ} \\
+    Метод \texttt{get(int index)} возвращает элемент по индексу. \\ Метод \texttt{set(int index, E element)} изменяет элемент по заданному индексу.
+    
+    \item \textbf{Итерация} \\
+    Для перебора элементов можно использовать циклы \texttt{for}, \texttt{foreach}, или итератор:
+    \begin{minted}{java}
+for (String s : arrayList) {
+    System.out.println(s);
+}
+
+Iterator<String> iterator = linkedList.iterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+    \end{minted}
+\end{itemize}
+
+\subsection{Множества}
+\begin{itemize}
+    \item \textbf{Интерфейс Set} \\
+    \texttt{Set} – это интерфейс, который расширяет \texttt{Collection}. Он определяет поведение коллекций, которые не могут содержать дублирующиеся элементы. Основные реализации включают \texttt{HashSet}, \texttt{LinkedHashSet}, и \texttt{TreeSet}. Основные методы интерфейса: 
+
+    \begin{itemize}
+        \item \texttt{add(E e)}: добавляет элемент в множество. Если такой элемент уже существует, то метод возвращает \texttt{false}, иначе — \texttt{true}.
+        
+        \item \texttt{remove(Object o)}: удаляет элемент из множества. Возвращает \texttt{true}, если элемент был успешно удален.
+
+        \item \texttt{contains(Object o)}: проверяет, существует ли элемент в множестве. Возвращает \texttt{true}, если элемент найден.
+
+        \item \texttt{size()}: возвращает количество элементов в множестве.
+
+        \item \texttt{isEmpty()}: проверяет, пусто ли множество.
+
+        \item \texttt{clear()}: удаляет все элементы из множества.
+    \end{itemize}
+
+    \item \textbf{Класс HashSet} \\
+    \texttt{HashSet} является наиболее часто используемой реализацией интерфейса \texttt{Set}. Этот класс основан на хеш-таблице, что обеспечивает быструю вставку, удаление и проверку на наличие элемента (в среднем за \texttt{O(1)}).
+
+    Особенности \texttt{HashSet}:
+    \begin{itemize}
+        \item Не гарантирует порядок хранения элементов.
+        \item Поддерживает \texttt{null} в качестве элемента.
+    \end{itemize}
+
+    \item \textbf{Класс LinkedHashSet} \\
+    \texttt{LinkedHashSet} расширяет \texttt{HashSet} и сохраняет порядок добавления элементов. Это означает, что при итерации элементы будут возвращаться в том же порядке, в котором они были добавлены.
+
+    Особенности \texttt{LinkedHashSet}:
+    \begin{itemize}
+        \item Основан на хеш-таблице и двусвязном списке.
+        \item Сохраняет порядок вставки элементов.
+        \item Немного медленнее, чем \texttt{HashSet}, из-за необходимости поддерживать порядок элементов.
+    \end{itemize}
+
+    \item \textbf{Класс TreeSet} \\
+    \texttt{TreeSet} реализует интерфейс \texttt{NavigableSet}, который, в свою очередь, расширяет \texttt{SortedSet}. \texttt{TreeSet} поддерживает упорядоченное хранение элементов в соответствии с их естественным порядком или порядком, заданным компаратором.
+
+    Особенности \texttt{TreeSet}:
+    \begin{itemize}
+        \item Поддерживает упорядоченный порядок элементов.
+        \item Операции вставки, удаления и поиска выполняются за \texttt{O(log n)}.
+        \item Не допускает \texttt{null} в качестве элемента.
+    \end{itemize}
+    
+    \item \textbf{Добавление и удаление элементов} \\
+    Множества поддерживают основные операции добавления и удаления элементов, но, в отличие от списков, они не имеют индексированного доступа к элементам. Операции добавления и удаления работают следующим образом:
+    \begin{itemize}
+        \item Метод \texttt{add(E e)} добавляет элемент в множество, если он еще не присутствует.
+        \item Метод \texttt{remove(Object o)} удаляет элемент, если он присутствует.
+        \item Метод \texttt{clear()} очищает множество, удаляя все элементы.
+    \end{itemize}
+    
+    \item \textbf{Итерация} \\
+    Перебор элементов можно осуществлять с помощью циклов и итераторов, как в случае с \texttt{List}.
+\end{itemize}
+
+\subsection{Отображения}
+Отображения представляют собой структуры данных, где каждый элемент хранится в виде пары "ключ-значение". Интерфейс \texttt{Map<K, V>} и его реализации обеспечивают возможности хранения данных, поиска, вставки и удаления на основе ключей.
+
+\begin{itemize}
+    \item \textbf{Интерфейс Map}
+    Интерфейс \texttt{Map<K, V>} определяет основные методы для работы с отображениями:
+
+    \begin{itemize}
+        \item \texttt{put(K key, V value)}: добавляет пару "ключ-значение" в отображение. Если такой ключ уже существует, то старое значение будет заменено на новое.
+    
+        \item \texttt{get(Object key)}: возвращает значение, связанное с ключом, или \texttt{null}, если ключ не найден.
+    
+        \item \texttt{remove(Object key)}: удаляет пару по ключу.
+    
+        \item \texttt{containsKey(Object key)} и \texttt{containsValue(Object value)}: проверяют наличие ключа или значения в отображении.
+    
+        \item \texttt{keySet()}: возвращает \texttt{Set} всех ключей.
+    
+        \item \texttt{values()}: возвращает коллекцию всех значений.
+    
+        \item \texttt{entrySet()}: возвращает набор всех пар "ключ-значение" \texttt{(Map.Entry<K, V>)}, который можно использовать для итерации по отображению.
+    \end{itemize}
+
+    \item \textbf{Класс HashMap} \\ 
+    \texttt{HashMap} — это реализация интерфейса \texttt{Map}, основанная на хеш-таблице. Она обеспечивает быструю вставку, удаление и доступ к элементам (в среднем \texttt{O(1)}).
+
+    \begin{itemize}
+        \item Порядок хранения элементов не гарантируется.
+        \item Может содержать \texttt{null} как ключи, так и значения.
+    \end{itemize}
+    
+    \item \textbf{Класс LinkedHashMap} \\
+    \texttt{LinkedHashMap} расширяет HashMap и сохраняет порядок добавления элементов. Это полезно, когда важен порядок перебора.
+    
+    \item \textbf{Класс TreeMap} \\
+    TreeMap реализует интерфейс \texttt{NavigableMap}, что обеспечивает хранение элементов в отсортированном порядке по ключу.
+
+     \begin{itemize}
+        \item Поддерживает естественный порядок ключей или порядок, заданный компаратором.
+        \item Не допускает \texttt{null} в качестве ключей (значения могут быть \texttt{null}).
+    \end{itemize}
+    
+    \item \textbf{Отображения как ассоциативные массивы} \\
+    Отображения в Java часто сравнивают с ассоциативными массивами, так как они позволяют хранить данные в виде пар "ключ-значение" и быстро получать доступ к значению по ключу. Ассоциативные массивы особенно полезны для задач поиска, индексации и хранения уникальных данных.
+\end{itemize}
+
+\subsection{Упорядоченные колекции}
+Упорядоченные коллекции в \texttt{Java} — это коллекции, в которых элементы могут быть отсортированы или доступны в определенном порядке. Это достигается с помощью интерфейсов \texttt{Comparable} и \texttt{Comparator}, а также реализаций \texttt{NavigableSet} и \texttt{NavigableMap}.
+
+\begin{itemize}
+    \item \textbf{Сравнение и compareTo()} \\
+    Интерфейс \texttt{Comparable<T>} используется для задания естественного порядка объектов. Метод \texttt{compareTo(T o)} сравнивает текущий объект с указанным объектом и возвращает:
+
+    \begin{itemize}
+        \item Отрицательное число, если текущий объект меньше.
+        \item Ноль, если объекты равны.
+        \item Положительное число, если текущий объект больше.
+    \end{itemize}
+
+    Пример реализации:
+    \begin{minted}{java}
+public class Person implements Comparable<Person> {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age);
+    }
+}
+    \end{minted}
+    
+    \item \textbf{Компараторы} \\
+    Интерфейс \texttt{Comparator<T>} позволяет определить порядок объектов, отличный от естественного. Для этого реализуется метод \texttt{compare(T o1, T o2)}.
+
+    Пример использования:
+    \begin{minted}{java}
+Comparator<Person> nameComparator = (p1, p2) -> p1.getName().compareTo(p2.getName());
+Comparator<Person> ageComparator = (p1, p2) -> Integer.compare(p1.getAge(), p2.getAge());
+    \end{minted}
+\end{itemize}

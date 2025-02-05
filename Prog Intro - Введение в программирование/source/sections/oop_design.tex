@@ -1,0 +1,574 @@
+\subsection{SOLID}
+
+Принципы \texttt{SOLID} --- это набор из пяти основных принципов объектно-ориентированного программирования и проектирования, которые помогают разработчикам создавать более гибкие, расширяемые и поддерживаемые системы.
+
+
+\subsubsection{SRP: Принцип единственной ответственности (Single Responsibility Principle)}
+
+\textbf{Определение:}
+Каждый класс должен иметь одну и только одну причину для изменения, то есть класс должен иметь только одну ответственность.
+
+\textbf{Пояснение:}
+Если класс выполняет несколько задач, изменения в одной части могут повлиять на другие. Это усложняет тестирование и поддержку кода. Принцип SRP призывает разделять функциональность по классам таким образом, чтобы каждый класс отвечал за свою конкретную часть логики.
+
+\textbf{Пример:}
+
+\textit{Нарушение SRP:}
+\begin{minted}{java}
+public class Employee {
+    private String name;
+    private double salary;
+
+    public void calculateSalary() {
+        // Логика расчета зарплаты
+    }
+
+    public void saveToDatabase() {
+        // Логика сохранения в базу данных
+    }
+}
+\end{minted}
+
+В этом примере класс \texttt{Employee} отвечает и за бизнес-логику (расчет зарплаты), и за сохранение данных, что нарушает \texttt{SRP}.
+
+\textit{Следование SRP:}
+\begin{minted}{java}
+public class Employee {
+    private String name;
+    private double salary;
+
+    public void calculateSalary() {
+        // Логика расчета зарплаты
+    }
+}
+
+public class EmployeeRepository {
+    public void save(Employee employee) {
+        // Логика сохранения сотрудника в базу данных
+    }
+}
+\end{minted}
+
+Теперь каждый класс имеет свою единственную ответственность: \texttt{Employee} --- бизнес-логика сотрудника, \texttt{EmployeeRepository} --- сохранение данных.
+
+\subsubsection{OCP: Принцип открытости/закрытости (Open/Closed Principle)}
+
+\textbf{Определение:}
+Программные сущности должны быть \textbf{открыты для расширения}, но \textbf{закрыты для модификации}.
+
+\textbf{Пояснение:}
+Новый функционал должен добавляться путем создания нового кода, а не изменения существующего. Это снижает риск внесения ошибок в уже проверенный код.
+
+\textbf{Пример:}
+
+\textit{Нарушение OCP:}
+\begin{minted}{java}
+public class ShapeDrawer {
+    public void drawShape(Object shape) {
+        if (shape instanceof Circle) {
+            drawCircle((Circle) shape);
+        } else if (shape instanceof Square) {
+            drawSquare((Square) shape);
+        }
+        // При добавлении новой фигуры потребуется изменить этот метод
+    }
+
+    private void drawCircle(Circle circle) {
+        // Логика рисования круга
+    }
+
+    private void drawSquare(Square square) {
+        // Логика рисования квадрата
+    }
+}
+\end{minted}
+
+\textit{Следование OCP:}
+\begin{minted}{java}
+public interface Shape {
+    void draw();
+}
+
+public class Circle implements Shape {
+    @Override
+    public void draw() {
+        // Логика рисования круга
+    }
+}
+
+public class Square implements Shape {
+    @Override
+    public void draw() {
+        // Логика рисования квадрата
+    }
+}
+
+public class ShapeDrawer {
+    public void drawShape(Shape shape) {
+        shape.draw();
+    }
+}
+\end{minted}
+
+Теперь для добавления новой фигуры достаточно создать новый класс, реализующий \texttt{Shape}, не изменяя существующий код.
+
+\subsubsection{LSP: Принцип подстановки Лисков (Liskov Substitution Principle)}
+
+\textbf{Определение:}
+Объекты базового класса должны быть заменяемы объектами производных классов без нарушения работы программы.
+
+\textbf{Пояснение:}
+Это означает, что подкласс должен дополнять, а не изменять поведение базового класса. Нарушение LSP приводит к неожиданным ошибкам при использовании полиморфизма.
+
+\textbf{Пример:}
+
+\textit{Проблема с прямоугольником и квадратом:}
+\begin{minted}{java}
+public class Rectangle {
+    protected int width;
+    protected int height;
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getArea() {
+        return width * height;
+    }
+}
+
+public class Square extends Rectangle {
+    @Override
+    public void setWidth(int size) {
+        this.width = size;
+        this.height = size;
+    }
+
+    @Override
+    public void setHeight(int size) {
+        this.width = size;
+        this.height = size;
+    }
+}
+\end{minted}
+
+Используя полиморфизм, ожидаем, что \texttt{Rectangle} и \texttt{Square} будут работать одинаково, но изменение ширины или высоты \texttt{Square} изменяет обе стороны, что может привести к непредвиденным последствиям.
+
+\subsubsection{ISP: Принцип разделения интерфейса (Interface Segregation Principle)}
+
+\textbf{Определение:}
+Клиенты не должны зависеть от методов, которые они не используют.
+
+\textbf{Пояснение:}
+Большие интерфейсы следует разделять на более маленькие и специфичные, чтобы клиенты зависели только от тех методов, которые им действительно нужны.
+
+\textbf{Пример:}
+
+\textit{Нарушение ISP:}
+\begin{minted}{java}
+public interface Worker {
+    void work();
+    void eat();
+}
+
+public class Robot implements Worker {
+    @Override
+    public void work() {
+        // Робот работает
+    }
+
+    @Override
+    public void eat() {
+        // Роботу не нужно есть, но он обязан реализовать этот метод
+    }
+}
+\end{minted}
+
+\textit{Следование ISP:}
+\begin{minted}{java}
+public interface Workable {
+    void work();
+}
+
+public interface Eatable {
+    void eat();
+}
+
+public class Human implements Workable, Eatable {
+    @Override
+    public void work() {
+        // Человек работает
+    }
+
+    @Override
+    public void eat() {
+        // Человек ест
+    }
+}
+
+public class Robot implements Workable {
+    @Override
+    public void work() {
+        // Робот работает
+    }
+}
+\end{minted}
+
+Теперь \texttt{Robot} не обязан реализовывать метод \texttt{eat()}.
+
+\subsubsection{DIP: Принцип инверсии зависимостей (Dependency Inversion Principle)}
+
+\textbf{Определение:}
+Модули верхнего уровня не должны зависеть от модулей нижнего уровня. Оба должны зависеть от абстракций.
+
+\textbf{Пояснение:}
+Код должен зависеть от абстракций (интерфейсов), а не от конкретных реализаций. Это повышает модульность и упрощает тестирование.
+
+\textbf{Пример:}
+
+\textit{Нарушение DIP:}
+\begin{minted}{java}
+public class MySQLDatabase {
+    public void connect() {
+        // Подключение к MySQL
+    }
+}
+
+public class Application {
+    private MySQLDatabase database;
+
+    public Application() {
+        database = new MySQLDatabase();
+    }
+
+    public void start() {
+        database.connect();
+    }
+}
+    \end{minted}
+    
+    \textit{Следование DIP:}
+    \begin{minted}{java}
+public interface Database {
+    void connect();
+}
+
+public class MySQLDatabase implements Database {
+    @Override
+    public void connect() {
+        // Подключение к MySQL
+    }
+}
+
+public class PostgreSQLDatabase implements Database {
+    @Override
+    public void connect() {
+        // Подключение к PostgreSQL
+    }
+}
+
+public class Application {
+    private Database database;
+
+    public Application(Database database) {
+        this.database = database;
+    }
+
+    public void start() {
+        database.connect();
+    }
+}
+\end{minted}
+    
+Теперь \texttt{Application} зависит от абстракции \texttt{Database}, и мы можем подставить любую реализацию.
+
+
+
+\subsection{Квадрат и прямоугольник}
+
+
+\subsubsection{Постановка задачи}
+
+Рассмотреть, как правильно спроектировать отношения между классами \texttt{Rectangle} (прямоугольник) и \texttt{Square} (квадрат) в соответствии с принципами ООП, особенно с учетом принципа подстановки Лисков.
+
+\subsubsection{Источник проблем}
+\begin{enumerate}
+    \item \textbf{Наследование:} С математической точки зрения, квадрат является частным случаем прямоугольника.
+    \item \textbf{Принцип подстановки Лисков:} Подкласс должен полностью соответствовать поведению базового класса.
+    \item \textbf{Изменение свойств:} У квадрата ширина и высота всегда равны, что нарушает логику изменения отдельных свойств \texttt{width} и \texttt{height} в \texttt{Rectangle}.
+\end{enumerate}
+
+\subsubsection{Возможные решения}
+\begin{enumerate}
+    \item \textbf{Отказ от изменений}
+    \begin{enumerate}
+        \item \textbf{Возврат нового значения}
+        
+        Вместо изменения состояния объекта, методы возвращают новый объект с измененным состоянием.
+        \begin{minted}{java}
+        public class ImmutableRectangle {
+            private final int width;
+            private final int height;
+
+            public ImmutableRectangle(int width, int height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            public ImmutableRectangle setWidth(int width) {
+                return new ImmutableRectangle(width, this.height);
+            }
+
+            public ImmutableRectangle setHeight(int height) {
+                return new ImmutableRectangle(this.width, height);
+            }
+        }
+        \end{minted}
+        
+        \item \textbf{Возврат флага}
+        
+        Методы изменения возвращают булевый флаг, указывающий на успешность операции.
+        \begin{minted}{java}
+        public class Square extends Rectangle {
+            @Override
+            public boolean setWidth(int width) {
+                if (width == this.height) {
+                    this.width = width;
+                    return true;
+                }
+                return false;
+            }
+        }
+        \end{minted}
+        
+        \item \textbf{Исключения}
+        
+        Бросать исключение при попытке установить некорректное значение.
+        \begin{minted}{java}
+        public class Square extends Rectangle {
+            @Override
+            public void setWidth(int width) {
+                if (width != this.height) {
+                    throw new IllegalArgumentException("Width and height must be equal");
+                }
+                this.width = width;
+            }
+        }
+        \end{minted}
+        
+    \end{enumerate}
+    
+    \item \textbf{Отказ от наследования}
+    \begin{enumerate}
+        \item \textbf{Полный отказ от наследования}
+        
+        \texttt{Square} и \texttt{Rectangle} не связаны отношением наследования.
+        \begin{minted}{java}
+        public class Rectangle {
+            private int width;
+            private int height;
+            // Геттеры и сеттеры
+        }
+
+        public class Square {
+            private int side;
+            // Геттеры и сеттеры
+        }
+        \end{minted}
+        
+        \item \textbf{Выделение общего базового класса}
+        
+        Создать абстрактный класс или интерфейс \texttt{Quadrilateral} (четырехугольник).
+        \begin{minted}{java}
+        public abstract class Quadrilateral {
+            public abstract int getArea();
+        }
+
+        public class Rectangle extends Quadrilateral {
+            private int width;
+            private int height;
+            // Реализация методов
+        }
+
+        public class Square extends Quadrilateral {
+            private int side;
+            // Реализация методов
+        }
+        \end{minted}
+        
+    \end{enumerate}
+    
+    \item \textbf{Дополнительные действия}
+    
+    Изменение логики методов базового класса для учета особенностей подклассов.
+    
+    \item \textbf{Выделение модифицируемых сущностей}
+    
+    Разделить объекты на изменяемые и неизменяемые, применяя соответствующие подходы к каждому.
+    
+    \item \textbf{Отказ от квадратов}
+    
+    Не создавать отдельный класс \texttt{Square}, а управлять этим внутри класса \texttt{Rectangle}.
+    \begin{minted}{java}
+    public class Rectangle {
+        private int width;
+        private int height;
+
+        public static Rectangle createSquare(int side) {
+            return new Rectangle(side, side);
+        }
+    }
+    \end{minted}
+    
+\end{enumerate}
+
+
+\subsection{Равенство}
+
+\subsubsection{Свойства равенства}
+
+Метод \texttt{equals} должен удовлетворять следующим свойствам:
+\begin{enumerate}
+    \item \textbf{Рефлексивность:} Для любого ненулевого значения \texttt{x}, \texttt{x.equals(x)} должно возвращать \texttt{true}.
+    \item \textbf{Симметричность:} Для любых ненулевых значений \texttt{x} и \texttt{y}, \texttt{x.equals(y)} должно возвращать \texttt{true} тогда и только тогда, когда \texttt{y.equals(x)} возвращает \texttt{true}.
+    \item \textbf{Транзитивность:} Если \texttt{x.equals(y)} и \texttt{y.equals(z)} возвращают \texttt{true}, то \texttt{x.equals(z)} должно возвращать \texttt{true}.
+    \item \textbf{Согласованность:} Многократные вызовы \texttt{x.equals(y)} должны возвращать одинаковый результат, если объекты не изменились.
+    \item \textbf{Неравенство с \texttt{null}:} Для любого ненулевого значения \texttt{x}, \texttt{x.equals(null)} должно возвращать \texttt{false}.
+\end{enumerate}
+
+\subsubsection{Метод equals}
+
+\textbf{Переопределение \texttt{equals}:}
+\begin{minted}{java}
+public class Person {
+    private String name;
+    private int age;
+
+    // Конструктор, геттеры и сеттеры
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age &&
+               Objects.equals(name, person.name);
+    }
+}
+\end{minted}
+
+\textbf{Пояснение:}
+\begin{enumerate}
+    \item Проверяем, ссылаются ли объекты на одну область памяти.
+    \item Проверяем, не является ли объект \texttt{null} и совпадают ли классы.
+    \item Приводим объект и сравниваем поля.
+\end{enumerate}
+
+\subsubsection{Метод hashCode}
+
+\textbf{Переопределение \texttt{hashCode}:}
+\begin{minted}{java}
+@Override
+public int hashCode() {
+    return Objects.hash(name, age);
+}
+\end{minted}
+
+\textbf{Пояснение:}
+\begin{enumerate}
+    \item Метод \texttt{hashCode} должен возвращать одинаковое значение для объектов, которые равны по \texttt{equals}.
+    \item Это важно для корректной работы хеш-таблиц, таких как \texttt{HashMap} и \texttt{HashSet}.
+\end{enumerate}
+
+\subsubsection{Взаимодействие с наследованием}
+\begin{enumerate}
+    \item \textbf{Наивная реализация}
+    
+    При переопределении \texttt{equals} в подклассе могут возникнуть проблемы с симметричностью и транзитивностью.
+    
+    \textbf{Пример проблемы:}
+    \begin{minted}{java}
+    public class Point {
+        protected int x, y;
+
+        // Переопределение equals и hashCode
+    }
+
+    public class ColorPoint extends Point {
+        private String color;
+
+        // Переопределение equals и hashCode
+    }
+    \end{minted}
+    
+    Если \texttt{ColorPoint} сравнивается с \texttt{Point}, могут возникнуть несоответствия.
+    
+    \item \textbf{Использование сравнения предка}
+    
+    При переопределении \texttt{equals} в подклассе следует использовать \texttt{super.equals(obj)} для сравнения полей суперкласса.
+    
+    \textbf{Пример:}
+    \begin{minted}{java}
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
+        ColorPoint that = (ColorPoint) obj;
+        return Objects.equals(color, that.color);
+    }
+    \end{minted}
+    
+    \item \textbf{Сегрегация сравнения}
+    
+    Использование метода \texttt{canEqual} для проверки совместимости классов.
+    
+    \textbf{Пример:}
+    \begin{minted}{java}
+    public class Point {
+        // Поля, конструкторы
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof Point)) return false;
+            Point point = (Point) obj;
+            return point.canEqual(this) && x == point.x && y == point.y;
+        }
+
+        public boolean canEqual(Object obj) {
+            return obj instanceof Point;
+        }
+    }
+
+    public class ColorPoint extends Point {
+        private String color;
+
+        // Конструкторы
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof ColorPoint)) return false;
+            if (!super.equals(obj)) return false;
+            ColorPoint that = (ColorPoint) obj;
+            return that.canEqual(this) && Objects.equals(color, that.color);
+        }
+
+        @Override
+        public boolean canEqual(Object obj) {
+            return obj instanceof ColorPoint;
+        }
+    }
+    \end{minted}
+    
+    \textbf{Пояснение:}
+    \begin{enumerate}
+        \item Метод \texttt{canEqual} используется для проверки, является ли объект экземпляром текущего класса.
+        \item Это помогает сохранить симметричность и транзитивность при наследовании.
+    \end{enumerate}
+    
+\end{enumerate}

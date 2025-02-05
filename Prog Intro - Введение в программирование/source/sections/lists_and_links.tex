@@ -1,0 +1,244 @@
+\subsection{Одномерные массивы}
+\begin{itemize}
+    \item \textbf{Объявление}\par
+    Одномерный массив объявляется с использованием квадратных скобок \texttt{[]} после типа данных.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[] array;
+    \end{minted}
+    Переменная \texttt{array} может хранить ссылку на массив целых чисел.\par
+    Объявление массива создаёт ссылку на массив, но сам массив ещё не создан.\newline
+    Если попытаться использовать массив до его создания, будет выброшено исключение \texttt{NullPointerException}.
+    
+    \item \textbf{Создание}\par
+    Создание массива включает в себя выделение памяти для элементов массива с использованием ключевого слова \texttt{new}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+array = new int[10];
+    \end{minted}
+    Создание массива выделяет память для хранения указанного количества элементов указанного типа (в данном случае 10-ти элементов \texttt{int}).\par
+    Размер массива фиксирован и не может быть изменён после создания. Если нужно изменить размер, придётся создать новый массив и скопировать данные.
+
+    \item \textbf{Вывод данных}\par
+    Можно выводить элементы массива по-отдельности, указывая в \texttt{[]} индекс нужного элемента.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+    int[] array = {1, 2};
+
+    System.out.println(array[0]);
+    System.out.println(array[1]);
+    \end{minted}
+    Чтобы вывести весь массив, можно использовать метод \texttt{Arrays.toString()}, который преобразует массив в строку.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(array));
+    }
+}
+    \end{minted}
+    
+    \item \textbf{Длина массива}\par
+    Доступ к длине массива осуществляется через свойство \texttt{length}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int length = array.length;
+    \end{minted}
+    \texttt{length} — это свойство, а не метод, поэтому не нужно использовать круглые скобки.
+    
+    \item \textbf{Инициализаторы}\par
+    Массивы могут быть инициализированы при создании с использованием фигурных скобок \texttt{\{\}}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[] array = {1, 2, 3, 4, 5};
+    \end{minted}
+    При инициализации массива таким образом, размер массива определяется автоматически на основе количества элементов.\newline
+    \underline{Нельзя указать и длинну массива и элементы одновременно.}
+    
+    \item \textbf{Инициализация по-умолчанию}\par
+    При создании массива все его элементы инициализируются значениями по умолчанию (для \texttt{int} это 0).
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[] array = new int[5]; 
+// Все элементы инициализируются нулями
+    \end{minted}
+    Для других типов данных значения по умолчанию обычно эквивалентны нулю (например, для \texttt{boolean} это \texttt{false}, для объектов — \texttt{null}).
+    
+    \item \textbf{Итерация}\par
+    Итерация по массиву может быть выполнена с использованием цикла \texttt{for} или \texttt{for-each}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+for (int i = 0; i < array.length; i++) {
+    System.out.println(array[i]);
+}
+
+for (int element : array) {
+    System.out.println(element);
+}
+    \end{minted}
+    В начале каждой итерации в \texttt{element} загружается копия елемента массива. Поэтому цикл \texttt{for-each} удобен для чтения элементов массива, но не позволяет изменять элементы.
+
+    \item \textbf{Сравнение}\par
+    Метод \texttt{.equals()} в Java используется для сравнения содержимого объектов на равенство. В отличие от оператора \texttt{==}, который сравнивает ссылки на объекты, метод \texttt{.equals()} сравнивает значения объектов.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "Hello";
+        String str3 = new String("Hello");
+
+        // Сравнение с использованием оператора ==
+        System.out.println(str1 == str2); // true
+        System.out.println(str1 == str3); // false
+
+        // Сравнение с использованием метода .equals()
+        System.out.println(str1.equals(str2)); // true
+        System.out.println(str1.equals(str3)); // true
+    }
+}
+    \end{minted}
+    В этом примере:
+    \begin{itemize}
+    \item \texttt{str1 == str2} возвращает \texttt{true}, потому что обе переменные ссылаются на один и тот же объект в пуле строк.\par
+    \item \texttt{str1 == str3} возвращает \texttt{false}, потому что \texttt{str3} создается с использованием оператора \texttt{new}, что создает новый объект в памяти.\par
+    \item \texttt{str1.equals(str2)} и \texttt{str1.equals(str3)} возвращают \texttt{true}, потому что метод \texttt{.equals()} сравнивает содержимое строк, а не их ссылки.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Многомерные массивы}
+\begin{itemize}
+    \item \textbf{Объявление}\par
+    Многомерные массивы объявляются с использованием нескольких пар квадратных скобок.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[][] matrix;
+    \end{minted}
+    Многомерные массивы могут иметь любое количество измерений.
+
+    \item \textbf{Полное и частичное создание}\par
+    Полное создание массива:
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+matrix = new int[3][3];
+    \end{minted}
+    Частичное создание массива:
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+matrix = new int[3][];
+matrix[0] = new int[2];
+matrix[1] = new int[3];
+matrix[2] = new int[4];
+    \end{minted}
+    
+    \item \textbf{Непрямоугольные массивы}\par
+    Массивы могут быть непрямоугольными, как показано в примере выше. Это означает, что каждая строка может иметь разное количество столбцов.
+
+    \item \textbf{Вывод двумерного массива}\par
+    Чтобы вывести весь массив, можно использовать метод \texttt{Arrays.deepToString()}, который преобразует многомерный массив в строку.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        System.out.println(Arrays.deepToString(matrix));
+    }
+}
+    \end{minted}
+\end{itemize}
+
+\subsection{Ссылки на массивы}
+\begin{itemize}
+    \item \textbf{Ссылки}\par
+    Массивы в Java являются объектами, и переменные, содержащие массивы, являются ссылками на эти объекты.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[] array1 = {1, 2, 3};
+int[] array2 = array1;
+    \end{minted}
+    Теперь \texttt{array2} ссылается на тот же массив, что и \texttt{array1}.\newline
+    Изменения, внесенные через одну ссылку, будут видны через другую.
+    
+    \item \textbf{Передача ссылок}\par
+    При передаче массива в метод передаётся ссылка на массив, а не его копия.\par
+    Изменения, внесённые в массив внутри метода, будут видны снаружи метода.
+
+    \item \textbf{Возврат ссылок}\par
+    Метод может возвращать ссылку на массив.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+public int[] createArray() {
+    return new int[]{1, 2, 3};
+}
+    \end{minted}
+
+    \item \textbf{Копирование массива}\par
+    Чтобы скопировать массив можно использовать метод \texttt{System.arraycopy()}.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int[] original = {1, 2, 3, 4, 5};
+int[] copy = new int[original.length];
+System.arraycopy(original, 0, copy, 0, original.length);
+    \end{minted}
+    С помощью этого метода можно создать новый массив, который будет являться копией оригинального массива.
+\end{itemize}
+
+\subsection{Классы}
+\begin{itemize}
+    \item \textbf{Полные имена классов}\par
+    Полное имя класса включает пакет, в котором он находится.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+java.util.Scanner scanner;
+    \end{minted}
+    Полные имена классов используются для избежания конфликтов имен.
+
+    \item \textbf{Импорт классов}\par
+    Импорт позволяет использовать классы без указания полного имени.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.util.Scanner;
+    \end{minted}
+    Можно импортировать все классы из пакета, но это может привести к конфликтам имён.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+import java.util.*;
+    \end{minted}
+
+    \item \textbf{Создание объектов}\par
+    Объекты создаются с помощью ключевого слова \texttt{new}, которое вызывает конструктор класса.
+    \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+Scanner scanner = new Scanner(System.in);
+    \end{minted}
+    Создание объекта класса Scanner, который будет читать данные из стандартного ввода.
+
+    \item \textbf{Сборка мусора и уничтожение объектов}\par
+    Сборка мусора освобождает память, занятую объектами, которые больше не используются. Сборка мусора происходит автоматически.\par
+    Важно закрывать ресурсы (например, файлы или сетевые соединения), чтобы избежать утечек.
+\end{itemize}
+
+\subsection{Scanner}
+\begin{itemize}
+    \item \textbf{Источники данных}
+    \begin{itemize}
+        \item \textbf{Строка}\par
+        \texttt{Scanner} может читать данные из строки.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+Scanner scanner = new Scanner(System.in);
+        \end{minted}
+
+        \item \textbf{Стандартный ввод}\par
+        \texttt{Scanner} может читать данные из стандартного ввода (клавиатуры).
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+Scanner scanner = new Scanner(System.in);
+        \end{minted}
+        Используется для интерактивного ввода данных пользователем.
+        
+    \end{itemize}
+    \item \textbf{Получение данных}
+    \begin{itemize}
+        \item \textbf{Строки}\par
+        Метод \texttt{nextLine} читает всю строку до символа новой строки.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+String input = scanner.nextLine();
+        \end{minted}
+        Может использоваться для чтения строк, содержащих пробелы.
+        \item \textbf{Числа}\par
+        Метод \texttt{nextInt} читает целое число из ввода.
+        \begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{java}
+int number = scanner.nextInt();
+        \end{minted}
+        Если ввод не является числом, будет выброшено исключение \\ \texttt{InputMismatchException}.\newline 
+        Чтобы избежать этого, можно использовать метод \texttt{hasNextInt} для проверки наличия следующего целого числа.
+    \end{itemize}
+\end{itemize}

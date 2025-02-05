@@ -1,0 +1,35 @@
+\subsection{Компилятор Java (javac)}
+\textit{Компилятор Java (javac)} — это инструмент, который преобразует исходный код Java в байт-код.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{bash}
+javac HelloWorld.java
+\end{minted}
+
+\subsection{Байт-код и виртуальная машина Java (java)}
+\textit{Байт-код} — это промежуточный код, который может быть выполнен на любой платформе, где установлена виртуальная машина Java (JVM). \par
+\textit{Виртуальная машина Java (JVM)} — это интерпретатор байт-кода, который позволяет выполнять Java-программы на любой платформе.
+\begin{minted}[linenos, frame=leftline, tabsize=4, fontsize=\ttfamily\small, framesep=4mm, numbersep=4pt]{bash}
+java HelloWorld
+\end{minted}
+
+\subsection{Java Runtime Environment (JRE)}
+\textit{Java Runtime Environment (JRE)} — это набор библиотек и других компонентов, необходимых для выполнения Java-программ. JRE включает JVM, библиотеки классов и другие ресурсы.
+
+\subsection{JIT-компиляция}
+\textit{JIT-компиляция (Just-In-Time)} — это метод оптимизации, при котором байт-код компилируется в машинный код непосредственно перед выполнением. Это позволяет улучшить производительность Java-программ.
+
+\subsection{Сборка мусора}
+\textit{Сборка мусора (Garbage Collection)} — это процесс автоматического управления памятью, при котором неиспользуемые объекты удаляются из памяти, освобождая ресурсы для новых объектов.
+
+\subsection{Редакции Java-платформы}
+Java-платформа имеет несколько редакций, каждая из которых предназначена для различных типов приложений:
+\begin{itemize}
+    \item \textbf{Micro Edition (Java ME)} \newline
+    \textit{Java ME} предназначена для мобильных устройств и встроенных систем. Она включает подмножество библиотек Java SE и дополнительные API для работы с ограниченными ресурсами.
+    
+    \item \textbf{Standard Edition (Java SE))} \newline
+    \textit{Java SE} — это основная редакция Java, предназначенная для разработки настольных и серверных приложений. Она включает полный набор библиотек и инструментов для разработки.
+    
+    \item \textbf{Enterprise Edition (Java EE)} \newline
+    \textit{Java EE} предназначена для разработки корпоративных приложений. Она включает дополнительные API для работы с веб-сервисами, компонентами и другими корпоративными технологиями.
+    
+\end{itemize}

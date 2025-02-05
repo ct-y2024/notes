@@ -1,0 +1,127 @@
+\documentclass{article}
+
+% Подключаем UTF-8 и русский язык
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+
+% Выставляем размер шрифта 14pt
+\usepackage[14pt]{extsizes}
+\linespread{1.1}
+\usepackage{parskip}
+\setlength{\parskip}{0.6em}
+
+% Пакет для создания макета документа
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
+% Пакет для копирования из pdf файла
+\usepackage{cmap}
+% Пакет для гиперссылок
+\usepackage{hyperref}
+
+% Пакет для расширенных возможностей подчеркивания
+\usepackage[normalem]{ulem}
+% Пакеты для работы с цветом
+\usepackage{color}
+\usepackage{xcolor}
+
+% Пакеты для математики
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+
+% Пакеты для графики
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+
+% Пакет для программирования
+\usepackage{minted}
+
+% Пакет для создания заголовка
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+
+\usepackage{nopageno}
+\usepackage{multicol}
+\usepackage{comment}
+%\usepackage[parfill]{parskip}
+\usepackage{colortbl}
+\usepackage[pdf]{graphviz}
+\usepackage{etoolbox}
+
+\usepackage{subfiles}
+
+\AtBeginEnvironment{enumerate}{\linespread{1.1}\selectfont}
+\AtBeginEnvironment{itemize}{\linespread{1.1}\selectfont}
+
+% Настраиваем верхний колонтитул
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[C]{Введение в программирование} % Центральный заголовок
+\fancyhead[L]{КТ ИТМО — 1 Семестр}
+\fancyhead[R]{Корнеев Г. А.}
+
+\setminted{
+    linenos=true,
+    frame=leftline,
+    fontsize=\ttfamily\small,
+    framesep=4mm,
+    numbersep=4pt,
+    tabsize=4,
+    breaklines=true,
+    breakautoindent=true
+}
+    
+
+\renewcommand{\headrulewidth}{0.4pt} % Толщина линии заголовка
+\renewcommand{\footrulewidth}{0pt} % Толщина линии колонтитула
+
+\title{Конспект по предмету \\"Введение в программирование"}
+\author{Грехов Александр}
+\date{ }
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Информация о курсе}
+\subfile{sections/info}
+
+\newpage
+\section{Основные концепции Java}
+\subfile{sections/concepts}
+
+\newpage
+\section{Начало работы с Java}
+\subfile{sections/start}
+
+\newpage
+\section{Массивы и ссылки}
+\subfile{sections/lists_and_links}
+
+\newpage
+\section{Ввод-вывод и исключения}
+\subfile{sections/input_output}
+
+\newpage
+\section{Классы и объекты}
+\subfile{sections/classes_and_objects}
+
+\newpage
+\section{Коллекции}
+\subfile{sections/collections}
+
+\newpage
+\section{Наследование}
+\subfile{sections/inheritance}
+
+\newpage
+\section{Синтаксис Java}
+\subfile{sections/syntax}
+
+\end{document}
