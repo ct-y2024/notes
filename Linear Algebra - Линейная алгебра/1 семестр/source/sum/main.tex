@@ -1,0 +1,652 @@
+\documentclass{article}
+\usepackage[normalem]{ulem}
+\usepackage[14pt]{extsizes}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{cmap}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage[parfill]{parskip}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
+\usepackage[russian]{babel}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepackage{etoolbox} % <--- added
+\AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
+\newcommand{\ctd}{\begin{flushright} $\square$ \end{flushright}}
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\pagenumbering{gobble}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Alfo},
+    pdfpagemode=FullScreen,
+    }
+\lstset{ %
+  language=C++, % the language of the code
+  basicstyle=\footnotesize\ttfamily, % the size of the fonts that are used for the code
+  numbers=left, % where to put the line-numbers
+  numberstyle=\footnotesize\color{black},  % the style that is used for the line-numbers
+  stepnumber=0, % the step between two line-numbers. If it's 1, each line 
+       % will be numbered
+  numbersep=0.7em,       % how far the line-numbers are from the code
+  backgroundcolor=\color{white!95!gray}, % choose the background color. You must add \usepackage{color}
+  showspaces=false,      % show spaces adding particular underscores
+  showstringspaces=false,% underline spaces within strings
+  showtabs=false,        % show tabs within strings adding particular underscores
+  frame=single, % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,    % sets default tabsize to 2 spaces
+  %captionpos=b,% sets the caption-position to bottom
+  breaklines=true,       % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,       % show the filename of files included with \lstinputlisting;
+       % also try caption instead of title
+  identifierstyle=\color{black!50!green},  
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{gray},      % comment style
+  stringstyle=\color{purple},      % string literal style
+  escapeinside={\%*}{*)},% if you want to add a comment within your code
+  morekeywords={n,k},    % if you want to add more keywords to the set
+  morecomment=[l][\color{black!50!green}]{\#}, % to color #include<cstdio> 
+  morecomment=[s][\color{gray!50!black}]{/**}{*/}
+}
+
+\usepackage{amsmath,amssymb}
+\usepackage{ stmaryrd }
+\usepackage{ dsfont }
+\usepackage{ tipa }
+\usepackage{tocloft}
+
+\newcommand{\updownarrows}{\mathbin\uparrow\hspace{-.5em}\downarrow}
+\newcommand{\downuparrows}{\mathbin\downarrow\hspace{-.5em}\uparrow}
+\newcommand{\defeq}{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
+\newcommand{\defLeftrightarrow}{\xLeftrightarrow{def}}
+
+
+\title{Суммы. Линейная Алгебра}
+\author{Чепелин В.А.}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+\section{Введение.}
+
+ Здесь содержатся мои решения задач про суммы 
+ из сборника Фадеева Соминского. Можете передавать этот листик, кому хотите. Надеюсь, вам пригодится он. Всем успехов на кр и в жизни!
+\begin{center}
+   \includegraphics[width=12.65cm, height=18cm]{smile.png}
+\end{center}
+
+ \pagebreak
+ 
+ \section{Фадеев Соминский.}
+ \subsection{№ 150}
+ 
+   \textbf{ Доказать:}
+    
+    \textbf{a)} $2^{2m}\cos^{2m} x = 2 \sum\limits_{k=0}^{m-1} C_{2m}^k \cos2(m-k) + C_{2m}^m$  
+
+    Ну во-первых вспомним, что у нас за тема --- комплексные числа. Давайте думать.
+
+    Пусть у нас есть какое-то комплексное число $a = \cos x + i\sin x$, посмотрим на его Re часть(Вещественная).
+    
+    $Re\, a = \cos x = \cfrac{a+\overline{a}}{2}$. Давайте возведем второе и третье выражения в степень 2m. $\cos^2m x = \Big(\cfrac{a+\overline{a}}{2}\Big)^{2m}$. А это что-то похожее на то, что нам дано. 
+    
+    Ну давайте подставим и посмотрим:
+
+    $2^{2m}\cos^{2m} x = 2^{2m} \Big(\cfrac{a+\overline{a}}{2}\Big)^{2m} = (a+\overline{a})^{2m} $.
+
+    Разложим по биному и получим:
+    
+    $(a+\overline{a})^{2m} = C_{2m}^{0} a^{2m} + \ldots + C_{2m}^{k} a^{2m-k}(\overline{a}^{k}) + \ldots  C_{2m}^{2m} ( \overline{a}^{2m})$.
+
+    Давайте заметим, что $a\cdot \overline{a} = 1$ (потому что $\sin^2x +\cos^2 x =1$). Давайте поделим нашу сумму на две других и посокращаем везде $a\cdot \overline{a}$.
+
+    
+    $C_{2m}^{0} a^{2m} + \ldots + C_{2m}^{k} a^{2m-k}(\overline{a}^{k}) + \ldots  C_{2m}^{2m} ( \overline{a}^{2m}) = C_{2m}^{0} a^{2m} + \ldots + C_{2m}^{m-1} a^{m+1}(\overline{a}^{m-1}) + 
+    C_{2m}^{m} a^{m}(\overline{a}^{m}) +  C_{2m}^{m+1} a^{m-1}(\overline{a}^{m+1}) +   \ldots  C_{2m}^{2m} ( \overline{a}^{2m}) = \sum\limits_{k=0}^{m-1} C_{2m}^{k} a^{2m-2k} +  C_{2m}^{m} +\sum\limits_{k=m+1}^{2m} C_{2m}^{k}(\overline{a}^{2k-2m})$
+
+    Теперь вспомним, что a - комплексное число. $a^{k}= \cos kx + i\sin ky$. Подставим.
+    
+$\sum\limits_{k=0}^{m-1} C_{2m}^{k} (\cos (2m-2k)x + i\sin (2m-2k)y) +  C_{2m}^{m} +\sum\limits_{k=m+1}^{2m} C_{2m}^{k}( \cos (2k-2m)x - i\sin (2k-2m)y)$.
+
+Заметим, что все синусы сократятся (хотя бы потому, что это изначально было $a + \overline{a}$ в степени, то есть рациональное) останется:
+
+$\sum\limits_{k=0}^{m-1} C_{2m}^{k} \cos (2m-2k)x + C_{2m}^{m} + \sum\limits_{k=m+1}^{2m} C_{2m}^{k}(\cos (2k-2m)x$
+
+А методом пристального взгляда получаем, что это искомое. 
+
+\textbf{b)} $2^{2m}\cos^{2m+1}x = \sum \limits_{k=0}^m C_{2m+1}^k \cos (2m-2k+1)x$ 
+
+Давайте заметим, что это почти то же самое, что и в пункте a. Умножим обе части на 2. Давайте повторим все то же самое, что мы делали в пункте a  и получим нужный нам ответ. В угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+
+\textbf{с)} $2^{2m}\sin^{2m} x = 2 \sum\limits_{k=0}^{m-1}(-1)^{m+k} C_{2m}^k \cos 2(m-k)x + C_{2m}^m$
+
+  Начнем решать. Давайте делать, как в пункте a.
+
+  Пусть у нас есть какое-то комплексное число $a = \cos x + i\sin x$, посмотрим на его Im часть(Мнимая).
+    
+    $Im\, a = \sin x = \cfrac{a-\overline{a}}{2i}$. Давайте возведем второе и третье выражения в степень 2m. $\sin^2m x = \Big(\cfrac{a-\overline{a}}{2i}\Big)^{2m}$. А это что-то похожее на то, что нам дано. 
+    
+    $2^{2m}\sin^{2m} x = (-1)^m \cdot (-1)^m \cdot 2^{2m}\sin^{2m} x = (-1)^m \cdot (a - \overline{a})^{2m}$. Теперь давайте сделаем то же самое, что и в пункте a, при этом у нас останется вещественная часть, но она будет знакочередоваться. В самом конце домножим нашу сумму на вынесенную за скобочки $(-1)^m$ и получим итоговую, которую от нас просят. В угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+    
+\textbf{d)} $2^{2m}\sin^{2m+1}x = \sum \limits_{k=0}^m (-1)^{m+k}  C_{2m+1}^k \sin (2m-2k+1)x$ 
+
+Давайте заметим, что это почти то же самое, что и в пункте c. Умножим обе части на 2. Давайте повторим все то же самое, что мы делали в пункте c, но заметим, что нам надо будет выносить мнимую часть, то есть синусы, также в самом начале у нас останется i за скобками, на которое мы умножим сумму. Так мы получим сумму, которую от нас просят. В угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+    
+ \pagebreak
+
+ \subsection{№ 151}
+ 
+\textbf{Доказать:} $\cfrac{\sin mx}{\sin x}=(2\cos x)^{m-1}-C_{m-2}^1(2\cos x)^{m-3} + \ldots$
+
+ Докажем. Заметим $\sin (k+1)x + \sin (k-1)x = 2 \cos x \sin kx$. (из обычной формулы суммы синусов)
+
+Пусть $T_k =\cfrac{\sin kx}{\sin x}$. Заметим $T_k = 2 \cos x \cdot T_{k-1} - T(k-2)$. (метод раскрытия скобочек) 
+
+Применим метод мат. индукции и докажем искомое выражение.
+
+\textbf{База:} (проверьте сами для k=1, 2)
+
+\textbf{Переход:} Пусть верно для n и меньше, тогда докажем, что верно для n+1. Запишем $T_n$ и $T_{n-1}$
+
+$T_n = (2\cos x)^{n-1}-C_{n-2}^1(2\cos x)^{n-3} + C_{n-3}^2(2 \cos x)^{n-5}  + \ldots$
+
+$\quad \quad \quad \quad\quad \quad\quad \quad\quad \quad T_{n-1} = (2\cos x)^{n-2}-C_{n-3}^1(2\cos x)^{n-4} + C_{n-4}^2(2 \cos x)^{n-6}  +$
+
+$T_n \cdot 2 \cos x = (2\cos x)^{n} \, \, \,-C_{n-2}^1(2\cos x)^{n-2} + C_{n-3}^2(2 \cos x)^{n-4}  + \ldots$
+
+Теперь, если пристально посмотреть и вычесть из третьего равенства второе ( специально подвинул второе, чтобы было видно, как красиво там получается $C_n^k + C_n^{k-1} = C_{n+1}^k$), то получится то, что должно получится по индукции. А по формуле получившийся ранее мы получаем, что это $T_k$. Q.E.D.
+
+Собственно, где комплексные
+
+\pagebreak
+\subsection{№ 152}
+
+\textbf{Выразить} $\cos mx$ через $\cos x$
+
+$2 \sin x \cos mx = (\sin (m+1)x - \sin(m-1)x)$.
+
+Давайте сделаем примерно то же самое, что в 151 и получим искомое (если я нигде не накосячил). В угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+\pagebreak
+\subsection{№ 153}
+
+\textbf{Найти:}
+
+\textbf{a)} $1 - C_n^2 + C_n^4 - \ldots=?$
+
+\textbf{b)} $C_n^1-C_n^3 + \ldots =?$
+
+Давайте разложим по Биному $(1+i)^n$. Заметим, что Re часть  этой штуки как раз наш пункт a, а Im часть - наш пункт b.
+
+С  другой стороны $(1+i)^n = (\sqrt{2}(\cos \frac{\pi}{4}+i\sin \frac{\pi}{4}))^n=(\sqrt{2})^n (\cos \frac{\pi n}{4} + i \sin \frac{\pi n}{4})$
+
+Ну тут уже видно чему равна наша рациональная часть, а чему мнимая.
+\pagebreak
+
+\subsection{№  154}
+
+\textbf{Найти:}
+
+ $C_n^1-\frac{1}{3}C_n^3 + \frac{1}{9}C_n^5+\ldots=?$
+
+Так. Что-то похожее на № 153 b. У нас там было $Im(1+i)^n$, а теперь там появились тройки. Так давайте посмотрим на разложение $(1+\frac{i}{sqrt(3)})^n$. Проделаем аналогичные действия и получим счастье.
+
+Ответ: $\cfrac{2^n}{3^(\frac{n-1}{2})}\sin \cfrac{n\pi}{6}$
+\pagebreak
+
+\subsection{№ 155}
+
+\textbf{Доказать}, что $(x+a)^m + (x+aw)^m+(x+aw^2)^m = 3x^m + 3C_m^3x^{(m-3)}a^3 + \ldots +3C_m^nx^{(m-n)}a^n$, где n - ближайшее кратное трем не превосходящее m число. $w =\cos \frac{2\pi}{3} + i\sin \frac{2\pi}{3}$.
+
+Выглядит страшно, но нам придется это делать. Заметим, что $w^3=1$. Давайте представим каждую как сумму:
+
+$\sum\limits_{k=0}^m C_n^k x^k a^{m-k} + \sum\limits_{k=0}^m C_n^k x^k a^{m-k}w^{m-k} + \sum\limits_{k=0}^m C_n^k x^k a^{m-k}w^{2m-2k}$
+
+Теперь загоним каждую такую под  один знак суммы:
+
+$\sum\limits_{k=0}^m C_n^k x^k a^{m-k}+C_n^k x^k a^{m-k}w^{m-k}+C_n^k x^k a^{m-k}w^{2m-2k} = $
+
+$= \sum\limits_{k=0}^m C_n^k x^k a^{m-k} \cdot (1 + w^{m-k} + w^{2m-2k})$
+
+Для дальнейшнего удобства поменяем чуть-чуть сумму:
+
+$\sum\limits_{k=0}^m C_n^k x^k a^{m-k} \cdot (1 + w^{m-k} + w^{2m-2k}) = \sum\limits_{k=0}^m C_n^{m-k} x^{m-k} a^{k} \cdot (1 + w^{k} + w^{2k})$
+
+Теперь посмотрим  чему равна $(1 + w^{k} + w^{2k})$ в зависимости от k. 
+
+\begin{enumerate}
+    \item \textbf{$k$ дает остаток 1 по модулю 3}. Пусть $k=3t+1$, тогда подставим:
+
+     $(1 + w^{k} + w^{2k}) =  (1 + w^{3t+1} + w^{6t+2}) =(1+w+w^2)$. Исходя из того, что $w^3=1$.
+     Заметим, что $w+w^2+1=0$, поэтому таких k  в итоговой сумме не будет
+
+     \item \textbf{$k$ дает остаток 2 по модулю 3}. Пусть $k=3t+2$, тогда подставим:
+
+     $(1 + w^{k} + w^{2k}) =  (1 + w^{3t+2} + w^{6t+4}) =(1+w^2+w^1)$. Исходя из того, что $w^3=1$.
+     Заметим, что $w+w^2+1=0$, поэтому таких k  в итоговой сумме не будет
+
+    \item \textbf{$k$ дает остаток 0 по модулю 3}. Пусть $k=3t+3$, тогда подставим:
+
+     $(1 + w^{k} + w^{2k}) =  (1 + w^{3t+3} + w^{6t+6}) =3$.
+\end{enumerate}
+
+А теперь заметим, что получившиеся сумма с выброшенными k будет как раз той, которая нам нужна.
+
+\pagebreak
+\subsection{№ 156}
+
+\textbf{Доказать}:
+
+a) $1 + C_n^3 + C_n^6 + \ldots = \frac{1}{3}(2^{n}+2\cos\frac{n \pi}{3} )$
+
+b) $C_n^1 + C_n^4 + C_n^7 + \ldots =\frac{1}{3}(2^{n}+2\cos\frac{(n-2) \pi}{3} ) $
+
+c) $C_n^2 + C_n^5 + C_n^8 + \ldots = \frac{1}{3}(2^{n}+2\cos\frac{(n-4) \pi}{3} ) $
+
+(Эта задача заняла у меня много времени на втыкание)
+
+Давайте начнем с пункта a. Заметим тут отголоски прошлой задачи, если поставить туда a = 1, x = 1.
+
+$(1+1)^n + (1+1w)^n+(1+1w^2)^n = 3 + 3C_n^3 +3C_n^6 \ldots$, заметим, что если домножить искомое на 3, то правая часть этого уравнения, совпадет с левой частью изначального.
+
+Значит надо доказать, что$(1+1)^n + (1+1w)^n+(1+1w^2)^n = 2^{n}+2\cos\frac{n \pi}{3}$ или 
+
+$(1+w)^n+(1+w^2)^n = 2\cos\frac{n \pi}{3}$.  
+
+$w =\cos \frac{2\pi}{3} + i\sin \frac{2\pi}{3}$, $w^2 =\cos \frac{4\pi}{3} + i\sin \frac{4\pi}{3}$.
+
+Подставим и шок, удивление, получим, что нам надо.
+
+Как получить b,c --- нам лишь надо модифицировать формулу из прошлого задания, сделав  $w =\cos \frac{4\pi}{3} + i\sin \frac{4\pi}{3}$ например. Тогда в прошлом номере при сокращении у нас останется или модуль 1, или модуль 2.
+
+Либо рассмотрев немного другую сумму $(x+a)^m + w^{-1}(x+aw)^m+w^{-2}(x+aw^2)^m $ или такую 
+$(x+a)^m + w^{1}(x+aw)^m+w^{2}(x+aw^2)^m$
+
+В угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+\pagebreak
+\subsection{№ 157,158}
+
+\textbf{Найти и доказать}:
+
+$\sin x + \sin 2x + \ldots +\sin nx = \cfrac{\sin \frac{n+1}{2}\cdot \sin \frac{nx}{2}}{\sin\frac{n}{2}}$
+
+$\cos x + \cos 2x + \ldots +\cos nx = ?$
+
+Пусть $a =\cos \frac{x}{2} + i\sin \frac{x}{2}.$
+
+Заметим, что $\sum\limits_{k=1}^n \cos kx + i\sum\limits_{k=1}^n \sin kx =a^2 +a^4 + \ldots + a^{2n}.$
+
+
+$a^2 +a^4 + \ldots + a^{2n} = a^2 \cdot \cfrac{a^{2n}-1}{a^2-1}$. Давайте домножим и поделим на -ia.
+
+Тогда знаменатель $(1-\frac{1}{a^2}) \cdot (-ia) = -i(a-\frac{1}{a})$. Интересный факт: $a\cdot \overline{a} = 1$, поэтому:
+
+$ -i(a-\frac{1}{a}) = -i(a-\overline{a}) =2 \sin\frac{x}{2}$. Оставим пока так, вернемся к числителю:
+
+$-ia(a^{2n}-1)=-i(a^{2n+1}-a) = i(\cos \frac{x}{2}-\cos (n+\frac{1}{2})x) + \sin\frac{2n+1}{2}x-\sin \frac{x}{2} $.  
+
+Используя формулу разности косинусов и синусов могу получит искомые формулы взяв Re или Im от:
+
+$\cfrac{\sin \cfrac{n x}{2}\cdot \cos \cfrac{(n+1)x}{2}+ i \sin \cfrac{n x}{2}\cdot \sin \cfrac{(n+1) x}{2}}{\sin \cfrac{x}{2}}$
+
+P.S. $\frac{1}{2}+ \cos x + \cos 2x + \ldots +\cos nx = ?$, чтобы получить эту формулу подставьте в нашу формулу без разности косинусов и синусов и получите $\cfrac{\sin \frac{2n+1}{2}x}{2\sin\frac{x}{2}}$
+
+\pagebreak
+\subsection{№ 159}
+
+\textbf{Найти: }$1+ b\cos x + b^2\cos 2x + \ldots +b^n\cos nx = ?$
+
+Возьмем прошлую задачу и модифицируем (это что prog intro?)
+
+Пусть $a =\cos x + i\sin x.$
+
+Заметим, что $1+\sum\limits_{k=1}^n b^k\cos kx + i\sum\limits_{k=0}^n b^k\sin kx =1 + ba+(ab)^2+\ldots + b^n\cdot a^n$. Соберу геом. прогрессию:
+
+$\cfrac{b^{n+1}a^{n+1}-1}{ab-1} = \cfrac{b^{n+1}a^{n+1}-1}{ab-1} \cdot \cfrac{b\overline{a}-1}{b\overline{a}-1} =\cfrac{ b^{n+2}a^k - b^{n+1}a^{n+1}-b\overline{a}+1}{b^2-b(a+\overline{a})+1}$
+
+Откуда уже можно получить ответ взяв Re часть.
+
+$S=\cfrac{b^{n+2}\cos x - b^{n+1}\cos(n+1)x -b\cos x  + 1}{b^2-2b\cos x + 1}$
+
+
+\pagebreak
+\subsection{№ 160}
+
+\textbf{Найти: } $\lim\limits_{n\shortrightarrow \infty}(1+ \frac{1}{2}\cos x + \frac{1}{4}\cos 2x + \ldots +(\frac{1}{2})^n\cos nx )= ?$
+
+В угоду размера пдф и моего сна, полного решения \textbf{не будет}. Но будут рукомахания и ответ. Давайте возьмем получившийся в прошлом задании ответ, подставим и найдем предел. Ответ: $\cfrac{2(2-\cos x)}{(5-4\cos x)}$
+\pagebreak
+\subsection{№ 161}
+
+Дано: $\sin \cfrac{\theta}{2}=\cfrac{1}{2n}$
+
+\textbf{Доказать:} $\cos \cfrac{\theta}{2} + \cos \cfrac{3\theta}{2} + \ldots + \cos\cfrac{(2n-1) \theta}{2} = n \sin n\theta$ 
+
+Пусть $a = \cos \cfrac{\theta}{2} + i \sin \cfrac{\theta}{2}.$
+
+Тогда посмотрим на $a + a^3 + \ldots +a^{2n-1}$, воспользуюсь задачей 159 и временно заменю $a^2=t$
+
+$a + a^3 + \ldots +a^{2n-1} = \overline{a} \cdot(t+\ldots +t^{n})$
+
+Воспользуюсь выкладками из задачи 157:
+
+$\overline{a} \cdot(t+\ldots +t^{n})=\overline{a}\cdot  \Bigg(\cfrac{\sin \cfrac{n \theta}{2}\cdot \cos \cfrac{(n+1)\theta}{2}+ i \sin \cfrac{n \theta}{2}\cdot \sin \cfrac{(n+1) \theta}{2}}{\sin \cfrac{\theta}{2}}\Bigg)$
+
+Теперь представим $\overline{a} = \cos\frac{\theta}{2} - i\sin\frac{\theta}{2} $ и возьму Re часть, так как изначально нам нужна была сумма косиносов. Получу (пропущены некоторые выкладки, тк я устану их печатать в latex):
+
+$\cfrac{\sin \cfrac{n \theta}{2} \cdot \cos \cfrac{n \theta}{2}}{\sin\cfrac{\theta}{2}}$, что уже и есть то, что нам надо доказать (подставим то, что дано и соберем удвоенный угол)
+\pagebreak
+\subsection{№ 162}
+
+\textbf{Доказать}, что если $b<1$, то ряды сходятся:
+
+a) $\cos a + b\cos (a+x)+b^2\cos (a+2x)+\ldots$
+
+b) $\sin a + b\sin (a+x)+b^2\sin (a+2x)+\ldots$
+
+В угоду размера пдф и моего сна, полного решения \textbf{не будет}. Но зато будет  рукомахание. ЗАМЕТИМ, что это по факту то, что и было  в номере 159, но добавилось a. А давайте мы теперь будем смотреть комплексную сумму из решения номер 159, но умноженное на какое-то комплексное число c углом a. Но, заметим, что так мы не посчитаем лишнее из-за прикольных свойст умножения комплексных чисел (если я не ошибаюсь). Поэтому нам надо будет просто взять Re или Im часть получившегося числа. (такая же идея будет рассмотрена в следующей задаче)
+\pagebreak
+\subsection{№ 163}
+
+Найти:
+
+a) $\cos x + C_n^1 \cos 2x + C_n^2 +\ldots + C_n^n \cos(n+1)x$
+
+b) $\sin x + C_n^1 \sin 2x + C_n^2 +\ldots + C_n^n \sin(n+1)x$
+
+Давайте возьмем комплексное числа $a = \cos x + i\sin x$
+
+Разложим по Биному $(1+a)^n$:
+
+$(1+a)^n = \sum\limits_{k=0}^n C_n^k a^k$. Давайте домножим обе части на a. Получу:
+
+$(1+a)^n = \sum\limits_{k=0}^n C_n^k a^{k+1} = \sum\limits_{k=0}^n C_n^k \cos {(k+1)} + i\sum\limits_{k=0}^n C_n^k \sin {(k+1)}$
+
+Заметим. что Re часть от правой части уравнения - искомое под пунктом a, а Im  - искомое под пунктом b. Так что посмотрим, чему равно $(1+a)^n \cdot a$.
+
+$1+\cos x = 2 \cdot \cos^2(\frac{x}{2})$ - по косинусу двойного угла
+
+$sin x = 2 \cdot \cos(\frac{x}{2}) \cdot \sin (\frac{x}{2}) $ - по синусу двойного угла
+
+Получу:
+
+$1+\cos x + \sin x = 2\cos \frac{x}{2} \cdot(\cos \frac{x}{2} + i\sin \frac{x}{2})$
+
+Возведу в степень n и получу:
+
+$2^n \cdot \cos^n(\frac{x}{2})\cdot(\cos \frac{nx}{2} + i \sin \frac{nx}{2})$
+
+Осталось только умножить это на a и получу то, что ищу:
+
+
+$\cos x + C_n^1 \cos 2x + C_n^2 +\ldots + C_n^n \cos(n+1)x = 2^n \cdot \cos^n\frac{x}{2} \cdot \cos \frac{(n+2)x}{2}$
+
+$\sin x + C_n^1 \sin 2x + C_n^2 +\ldots + C_n^n \sin(n+1)x =2^n \cdot \cos^n\frac{x}{2} \cdot \sin \frac{(n+2)x}{2}$
+
+\pagebreak
+\subsection{№ 164}
+
+\textbf{Найти}: $\sin^2 x + \sin^2 3x + \ldots \sin^2(2n-1)x$
+
+
+В угоду размера пдф и моего сна, полного решения \textbf{не будет}. Но зато будет  рукомахание. 
+$sin^2 x = \frac{1}{2}-\frac{cos 2x}{2}$. Воспользуемся этим и останется задача, похожая на 161. Сделаем то же самое, что и там, и получим искомое.
+
+Ответ: $\cfrac{n}{2}-\cfrac{\sin 4nx}{4\sin 2x}$
+
+\pagebreak
+\subsection{№ 165}
+
+\textbf{Доказать:}
+
+a)$\sin^2 x + \sin^2 2x + \ldots \sin^2nx = \cfrac{n}{2} - \cfrac{\cos(n+1)x \sin nx}{2\sin x}$
+
+b)$\cos^2 x + \cos^2 2x + \ldots \cos^2nx = \cfrac{n}{2} + \cfrac{\cos(n+1)x \sin nx}{2\sin x}$
+
+Пункт a решается аналогично задаче 164. Чтобы решить пункт b, заметим, что сумма двух левых частей должны дать n. Значит и сумма правых даст n.все
+\pagebreak
+\subsection{№ 166}
+
+\textbf{Найти:}
+
+a) $\cos x + 2 \cos 2x +3 \cos 3x + \ldots n\cos nx = ?$
+
+b) $\sin x + 2 \sin 2x +3 \sin 3x + \ldots n\sin nx = ?$
+
+Давайте делать все как обычно:
+
+Пусть $a=cos x + isinx$
+
+Заметим, что Re $\sum\limits_{k=1}^n ke^{ixk}$ это ответ из пункта a, а Im $\sum\limits_{k=1}^n ke^{ixk}$ это ответ для пункта b.
+
+Заметим, что $\sum\limits_{k=1}^n ke^{ixk}$ это производная $\sum\limits_{k=1}^n e^{ixk}$. Формулу для $\sum\limits_{k=1}^n e^{ixk}$ мы считать умеем(см номер 157). Вроде как производные учат считать на матане, и поэтому в угоду размера пдф и моего сна, полного решения \textbf{не будет}.
+
+\pagebreak
+\section{Разбор задач с Кр. Объяснение основного принципа решения сумм.}
+
+\subsection{Обычные суммы. Метод геом прогрессии}
+Начнем с самых простых сумм.
+
+$\sum\limits_{k=1}^n \sin kx$.  Нам нужно посчитать чему это равно.
+
+Давайте возьмем $a = \cos x  + i\sin x$. Тогда Посмотрим на сумму
+
+$\sum\limits_{k=1}^n a^k = \sum\limits_{k=1}^n  \cos kx  + i\sin kx = \sum\limits_{k=1}^n \cos kx + i\sum\limits_{k=1}^n \sin kx$
+
+То есть сумма которая от нас требуется это всего лишь Im часть от этой суммы. Основной концепт задач, когда мы не видем в сумме С-шек или k-шек --- разложить в сумму комплексных чисел. Давайте посмотрим, чему равна наша сумма:
+
+$\sum\limits_{k=1}^n a^k = a + a^2 + a^3 +\ldots + a^k$ --- геом прогресссия!!!
+
+А такие мы умеем собирать по формуле геом прогрессии. Например так:
+
+$a + a^2 + a^3 +\ldots + a^k = a (1 + a + a^2 + \ldots + a^{k-1}) = a\cdot\cfrac{a^{k}-1}{a-1}$
+
+Когда мы встречаем комплексное число -1 --- выносим корень.
+
+$a-1 = a^{\frac{1}{2}}(a^{\frac{1}{2}} - a^{-\frac{1}{2}})$. Если представить наше в другой форме, то заметно, что $a^{\frac{1}{2}} - a^{-\frac{1}{2}} = e^{\frac{1}{2}ix}-e^{-\frac{1}{2}ix} = 2i \sin \frac{1}{2}x$. Заменим
+
+$a^{\frac{1}{2}}\cdot\cfrac{a^{k}-1}{2i \sin \frac{1}{2}x}$. Сделаем знаменатель рациональным. 
+
+$a^{\frac{1}{2}}\cdot\cfrac{ia^{k}-i}{-2 \sin \frac{1}{2}x} = \cfrac{(\cos \frac{1}{2}x + \sin \frac{1}{2}i)(i(\cos kx + i\sin kx) -i)}{-2 \sin \frac{1}{2}x}=$
+
+$=\cfrac{(\cos \frac{1}{2}x + \sin \frac{1}{2}i)(i\cos kx - i\sin kx -i)}{-2 \sin \frac{1}{2}x} $.
+
+Дальше, тк знаменатель рациональный, то, Im часть от дроби - Im часть от произведения в числителе(перемножьте 2 скобки и возьмите Im) и поделить на знаменатель. Так мы и находим ответ.
+
+Теперь понятно как считать сумму косинусов такую:
+
+$\sum\limits_{k=1}^n \cos kx$ --- Re часть от того, что насчитано сверху
+
+При этом не пугайтесь других чисел в такой сумме:
+
+$\sum\limits_{k=1}^n \cos 2kx$. --- Делается аналогично, просто шаг геом. прогрессии будет больше.
+
+Также мы можем домножать на $b^k$. Например:
+
+$\sum\limits_{k=1}^n b^k\cos kx$ --- все что меняется - шаг геом. прогрессии
+
+И это все может комбинироваться:
+
+
+$\sum\limits_{k=1}^n 10^k\cos (k+1)x$ --- решается геом. прогрессией
+
+Ну очевидно мы можем их домножать на числа и т.п.
+\pagebreak
+\subsection{Бином Ньютона. Суммы, связанные с ним.}
+
+Посчитать сумму:
+
+$\sum\limits_{k=0}^nC_n^k \cos kx$
+
+Пусть $ a = \cos x + i \sin x$
+
+Тогда заметим:
+
+$\sum\limits_{k=0}^n C_n^k a^k =\sum\limits_{k=0}^n C_n^k (\cos kx + i\sin kx) = \sum\limits_{k=0}^n C_n^k \cos kx + i\sum\limits_{k=0}^n C_n^k \sin kx  $
+
+Получем, что наш ответ - Re часть от этой суммы. Посчитаем чему она равна:
+
+$\sum\limits_{k=0}^n C_n^k a^k$
+
+Когда мы видим C-шки - 100 проц надо разложить в бином Ньютона. Краткое напоминание
+
+Бином:$ (x+y)^n = \sum\limits_{k=0}^n C_n^k x^ky^{n-k}$. Давайте разложим нашу сумму по биному:
+
+$\sum\limits_{k=0}^n C_n^k a^k = (1+a)^n$. 
+
+$(1+a) = a^{\frac{1}{2}}(a^{-\frac{1}{2}}+a^{\frac{1}{2}})$. Если представить это в другом виде, то сразу станет очевидно, что это $2\cos \frac{1}{2}x$.
+
+$(1+a)^n = (a^{\frac{1}{2}}(2\cos\frac{1}{2}x))^n = a^{\frac{n}{2}}2^n \cos^n \frac{1}{2}x = (\cos \frac{n}{2}x + i \sin \frac{n}{2}x)2^n \cos^n \frac{1}{2}x$
+
+Наш ответ --- Re часть от этого, то есть $\cos \frac{n}{2}x 2^n \cos^n \frac{1}{2}x$
+
+Аналогично можем посчитать сумму синусов: $\sum\limits_{k=0}^nC_n^k \sin kx$ --- Im часть от ответа.
+
+Также можем считать домноженное на $b^k$:
+
+$\sum\limits_{k=0}^nC_n^k \cos kx \cdot b^k$. Бином будет такой: $(1+ba)^n$
+
+Также можем считать такое:
+
+$\sum\limits_{k=0}^nC_n^k \cos (k+1)x$ --- перед разложением в бином вынести за скобки одну из a-шек.
+
+Также можем считать домноженное на $b^{n-k}$:
+
+$\sum\limits_{k=0}^nC_n^k \cos kx \cdot b^{n-k}$. Бином будет такой: $(b+a)^n$
+
+
+И очевидно комбинация всего вышесказанного.
+
+\pagebreak
+\subsection{Производные. Суммы с k внутри.}
+
+$\sum\limits_{k=1}^n k\sin kx$. Вообще непонятно, что тут делать.
+
+Но заметим, что $\sum\limits_{k=1}^n k\sin kx$, это производная:
+
+$-\sum\limits_{k=1}^n \cos kx$. Мы уже умеем считать такую сумму(см. выше)
+
+И получив ответ для той суммы, просто возьмем производную от ответа и победим.
+
+Аналогично делаются все с умножением на $b^k$ и например $C_k^n$. То есть при появлении внутри k, я смотрю для какой функции эта является производной, решаю для нее и беру производную.
+
+\pagebreak
+\subsection{Комбинация и степени.}
+
+$\sum\limits_{k=1}^n \sin^4 kx$. --- степень
+
+В таком случае мы должны воспользоваться формулой:
+
+$\sin^4 kx = (\cfrac{e^{kxi} - e^{-kxi}}{2i} )^4 =\cfrac{(e^{kxi} - e^{-kxi})^4}{16} =  \cfrac{e^{4kxi} -4\cdot e^{2kxi} +6 -4\cdot e^{-2ki}+ e^{-4kxi}}{16}$. Приведя e-шки в нормальный вид, получим:
+
+$\sin^4 kx  = \cfrac{(2\cos 4kx -8 \cos 2kx + 6)}{16}$
+
+И дальше подставим это в нашу сумму:
+
+$\sum\limits_{k=1}^n \sin^4 kx = \frac{1}{16} (2\sum\limits_{k=1}^n \cos 4kx -8\sum\limits_{k=1}^n \cos 2kx + \sum\limits_{k=1}^n 6)$
+
+И решать уже три суммы. Очевидно, что каждая из них может модифицироваться всяикими домножениями и т.п
+
+
+Задачи с кр - комбинация 4-ех вышесказанных методов. Всем удачи в подготовке :)
+\pagebreak
+
+\subsection{Задача 1в}
+
+$\sum\limits_{k=0}^n  (-1)^k \cos^4 (k+1) x$
+
+Давайте разложим $\cos^4 x(k+1) = (\cfrac{e^{(k+1)ix}+ e^{-(k+1)ix}}{2})^4= \cfrac{(e^{(k+1)ix}+ e^{-(k+1)ix})^4}{16} = \frac{1}{16} (e^{4(k+1)ix}+4e^{2(k+1)ix}+6+4e^{-2(k+1)ix}+e^{-4(k+1)ix}) = $
+
+$=\frac{1}{16}(\cos 4 (k+1)x + 4 \cos 2(k+1)x + 6 + 4 \cos 2(k+1)x+ \cos 4(k+1) x) = $
+
+$= \frac{1}{16}(2 \cos 4(k+1)x + 8 \cos 2(k+1)x + 6)$
+
+То есть нашу искомую сумму можно переписать как:
+
+$\sum\limits_{k=0}^n  (-1)^k \cos^4 (k+1) x =\frac{1}{16} (2\sum\limits_{k=0}^n (-1)^k \cos 4(k+1)x + 8\sum\limits_{k=0}^n (-1)^k \cos 2(k+1)x + \sum\limits_{k=0}^n (-1)^k 6)$
+
+Начнем решать по очереди, \textbf{посчитаем:}
+
+$\sum\limits_{k=0}^n (-1)^k \cos 4(k+1)x$
+
+Пусть $a = i\sin x + \cos x$. Тогда
+
+$\sum\limits_{k=0}^n (-1)^k a^{4(k+1)}=\sum\limits_{k=0}^n (-1)^k\cos 4(k+1)x + i\sum\limits_{k=0}^n (-1)^k\sin 4(k+1)x$.
+
+То есть та сумма, которую мы ищем - Re часть от суммы $\sum\limits_{k=0}^n (-1)^k a^{4(k+1)}$
+
+Посмотрим на эту сумму:
+
+$\sum\limits_{k=0}^n (-1)^k a^{4(k+1)} = a^4 - a^8 + \ldots + (-1)^n a^{4(n+1)} = a^4 (1-a^4+a^8-\ldots + (-1)^na^{4n}) = $
+
+$=a^4 \cfrac{(-a^4)^{n+1}-1}{-a^4-1} =a^4 \cfrac{(-a^4)^{n+1}-1}{-a^2(a^2+a^{-2})} =a^4 \cfrac{(-a^4)^{n+1}-1}{-a^2(a^2+\overline{a}^{2})} = a^4 \cfrac{(-a^4)^{n+1}-1}{-a^2(2 \cos 2x)} = $
+
+$\cfrac{((-a^4)^{n+1}-1)\cdot(a^2)}{-(2 \cos 2x)} = 
+\cfrac{((-1)^{n+1}(\cos 4(n+1)x+i\sin4(n+1)x)-1)\cdot(\cos 2x +i\sin 2x)}{-(2 \cos 2x)} $
+
+Мне нужна Re часть от этого. Тк знаменатель рациональный, то  я могу взять Re от числителя и поделить на знаменатель.
+
+Re часть = $ \cfrac{(-1)^{n+1} \cos 4(n+1)x \cos 2x - \cos 2x - (-1)^{n+1} \sin 4(n+1)x \sin 2x}{-2\cos 2x} = $
+
+$  = \cfrac{(-1)^{n+1} \cos (4(n+1)x+2x) - \cos 2x}{-2\cos 2x}$
+
+(Тут можно еще разность косинусов написать ну и так хорошо выглядит)
+
+То есть $\sum\limits_{k=0}^n (-1)^k \cos 4(k+1)x = \cfrac{(-1)^{n+1} \cos (4(n+1)x+2x) - \cos 2x}{-2\cos 2x}$
+
+Аналогичным образом решается и вторая. \textbf{Посчитаем:}
+
+$\sum\limits_{k=0}^n (-1)^k \cos 2(k+1)x$
+
+Пусть $a = i\sin x + \cos x$. Тогда
+
+$\sum\limits_{k=0}^n (-1)^k a^{2(k+1)}=\sum\limits_{k=0}^n (-1)^k\cos 2(k+1)x + i\sum\limits_{k=0}^n (-1)^k\sin 2(k+1)x$.
+
+То есть та сумма, которую мы ищем - Re часть от суммы $\sum\limits_{k=0}^n (-1)^k a^{2(k+1)}$
+
+Посмотрим на эту сумму:
+
+$\sum\limits_{k=0}^n (-1)^k a^{2(k+1)} = a^2 - a^4 + \ldots + (-1)^n a^{2(n+1)} = a^2 (1-a^2+a^4-\ldots + (-1)^na^{2n}) = $
+
+$=a^2 \cfrac{(-a^2)^{n+1}-1}{-a^2-1} =a^2 \cfrac{(-a^2)^{n+1}-1}{-a(a+a^{-1})} = a^2 \cfrac{(-a^2)^{n+1}-1}{-a(2 \cos x)} = $
+
+$\cfrac{((-a^2)^{n+1}-1)\cdot(a)}{-(2 \cos x)} = 
+\cfrac{((-1)^{n+1}(\cos 2(n+1)x+i\sin2(n+1)x)-1)\cdot(\cos x +i\sin x)}{-(2 \cos x)} $
+
+Мне нужна Re часть от этого. Тк знаменатель рациональный, то  я могу взять Re от числителя и поделить на знаменатель.
+
+Re часть = $ \cfrac{(-1)^{n+1} \cos 2(n+1)x \cos x - \cos x - (-1)^{n+1} \sin 2(n+1)x \sin x}{-2\cos x} = $
+
+$  = \cfrac{(-1)^{n+1} \cos (2(n+1)x+x) - \cos x}{-2\cos x}$
+
+\textbf{То есть наша искомая сумма: }
+
+$\frac{1}{16} (2\sum\limits_{k=0}^n (-1)^k \cos 4(k+1)x + 8\sum\limits_{k=0}^n (-1)^k \cos 2(k+1)x + \sum\limits_{k=0}^n (-1)^k 6) = $
+
+$\frac{1}{16}( 2\cfrac{(-1)^{n+1} \cos (4(n+1)x+2x) - \cos 2x}{-2\cos 2x} + 8  \cfrac{(-1)^{n+1} \cos (2(n+1)x+x) - \cos x}{-2\cos x} +\sum\limits_{k=0}^n (-1)^k 6 )$
+
+\end{document}  
+

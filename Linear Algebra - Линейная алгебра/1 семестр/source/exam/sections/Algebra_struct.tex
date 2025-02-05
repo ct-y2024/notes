@@ -1,0 +1,139 @@
+\subsection{Операции, группа, кольцо, поле}
+\subsubsection{Законы композиции.}
+
+$f: A \times B \rightarrow C$ - функция отображения.
+
+$\forall (a,b): a \in A, b \in B: \exists! c \in C$ --- \deff{закон внешней контрапозиции.}
+
+$f: A \times A \rightarrow A$ --- \deff{закон внутренней контрапозиции} или алгебраическая операция.
+
+\subsubsection{Ассоциативность, коммутативность алгебраических операций.}
+
+Возьмем операцию $*: A \times A \rightarrow A$:
+
+$a * b = b * a$ --- \deff{коммутативность}.
+
+$a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
+
+
+\subsubsection{Алгебраическая структура, группа, кольцо, поле. Свойства.}
+
+\deff{Алгебраическая структура} --- множество с набором $\Omega$ --- операция и отношений на ней, с некоторой системой аксиом. Обозначают $(A, \Omega)$
+
+\deff{Группа} (A, \{+\}):
+
+\begin{enumerate}
+    \item $a+(b+c) = (a+b)+c$ --- ассоциативность.
+    \item $\exists 0:\forall a: a + 0 = 0+ a =a$.
+    \item $\exists$  обратного: $\forall a: \exists (-a): a+ (-a) = 0$.
+\end{enumerate}
+
+Если группа обладает еще и коммутативностью, то такая группа называется \deff{абелевой}.
+
+\deff{Кольцо} (A, \{+, $\cdot$\}):
+
+\begin{enumerate}
+    \item Абелева групппа по сложению.
+    \item $a \cdot (b+c) = a\cdot b + a\cdot c$ --- левая дистрибутивность.
+    \item $(b+c)\cdot a  = b \cdot a + c \cdot a$  --- правая дистрибутивность.
+    \item $a \cdot (b\cdot c) = (a\cdot b)\cdot c$ --- ассоциативность умножения
+\end{enumerate}
+
+\deff{Поле}  (A, \{+, $\cdot$\}):
+\begin{enumerate}
+ \item Абелева групппа по сложению.
+ \item Абелева групппа по умножению.
+ \item $a(b+c) = ab+ac$ --- дистрибутивность. 
+\end{enumerate}
+
+Свойства кольца:
+
+\begin{enumerate}
+    \item $0 \cdot a = 0$
+    \item $a+x = a+ y \rightarrow x=y$
+    \item $a + x = b$ имеет единственное решение
+    \item $0$ --- единственнен.
+    \item $1$ --- единственна в кольце с единицой.
+\end{enumerate}
+
+\subsection{Линейное пространство, алгебра, свойства.}
+
+$K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot: K\times V \rightarrow V$. Если все, что сказано ниже выполнено  $\forall \phi, \lambda \in K, a,b \in V$.
+
+\begin{enumerate}
+    \item аксиомы
+    \item аббелевой 
+    \item для V
+    \item по сложению.
+    \item $ \phi(\lambda(a)) = \lambda(\phi(a))$.
+    \item $\lambda (a+b) = \lambda a + \lambda b$.
+    \item $a ( \phi + \lambda) = a\phi + a \lambda $.
+    \item $\exists 1: a \cdot 1 =a$.
+\end{enumerate}
+
+То тогда такую систему называют \deff{линейным пространством}.
+
+Если добавить еще одну операцию $\times: V \times V \rightarrow V$.
+
+\begin{enumerate}
+    \item $(a+b)\times c = a \times c + b \times c $
+
+    $c\times (a+b) = c \times a + c \times b$
+
+    \item $\lambda (a \times b) = (\lambda a )\times b = a \times (\lambda b)$
+\end{enumerate}
+
+То такую штучку называют \deff{линейной алгеброй}.
+
+\begin{enumerate}
+    \item добавим коммутативность $\times$ --- коммутативная алгебра.
+
+    \item добавим ассоциативность $\times$ --- ассоциативная алгебра.
+
+    \item добавим единицу --- унарная алгебра.
+
+    \item добавим обратное --- алгебра с делением
+\end{enumerate}
+
+\subsection{Нормированные линейные пространства и алгебры.}
+
+\deff{Нормированное пространство} --- линейное пространство над $\mathbb{R}$ с нормой.
+
+\deff{Норма} $||\cdot||:V \rightarrow \mathbb{R}$, удовлетворящее:
+
+\begin{enumerate}
+    \item $||x|| + ||y||\leq ||x+y||$.
+    \item $||x||\geq 0$, причем $||x||=0 \Leftrightarrow$ $x = 0$.
+    \item  $||\alpha x|| = |\alpha|||x||$.
+\end{enumerate}
+
+Алгебра называется \deff{нормированной}, если существует норма согласованная с умножением:
+
+$||ab||\leq ||a|| \cdot ||b||$.
+
+\subsection{Отношение эквивалентности, фактор-структуры.}
+
+         
+        
+        \deff{Бинарное отношение} $\sim$ на множестве $X$ является \deff{отношением эквивалентности}, если оно
+        \begin{itemize}
+            \item Рефлексивно: $\forall x\in X~x\sim x$.
+            \item Симметрично: $\forall x,y\in X~x\sim y\leftrightarrow y\sim x$.
+            \item Транзитивно: $\forall x,y,z\in X~x\sim y\land y\sim z\rightarrow x\sim z$.
+        \end{itemize}
+         Если $\sim$ --- бинарное отношение на $X$, то множества $M_a=\{x\in X\mid x\sim a\}$ называются классами эквивалентности , а множество $X/\sim=\{M_a\mid a\in X\}$ --- \deff{фактормножеством} (или {факторпространством}) $X$ по $\sim$.
+         
+     \thmm{Свойства классов эквивалентности.}
+        \begin{enumerate}
+            \item $\forall a\in X~M_a\neq\varnothing$.
+            \item $\forall a,b\in X$ выполнено либо $M_a=M_b$, либо $M_a\cap M_b=\varnothing$.
+            \item $\bigcup\limits_{a\in X}M_a=X$.
+        \end{enumerate}
+
+          Если у нас есть множество $X$, а $M$ --- какое-то множество, состоящее из непустых взаимно непересекающихся подмножеств $X$, в объединении дающих $X$. Тогда $M$ называется \deff{разбиением} $X$.
+
+
+          Любое разбиение $X$ является факторпространством $X$ по некоторому отношению эквивалентности. Доказательство этого тривиально, если вы представите отношения как ребра в графе, а классы эквивалентности - компоненты
+  
+
+    
