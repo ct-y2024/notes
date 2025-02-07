@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage[normalem]{ulem}
+\usepackage[14pt]{extsizes}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{cmap}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{colortbl}
+\definecolor{bkgreen}{rgb}{0.0, 0.26, 0.15}
+\usepackage[parfill]{parskip}
+
+\usepackage{xcolor}
+\usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
+\usepackage[russian]{babel}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usepackage{etoolbox} % <--- added
+\AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
+\newcommand{\ctd}{\begin{flushright} $\square$ \end{flushright}}
+
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{tikz}
+
+%\theoremstyle{definition} % жирный заголовок, плоский текст
+\newtheorem{Thm}{\underline{Теорема}} % нумерация будет "<номер subsection>.<номер теоремы>"
+\newtheorem{Lm}[Thm]{\underline{Лемма}} % Нумерация такая же, как и у теорем
+\newtheorem{Ex}[Thm]{Упражнение} % Нумерация такая же, как и у теорем
+\newtheorem{Task}[Thm]{Задача} % Нумерация такая же, как и у теорем
+\newtheorem{Example}{Пример}[section] % Нумерация такая же, как и у теорем
+\newtheorem{Code}[Thm]{Код} % Нумерация такая же, как и у теорем
+%\theoremstyle{plain} % жирный заголовок, курсивный текст
+\newtheorem{Def}{Определение} % Нумерация такая же, как и у теорем
+
+\newtheorem{Cons}[Thm]{Следствие} % Нумерация такая же, как и у теорем
+\newtheorem{Conj}[Thm]{Гипотеза} % Нумерация такая же, как и у теорем
+\newtheorem{Prop}[Thm]{Утверждение} % Нумерация такая же, как и у теорем
+\newtheorem{Rem}{Замечание} % Нумерация такая же, как и у теорем
+\newtheorem{Remark}[Thm]{Замечание} % Нумерация такая же, как и у теорем
+\newtheorem{Img}[Thm]{Иллюстрация} % Нумерация такая же, как и у теорем
+
+\newcommand{\deff}[1]{\underline{\textbf{#1}}}
+\newcommand{\thmm}[1]{\underline{\textbf{#1}}}
+\newcommand*\xor{\mathbin{\oplus}}
+\newcommand{\mytilde}{\raisebox{0.5ex}{\texttildelow}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Alfo},
+    pdfpagemode=FullScreen,
+    }
+
+
+% Разные определения
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\norm}[1]{\lVert{#1}\rVert}
+\newcommand{\stk}[2]{\stackrel{\eqref{#1}}{#2}}
+\newcommand{\D}{\Delta}
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\appr}[1]{\xrightarrow[#1]{}}
+\newcommand{\scal}[1]{\left\langle #1 \right\rangle}
+\newcommand{\F}{\mathcal{F}}
+
+
+% Числовые множества
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+% Необходимость, достаточность
+\newcommand{\nec}{{$\Rightarrow$}}
+\newcommand{\suff}{{$\Leftarrow$}}
+
+
+% Буквенные \Re и \Im
+\DeclareMathOperator{\@custom@Re}{Re}
+\DeclareMathOperator{\@custom@Im}{Im}
+\renewcommand{\Re}{\@custom@Re}
+\renewcommand{\Im}{\@custom@Im}
+
+% Еще переопределения
+\renewcommand{\emptyset}{\varnothing}
+
+% Математические операторы
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\mes}{mes}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\fix}{fix}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\vp}{v.p.}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\Arctg}{Arctg}
+\DeclareMathOperator{\Arcctg}{Arcctg}
+\DeclareMathOperator{\Arsh}{Arsh}
+\DeclareMathOperator{\Arch}{Arch}
+\DeclareMathOperator{\Arth}{Arth}
+\DeclareMathOperator{\Arcth}{Arcth}
+
+\usepackage{dsfont}
+\newcommand{\zero}{\mathds{O}}
+\renewcommand{\ker}{\mathcal{K}er}
+\newcommand{\rg}{rg}
+\renewcommand{\span}{span}
+
+% Интегралы до бесконечности
+\newcommand{\iinf}[1]{\int\limits_{#1}^{+\infty}}
+\newcommand{\ioinf}{\int\limits_{0}^{+\infty}}
+\newcommand{\ipminf}{\int\limits_{-\infty}^{+\infty}}
+
+\usepackage{subfiles}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[C]{Линейная Алгебра} % Центральный заголовок
+\fancyhead[L]{КТ ИТМО - 2 Семестр}
+\fancyhead[R]{Кучерук Екатерина}
+
+
+\title{Линейная алгебра}
+\author{Чепелин Вячеслав}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Информация о курсе}
+\subfile{sections/info}
+
+\newpage
+\section{Линейные отображения.}
+\subfile{sections/1.tex}
+
+
+
+
+
+
+\end{document}
