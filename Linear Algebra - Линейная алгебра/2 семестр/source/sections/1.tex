@@ -9,6 +9,8 @@ $$\forall \lambda \in K,\forall u_1, u_2 \in U: \mathcal{A}(u_1 + \lambda u_2) =
 
 \textbf{Замечание 2:} $\mathcal{A}u, \mathcal{B}u$ это какие-то числа, поэтому мы можем складывать их и умножать на скаляр.
 
+\textbf{Замечание 3:} $\mathcal{A} \zero_U = \zero_V$, частный случай $\lambda = 0$
+
 \textbf{Примеры:}
 \begin{enumerate}
     \item $\zero$: это нулевое отображения $\forall u \in U: \zero u = 0$ 
@@ -43,7 +45,7 @@ $\ker  \mathcal{A} = \{u \in U| \mathcal{A} u = \zero\}$ %
 
  $\rg \mathcal{A} = \dim \Im \mathcal{A}$ --- \deff{ранг отображения} 
 
- $def \mathcal{A} = \dim \ker \mathcal{A}$ --- \deff{деффект отображения.}
+ $def \mathcal{A} = \dim \ker \mathcal{A}$ --- \deff{дефект отображения.}
 
 \newpage %todo: поменять этот кринж
 
@@ -98,7 +100,7 @@ $\ker  \mathcal{A} = \{u \in U| \mathcal{A} u = \zero\}$ %
         \item[3.] биекция $\Leftrightarrow \begin{cases}
             \rg A = n \\
             \rg A = m
-        \end{cases} \Leftrightarrow n = M$.
+        \end{cases} \Leftrightarrow n = m$.
 
         \item[4.] эндоморфизм $\Leftrightarrow n = m \Leftrightarrow A_{n \times n}$.
 
@@ -132,7 +134,7 @@ $\forall u \in \mathcal{A}_0:\mathcal{A}_0 u = \mathcal{A}u$.
 Если $\mathcal{A}$ --- изоморфизм, то тогда его сужение на $U_0$ будет линейным отображением между $U_0$ и $\Im \mathcal{A}_0$. И это будет тоже изоморфизм.
 
 
-\thmm{Теорема(о ранге и дефекте линейного отображения)}
+\thmm{Теорема (о ранге и дефекте линейного отображения)}
 
 $\forall \mathcal{A} \in L(U, V)$. Доказать $\dim U = def \mathcal{A} + rg \mathcal{A}$.
 
@@ -153,7 +155,7 @@ $$\dim U = \dim U_1 + \dim U_0 = \rg \mathcal{A} + def \mathcal{A}$$
 
 \textbf{Следствие.} (характеристика автоморфизма)
 
-Если $\mathcal{A} \in Aut(V) \Leftrightarrow \rg \mathcal{A} = \dim V \Leftrightarrow def\mathcal{A} =0$ --- условие обратимости линейного пространства.
+Если $\mathcal{A} \in Aut(V) \Leftrightarrow \rg \mathcal{A} = \dim V \Leftrightarrow def\mathcal{A} =0$ --- условие обратимости линейного оператора.
 
 
 \subsection{Матрица лин. отображения. Координатный изоморфизм. Формула замены матрицы линейного отображения при замене базиса.}
@@ -225,13 +227,33 @@ $$\mathcal{A} \mathcal{B} \xi_i = \mathcal{A} (\mathcal{B}\xi_i) = \mathcal{A}(\
 \textbf{Следствие:} $\mathcal{A} \in L(U,V)$ - изоморфизм, $A$ - матр в $\xi,\eta \Rightarrow A^{-1}$ - матр в $(\eta, \xi)$. 
 
 \textbf{Доказательство:}
-$$v = Cu = \sum\limits_{i=1}^n u_i \mathcal{A} \xi_i = \sum\limits_{i=1}^n u_i \sum\limits_{j=1}^ma_{ji} \eta_j = \sum\limits_{j=1}^m (\sum\limits_{i=1}^na_{ji}u_i)\eta_j  \Rightarrow v_j =\sum\limits_{i=1}^na_{ji}u_i$$
-
-Откуда получаю, что $v = \mathcal{A} u \Leftrightarrow v = A \cdot u$. Откуда уже получаем то, что и хотели найти
+$$A \cdot A^{-1} = \varepsilon_V, \quad A^{-1} \cdot A = \varepsilon_U$$
+$$AX = E_{\eta}, \quad XA = E_{\xi}$$
+В силу того, что $\mathcal{A}$ --- изоморфизм:
+$$\dim U = \dim V = n, \quad rgA = n \Leftrightarrow \exists A^{-1}$$
+$$X = A^{-1}$$
 
 \hfill Q.E.D.
 
-\thmm{Теорема (формула замены мантрицы лин. отобр. при замене базиса)} 
+\textbf{Утверждение:}
+Пусть $\mathcal{A} \in L(U_{\varepsilon}, V_{\eta}), v = \mathcal{A}u$.
+Тогда $\mathbf{v} = A\mathbf{u}$, где $\mathbf{v}$ и $\mathbf{u}$ --- координатные столбцы $v$ и $u$ соответственно.
+
+
+\textbf{Доказательство:}
+С одной стороны, $v$ можно разложить по базису $V$:
+$$v = \sum\limits_{j = 1}^{m} \mathbf{v}_i\eta_j$$
+С другой стороны, $v$ представим как результат отображения:
+$$v = \mathcal{A}u = \sum\limits_{i=1}^n \mathbf{u}_i \mathcal{A} \xi_i = \sum\limits_{i=1}^n \mathbf{u}_i \sum\limits_{j=1}^ma_{ji} \eta_j = \sum\limits_{j=1}^m (\sum\limits_{i=1}^na_{ji}\mathbf{u}_i)\eta_j  \Rightarrow v_j =\sum\limits_{i=1}^na_{ji}\mathbf{u}_i$$
+
+В силу единственности разложения по базису:
+$$\mathbf{v}_j = \sum\limits_{j = 1}^{m}a_{ji}\mathbf{u}_i$$
+
+Откуда получаем искомое: $v = \mathcal{A} u \Leftrightarrow \mathbf{v} = A \cdot \mathbf{u}$. Последнее равенство называется \emph{координатной формой записи действия линейного отображения}.
+
+\hfill Q.E.D.
+
+\thmm{Теорема (формула замены матрицы лин. отобр. при замене базиса)} 
 
 $\mathcal{A} \in L(U,V)$ --- линейное отображение.
 
@@ -244,7 +266,7 @@ $$A' = T^{-1}_{\eta \rightarrow \eta'} A T_{\xi\rightarrow \xi'}$$
     \includegraphics[width = 5cm]{assets/7_2_1.png}
 \end{center}
     Воспользуемся данным рисунком, чтобы понять происходящее. Мы хотим найти матрицу $\mathcal{A}'$. Для этого, заметим, что преобразование $\mathcal{A}'$, это преобразование $\mathcal{B}$, потом примененное к нему преобразование $\mathcal{A}$, а после этого применненое к нему преобразование $\mathcal{C}$. То есть:
-    $$\mathcal{A}'=\mathcal{C}\mathcal{A}\mathcal{B}$$.
+    $$\mathcal{A}'=\mathcal{C}\mathcal{A}\mathcal{B}$$
 
     Заметим, что матрица $\mathcal{B}$, это матрица перехода из $\xi$ в $\xi'$. Это так потому что у нас просто меняется базис (про саму матрицу перехода см. одноименный раздел). Матрица $\mathcal{C}$, это $T_{\eta' \rightarrow \eta}$. Откуда, исходя из двух утверждений сверху:
     $$A' = T_{\eta' \rightarrow \eta} A T_{\xi\rightarrow \xi'}\Rightarrow A' = T^{-1}_{\eta \rightarrow \eta'} A T_{\xi\rightarrow \xi'}$$ 
@@ -252,7 +274,11 @@ $$A' = T^{-1}_{\eta \rightarrow \eta'} A T_{\xi\rightarrow \xi'}$$
 \hfill Q.E.D.
 %todo
 
-\deff{Следствие:} $A \in End(V)$. $e,e'$ базисы V. $A' = T^{-1}AT$
+\deff{Следствие:} $A \in End(V)$. $e,e'$ базисы V. $A' = T^{-1}AT$, где $T = T_{e \to e'}$.
+
+\deff{Определение:} квадратные матрицы $A$ и $B$ называются подобными, если $\exists$ невырожденная матрица $C$, такая, что: $B = C^{-1}AC$.
+
+\textbf{Замечание:} матрицы линейного оператора в разных базисах подобны (см. следствие выше).
 
 \subsection{Инварианты линейного отображения.}
 
