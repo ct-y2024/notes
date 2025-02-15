@@ -241,7 +241,7 @@ $$X = A^{-1}$$
 
 \textbf{Доказательство:}
 С одной стороны, $v$ можно разложить по базису $V$:
-$$v = \sum\limits_{j = 1}^{m} \mathbf{v}_i\eta_j$$
+$$v = \sum\limits_{j = 1}^{m} \mathbf{v}_j\eta_j$$
 С другой стороны, $v$ представим как результат отображения:
 $$v = \mathcal{A}u = \sum\limits_{i=1}^n \mathbf{u}_i \mathcal{A} \xi_i = \sum\limits_{i=1}^n \mathbf{u}_i \sum\limits_{j=1}^ma_{ji} \eta_j = \sum\limits_{j=1}^m (\sum\limits_{i=1}^na_{ji}\mathbf{u}_i)\eta_j  \Rightarrow \mathbf{v}_j =\sum\limits_{i=1}^na_{ji}\mathbf{u}_i$$.
 Откуда получаем искомое: $v = \mathcal{A} u \Leftrightarrow \mathbf{v} = A \cdot \mathbf{u}$. Последнее равенство называется \emph{координатной формой записи действия линейного отображения}.
@@ -269,9 +269,9 @@ $$A' = T^{-1}_{\eta \rightarrow \eta'} A T_{\xi\rightarrow \xi'}$$
 \hfill Q.E.D.
 %todo
 
-deff{Следствие:} $A \in End(V)$. $e,e'$ базисы V. $A' = T^{-1}AT$, где $T = T_{e \to e'}$.
+\deff{Следствие:} $A \in End(V)$. $e,e'$ базисы V. $A' = T^{-1}AT$, где $T = T_{e \to e'}$.
 
-\deff{Определение:} квадратные матрицы $A$ и $B$ называются подобными, если $\exists$ невырожденная матрица $C$, такая, что: $B = C^{-1}AC$.
+\deff{def:} квадратные матрицы $A$ и $B$ называются подобными, если $\exists$ невырожденная матрица $C$, такая, что: $B = C^{-1}AC$.
 
 \textbf{Замечание:} матрицы линейного оператора в разных базисах подобны (см. следствие выше).
 
@@ -294,7 +294,7 @@ $\forall\mathcal{A}  \in End(V), \det \mathcal{A} = \det A$.
 
 \textbf{Доказательство:}
 
-Возьмум $e = (e_1,\ldots, e_n)$ базис $V$. Тогда:
+Возьмем $e = (e_1,\ldots, e_n)$ базис $V$. Тогда:
 $$\mathcal{A}  \xleftrightarrow{\text{вз. однозначно}} A = (a_{ij})_{n\times n}$$
 $$\det \mathcal{A} = D(\mathcal{A}e_1,\ldots,  \mathcal{A} e_n)  = D(\sum\limits_{i=1}^na_{i1}e_{i_1},\ldots,\sum\limits_{i=1}^n a_{in}e_{i_n}) =$$$$\xLeftrightarrow{\text{тк $D$ - $n$ форма}}\det \mathcal{A}=\sum\limits_{i_1=1}^n\ldots \sum\limits_{i_n=1}^n a_{i_11}\cdot\ldots\cdot a_{i_nn} D(e_{i_1}\ldots,e_{i_n}) = $$
 $$= \sum\limits_{\sigma \in S_n}  a_{i_11}\cdot\ldots\cdot a_{i_nn} \cdot (-1)^{\varepsilon(\sigma)}D(e_1,\ldots,e_n)=\det A$$
@@ -310,7 +310,7 @@ $$\forall \xi_1,\ldots, \xi_n \in V: f(\mathcal{A}\xi_1.\ldots, \mathcal{A}\xi_n
 \textbf{Доказательство:}
 
 Возьмем $e = (e_1,\ldots,e_n)$ базис $V$. $\mathcal{A} \xleftrightarrow{e}A$. Это значит, что мы берем матрицу линейного оператора в данном базисе.
-$$f(\mathcal{A}e_1.\ldots, \mathcal{A}e_n) \overset{\text{из доказательства теоремы}}{=}\det Af(e_1,\ldots,e_n)$$.
+$$f(\mathcal{A}e_1.\ldots, \mathcal{A}e_n) \overset{\text{из доказательства теоремы}}{=}\det Af(e_1,\ldots,e_n)$$
 На самом деле $\alpha = f(e_1.\ldots,e_n)$, поэтому:
 $$\forall \xi_1,\ldots,\xi_n : g(\xi_1,\ldots,\xi_n):= f(\mathcal{A}\xi_1,\ldots, \mathcal{A} \xi_n)$$
 Заметим, что $g$ - полилинейное, тк $f$ полилин. и $\mathcal{A}$ - лин. отобр. Также $g$ - антисим, тк $f$ - антисим. Откуда $g$ - $n$-форма. Заметим интересный факт:
@@ -335,18 +335,18 @@ $$\det \mathcal{A}\mathcal{B} = \det(AB) = \det A \cdot \det B = \det \mathcal{A
 
 \textbf{Доказательство:}
 $$\mathcal{A} \in Aut(V) \Leftrightarrow \begin{cases}
-    A \in End(V) \\
+    \mathcal{A} \in End(V) \\
     \text{изоморфизм}
 \end{cases} \Leftrightarrow \begin{cases}
     \mathcal{A} \in End(V)\\
     def \mathcal{A} = \dim \ker \mathcal{A} = 0
 \end{cases} \Leftrightarrow $$
 $$\Leftrightarrow\begin{cases}
-    rg \mathcal{A} = n\\
-\mathcal{A}\in End(V)
+    \mathcal{A}\in End(V) \\
+    rg \mathcal{A} = n
 \end{cases} \Leftrightarrow \begin{cases}
-    \rg A = n \\
-    \mathcal{A} \xleftrightarrow{e} A,\det A \neq 0
+    \mathcal{A} \xleftrightarrow{e} A,\det A \neq 0 \\
+    \rg A = n
 \end{cases}$$
 Мы знаем, что существует $\mathcal{A}^{-1}$. А также $\mathcal{A}\cdot \mathcal{A}^{-1}=\varepsilon$. Откуда по свойству 3 получаем, что $\det\mathcal{A} ^{-1}=\det \mathcal{A}$.
 
@@ -364,7 +364,7 @@ $$\Leftrightarrow\begin{cases}
 \textbf{Доказательство:}
 
 $A$ и $B$ подобны $\Leftrightarrow\exists C :B =C^{-1}AC$. Пусть $C^{-1} = S = (s_{ij})$. Откуда:
-$$tr B = \sum\limits_{i=1}^n b_ii = \sum\limits_{i=1}^n \sum\limits_{j=1}^ns_{ij} (AC)_{ji} = \sum\limits_{i=1}^n \sum\limits_{j=1}^n \sum\limits_{k=1}^n s_{ij}\cdot a_{jk} \cdot c_{kj} = \sum\limits_{j=1}^n\sum\limits_{k=1}^n a_{jk}\sum\limits_{i=1}^nc_{ki}s_{ij}$$
+$$tr B = \sum\limits_{i=1}^n b_{ii} = \sum\limits_{i=1}^n \sum\limits_{j=1}^ns_{ij} (AC)_{ji} = \sum\limits_{i=1}^n \sum\limits_{j=1}^n \sum\limits_{k=1}^n s_{ij}\cdot a_{jk} \cdot c_{ki} = \sum\limits_{j=1}^n\sum\limits_{k=1}^n a_{jk}\sum\limits_{i=1}^nc_{ki}s_{ij}$$
 Заметим, что $(CS)_{kj} = \delta_{kj}$, где $\delta_{kj}=\begin{cases}
     1, k=j\\
     0, k\neq j
@@ -382,7 +382,7 @@ $$tr B = \sum\limits_{i=1}^n a_{ii} = tr A$$
 
 \thmm{Теорема 1:}
 
-$L \subset V$ - линейное подпространство. $L$ - инвариантно относительно $\mathcal{A} \in End(V)$. Тогда $ \exists $ базис пр-ва $V$ матрица, такой что матрица оператора $\mathcal{A}$ в этом базисе будет иметь \emph{ступенчатый вид}, при этом $A^1 = k = \dim L$.
+$L \subset V$ - линейное подпространство. $L$ - инвариантно относительно $\mathcal{A} \in End(V)$. Тогда $ \exists $ базис пр-ва $V$ матрица, такой что матрица оператора $\mathcal{A}$ в этом базисе будет иметь \emph{ступенчатый вид}, при этом размерность $A^1 = k \times k,  \, k = \dim L$.
 $$A =\begin{pmatrix}
     A^1 & *\\
     \zero & A^2
@@ -391,7 +391,7 @@ $$A =\begin{pmatrix}
 
 $L = \span (e_1,\ldots, e_k)$ - базис $L$.
 
-Дополним базис $L$ до базиса V: $V = \span (e_1,\ldots, e_k, e_{k+1},\ldots,e_n)$.
+Дополним базис $L$ до базиса $V$: $V = \span (e_1,\ldots, e_k, e_{k+1},\ldots,e_n)$.
 
 Запишем матрицу $A$ по определению:
 
@@ -468,7 +468,7 @@ $$\lambda \in K: \begin{cases}
 $\Leftrightarrow v$ собственный вектор собственного числа  $\lambda$.
 
 $V_{\lambda} = \ker(A-\lambda\varepsilon) $ %написать это в 2 строчки
---- \deff{собственное пространство} $\mathcal{A}$ соответств. с.ч. $\lambda$. Это  {мн-во всех с.в. $V$, отвечающим с.ч. $\lambda$  и нулевой вектор}.
+--- \deff{собственное подпространство} $\mathcal{A}$ соответств. с.ч. $\lambda$. Это  {мн-во всех с.в. $V$, отвечающим с.ч. $\lambda$  и нулевой вектор}.
 
 $\gamma(\lambda) = \dim V_{\lambda}$ --- \deff{геометрическая кратность}.
 
@@ -476,22 +476,23 @@ $\gamma(\lambda) = \dim V_{\lambda}$ --- \deff{геометрическая кр
 \begin{enumerate}
     \item $V_{\lambda}$ инвариантно относительно $(\mathcal{A}-\lambda \varepsilon)$.
     \item $V_{\lambda}$ инвариантно относительно $\mathcal{A}$.
-    \item $\gamma(\lambda)$ инвариант.
+    \item $\gamma(\lambda)$ инвариант относительно базиса.
 \end{enumerate}
 
-$\lambda \in K_{\mathcal{A}}$ - с.ч., $v$ - с.в. $\Leftrightarrow \ker (A-\lambda\varepsilon)$ нетривиально $ \Leftrightarrow \det(\mathcal{A} - \lambda \varepsilon) = 0$
+\textbf{Условие существования с.ч.:} \\
+$\lambda \in K_{\mathcal{A}}$ - с.ч., $v$ - с.в. $\Leftrightarrow \ker (A-\lambda\varepsilon)$ нетривиально $ \Leftrightarrow def(\mathcal{A} - \lambda\varepsilon) \ne 0 \Leftrightarrow rg(\mathcal{A} - \lambda\varepsilon) \ne n \Leftrightarrow \det(\mathcal{A} - \lambda \varepsilon) = 0$
 
 Тк определитель линейного оператора  инвариантен, то:
 $$\det(\mathcal{A} - \lambda \varepsilon) = 0 \Leftrightarrow \det({A} - \lambda E) = 0$$
 \deff{def:} $\chi(t) = \det (\mathcal{A} - t\varepsilon)$ - \deff{характеристический многочлен} оператора $\mathcal{A}$.
 
 Т.к. $\det$ оператора инвариантен $\chi(t) = \det (A - tE)$, где $A$ - матрица линейного оператора $\mathcal{A}$ в некотором базисе.
-$$\chi(t) =\begin{pmatrix}
+$$\chi(t) =\begin{vmatrix}
     a_{11} -t & a_{12} & \ldots & a_{1n} \\
     a_{21} & a_{22}-t & \ldots & \vdots\\
     \vdots & \vdots & \ddots & \vdots\\
     a_{n1} & a_{n2} & \ldots & a_{nn}-t
-\end{pmatrix} = (-1)^{n}\cdot t^n + (-1)^{n-1}(tr At^{n-1}) + \ldots + \det A$$
+\end{vmatrix} = (-1)^{n}\cdot t^n + (-1)^{n-1}(tr At^{n-1}) + \ldots + \det A$$
 По теореме Виета:
 $\begin{cases}
 \lambda_1 +\ldots+\lambda_n = tr A.\\
@@ -502,8 +503,8 @@ $\begin{cases}
     \chi(\lambda) = 0 \text{ - корень хар. многочлена поля $K$!}
 \end{cases}$
 
-\deff{def:} \deff{Спектром} оператора $a$ называется множество $\lambda$ и $\alpha(\lambda)$, 
-$\alpha(\lambda)$ - кратность $\lambda$ лин. оператора в хар. уравнении. Спектр это множество пар.
+\deff{def:} \deff{Спектром} оператора $\mathcal{A}$ называется множество $\{ (\lambda$, $\alpha(\lambda)) \}$, 
+$\alpha(\lambda)$ - кратность $\lambda$ лин. оператора в хар. уравнении (\emph{алгебраическая кратность}). Спектр это множество пар.
 
 \deff{def:} \deff{Простой спектр} --- все кратности -  единички.
 
@@ -516,7 +517,7 @@ $\forall \mathcal{A}\in End(V)$. $\forall \lambda$ с.ч. $\mathcal{A} : 1\leq \
 
 $\lambda$ с.ч. $\mathcal{A} \Leftrightarrow \ker(\mathcal{A}-\lambda \varepsilon)= V_{\lambda}$ не тривиально $\Leftrightarrow \gamma_1=\dim V_\lambda\geq 1$.
 
-Пусть $\dim V_{\lambda} = \gamma$ю $V_{\lambda}$ инвариантно относительно $\mathcal{A} \Rightarrow$ по т-ме 1 об инв. подпр.существует $V$ такой, что матрица оператора $\mathcal{A}$ будет иметь ступенчатый вид:
+Пусть $\dim V_{\lambda} = \gamma$, $V_{\lambda}$ инвариантно относительно $\mathcal{A} \Rightarrow$ по т-ме 1 об инв. подпр. существует $V$ такой, что матрица оператора $\mathcal{A}$ будет иметь ступенчатый вид:
 $$A =\begin{pmatrix}
     A^1 & *\\
     \zero & A^2
@@ -529,7 +530,7 @@ $\mathcal{A}e_i = \lambda e_i \leftrightarrow A_i = \begin{pmatrix}
     \vdots \\
     0\\
     \lambda\\0\\\vdots
-\end{pmatrix}$ - $\lambda$ - на $i$-ой строчки. Немного распишем:
+\end{pmatrix}$ - $\lambda$ - на $i$-ой строчке. Немного распишем:
 
 $$\chi(t) = \det(A-tE) =\begin{vmatrix}
     A^1-tE_{\gamma\times\gamma} & *\\
@@ -564,6 +565,10 @@ $$\mathcal{A} v_{m+1} = \lambda_{m+1} v_{m+1} = \lambda_{m+1}\sum\limits_{i=1}^m
 C другой стороны:
 $$\mathcal{A} v_{m+1} =\mathcal{A}\sum\limits_{i=1}^m \alpha_i  v_i  =\sum\limits_{i=1}^m \alpha_i \mathcal{A} v_i = \sum\limits_{i=1}^m\alpha_i \lambda_i v_i$$
 $$\sum\limits_{i=1}^m(\lambda_{m+1}-\lambda_i)a_i v_i = 0$$
+
+% у меня в конспекте такое доказательство с лекции, которое показалось понятнее:
+% все v_i не нули, все разности лямбд тоже не нули
+% тогда все альфы нули, но тогда v_{m + 1} = 0, противоречие
 Но мы знаем, что $v_1,\ldots,v_m$ линейно независимы. Откуда эта линейная комбинация тривиальна, но с другой стороны, она такой быть не может, потому что $\exists \alpha_i\neq 0$, для которого $v_i$ не равен нулю, а так же, исходя из того что искомые с.ч. попарно различны, то $v_{m+1}-v_i\neq 0$. Откуда комбинация нетривиальна. 
 
 Противоречие.
@@ -574,7 +579,7 @@ $$\sum\limits_{i=1}^m(\lambda_{m+1}-\lambda_i)a_i v_i = 0$$
 
 \textbf{Доказательстсво:}
 $$\zero = v_1 + \ldots+ v_m, v_i \in V_{\lambda_i}$$
-Если в сумме, какой-то из векторов не нулевой, то это собственный вектор, а собственные вектора для различных с.ч. линейно независимы. Противоречие. Откуда все вектора в сумме нулевые, откуда подпространства дизъюнктны.
+Если в сумме какой-то из векторов не нулевой, то это собственный вектор, а собственные вектора для различных с.ч. линейно независимы. Противоречие. Откуда все вектора в сумме нулевые, откуда подпространства дизъюнктны.
 
 \hfill Q.E.D.
 
@@ -586,7 +591,7 @@ $\Rightarrow \chi(t) = \det(\mathcal{A} - t\varepsilon) = \prod\limits_{i=1}^m\c
 
 \textbf{Доказательство:}
 
-Смотрим теорему 3 об инв. подпр. Матрица A - блочно диагональная:
+Смотрим теорему 3 об инв. подпр. Матрица A - блочно-диагональная:
 $$A = \begin{pmatrix}
     A^1 &\ldots&\ldots& \zero\\
     \vdots &A^2&\ldots& \vdots\\
@@ -622,7 +627,7 @@ $ \sum\limits_{\lambda \text{-с.ч.} \mathcal{A}} \alpha(n) = n \Leftrightarrow
 $\mathcal{A}$ о.п.с. $\Leftrightarrow \exists$ базис $V$ такой, что матрица диагональна $\Leftrightarrow$ $$\Leftrightarrow V = \bigoplus\limits_{\lambda - \text{с.ч.}}V_{\lambda} \Leftrightarrow \sum\limits_{\lambda - \text{с.ч.}}\gamma(\lambda) = n =\dim V$$
 \hfill Q.E.D.
 
-\textbf{Следствие.} Если все корни характ. многочлена $\in K$, а также $\alpha(\lambda)=1$, то $\mathcal{A}$ - о.п.с.
+\textbf{Следствие.} Если все корни характ. многочлена $\in K$, а также все $\alpha(\lambda)=1$ (спектр простой), то $\mathcal{A}$ - о.п.с.
 
 \deff{def:} $A_{n\times n}$ называется \deff{диагонализируемой}, если  она подобна диагональной.
 
