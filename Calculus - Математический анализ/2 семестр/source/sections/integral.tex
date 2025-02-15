@@ -1,0 +1,180 @@
+\subsection{Неопределенный интеграл.}
+
+ Дано: $f: \langle a,b\rangle \rightarrow \mathbb{R}$. $F$ называется \deff{первообразной} функция f, если:
+
+\begin{enumerate}
+    \item $F$ дифференцируема на $\langle a,b\rangle$.
+
+    \item $\forall x \in \langle a,b\rangle: F'(x) = f(x) $.
+\end{enumerate}
+
+\thmm{Теорема 1}
+
+$f$ - непрерывна на $\langle a,b \rangle$. Тогда $f$ имеет первообразную на $\langle a,b\rangle$.
+
+\textbf{Доказательство:}
+\begin{quote}
+    <чуть позже>
+    
+    \hfill Q.E.D.
+\end{quote}
+
+\thmm{Теорема 2}
+
+$F$ - первообразная $f$ на $\langle a,b \rangle$. Тогда:
+\begin{enumerate}
+    \item $\forall c \in \mathbb{R}$: $F + c$ тоже первообразная.
+    \item Если $G$ - еще одна первообразная f, то $F - G = const$.
+\end{enumerate}
+\textbf{Доказательство:}
+
+    \begin{enumerate}
+        \item воспользуемся арифметическим свойством производной. Тривиально.
+        \item $(F-G)' = F' -G' =f-f= 0$. Пользуясь теоремами, так как производная везде $\geq 0$, то $F-G$ неубывающая. Аналогично так как производная на промежутке $\leq 0 $, то $F-G$ невозврастающая. Откуда это константа.
+    \end{enumerate}
+    \hfill Q.E.D.
+
+\deff{Неопределенный интеграл} $f$ --- это множество всех первообразных $f$.
+
+\textbf{Замечание от Славы.} Кохась подразумевает, что неопределенный интеграл это множество всех первообразных на том же интервале $\langle a,b \rangle$.
+
+Обозначается неопределенный интеграл так:
+$$\int f \quad \text{или} \int f(x) dx $$
+
+Формально: $\displaystyle \int f(x)dx = F(x) +C$
+
+\deff{Таблица неопределенных интегралов:}
+
+Она переписывается из таблицы производных, просто в обратную сторону. Но есть две \uline{\emph{загадочные}} формулы:
+     $$\displaystyle \int \cfrac{dx}{1-x^2} = \frac{1}{2}\ln \left|\cfrac{1+x}{1-x}\right| + C \quad \quad \int \cfrac{dx}{\sqrt{1+x^2}} = \ln \left|x + \sqrt{1+x^2}\right| + C$$
+
+\thmm{Теорема (о св-вах неопределенного интервала)}
+
+Пусть $f,g$ - имеют первообразную $F,G$ на $\langle a,b \rangle$. Тогда:
+
+\begin{enumerate}
+    \item $\dint (f+g) = \dint f + \dint g$
+    \item $\forall a \in \mathbb{R}: \dint (af)=a\dint f$
+    \item $\dint f(\varphi(t))\varphi'(t)dt = \left(\dint f(x)dx\right)\Big |_{x=\varphi(t)}= F(\varphi(t)) + C$
+    \item частный случай. $\forall \alpha,\beta \in \mathbb{R}:\dint f(\alpha x + \beta) = \frac{1}{\alpha}F(\alpha x+\beta) + C$
+    \item $f,g$ - дифф. на $\langle a,b\rangle$. Пусть $f'g$ и $fg'$ имеют первообразную: 
+    
+    Тогда: $\dint f g' = fg -\dint f'g$
+\end{enumerate}
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item очевидно из свойств производной и теоремы 2.
+    \item очевидно из свойств производной и теоремы 2.
+    \item очевидно из производной композиции.
+    \item очевидно из свойств производной и теоремы 2.
+    \item Перенесите интеграл в правой части налево. Очевидно из произведения производных.
+\end{enumerate}
+    \hfill Q.E.D.
+
+\textbf{Замечание.} Формула 3 часто будет использоваться для замены переменных в интегралах.
+$$F(\varphi(t)) = \dint f(\varphi(t))\varphi'(t)dt $$
+Давайте считать, что $\varphi $ обратима. Тогда $t = \varphi^{-1}(x)$. Подставим:
+$$F(x)=\left(\dint f(\varphi(t))\varphi'(t)dt\right)\Big|_{t: = \varphi^{-1}(x)} $$
+
+Для чего это? Благодаря этому, мы умеем вычислять первообразные немного по-другому. Мы можем подставлять вместо $x$ что-либо, а потом возвращаться обратно к $x$.
+
+\subsection{Выпуклые функции.}
+
+Множество $A \in R^m$ \deff{выпукло}, если:
+$$\forall x,y \in A , [x,y]\subset A: [x,y] = \{x+t(y-x), t\in[0,1]\}$$
+ $f:\langle a,b\rangle\rightarrow \mathbb{R}$ --- \deff{выпукла} на промежутке $\langle a,b\rangle$, если:
+$$\forall x_1,x_2 \in \langle a,b \rangle: \forall \alpha \in[0,1]:f(\alpha x_1+(1-\alpha)x_2)\leq \alpha f(x_1) + (1-\alpha) f(x_2)$$
+
+\deff{Надграфик} (f,$\langle c,d \rangle) = \{(x,y): x\in \langle c,d \rangle, y \geq f(x)  \}$
+
+\textbf{Замечанние.} $f$ - выпукло на $\langle a,b\rangle \Leftrightarrow$ Надграфик $(f, \langle a,b \rangle)$ - выпуклый в $R^2$.
+
+\thmm{Лемма (о трех хордах)}
+
+$f$ - выпукла на $\langle a,b\rangle \Leftrightarrow \forall x_1<x_2<x_3 \in\langle a,b \rangle$ выполнено:
+$$\cfrac{f(x_2)-f(x_1)}{x_2-x_1} \leq \cfrac{f(x_3)-f(x_1)}{x_3-x_1}\leq \cfrac{f(x_3)-f(x_2)}{x_3-x_2}$$
+\textbf{Доказательство:}
+
+Возьму первое неравенство. Домножу на знаменатели и оставлю плюсы:
+$$(x_3-x_1) (f(x_2)-f(x_1)) \leq (x_2-x_1) (f(x_3)-f(x_1)$$
+$$f(x_2)\leq \cfrac{x_2-x_1}{x_3-x_1}f(x_3) + \cfrac{x_3-x_2}{x_3-x_2}f(x_1)$$
+Чего-то не хватает, вспомним, что $f(x_2) = f\left (\cfrac{x_2-x_1}{x_3-x_1}x_3 +\cfrac{x_3-x_2}{x_3-x_1}x_1\right)$. Ой, это же условие выпуклости. Так как все переходы равносильны, то 
+это неравенство выполнено, когда $f$ выпукла. Второе неравенство решается аналогично (позже будет добавлено в конспект).
+\hfill Q.E.D.
+
+$f$ - \deff{строго выпукло} на $\langle a,b\rangle$:
+$$\forall x_1,x_2 \in \langle a,b \rangle: \forall \alpha \in[0,1]:f(\alpha x_1+(1-\alpha)x_2)< \alpha f(x_1) + (1-\alpha) f(x_2)$$
+Просто меняется знак на строгий.
+
+\thmm{Теорема (об одностор. дифф-ти вып. функции)}
+
+$f$ - выпукла на $\langle a,b \rangle$. Тогда $\forall x\in\langle a,b\rangle: \exists f'_+(x), f'_-(x)$,  а также
+
+$\forall x_1<x_2\in \langle a,b\rangle$ выполнено:
+$$f'_-(x_1)\leq f'_+(x_1) \leq \cfrac{f(x_2)-f(x_1)}{x_2-x_1}\leq f'_-(x_2)$$
+\textbf{Доказательство:}
+
+\sout{оно пока не осознанно мною, так что могут быть ошибки}
+
+Возьму $t$ на отрезке $(x_1,x_2)$. Возьму $\varphi(t) = \frac{f(t)-f(x_1)}{t-x_1}$, $t\in (x_1,x_2)$ возрастает. (по лемме от трех хордах) и ограниченно сверху:
+$\frac{f(x_2)-f(x_1)}{x_2-x_1}$.
+
+Возьму $s$ левее $x_1$, получу, что $\frac{f(x_1)-f(s)}{x_1-s}$ нижняя граница $\varphi(x)$
+
+Заметим, что исходя из этого, тк монотонна возрастает ограниченна снизу и сверху, то 
+
+$\exists \lim\limits_{t\rightarrow x_1+0} \varphi(t) = \lim\limits_{t \rightarrow x_1 + 0}\cfrac{f(t)-f(x_1)}{t-x_1} = f'_+(x_1)$ и тк $\varphi(t)<\cfrac{f(x_2)-f(x_1)}{x_2-x_1}$, то выполнено второе неравенство.
+
+Первое неравенство выполнено:
+
+$\cfrac{f(x_1)-f(s)}{x_1-s}\leq \cfrac{f(t)-f(x_1)}{t-x_1}$ по лемме о трех хордах, откуда выполнено первое неравенство.
+
+todo: расписать более подробно
+
+\hfill Q.E.D.
+
+\subsection{Определенный интеграл.}
+
+
+\deff{def:} \deff{Фигура} - это ограниченное подмножество в $R^2$. $\varepsilon$ - множество всех возможных фигур.
+
+$\sigma: \varepsilon \rightarrow [0,+\infty)$ ---  назовем \deff{площадью}, если:
+\begin{enumerate}
+    \item Аддитивно: $A_1,A_2 \in \varepsilon, A_1\cap A_2 = \emptyset, \sigma(A_1\cup A_2) = \sigma(A_1)+\sigma(A_2)$
+\item Нормировка: $\sigma ([a,b]\times[c,d]) = (b-a)(d-c)$.
+\end{enumerate}
+
+\textbf{Замечание.} Площади существуют.
+
+\textbf{Замечание.} \begin{enumerate}
+    \item Она обладает монотонностью по включению: $A \subset B, \sigma(A) \leq \sigma(B)$.
+    \item $\sigma(\text{вертик отрезок})=0$.
+\end{enumerate}
+
+\deff{def:}  $\sigma:\varepsilon\rightarrow [0,+\infty)$---\deff{ослабленная площадь}, если выполнено:
+\begin{enumerate}
+    \item монотонна.
+    \item нормированна.
+    \item ослабленная адиттивность: Есть $E \in \varepsilon: l $ - вертик. прямая $L^-$ - левая полуплоскость, $L^{+1}$ - правая полуплоскость(замкнутая полуплоскость), тогда  $E_1 = E\cap L^-, E_2 = E \cap L^+: \sigma(E)=\sigma(E_1)+\sigma(E_2)$
+\end{enumerate}
+
+Пример осл. площади:
+\begin{enumerate}
+    \item $\sigma A = \inf (\sum \sigma(P_k), \text{где $A = \bigcup\limits_{\text{конеч}}P^k, \text{где $P_k$ - прямоугольник}$})$ 
+    \item $\sigma A = \inf (\sum \sigma(P_k), \text{где} A = \bigcup P^k, \text{где $P_k$ - прямоугольник})$
+\end{enumerate}
+
+todo: написать отличие.
+
+\deff{def:} \deff{Срезка} - $f:\langle a,b\rangle \rightarrow \mathbb{R} $.
+\begin{enumerate}
+    \item \uline{положительная} --- $f^+ = max(f,0)$
+    \item \uline{отрицательная} --- $f^- = max(-f,0)$
+\end{enumerate}
+
+todo: вставить рисунок
+
+\deff{def:} $f:[a,b] \rightarrow \mathbb{R}, f\geq 0$ ПГ $(f,[a,b]) = \{(x,y): x\in [a,b], y \in [0,f(x)]\}$.
+
+\deff{def:} $f: [a,b] \rightarrow \mathbb{R}$, $f$ - непр., $\sigma $- осл. адд площадь, тогда определенный интегралом $f$ по отрезку $[a,b]$ назовем: $$\dint\limits_{a}^b f =\dint\limits_{a}^b f(x) dx =\sigma(\text{ПГ($f^+$,$[a,b]$)})-\sigma(\text{ПГ($f^-$,$[a,b]$)})$$
