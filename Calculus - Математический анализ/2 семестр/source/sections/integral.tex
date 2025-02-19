@@ -14,7 +14,7 @@ $f$ - непрерывна на $\langle a,b \rangle$. Тогда $f$ имеет
 
 \textbf{Доказательство:}
 \begin{quote}
-    <чуть позже>
+    <см теорема Барроу>
     
     \hfill Q.E.D.
 \end{quote}
@@ -115,22 +115,28 @@ $\forall x_1<x_2\in \langle a,b\rangle$ выполнено:
 $$f'_-(x_1)\leq f'_+(x_1) \leq \cfrac{f(x_2)-f(x_1)}{x_2-x_1}\leq f'_-(x_2)$$
 \textbf{Доказательство:}
 
-\sout{оно пока не осознанно мною, так что могут быть ошибки}
+Сначала докажу, что $f'_-(x_1)\leq f'_+(x_1)$. Замечу, что $x_1$ в таком случае не должно быть граничной (иначе предела существовать просто не будет). Значит есть какая-то $s$ левее $x_1$ и какое-то $t$ правее $x_1$. Посмотрю на данные выражения:
+$\cfrac{f(t)-f(x_1)}{t-x_1}$ и $\cfrac{f(c)-f(x_1)}{c-x_1}$. 
 
-Возьму $t$ на отрезке $(x_1,x_2)$. Возьму $\varphi(t) = \frac{f(t)-f(x_1)}{t-x_1}$, $t\in (x_1,x_2)$ возрастает. (по лемме от трех хордах) и ограниченно сверху:
-$\frac{f(x_2)-f(x_1)}{x_2-x_1}$.
+По теореме о трех хордах: $\cfrac{f(c)-f(x_1)}{c-x_1} \leq \cfrac{f(t)-f(x_1)}{t-x_1}$.
 
-Возьму $s$ левее $x_1$, получу, что $\frac{f(x_1)-f(s)}{x_1-s}$ нижняя граница $\varphi(x)$
+Замечу, что при устремлении $s$ к $x_1$,  $\cfrac{f(c)-f(x_1)}{c-x_1}$ будет увеличиваться по теореме о трех хордах (см изобр, напишите т. о трех хордах для $s,s',x_1$).
 
-Заметим, что исходя из этого, тк монотонна возрастает ограниченна снизу и сверху, то 
+Замечу, что при устремлении $t$ к $x_1$,  $\cfrac{f(t)-f(x_1)}{t-x_1}$ будет  уменьшаться по теореме о трех хордах (см изобр, напишите т. о трех хордах для $x_1,t',t$).
 
-$\exists \lim\limits_{t\rightarrow x_1+0} \varphi(t) = \lim\limits_{t \rightarrow x_1 + 0}\cfrac{f(t)-f(x_1)}{t-x_1} = f'_+(x_1)$ и тк $\varphi(t)<\cfrac{f(x_2)-f(x_1)}{x_2-x_1}$, то выполнено второе неравенство.
 
-Первое неравенство выполнено:
+\begin{center}
+ \includegraphics[width = 15cm]{assets/integral_1.png}
+\end{center}
 
-$\cfrac{f(x_1)-f(s)}{x_1-s}\leq \cfrac{f(t)-f(x_1)}{t-x_1}$ по лемме о трех хордах, откуда выполнено первое неравенство.
+Заметим, что первая функция ограниченна сверху второй, а вторая ограниченна снизу первой. Откуда существуют  $f'_-(x_1), f'_+(x_1)$. Теперь применим теорему о предельном переходе в неравенствах и получим, что $f'_-(x_1)\leq f'_+(x_1)$.
 
-todo: расписать более подробно
+Теперь докажем вторую часть.\\
+Возьму $t$ на отрезке $(x_1,x_2)$. Посмотрю, на  $\cfrac{f(t)-f(x_1)}{t-x_1}$ и $\cfrac{f(t)-f(x_2)}{t-x_2}$
+
+Заметим, что исходя из этого, тк монотонна возрастает на промежограниченна снизу и сверху (по тем же соображением, что и до этого)
+$$\exists  \lim\limits_{t \rightarrow x_1 + 0}\cfrac{f(t)-f(x_1)}{t-x_1} = f'_+(x_1)$$ и тк $\cfrac{f(t)-f(x_1)}{t-x_1}\leq\cfrac{f(x_2)-f(x_1)}{x_2-x_1}$ по лемме о трех хордах, то выполнено второе неравенство.
+$$\exists  \lim\limits_{t \rightarrow x_2 - 0}\cfrac{f(t)-f(x_2)}{t-x_2} = f'_-(x_2)$$ и тк $ \cfrac{f(x_2)-f(x_1)}{x_2-x_1}\leq \cfrac{f(t)-f(x_2)}{t-x_2}$ по лемме о трех хордах, то выполнено третье неравенство.
 
 \hfill Q.E.D.
 
@@ -178,3 +184,108 @@ todo: вставить рисунок
 \deff{def:} $f:[a,b] \rightarrow \mathbb{R}, f\geq 0$ ПГ $(f,[a,b]) = \{(x,y): x\in [a,b], y \in [0,f(x)]\}$.
 
 \deff{def:} $f: [a,b] \rightarrow \mathbb{R}$, $f$ - непр., $\sigma $- осл. адд площадь, тогда определенный интегралом $f$ по отрезку $[a,b]$ назовем: $$\dint\limits_{a}^b f =\dint\limits_{a}^b f(x) dx =\sigma(\text{ПГ($f^+$,$[a,b]$)})-\sigma(\text{ПГ($f^-$,$[a,b]$)})$$
+
+todo: тут что-то пропущено
+
+\textbf{Свойство интеграла.}
+\begin{enumerate}
+    \item Аддитивность по промежутку: $\forall c \in [a,b]:\dint\limits_{a}^b =\dint\limits_{a}^c + \dint\limits_{c}^b $
+    \item Монотонность: $f\leq g$ - непр., то $\dint\limits_{a}^b f(x)\leq \dint\limits_{a}^b g(x)$. 
+
+    Говорят: Проинтегрируем неравенство $f\leq g$, на отрезке $[a,b]$.
+
+    \item $(b-a)\min_{[a,b]} f \leq\integral{a}{b}f\leq (b-a)\max_{[a,b]}f$
+
+    Делается с помощью монотонности и интегрирования $\min_{[a,b]}f\leq f\leq\max_{[a,b]}$
+
+    \item $\left|\integral{a}{b}f(x)dx\right|\leq \integral{a}{b}|f(x)|dx$
+
+    Проинтегрируем $-|f|\leq f\leq |f|$ и получим то, что хотим.
+
+    \item \thmm{Теорема о среднем}
+
+    Функция $f \in C([a,b])$. Тогда $\exists c \in [ab]$, тогда:
+    $$\integral{a}{b}f = f(c)(b-a)$$
+    \textbf{Доказательство:} 
+    
+    $a=b$ - скучно. Если $a\neq b$, напишем неравентсво п.3:
+    $$\min f\leq \cfrac{1}{b-a}\integral{a}{b}f\leq \max f$$ А мы знаем, что функция непрерывна, поэтому $\exists c: c = \cfrac{1}{b-a}\integral{a}{b}f$. 
+    
+    \hfill Q.E.D.
+\end{enumerate}
+
+\deff{Интеграл с переменным верхним пределом} -  $\Phi:[a,b] \rightarrow R: \Phi(x)= \integral{a}{x}f$
+
+\deff{Интеграл с переменным нижним пределом} -  $\psi:[a,b] \rightarrow R: \psi(x)= \integral{x}{b}f$
+
+для $f\in C([a,b])$.
+
+\thmm{Теорема (Барроу)}
+
+В усл.определений. Доказать, что $\Phi$ дифф на $[a,b]$, $\Phi'(x)=f(x)$.
+
+\textbf{Доказательство.}
+
+$y> x: \lim\limits_{y \rightarrow x+0} \cfrac{\Phi(y)-\Phi(y)}{y-x} =\lim\limits_{y \rightarrow x+0} \cfrac{1}{y-x} \integral{x}{y}f =\lim_{y\rightarrow x+0} f(c), \text{где $c$ между $x,y$ из теоремы о среднем}$
+
+Получим, что правосторонняя производна равна $f(x)$. Аналогично про левостороннюю. Откуда производная это $f(x)$.
+
+ \hfill Q.E.D.
+ 
+\textbf{Замечание} Мы построили первообразную для функции $f$.
+
+\thmm{Теорема (формула Ньютона-Лейбница)}
+
+$f\in C([a,b])$, $F$ - первообразная $f$ на $[a,b]$. Тогда
+
+$\integral{a}{b}f(x)dx = F(b)-F(a) = F(x)\big|^b_a$
+
+\textbf{Доказательство:}
+
+$F = \Phi + c$, по теореме 2. Поэтому сделаем некоторые преобразования:
+$$\integral{a}{b}f(x)dx = \Phi(b)= \Phi(b)-\Phi(a) = (F(b)-c)-(F(a)-c)=F(b)-F(a)$$
+ \hfill Q.E.D.
+
+ \textbf{Следствие:} Этот определенный интеграл независит от выбора $\sigma$. 
+ 
+ \textbf{Замечание:} Откажемся от соглашения $a\leq b$ и введем для $d<c:$
+ $$\integral{c}{d}= - \integral{d}{c} = F(d) - F(c)$$
+ \thmm{Микротеорема (Линейность интеграла)}
+
+ Для $f,g \in C([a,b])$, $\alpha,\beta \in \mathbb{R}$, выполнено:
+$$\integral{a}{b}\alpha f+ \beta g = \alpha \integral{a}{b}f + \beta\integral{a}{b}g$$
+\textbf{Доказательство:}
+
+$(\alpha F+\beta G)\big|^b_a = \alpha F\big|^b_a + \beta F|^b_a$ из линейности неопредел. интеграла.
+ \hfill Q.E.D.
+
+ \thmm{Теорема (Интегрирование по частям)}
+
+ $f',g \in C([a,b])$. Тогда $\integral{a}{b}fg' = fg\big|_a^b-\integral{a}{b}f'g$
+
+ \textbf{Доказательство}
+
+Из теоремы  о свойствах неопределенного интеграла:
+$$fg = \text{првобр} (fg'+f'g) \Rightarrow \integral{a}{b}(fg' + f'g) = fg\big|_{a}^b$$
+ \hfill Q.E.D.
+ 
+ \thmm{Теорема (о замене переменных)}
+
+$f \in C(\langle a,b\rangle), \varphi\langle\alpha, \beta\rangle \rightarrow \varphi \in C^1, [p,q] \in \langle \alpha,\beta\rangle$. Тогда:
+
+$$\integral{p}{q}f(\varphi(t))\varphi'(t)dt = \integral{\varphi(p)}{\varphi(q)}f(x)dx$$
+
+\textbf{Доказательство}
+
+$F$ - первообразная $f$, тогда $F(\varphi(t))$ - первообразная $f(\varphi(t))\varphi'(t)$ и все получается.
+ 
+ \hfill Q.E.D.
+
+1:09 мат анализ кохась лекция 2. Я ничего не понял про нижние два замечания
+
+
+ \textbf{Замечание.} Может показаться, что множество $\varphi([p,q])$ шире $[\varphi(p),\varphi(q)]$. 
+
+ \textbf{Замечание.} Может быть, что $\varphi(p) > \varphi(q)$
+
+ \thmm{Неравен}
