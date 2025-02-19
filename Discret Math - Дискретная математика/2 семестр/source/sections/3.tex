@@ -65,8 +65,8 @@ $$P(\xi = c)\leq P(\xi\leq c)\leq P(|\xi-pn|\geq pn-c)\leq  P(|\xi-pn|\geq \frac
 Что это концептуально значит? На самом деле то, это дает нам оценку на распределение. Зачем? Чтобы \textbf{\uline{СДАТЬ}} домашку.
 
 \thmm{Теорема (Граница Чернова)}
-$$P(|\xi-\mu |\geq \delta\mu)\leq e^{-\mu\frac{\delta^2}{3}}$$
-где $\mu = np$  
-
-todo: тут немного не написано про $\mu$, будет дополнено после очной лекции
-
+$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2+\varepsilon}np}$$
+$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2}np}$$
+$$e^{-\frac{\varepsilon^2}{3}np}\leq \delta$$
+$$-\dfrac{\varepsilon^2}{3}np\leq \ln{\delta}$$
+$$n\geq \frac{3}{p\varepsilon^2}\ln{\frac{1}{\delta}}$$
