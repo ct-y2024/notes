@@ -8,16 +8,15 @@ $$Cov(\xi,\eta) =E_{\xi \eta} -  E_{\xi}E_{\eta}$$
 
 $$Corr(\xi,\eta) =\cfrac{E_{\xi \eta} -  E_{\xi}E_{\eta}}{\sqrt{D_{\xi}\cdot D_{\eta}}} = \cfrac{Cov(\xi,\eta)}{\sqrt{D_{\xi}\cdot D_{\eta}}}$$
 
-
-\deff{Корреляция} - статистическая взаимосвязь двух случайных величин.
+\deff{Корреляция} - статистическая взаимосвязь двух случайных величин. Корреляция является \textbf{нормированной} версией ковариации, что позволяет сравнивать силу линейной зависимости между различными парами переменных, независимо от их масштаба.
 
 \thmm{Теорема (об ограниченности корреляции)}
 $$-1\leq Cor(\xi,\eta)\leq 1$$
 \textbf{Доказательство:}
 
 Возьму $\alpha = \xi - \lambda \eta$:
-$$D\alpha = D(\alpha) = E\xi^2 - 2\lambda E_{\xi\eta} + E \eta^2-(E\xi)^2 + 2\lambda E_{\xi}E_{\lambda}-\lambda^2(E_\eta)^2\geq 0$$
-$$D\xi + w\lambda Cov(\xi,\eta) + \lambda^2 D\xi \geq 0$$
+$$D\alpha = D(\alpha) = E\xi^2 - 2\lambda E_{\xi\eta} + \lambda^2E \eta^2-(E\xi)^2 + 2\lambda E_{\xi}E_{\eta}-\lambda^2(E_\eta)^2\geq 0$$
+$$D\xi - 2\lambda Cov(\xi,\eta) + \lambda^2 D\xi \geq 0$$
 Откуда, если рассматривать это, как уравнение относительно $\lambda$, то $D\leq 0 $, то есть:
 $$4Cov(\xi,\eta) - 4 D_{\eta}D_{\xi}\leq 0$$
 А если присмотреться, то это и есть то, что нам надо.
@@ -45,14 +44,14 @@ $$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v \le a \cdot E\xi}
 \hfill Q.E.D.
 
 \thmm{Теорема (Неравенство Чебышева)}
-$$P(|\xi-E\xi|\geq a^2\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
+$$P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
 \textbf{Доказательство:}
 
 Используем неравентсво Маркова для оценки дисперсии:
 $$D_{\xi} = E(\xi-E\xi)^2\quad \quad  \eta = (\xi-E\xi)^2$$
 Возьму и подставлю неравенство Маркова для $\eta$:
 $$P((\xi-E\xi)^2\geq a^2D\xi)\leq \dfrac{1}{a^2} $$
-$$ P(|\xi-E\xi|\geq a^2\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
+$$ P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
 \hfill Q.E.D.
 
 
