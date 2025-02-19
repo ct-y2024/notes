@@ -2,7 +2,11 @@
 
 $$Cov(\xi,\eta) =E_{\xi \eta} -  E_{\xi}E_{\eta}$$
 
-\deff{Ковариация} или \deff{корреляционный} момент показывает на сколько зависимы случайные величины это мера зависимости двух случайных величин.
+\deff{Ковариация} или \deff{корреляционный момент} показывает на сколько зависимы случайные величины это мера зависимости двух случайных величин.
+
+Если $\xi, \eta$ - независимые случайные величины
+$$Cov(\xi,\eta) = 0$$
+$$Cov(\xi,\xi) = D_\xi = Var_\xi \text{ - вариация}$$
 
 \subsection{Корреляция}
 
@@ -37,29 +41,26 @@ $$4Cov(\xi,\eta) - 4 D_{\eta}D_{\xi}\leq 0$$
 Давайте посмотрим, является ли наша вероятность меньше $\frac 1 2$. Тогда всё, что правее 100 имеет вероятность выпадения $\geq \frac1 2 $. Все левое оценивается нулем, откуда мат ожидание хотя бы 50. Такого быть не может. В общем случае:
 
 \thmm{Теорема (Неравенство Маркова)}
-$$\xi\not \equiv0,\xi\geq 0: P(\xi\geq a \cdot E_{\xi}) \leq \cfrac{1}{a}$$
+$$\xi\not \equiv0,\xi\geq 0: \forall a\geq 1: P(\xi\geq a \cdot E\xi) \leq \cfrac{1}{a}$$
 \textbf{Доказательство:}
-$$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v \le a \cdot E\xi} v P(\xi = v)+ \sum\limits_{v\geq a\cdot E\xi} v (P(\xi=v))\geq a E{\xi}\cdot P (\xi\geq a\cdot E{\xi})$$
+$$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v < a \cdot E\xi} v P(\xi = v)+ \sum\limits_{v\geq a\cdot E\xi} v P(\xi=v)\geq \sum\limits_{v\geq a\cdot E\xi} a E{\xi} P(\xi=v) = a E{\xi}\cdot P (\xi\geq a\cdot E{\xi})$$
 
 \hfill Q.E.D.
 
-\thmm{Теорема (Неравенство Чебышева)}
-$$P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
+\thmm{Теорема (Неравенство Чебышева)} \\ \\
+Абсолютная версия:
+$$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2}$$
+Относительная версия ($\alpha = \lambda\sigma$):
+$$P(|\xi-E\xi|\geq \lambda\sigma)\leq \cfrac{1}{\lambda^2}$$
 \textbf{Доказательство:}
 
-Используем неравентсво Маркова для оценки дисперсии:
-$$D_{\xi} = E(\xi-E\xi)^2\quad \quad  \eta = (\xi-E\xi)^2$$
-Возьму и подставлю неравенство Маркова для $\eta$:
-$$P((\xi-E\xi)^2\geq a^2D\xi)\leq \dfrac{1}{a^2} $$
-$$ P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
+$$P(|\xi-E\xi|^2\geq\alpha^2)$$
+$$(\xi-E\xi)^2=\eta$$
+$$E\eta=D\xi$$
+По неравенству Маркова
+$$P(\eta\geq c*E\eta)\leq \cfrac{1}{c}$$
+$$c * D\xi=\alpha^2 => c=\cfrac{\alpha^2}{D\xi}$$
 \hfill Q.E.D.
-
-
-Переобозначим $\sqrt{(D\xi)} = \sigma_{\xi}$ --- \deff{среднеквадратическое отклонение}.
-
-Так же неравенство Чебышева удобно записывать по-другому:
-$$P(|\xi-E_{\xi}|\geq c)\leq \cfrac{D\xi}{c^2}$$
-
 
 \textbf{Нечестная монета}. Вот вам дали домашку, вместе  с вопросом $p>\frac{1}{2}$ или $p<\frac{1}{2}$. Что вы можете делать? Только кидать ее, но при этом бесконечное количество раз вы не кинете, у вас дедлайн домашки через час. 
 
@@ -68,8 +69,8 @@ $$P(\xi = c)\leq P(\xi\leq c)\leq P(|\xi-pn|\geq pn-c)\leq  P(|\xi-pn|\geq \frac
 Что это концептуально значит? На самом деле то, это дает нам оценку на распределение. Зачем? Чтобы \textbf{\uline{СДАТЬ}} домашку.
 
 \thmm{Теорема (Граница Чернова)}
-$$P(|\xi-\mu |\geq \delta\mu)\leq e^{-\mu\frac{\delta^2}{3}}$$
-где $\mu = np$  
-
-todo: тут немного не написано про $\mu$, будет дополнено после очной лекции
-
+$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2+\varepsilon}np}$$
+$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2}np}$$
+$$e^{-\frac{\varepsilon^2}{3}np}\leq \delta$$
+$$-\dfrac{\varepsilon^2}{3}np\leq \ln{\delta}$$
+$$n\geq \frac{3}{p\varepsilon^2}\ln{\frac{1}{\delta}}$$
