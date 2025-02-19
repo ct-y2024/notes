@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "../../common/template.typ": *
 #title("Парадигмы программирования", "Альжанов Леонид")
 
 #outline(title: "Содержание")
