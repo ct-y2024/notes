@@ -43,23 +43,19 @@ $$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v \le a \cdot E\xi}
 
 \hfill Q.E.D.
 
-\thmm{Теорема (Неравенство Чебышева)}
-$$P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
+\thmm{Теорема (Неравенство Чебышева)} \\
+Абсолютная версия:
+$$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2}$$
+Относительная версия ($\alpha = \lambda\sigma$):
+$$P(|\xi-E\xi|\geq \lambda\sigma)\leq \cfrac{1}{\lambda^2}$$
 \textbf{Доказательство:}
 
-Используем неравентсво Маркова для оценки дисперсии:
-$$D_{\xi} = E(\xi-E\xi)^2\quad \quad  \eta = (\xi-E\xi)^2$$
-Возьму и подставлю неравенство Маркова для $\eta$:
-$$P((\xi-E\xi)^2\geq a^2D\xi)\leq \dfrac{1}{a^2} $$
-$$ P(|\xi-E\xi|\geq a\sqrt{D\xi})\leq \cfrac{1}{a^2}$$
-\hfill Q.E.D.
-
-
-Переобозначим $\sqrt{(D\xi)} = \sigma_{\xi}$ --- \deff{среднеквадратическое отклонение}.
-
-Так же неравенство Чебышева удобно записывать по-другому:
-$$P(|\xi-E_{\xi}|\geq c)\leq \cfrac{D\xi}{c^2}$$
-
+$$P(|\xi-E\xi|^2\geq\alpha^2)$$
+$$(\xi-E\xi)^2=\eta$$
+$$E\eta=D\xi$$
+По неравенству Маркова
+$$P(\eta\geq c*E\eta)\leq \cfrac{1}{c}$$
+$$c * D\xi=\alpha^2 => c=\cfrac{\alpha^2}{D\xi}$$
 
 \textbf{Нечестная монета}. Вот вам дали домашку, вместе  с вопросом $p>\frac{1}{2}$ или $p<\frac{1}{2}$. Что вы можете делать? Только кидать ее, но при этом бесконечное количество раз вы не кинете, у вас дедлайн домашки через час. 
 
