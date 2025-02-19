@@ -2,4 +2,4 @@
 Группы M3138-M3139. #linebreak()
 Преподаватель --- Кучерук Екатерина Аркадиевна. #linebreak()
 
-#align(center)[#image("../MyLoveImages/myLoveLove.jpg")]
+#align(center)[#image("../MyLoveImages/myLoveLove.jpg", height: 19cm)]
