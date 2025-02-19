@@ -44,22 +44,18 @@ $$4Cov(\xi,\eta) - 4 D_{\eta}D_{\xi}\leq 0$$
 $$\xi\not \equiv0,\xi\geq 0: \forall a\geq 1: P(\xi\geq a \cdot E\xi) \leq \cfrac{1}{a}$$
 \textbf{Доказательство:}
 $$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v < a \cdot E\xi} v P(\xi = v)+ \sum\limits_{v\geq a\cdot E\xi} v P(\xi=v)\geq \sum\limits_{v\geq a\cdot E\xi} a E{\xi} P(\xi=v) = a E{\xi}\cdot P (\xi\geq a\cdot E{\xi})$$
-
 \hfill Q.E.D.
 
-\thmm{Теорема (Неравенство Чебышева)} \\ \\
-Абсолютная версия:
-$$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2}$$
-Относительная версия ($\alpha = \lambda\sigma$):
-$$P(|\xi-E\xi|\geq \lambda\sigma)\leq \cfrac{1}{\lambda^2}$$
-\textbf{Доказательство:}
-
-$$P(|\xi-E\xi|^2\geq\alpha^2)$$
-$$(\xi-E\xi)^2=\eta$$
-$$E\eta=D\xi$$
-По неравенству Маркова
+\thmm{Теорема (Неравенство Чебышева)} \\  \\
+Абсолютная версия и относительная версия ($\alpha = \lambda\sigma$):
+$$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2} \quad \quad P(|\xi-E\xi|\geq \lambda\sigma)\leq \cfrac{1}{\lambda^2}$$
+\textbf{Доказательство:}\\
+Возьму вот такие величины:
+$$D_{\xi} = E(\xi-E\xi)^2\quad \quad  \eta = (\xi-E\xi)^2$$
+Заметим, что $E\eta=D\xi$. Используем неравенство Маркова для оценки дисперсии:
 $$P(\eta\geq c*E\eta)\leq \cfrac{1}{c}$$
-$$c * D\xi=\alpha^2 => c=\cfrac{\alpha^2}{D\xi}$$
+Возьму $c= \cfrac{D_{\xi}}{\alpha^2}$ и получу искомое
+
 \hfill Q.E.D.
 
 \textbf{Нечестная монета}. Вот вам дали домашку, вместе  с вопросом $p>\frac{1}{2}$ или $p<\frac{1}{2}$. Что вы можете делать? Только кидать ее, но при этом бесконечное количество раз вы не кинете, у вас дедлайн домашки через час. 
@@ -69,8 +65,8 @@ $$P(\xi = c)\leq P(\xi\leq c)\leq P(|\xi-pn|\geq pn-c)\leq  P(|\xi-pn|\geq \frac
 Что это концептуально значит? На самом деле то, это дает нам оценку на распределение. Зачем? Чтобы \textbf{\uline{СДАТЬ}} домашку.
 
 \thmm{Теорема (Граница Чернова)}
-$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2+\varepsilon}np}$$
-$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2}np}$$
-$$e^{-\frac{\varepsilon^2}{3}np}\leq \delta$$
-$$-\dfrac{\varepsilon^2}{3}np\leq \ln{\delta}$$
+$$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2+\varepsilon}np} \quad \Leftrightarrow\quad P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2}np}$$
+$$e^{-\frac{\varepsilon^2}{3}np}\leq \delta\quad \Leftrightarrow\quad -\dfrac{\varepsilon^2}{3}np\leq \ln{\delta}$$
 $$n\geq \frac{3}{p\varepsilon^2}\ln{\frac{1}{\delta}}$$
+
+Не знаю, что это концептуально, напишите пж
