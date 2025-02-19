@@ -4,6 +4,8 @@ description: Documentation and guides for my project.
 # Build settings
 markdown: kramdown  # Use kramdown as the Markdown engine (recommended)
 theme: minima       # Or your preferred Jekyll theme
+url: "https://ct-y2024.github.io/notes/"  # Replace with your actual URL
+baseurl: "/notes"  # Replace with your repository name (if a project site) or "" (if a user/org site)
 
 # Permalinks (controls how URLs are generated)
 permalink: pretty     # Use pretty permalinks (e.g., /docs/installation/)
