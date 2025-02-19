@@ -1,0 +1,94 @@
+
+:root {
+  --dark-bg: #222;
+  --light-text: #eee;
+  --sidebar-width: 250px;
+  --light-blue: #87CEEB;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark-bg); /* Use CSS variable */
+  color: var(--light-text); /* Use CSS variable */
+  margin: 0;
+}
+
+a {
+  color: var(--light-blue); /* Use CSS variable */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width); /* Use CSS variable */
+  background-color: #191919; /* Darken version of --dark-bg (#222) */
+  padding: 20px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 10px;
+}
+
+nav li a {
+  display: block;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+nav ul ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+nav ul ul li {
+  margin-bottom: 5px;
+}
+
+
+.content {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+
+.content p {
+  line-height: 1.6;
+}
+
+.content ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
