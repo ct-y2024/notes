@@ -216,7 +216,7 @@ $$(\mathcal{A} + \lambda \mathcal{B} )\xi_i =\mathcal{A}\xi_i + \lambda \cdot \m
 А откуда уже видно нужное нам соответствие.
 \hfill Q.E.D.
 
-\textbf{Утв.} $\mathcal{A} \in L(W,V),\mathcal{B}\in L(V,W), \mathcal{A}\mathcal{B} \in L(U,V)$. Пусть $w$ - базис $W$, $\eta$ - базис $V$, $\xi$ - базис $U$. Тогда $\mathcal{A}\mathcal{B} \leftrightarrow AB$ в базисах $(\xi,\eta)$
+\textbf{Утв.} $\mathcal{A} \in L(W,V),\mathcal{B}\in L(U,W), \mathcal{A}\mathcal{B} \in L(U,V)$. Пусть $w$ - базис $W$, $\eta$ - базис $V$, $\xi$ - базис $U$. Тогда $\mathcal{A}\mathcal{B} \leftrightarrow AB$ в базисах $(\xi,\eta)$
 
 \textbf{Доказательство:}
 $$\mathcal{A} \mathcal{B} \xi_i = \mathcal{A} (\mathcal{B}\xi_i) = \mathcal{A}(\sum\limits_{k=1}^p b_{ki} w_k) = \sum\limits_{k=1}^pb_{ki}\mathcal{A}(w_k) = \sum\limits_{k=1}^pb_{ki}\sum\limits_{j=1}^m a_{jk} \eta_j = \sum\limits_{j=1}^m(\sum\limits_{k=1}^p a_{jk}b_{kj})\eta_j = $$$$=\sum\limits_{j=1}^m(AB)_{ji}\cdot \eta_j$$
@@ -323,7 +323,7 @@ $$ g(\xi_1,\ldots,\xi_n)= g(e_1,\ldots,e_n) D(\xi_1,\ldots,\xi_n) = \det A  \cdo
 $f = D$, $B_j \in K^n$. Тогда:
 $$det(AB_1,\ldots, AB_N) = \det A \cdot \det B $$
 \textbf{Следствие 2:}
-$\mathcal{A},\mathcal{B} \in End(V) \Rightarrow \det(\mathcal{A} \mathcal{B}) = \det \mathcal{A} \cdot \det \mathcal{A}$
+$\mathcal{A},\mathcal{B} \in End(V) \Rightarrow \det(\mathcal{A} \mathcal{B}) = \det \mathcal{A} \cdot \det \mathcal{B}$
 
 \textbf{Доказательство:}
 
@@ -495,12 +495,17 @@ $$\chi(t) =\begin{vmatrix}
 \end{vmatrix} = (-1)^{n}\cdot t^n + (-1)^{n-1}(tr At^{n-1}) + \ldots + \det A$$
 По теореме Виета:
 $\begin{cases}
-\lambda_1 +\ldots+\lambda_n = tr A.\\
-\lambda_1,\ldots ,\lambda_n = \det A
+t_1 +\ldots+t_n = tr A\\
+t_1\cdot \ldots \cdot t_n = \det A
 \end{cases}$
 Заметим, что $\lambda$ с.ч. $\mathcal{A} \Leftrightarrow\begin{cases}
     \lambda \in K\\
-    \chi(\lambda) = 0 \text{ - корень хар. многочлена поля $K$!}
+    \chi(\lambda) = 0 \text{ - корень хар. мн.}
+\end{cases}$
+
+\textbf{Замечание.} Если все корни хар. мн. $\in K \Rightarrow$ $\begin{cases}
+\lambda_1 +\ldots+\lambda_n = tr A\\
+\lambda_1\cdot \ldots \cdot \lambda_n = \det A
 \end{cases}$
 
 \deff{def:} \deff{Спектром} оператора $\mathcal{A}$ называется множество $\{ (\lambda$, $\alpha(\lambda)) \}$, 
@@ -612,9 +617,9 @@ $$\Lambda = diag(\lambda_1,\ldots,\lambda_n)=\begin{pmatrix}
     0 & \ldots &\lambda_n
 \end{pmatrix}$$
 
-$\Leftrightarrow V = \span (v_1,\ldots, v_n) $, базис  из с.в. (тут не осознал че происходит, напишите в чат)
+Заметим, что в таком случае  собственные числа  оператора $\mathcal{A}$ будут $\lambda_i$, а так же собственные вектора этих чисел - соотв. столбики (легко проверить умножением). Отсюда  все корни характ. многочлена  $\chi \in K \Leftrightarrow \sum\limits_{\lambda \text{-с.ч.} \mathcal{A}}\alpha(\lambda) = n = \dim V$.
 
-на диагонали $\lambda_i$ с.ч. $\Leftrightarrow$ все корни характ. многочлена $\chi \in K \Leftrightarrow \sum\limits_{\lambda \text{-с.ч.} \mathcal{A}}\alpha(\lambda) = n = \dim V$.
+
 
 \thmm{Теорема:}
 
@@ -647,8 +652,9 @@ $A$ подобна диагональной $\Leftrightarrow$ матрица о.
     Пусть $A$ - матрица в базисе $e$. Тогда $Ae_j = \sum\limits_{i=1}^n=a_{ij}e_i$.$v =(v_1,\ldots,v_n)$ - базис.\\Откуда $v_1,\ldots,v_n = (e_1,\ldots,e_n)T_{e\rightarrow v} \Rightarrow \mathcal{A}\xleftrightarrow{v} A' = T^{-1}AT=\Lambda$ 
     \item \fbox{\(\Leftarrow\)}
     $\mathcal{A}$ о.п.с, $A$ - матрица в некотором базисе $e= (e_1,\ldots,e_n)$.
+    Возьму $v_1, ..., v_n$ - базис V, где $v_i$ - собственный вектор $\mathcal{A}$. Заметим, что так как $\mathcal{A}$ о.п.с, то такой базис существует
 
-    Возьмем матрицу перехода из $T_{e\rightarrow v}$. Тогда $\mathcal{A}\xleftrightarrow{v} A' = T^{-1}AT=\Lambda \Rightarrow A$ подобна диагональной   
+   Теперь давайте возьмем матрицу перехода из $T_{e\rightarrow v}$. Тогда $\mathcal{A}\xleftrightarrow{v} A' = T^{-1}AT=\Lambda \Rightarrow A$ подобна диагональной   
 
     \hfill Q.E.D.
 \end{itemize}
