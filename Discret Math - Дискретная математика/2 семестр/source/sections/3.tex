@@ -2,7 +2,11 @@
 
 $$Cov(\xi,\eta) =E_{\xi \eta} -  E_{\xi}E_{\eta}$$
 
-\deff{Ковариация} или \deff{корреляционный} момент показывает на сколько зависимы случайные величины это мера зависимости двух случайных величин.
+\deff{Ковариация} или \deff{корреляционный момент} показывает на сколько зависимы случайные величины это мера зависимости двух случайных величин.
+
+Если $\xi, \eta$ - независимые случайные величины
+$$Cov(\xi,\eta) = 0$$
+$$Cov(\xi,\xi) = D_\xi = Var_\xi \text{ - вариация}$$
 
 \subsection{Корреляция}
 
@@ -37,13 +41,13 @@ $$4Cov(\xi,\eta) - 4 D_{\eta}D_{\xi}\leq 0$$
 Давайте посмотрим, является ли наша вероятность меньше $\frac 1 2$. Тогда всё, что правее 100 имеет вероятность выпадения $\geq \frac1 2 $. Все левое оценивается нулем, откуда мат ожидание хотя бы 50. Такого быть не может. В общем случае:
 
 \thmm{Теорема (Неравенство Маркова)}
-$$\xi\not \equiv0,\xi\geq 0: P(\xi\geq a \cdot E_{\xi}) \leq \cfrac{1}{a}$$
+$$\xi\not \equiv0,\xi\geq 0: \forall a\geq 1: P(\xi\geq a \cdot E\xi) \leq \cfrac{1}{a}$$
 \textbf{Доказательство:}
-$$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v \le a \cdot E\xi} v P(\xi = v)+ \sum\limits_{v\geq a\cdot E\xi} v (P(\xi=v))\geq a E{\xi}\cdot P (\xi\geq a\cdot E{\xi})$$
+$$E_{\xi} = \sum\limits_{v}v \cdot P(\xi = v) = \sum\limits_{v < a \cdot E\xi} v P(\xi = v)+ \sum\limits_{v\geq a\cdot E\xi} v P(\xi=v)\geq \sum\limits_{v\geq a\cdot E\xi} a E{\xi} P(\xi=v) = a E{\xi}\cdot P (\xi\geq a\cdot E{\xi})$$
 
 \hfill Q.E.D.
 
-\thmm{Теорема (Неравенство Чебышева)} \\
+\thmm{Теорема (Неравенство Чебышева)} \\ \\
 Абсолютная версия:
 $$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2}$$
 Относительная версия ($\alpha = \lambda\sigma$):
