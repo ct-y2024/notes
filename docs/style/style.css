@@ -29,7 +29,7 @@ body {
   background-color: #1a1a1a; /* Цвет боковой панели */
   padding: 20px;
   box-sizing: border-box;
-  position: sticky;
+  position: fixed; /*  fixed вместо sticky */
   top: 0;
   height: 100vh;
   overflow-y: auto;
@@ -53,6 +53,8 @@ body {
           display: block;
           padding: 8px 15px;
           border-radius: 5px;
+          color: #fff; /* Белый цвет ссылок */
+          text-decoration: none; /* Убираем подчеркивание */
 
           &:hover {
             background-color: rgba(255, 255, 255, 0.05);
