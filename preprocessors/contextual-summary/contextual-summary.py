@@ -17,8 +17,8 @@ def process_chapter(chapter, book_root):
             dir_name = pathlib.Path(file_path).parent.as_posix()  # Получаем директорию файла
             summary_path = None
 
-            if dir_name == "Сpp":
-                summary_path = os.path.join(book_root, "src", "Сpp", "SUMMARY.md")
+            if dir_name == "Cpp":
+                summary_path = os.path.join(book_root, "src", "Cpp", "SUMMARY.md")
             else:
                 summary_path = os.path.join(book_root, "src", "SUMMARY.md")
 
