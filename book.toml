@@ -6,7 +6,7 @@ src = "src"
 title = "CT Notes y2024"
 
 [preprocessor.contextual-summary]
-command = ["./preprocessors/contextual-summary/contextual-summary.py", "{{book.root}}/book.toml"]
+command = ["./preprocessors/esay.py", "{{book.root}}/book.toml"]
 before = ["render"]  # Add the before value here
 
 [build]
