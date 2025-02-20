@@ -104,7 +104,7 @@ body {
   }
    /*  Убираем отступ, когда сайдбар скрыт */
   body.sidebar-hidden & {
-    margin-left: 100;
+    margin-left: 0;
   }
 }
 
