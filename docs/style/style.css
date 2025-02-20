@@ -102,5 +102,9 @@ body {
       text-decoration: underline;
     }
   }
+   /*  Убираем отступ, когда сайдбар скрыт */
+  body.sidebar-hidden & {
+    margin-left: 0;
+  }
 }
 
