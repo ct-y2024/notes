@@ -18,5 +18,5 @@
 
 ####  2 семестр
 
-[Основной конспект](./semester_2/Linear_algebra.pdf).
+[Основной конспект](./semester_2/LinearAlgebra.pdf).
 
