@@ -73,11 +73,11 @@ body {
   flex: 1;
   padding: 20px;
   box-sizing: border-box;
-  max-width: 900px;
+  max-width: 900px; /*подобрать константы*/
   margin: 0 auto;
   color: #ddd;
   /*  Важно: задаем отступ слева, равный ширине сайдбара */
-  margin-left: 250px; /*  Ширина сайдбара */
+  margin-left: 350px; /*  Ширина сайдбара */
   transition: margin-left 0.3s ease; /*  Плавное изменение отступа */
   
   h1, h2, h3 {
@@ -104,7 +104,7 @@ body {
   }
    /*  Убираем отступ, когда сайдбар скрыт */
   body.sidebar-hidden & {
-    margin-left: 0;
+    margin-left: 100;
   }
 }
 
