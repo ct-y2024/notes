@@ -7,7 +7,21 @@ body {
 
 .container {
   display: flex;
-  min-height: 100vh; 
+  min-height: 100vh;
+}
+
+/* Стили для кнопки гамбургер-меню */
+.toggle-button {
+    background: none;
+    border: none;
+    color: #87CEEB;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px; /*  padding вокруг кнопки */
+    position: absolute; /*  абсолютное позиционирование */
+    top: 10px; /*  отступ сверху */
+    left: 10px; /*  отступ слева */
+    z-index: 10; /*  гарантирует, что кнопка поверх сайдбара */
 }
 
 .sidebar {
@@ -16,7 +30,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   position: sticky;
-  top: 0; 
+  top: 0;
   height: 100vh;
   overflow-y: auto;
   transition: transform 0.3s ease; /* Плавный переход */
@@ -54,8 +68,8 @@ body {
   flex: 1;
   padding: 20px;
   box-sizing: border-box;
-  max-width: 900px; 
-  margin: 0 auto;      
+  max-width: 900px;
+  margin: 0 auto;
 
   h1, h2, h3 {
     color: #fff;
@@ -69,16 +83,6 @@ body {
   ul {
     list-style: disc;
     padding-left: 20px;
-  }
-
-  /* Стили для кнопки гамбургер-меню */
-  .toggle-button {
-    background: none;
-    border: none;
-    color: #87CEEB;
-    font-size: 24px;
-    cursor: pointer;
-    margin-bottom: 20px; /* Отступ под кнопкой */
   }
 }
 
