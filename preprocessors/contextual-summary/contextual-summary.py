@@ -32,7 +32,7 @@ def process_chapter(chapter, book_root):
 
 
         if 'sub_items' in chapter and chapter['sub_items']:
-            for sub_item in chapter['sub_items']:
+            for sub_item in chapter['sub_items']: #test
                 process_chapter(sub_item, book_root) # Рекурсивно обрабатываем под-главы
 
 
