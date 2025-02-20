@@ -1,0 +1,10 @@
+[book]
+authors = ["Chepelin Vyachesla"]
+language = "en"
+multilingual = false
+src = "src"
+title = "CT Notes y2024"
+
+[output.html]
+default-theme = "ayu"
+git-repository-url = "https://github.com/ct-y2024/notes"
