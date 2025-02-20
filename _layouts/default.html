@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | АНЕКДОТ</title>
+  <title>{{ page.title }} | ct notes </title>
   <link rel="stylesheet" href="https://ct-y2024.github.io/notes/docs/style/style.css">
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li><a href="https://ct-y2024.github.io/notes/docs/test1">Тест 2</a></li>
-          <li><a href="https://ct-y2024.github.io/notes/docs/test2">Тест 3</a></li>
-          <li><a href="https://ct-y2024.github.io/notes/docs/test3">Тест 4</a></li>
-          <li><a href="https://ct-y2024.github.io/notes/src/test1">Тест 2</a></li>
-          <li><a href="https://ct-y2024.github.io/notes/src/test2">Тест 3</a></li>
-          <li><a href="https://ct-y2024.github.io/notes/src/test3">Тест 4</a></li>
-
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-button" id="toggle-button">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#">Ссылка 1</a></li>
+                <li><a href="#">Ссылка 2</a></li>
+                <li><a href="#">Ссылка 3</a></li>
+            </ul>
         </nav>
-    </aside>
-
+    </div>
     <main class="content">
-      {{ content }}
+       {{content}}
     </main>
-  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

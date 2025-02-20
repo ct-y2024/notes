@@ -1,18 +1,8 @@
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color:#222;
+  background-color: #222;
   color: #eee;
   margin: 0;
-}
-
-a {
-  color: #87CEEB; 
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .container {
@@ -21,14 +11,21 @@ a {
 }
 
 .sidebar {
-  width: 250px; /* надо поменять, а то на телеофне не будет открываться */
-  background-color: darken(#222, 10%);
+  width: 250px; /* Ширина боковой панели */
+  background-color: #1a1a1a; /* Цвет боковой панели */
   padding: 20px;
   box-sizing: border-box;
   position: sticky;
   top: 0; 
   height: 100vh;
   overflow-y: auto;
+  transition: transform 0.3s ease; /* Плавный переход */
+  transform: translateX(0); /* Начальное положение */
+
+  /* Скрытие боковой панели */
+  &.hidden {
+    transform: translateX(-100%); /* За пределы экрана */
+  }
 
   nav {
     ul {
@@ -46,14 +43,6 @@ a {
           &:hover {
             background-color: rgba(255, 255, 255, 0.05);
             text-decoration: none;
-          }
-        }
-
-        ul {
-          padding-left: 20px;
-          margin-top: 5px;
-          li {
-            margin-bottom: 5px;
           }
         }
       }
@@ -81,4 +70,15 @@ a {
     list-style: disc;
     padding-left: 20px;
   }
+
+  /* Стили для кнопки гамбургер-меню */
+  .toggle-button {
+    background: none;
+    border: none;
+    color: #87CEEB;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Отступ под кнопкой */
+  }
 }
+
