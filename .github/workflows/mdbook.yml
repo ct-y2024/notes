@@ -40,7 +40,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v4
         with:
-          python-version:'3.12'   # Укажите версию Python, необходимую для препроцессора
+          python-version: '3.10'  
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
