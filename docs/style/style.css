@@ -6,9 +6,7 @@ body {
 }
 
 .container {
-  display: grid; /*  Используем grid layout */
-  grid-template-columns: 250px 1fr; /*  Сайдбар и контент */
-  grid-template-rows: 100vh; /*  Занимает всю высоту */
+  display: flex;
   min-height: 100vh;
 }
 /* Стили для кнопки гамбургер-меню */
