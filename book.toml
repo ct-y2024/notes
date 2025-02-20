@@ -9,7 +9,13 @@ title = "CT Notes y2024"
 command = ["./preprocessors/contextual-summary/contextual-summary.py", "{{book.root}}/book.toml"]
 
 
+[build]
+build-dir = "book"
+
 [output.html]
 default-theme = "ayu"
 curly-quotes = false  # Отключает преобразование прямых кавычек в "умные" кавычки
 git-repository-url = "https://github.com/ct-y2024/notes"
+
+[preprocessor]
+contextual-summary = { after = ["links"] }
