@@ -9,4 +9,4 @@
 - [Дискретная математика](./DiscretMath/DiscretMath.md)
 - [Введение в программирование](./ProgIntro/ProgIntro.md)
 - [Алгоритмы и структуры данных](./Algorithms/Algorithms.md)
-- [Cpp](./Cpp/Cpp.md)
+- [Cpp](./cpp/Cpp.md)

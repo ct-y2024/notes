@@ -13,12 +13,13 @@ def process_book(book):
 def process_chapter(chapter, book_root):
     if 'content' in chapter:
         file_path = chapter.get('path', None)
+        
         if file_path:
             dir_name = pathlib.Path(file_path).parent.as_posix()  # Получаем директорию файла
             summary_path = None
 
-            if dir_name == "Cpp":
-                summary_path = os.path.join(book_root, "src", "Cpp", "SUMMARY.md")
+            if dir_name == "cpp":
+                summary_path = os.path.join(book_root, "src", "cpp", "SUMMARY.md")
             else:
                 summary_path = os.path.join(book_root, "src", "SUMMARY.md")
 
