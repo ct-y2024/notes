@@ -8,7 +8,6 @@ title = "CT Notes y2024"
 [preprocessor.contextual-summary]
 command = ["./preprocessors/contextual-summary/contextual-summary.py", "{{book.root}}/book.toml"]
 
-
 [build]
 build-dir = "book"
 
@@ -18,4 +17,4 @@ curly-quotes = false  # Отключает преобразование прям
 git-repository-url = "https://github.com/ct-y2024/notes"
 
 [preprocessor]
-contextual-summary = { after = ["links"] }
+contextual-summary = { before = ["render"] }
