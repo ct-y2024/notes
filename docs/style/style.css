@@ -70,16 +70,17 @@ body {
   }
 }
 
-.main-content { /* Занимает все доступное пространство*/
-  grid-column: 2;
-}
 
 .content {
+  flex: 1;
   padding: 20px;
   box-sizing: border-box;
-  /*max-width: 900px;*/
+  max-width: 900px;
   margin: 0 auto;
   color: #ddd;
+  /*  Важно: задаем отступ слева, равный ширине сайдбара */
+  margin-left: 250px; /*  Ширина сайдбара */
+  transition: margin-left 0.3s ease; /*  Плавное изменение отступа */
   
   h1, h2, h3 {
     color: #eee; /*  Более светлые заголовки */
