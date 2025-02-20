@@ -7,4 +7,5 @@ title = "CT Notes y2024"
 
 [output.html]
 default-theme = "ayu"
+curly-quotes = false  # Отключает преобразование прямых кавычек в "умные" кавычки
 git-repository-url = "https://github.com/ct-y2024/notes"
