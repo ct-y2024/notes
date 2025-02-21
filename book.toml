@@ -5,8 +5,6 @@ multilingual = false
 src = "src"
 title = "CT Notes y2024"
 
-[preprocessor.easy]
-command = ["./preprocessors/easy.py", "{{book.root}}/book.toml"]
 
 [build]
 build-dir = "book"
