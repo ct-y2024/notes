@@ -1,10 +1,9 @@
 #import "template.typ": *
 #title("Парадигмы программирования", "Альжанов Леонид")
 
-#outline(title: "Содержание")
+#outline(title: "Содержание", indent: 1em)
 
 #pagebreak()
-= 1-ая лекция
 #include "sections/1.typ"
 #pagebreak()
 = Информация о курсе
