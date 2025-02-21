@@ -8,7 +8,7 @@ C++
 
 Конспект пишут: Чепелин Вячеслав, Косенков Иван
 
-[Ссылка на оглавение:](./SUMMARY.md)
+[Ссылка на оглавение:](./sum.md)
 
 ![obligatory anime](./assets/transparent_youta.png) 
 
