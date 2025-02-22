@@ -870,6 +870,14 @@ $$A^m = \sum\limits_{\lambda}\lambda P_{\lambda}\sum\limits_{\mu}\mu P_{\mu} \ld
 $f(A) =\lim\limits_{k\rightarrow\infty}\sum\limits_{m=0}^k    t^mA^m$, а теперь вспомним наше разложение $e$-шки. А это именно оно и есть! Поэтому получаю:
 $$e^{At}=f(At) =\lim\limits_{k\rightarrow\infty}\sum\limits_{m=0}^k  t^mA^m$$
 
+Или:
+
+$$e^{At} = T \begin{pmatrix}
+    e^{\lambda_1t} & \ldots & 0 \\
+    \vdots &\ddots& \vdots\\
+    0 & \ldots & e^{\lambda_nt}
+\end{pmatrix} T^{-1} = \sum\limits_{\text{$\lambda$ - с.ч.}} e^{\lambda t}P_{\lambda}$$
+
 \textbf{Свойства:}
 \begin{enumerate}
     \item  $(e^{At})' = Ae^{At} = e^{At}A$
