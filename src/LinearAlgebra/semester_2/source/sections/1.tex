@@ -680,7 +680,7 @@ $A$ подобна диагональной $\Leftrightarrow$ матрица о.
 \textbf{Свойства операторов проектировния:}
 
 \begin{enumerate}
-    \item $\Im P_i = L_i$
+    \item $\Im P_i = L_i$, \,
     $\ker P_i = \bigoplus\limits_{j\neq i}L_j $
     \item $P_i P_j = \zero$
     \item$\sum\limits_{i=1}^m P_i = \varepsilon$  %todo: возможно более подробно расписать
@@ -689,7 +689,7 @@ $A$ подобна диагональной $\Leftrightarrow$ матрица о.
 
 Они все тривиальны
 
-\textbf{Утверждение.} Возьму множество операторов:$\{P_i\}_{i=1}^m$, $P_i \in End(V)$. 
+\textbf{Утверждение.} Возьму множество операторов: $\{P_i\}_{i=1}^m$, $P_i \in End(V)$. 
 
 Пусть они удовлетворяют свойствам 2,3 $\Rightarrow V  = \bigoplus\limits_{i=1}^m\Im P_i$. $P_i$ это проектор на $L_i$.
 
@@ -699,7 +699,7 @@ $A$ подобна диагональной $\Leftrightarrow$ матрица о.
 $$ P_i = P_i \varepsilon = P_i\sum\limits_{j=1}^m P_j = \sum\limits_{j=1}^m P_j P_i = P_i^2$$ 
 А это значит, что $\forall v \in V: v = \varepsilon v = \sum\limits_{i=1}^m P_iv \Rightarrow V = \sum\limits_{i=1}^m\Im P_i$.
 
-Осталось показать едиственность разложения нуля:
+Осталось показать единственность разложения нуля:
 $$\zero = \sum\limits_{i=1}^mv_i = \sum\limits_{i=1}^m P_i w_i \text{, где } w_i \in V$$
 $$P_j \zero = \zero = P_j \sum\limits_{i=1}^nP_iw_i = \sum\limits_{i=1}^n P_iP_j w_i = P_jw_j = v_j$$
 
@@ -710,13 +710,13 @@ $\Rightarrow \text{дизъюнк. }\Rightarrow \bigoplus \Im P_i$
 
 
 
-\textbf{Замечание:} Из определения проекторовв следует, что они существуют и определены  однозначны для данной прямой суммы.
+\textbf{Замечание:} Из определения проекторов следует, что они существуют и определены  однозначно для данной прямой суммы.
 
 \thmm{Теорема (спектральное разложение о.п.с)}
 
 Дан $\mathcal{A} \in End(V)$. Тогда выполнено:
 
-1) $\mathcal{A}$ - о.п.с. $\Rightarrow$ $\mathcal{A} = \sum\limits_{\text{$\lambda$ - с.ч.}} \lambda P_{\lambda}, P_\lambda$ - проектор на $V_\lambda$ $\forall \text{ с.ч. } \lambda$.
+1) $\mathcal{A}$ --- о.п.с. $\Rightarrow$ $\mathcal{A} = \sum\limits_{\text{$\lambda$ - с.ч.}} \lambda P_{\lambda}, P_\lambda$ --- проектор на $V_\lambda$ $\forall \text{ с.ч. } \lambda$.
 
 Такое разложение называется \deff{спектральным}.
 
@@ -724,7 +724,7 @@ $\Rightarrow \text{дизъюнк. }\Rightarrow \bigoplus \Im P_i$
 
 $\Im P_i = L_i = V_{\lambda} \text{(соотвест. подпр-во)}$
 
-\textbf{Доказательство}
+\textbf{Доказательство:}
 
 1) $\mathcal{A}$ о.п.с $\Leftrightarrow V = \bigoplus\limits_{\lambda \text{ - с.ч}} V_{\lambda}$. Возьму $P_\lambda$ проекторы на $V_\lambda$ (исходя из определения -они существуют) Тогда давайте воспользуемся определением:
 $$\forall v \in V:  \exists! v =\sum\limits_{\lambda \text{ - с.ч}}v _{\lambda}, \text{где } v_\lambda \in V_\lambda:\mathcal{A}v = \mathcal{A}(\sum\limits_{\lambda} v_\lambda) = \sum\limits_{\lambda}\mathcal{A}v_{\lambda}  = \sum\limits_{\lambda }\lambda v_\lambda =\sum\limits_{\lambda}\lambda P_\lambda v $$
@@ -735,12 +735,12 @@ $$\forall v \in V:  \exists! v =\sum\limits_{\lambda \text{ - с.ч}}v _{\lambda
 $$\mathcal{A} v_i=(\sum\limits_{j=1}^m \lambda_j P_j)v_i=(\sum\limits_{j=1}^m \lambda_j P_j)P_i v= v \sum\limits_{j=1}^m \lambda_j  P_j P_i$$
 Теперь вспомним свойство, что при умножении двух различных операторов мы получаем $\zero$. Поэтому на самом деле наша сумма равна:
 $$v \sum\limits_{j=1}^m \lambda_j  P_j P_i = v  \lambda_i  P_i P_i = v \lambda_i P _i = \lambda_i v_i$$
-Хорошо теперь вспомним, что изначально это было равно $\mathcal{A}v_i$. поэтому $\mathcal{A}v_i =  \lambda_iv_i$, откуда получаем, что $v_i$ с.в. $\mathcal{A}$ отвечающий с.ч. $\lambda_i$.
+Хорошо, теперь вспомним, что изначально это было равно $\mathcal{A}v_i$. поэтому $\mathcal{A}v_i =  \lambda_iv_i$, откуда получаем, что $v_i$ с.в. $\mathcal{A}$ отвечающий с.ч. $\lambda_i$.
 
-Откуда получаем, что  наше подмножество $ V_{\lambda_i} \supseteq \Im P_i$ (потому что любой $v \in \Im P_i$ - случайный вектор)
+Откуда получаем, что  наше подмножество $ V_{\lambda_i} \supseteq \Im P_i$ (потому что любой $v \in \Im P_i$ --- случайный вектор)
 
 Вспомним, что: $V = \bigoplus\limits_{i=1}^m \Im P_i \subseteq  \bigoplus\limits_{i=1}^m V_{\lambda_i}$, а как мы знаем $\bigoplus\limits_{i=1}^m V_{\lambda_i} \subseteq V$. Откуда, я получаю, что:
-$$\bigoplus\limits_{i=1}^m \Im P_i = \bigoplus\limits_{i=1}^m V \lambda_i \xRightarrow{\text{так как $P_i \subseteq V_{\lambda_i}$}}  \Im P_i = V_{\lambda_i}$$
+$$\bigoplus\limits_{i=1}^m \Im P_i = \bigoplus\limits_{i=1}^m V_{\lambda_i} \xRightarrow{\text{так как $P_i \subseteq V_{\lambda_i}$}}  \Im P_i = V_{\lambda_i}$$
 
   \hfill Q.E.D.
 
@@ -751,9 +751,9 @@ $A$ диагонализируема $\Leftrightarrow$ $\exists! \{P_i\}_{i=1}^m
 и $\sum\limits_{i=1}^m P_i=E$,
 $A = \sum\limits_{i=1}^m\lambda_iP_i$
 
-\textbf{Доказательство} 
+\textbf{Доказательство:} 
 
-очевидно следует из теоремы: 
+Очевидно следует из теоремы: 
 
 $A$ диагонализируема $\iff$ матрица $\mathcal{A}$ о.п.с. Либо можно считать  $A=\mathcal{A}$ о.п.с. 	$\in End (K^n)$
 
@@ -789,13 +789,13 @@ $$\lim\limits_{k\rightarrow \infty}\left(
  \end{matrix}
 \right)$$
 \deff{def:} $a_n \in R: \sum\limits_{m=1}^{\infty}a_m = S \Leftrightarrow
-\exists \lim\limits_{k \rightarrow \infty}\sum\limits_{m=1}^k a_m=S$, где $S_k =\sum\limits_{m=1}^k a_m $ - \deff{частичная сумма ряда.}
+\exists \lim\limits_{k \rightarrow \infty}\sum\limits_{m=1}^k a_m=S$, где $S_k =\sum\limits_{m=1}^k a_m $ --- \deff{частичная сумма ряда.}
 
-А саму такую конструкцию понятно называют рядом. Теперь давайте немного притронимся к матану:
+А саму такую конструкцию понятно называют рядом. Теперь давайте немного притронемся к матану:
 
 $\sum\limits_{m=0}^\infty c_mx^m$ - \deff{ряды Тейлора - Маклорена}. 
 
-$x\in \mathbb{R}(\mathbb{C})$ --- их область определения, $|x| < \mathbb{R}$ --- \deff{радиус сходимости}, $c_m \in \mathbb{R}(\mathbb{C})$. Причем эти $c$-шки на самом деле производные. (если интересно см. конспект по мат. анализу первый семестр)
+$x\in \mathbb{R}(\mathbb{C})$ --- их область определения, $|x| < R$ --- \deff{радиус сходимости}, $c_m \in \mathbb{R}(\mathbb{C})$. Причем эти $c$-шки на самом деле производные. (если интересно см. конспект по мат. анализу первый семестр)
 
 \textbf{Рассмотрим пример:} Давайте разложим $e^x$, нам это позже понадобится:
 $$e^x = \sum\limits_{n=0}^\infty\cfrac{1}{n!}x^n, |x| < + \infty$$
@@ -811,7 +811,7 @@ $$e^x = \sum\limits_{n=0}^\infty\cfrac{1}{n!}x^n, |x| < + \infty$$
 
 \thmm{Теорема 1 (функция от диагонализируемой матрицы 1)}
 
-Пусть $A$ - подобна диагональной. А также нам дана $f(x) = \sum\limits_{m=0}^\infty c_m x^m, |x|<r$.
+Пусть $A$ --- подобна диагональной. А также нам дана $f(x) = \sum\limits_{m=0}^\infty c_m x^m, |x|<r$.
 
 Тогда, если $\forall$ с.ч. $|\lambda|< r \Rightarrow \exists f(A)$ и $f(A) = T f(\lambda) T^{-1}$, где
 $f(\Lambda) = \begin{pmatrix}
@@ -826,7 +826,7 @@ $f(\Lambda) = \begin{pmatrix}
 $$A^m = (T \Lambda T^{-1})^m = T \Lambda T^{-1} T \Lambda T^{-1} \ldots T \Lambda T^{-1} = T \Lambda^m T^{-1}$$
 Теперь давайте подставим это в нашу сумму:
 $$\sum\limits_{m=0}^k c_m A^m = \sum\limits_{m=0}^k c_mT \Lambda^m T^{-1} = T\sum\limits_{m=0}^k c_m\Lambda^m T^{-1}$$
-Теперь вспомним, что $\lambda^n$ подобна диагональной, поэтому занесем сумму внутрь матрицы и получим:
+Теперь вспомним, что $\Lambda^n$ подобна диагональной, поэтому занесем сумму внутрь матрицы и получим:
 $$T\sum\limits_{m=0}^k c_m\Lambda^m T^{-1} = T \begin{pmatrix}
     \sum\limits_{m=0}^k c_m\lambda_1^m & \ldots & 0 \\
     \vdots  & \ddots & \vdots \\
@@ -846,9 +846,9 @@ $$\lim\limits_{k\rightarrow\infty}\sum\limits_{m=0}^k    c_m A^m=\lim\limits_{k\
 
 \thmm{Теорема 2 (функция от диагонализируемой матрицы 2)}
 
-$A$ - подобна диагональной.
+Пусть $A$ --- подобна диагональной.
 
-Тогда $A$ имеет спектральное разложение $\sum\limits_{\lambda \text{ - с.ч.}}\lambda P_\lambda$, где $P_{\lambda}$ - проекторы. А также нам дана $f(x) = \sum\limits_{m=0}^\infty c_m x^m, |x|<r$.
+Тогда $A$ имеет спектральное разложение $\sum\limits_{\lambda \text{ - с.ч.}}\lambda P_\lambda$, где $P_{\lambda}$ --- проекторы. А также нам дана $f(x) = \sum\limits_{m=0}^\infty c_m x^m, \quad |x|<r$.
 
 Тогда, если $\forall$ с.ч. $|\lambda|< r$, то $\exists f(A)$, а так же $f(A) = \sum\limits_{\lambda \text{ - с.ч.}}f(\lambda)P_\lambda$.
 
@@ -858,12 +858,12 @@ $A^m = (\sum\limits_{\lambda }\lambda P_{\lambda})^m = \sum\limits_{\lambda}\lam
 
 А теперь вспомним свойства проекторов. Когда я умножаю два разных проектора, я получаю ноль, откуда:
 $$A^m = \sum\limits_{\lambda}\lambda P_{\lambda}\sum\limits_{\mu}\mu P_{\mu} \ldots \sum\limits_{\xi}\xi P_{\xi} = \sum\limits_{\lambda}\lambda^m P_{\lambda}^m = \sum\limits_{\lambda}\lambda^m P_\lambda$$
-Значит: $\sum\limits_{m=0}^k c_m A^m =\sum\limits_{m=0}^k c_m  \sum\limits_{\lambda}\lambda^m P_\lambda =  \sum\limits_{\lambda}P_y \sum\limits_{m=0}^k\lambda^m c_m $.  Теперь если я возьму предел, то я получу то, что мне нужно, потому что каждая лямбда $<r$ и поэтому я могу вместо них подставить $f(\lambda)$.
+Значит: $\sum\limits_{m=0}^k c_m A^m =\sum\limits_{m=0}^k c_m  \sum\limits_{\lambda}\lambda^m P_\lambda =  \sum\limits_{\lambda}P_y \sum\limits_{m=0}^k\lambda^m c_m $.  Теперь если я возьму предел, то я получу то, что мне нужно, потому что каждая лямбда $<r$, и поэтому я могу вместо них подставить $f(\lambda)$.
 
   \hfill Q.E.D.
 \\
 
-\textbf{Экспонента:}
+\deff{Экспонента:}
 
 А теперь давайте возьмем все $c=1$,  а также вспомним, что мы можем протаскивать с собой параметр. Поэтому у нас получается новая формула:
 
@@ -872,15 +872,14 @@ $$e^{At}=f(At) =\lim\limits_{k\rightarrow\infty}\sum\limits_{m=0}^k  t^mA^m$$
 
 \textbf{Свойства:}
 \begin{enumerate}
-    \item  $(e^{At})' = Ae^{At} = e^{At}A$.
-
+    \item  $(e^{At})' = Ae^{At} = e^{At}A$
     \item $e^{(A_1+A_2)t}=e^{A_1t}\cdot e^{A_2t}$
-    \item $e^{\zero}t = E$.
+    \item $e^{\zero t} = E$
 \end{enumerate}
 
-\textbf{Обратная:}
+\deff{Обратная:}
 
-$A$ - подобна диагональной 
+$A$ --- подобна диагональной 
 $\forall $ с.ч. $\lambda \neq 0 \Rightarrow \exists A^{-1} = T\begin{pmatrix}
     \cfrac{1}{\lambda_1} & \ldots & 0 \\
     \vdots &\ddots& \vdots\\
@@ -889,73 +888,71 @@ $\forall $ с.ч. $\lambda \neq 0 \Rightarrow \exists A^{-1} = T\begin{pmatrix}
 
 \textbf{Свойства:}
 \begin{enumerate}
-    \item $A^{-1} = \sum\limits_{\lambda \text{ - c. x/}}\cfrac{1}{\lambda}P(\lambda)$
+    \item $A^{-1} = \sum\limits_{\lambda \text{ - c. ч}}\cfrac{1}{\lambda}P(\lambda)$
     \item $AA^{-1}=T \Lambda T^{-1}T \Lambda^{-1} T^{-1} = E$
     \item $AA^{-1}=(\sum \mu P_{\mu})(\sum \frac{1}{\lambda}P_{\lambda})= \sum\limits_{\lambda} \lambda \frac{1}{\lambda}P_{\lambda} = E$
 \end{enumerate}
 
-\textbf{Корень:}
+\deff{Корень:}
 
-$\forall$ с.ч. $\lambda \geq 0$, мы можем ввести $\sqrt[m]{A} = T\begin{pmatrix}
+Если $A$ подобна диагональной и $\forall$ с.ч. $\lambda \geq 0$, то взяв $m \in \mathbb{N}, m \geqslant2$ мы можем ввести $\sqrt[m]{A} = T\begin{pmatrix}
     \sqrt[m]{\lambda_1} & \ldots & 0 \\
     \vdots &\ddots& \vdots\\
     0 & \ldots &\sqrt[m]{\lambda_n}
-\end{pmatrix}T^{-1}$
+\end{pmatrix}T^{-1}$, полагая $\sqrt[m]{\lambda}\geqslant0$.
 
-\textbf{Свойства:}
-\begin{enumerate}
-    \item $m \in \mathbb{N}, \geqslant2$
-    \item $\sqrt[m]{A}= \sum\limits_{\lambda \text{  c. ч.}} \sqrt[m]{\lambda} P_{\lambda}$
-    \item $\sqrt[m]{\lambda}\geqslant0$
-\end{enumerate}
+Спектральное представление:
+$\sqrt[m]{A}= \sum\limits_{\lambda \text{  c. ч.}} \sqrt[m]{\lambda} P_{\lambda}$.
+
 
 \subsection{Комплексификация вещ. лин. пр-ва. Продолжение вещественного линейного оператора}
 
 Давайте посмотрим какие линейные операторы мы уже изучили: 
 
 
-Пусть $\mathcal{A} \in End(V) \xleftrightarrow{e} A $, $\chi(t)$ - корни многочлена. Он может быть:
+Пусть $\mathcal{A} \in End(V) \xleftrightarrow{e} A $, $\chi(t)$ --- корни многочлена. Он может быть:
 
 \begin{enumerate}
-    \item все корни $\in K$. $\sum\limits_{\lambda \text{ - с.ч}}\alpha(\lambda) = n  = \dim V$
+    \item Все корни $\in K$. $\sum\limits_{\lambda \text{ - с.ч}}\alpha(\lambda) = n  = \dim V$
     \begin{itemize}
-        \item $\exists$ базис V: $\forall \lambda: \alpha(\lambda)<\gamma(\lambda)$  - диагонализируема.
-        \item $\not \exists $ базис V: $\exists $ с.ч. $\lambda$ \text{  } $\gamma(\lambda) < \alpha(\lambda) \iff A$ жарданова форма.
+        \item $\exists$ базис $V$ из $v_{\lambda} $: $\,\,\forall \lambda:\,\,\alpha(\lambda)=\gamma(\lambda) \iff$ диагонализируема.
+        \item $\not \exists $ базис $V$ из $v_{\lambda} \,\,$: $\exists $ с.ч. $\lambda$: $\,\, \gamma(\lambda) < \alpha(\lambda) \iff A$ жорданова форма.
     \end{itemize}
-    \item не все корни $\in K$. В таком случае вещ. $V$ - комплексифицируют
+    \item Не все корни $\in K$. В таком случае вещ. $V$ комплексифицируют.
 \end{enumerate}
 
 
-\deff{def: } $V$ - линейное пространство над $\mathbb{R}$ (вещ. лин. пр-во)
-$$\forall x,y \in V \Rightarrow  z = x+iy \in V_{\mathbb{C}} \quad V_{\mathbb{C}} = \{ z = x+yi | \forall x,y \in V\}$$
-Назовем $V_{\mathbb{C}}$ \deff{комплесификацией} V
+\deff{def:} $V$ --- линейное пространство над $\mathbb{R}$ (вещ. лин. пр-во)
+$$\forall x,y \in V \Rightarrow  z = x+iy \in V_{\mathbb{C}} \quad V_{\mathbb{C}} = \{ z = x+yi \bigm| \forall x,y \in V\}$$
+
+Назовем $V_{\mathbb{C}}$ \deff{комплексификацией} $V$.
 
 Покажем некоторые \textbf{свойства:}
 \begin{enumerate}
     \item $\zero \in V \leftrightarrow \zero + i\zero = \zero \in V_{\mathbb{C}}$ - существование нуля 
-    \item $x \in V \leftrightarrow x +i\zero = x \in V_c$, $V \subset V_{\mathbb{C}}$ - говорим, что $V\subseteq  V_{\mathbb{C}}$ 
-    \item $\forall z = x + iy$ существует обратное - $-x+i(-y)$.
+    \item $x \in V \leftrightarrow x +i\zero = x \in V_c$, $V \subset V_{\mathbb{C}}$ --- говорим, что $V\subseteq  V_{\mathbb{C}}$ 
+    \item $\forall z = x + iy$ существует обратное: $-x+i(-y)$
 \end{enumerate}
 
-Заметим, что в таком случае $V_\mathbb{C}$ -  \uline{линейное пространство} над полем комплексных чисел.
+Заметим, что в таком случае $V_\mathbb{C}$ ---  \uline{линейное пространство} над полем комплексных чисел.
 
 
-\textbf{Утв.} Пусть $e_1,\ldots,e_n$ - базис V. Докажем что $e_1,\ldots, e_n$ - базис $V_c$.
+\textbf{Утв.} Пусть $e_1,\ldots,e_n$ - базис $V$. Докажем что $e_1,\ldots, e_n$ --- базис $V_{\mathbb{C}}$.
 
 \textbf{Доказательство:}
 
 Возьмем любой $z$ и докажем, что его можно породить с помощью базиса:
-$$z = x+ yi = \sum\limits_{j=1}^n e_j x_j + i\sum\limits_{j=1}^ny_j e_j = \sum\limits_{j}(x_j+iy_j)e_j$$
+$$z = x + iy = \sum\limits_{j=1}^n x_j e_j + i\sum\limits_{j=1}^ny_j e_j = \sum\limits_{j=1}^n(x_j+iy_j)e_j$$
 
 Откуда $e$ - порождающий базис для $V_{\mathbb{C}}$. Докажем линейную независимость:
 
 Для этого нам надо показать, что любая нулевая комбинация тривиальна:
-$$\zero = \sum\limits_{j=1}^n(a_j+ib_j)e_j =i\sum\limits_{j=1}^nb_je_j + i\sum\limits_{j=1}^na_je_j \iff \begin{cases}
+$$\zero = \sum\limits_{j=1}^n(a_j+ib_j)e_j = \sum\limits_{j=1}^na_je_j + i\sum\limits_{j=1}^nb_je_j \iff \begin{cases}
     \sum\limits_{j=1}^n \alpha_je_j\underset{\in \mathbb{R}} = \zero \\
      \sum\limits_{j=1}^n \beta_je_j\underset{\in \mathbb{R}} =\zero
 \end{cases} \iff  \begin{cases}
-    \forall_j : \alpha_j =0 \\
-    \forall_j : \beta_j =0
+    \forall j : \alpha_j =0 \\
+    \forall j : \beta_j =0
 \end{cases}$$ 
 Откуда получили линейную независимость.
 
@@ -964,40 +961,40 @@ $$\zero = \sum\limits_{j=1}^n(a_j+ib_j)e_j =i\sum\limits_{j=1}^nb_je_j + i\sum\l
 \textbf{Замечание.} Мы знаем, что $V \subset V_{\mathbb{C}}$. $\dim V = \dim V_{\mathbb{C}} = n$, откуда наши пространства должны быть равны? Нет, это было бы так, если бы не одно НО.  $V$ - линейное пространство над $\mathbb{R}$, а $V_{\mathbb{C}}$ - линейное пространство над комплексными, поэтому это не правда.
 
 Благодаря верхней теореме мы можем сделать некоторые замечания:
-$$x \underset{e} \iff \begin{pmatrix}
+$$x \underset{e} \leftrightarrow \begin{pmatrix}
     x_1\\
     \vdots \\
     x_n
-\end{pmatrix},y \underset{e} \iff \begin{pmatrix}
+\end{pmatrix},y \underset{e} \leftrightarrow \begin{pmatrix}
     y_1\\
     \vdots \\
     y_n
-\end{pmatrix}, z=x+iy \underset{e} \iff \begin{pmatrix}
+\end{pmatrix}, z=x+iy \underset{e} \leftrightarrow \begin{pmatrix}
     x_1 +iy_1\\
     \vdots \\
     x_n+iy_n
 \end{pmatrix}$$
 
 
-\deff{def:} $z \in V_c$, $\overline{z}=x-iy$ - \deff{сопряженный} вектор, $z=x+iy, \quad x,y \in V$
+\deff{def:} $z \in V_{\mathbb{C}}$, $\overline{z}=x-iy$ --- \deff{сопряженный} вектор, $z=x+iy, \quad x,y \in V$
 
 \textbf{Свойства:}
 \begin{enumerate}
     \item $\overline{z_1 \pm z_2} = \overline{z_1}  \pm \overline{z_2}$
     \item $\overline{\lambda z} = \overline{\lambda} \overline{z}$
-    \item $v_1,\ldots,v_m$ - лин. независимы $\Leftrightarrow \overline{v_1}, \ldots \overline{v_m}$ лин.независимы.
+    \item $v_1,\ldots,v_m$ --- лин. (не)зависимы $\Leftrightarrow \overline{v_1}, \ldots \overline{v_m}$ лин. (не)зависимы.
     \item $\rg (v_1\dots v_m) = \rg (\overline{v}_1\dots \overline{v}_m)$
 \end{enumerate}
 
-\deff{def:} Возьму оператор $\mathcal{A} \in End(V)$.  $\forall z \in V_c: \mathcal{A}_cz =\mathcal{A}x + i \mathcal{A}y$ 
+\deff{def:} Возьму оператор $\mathcal{A} \in End(V)$.  $\forall z \in V_{\mathbb{C}}: \mathcal{A}_{\mathbb{C}}z =\mathcal{A}x + i \mathcal{A}y$ 
 
 Назову данную конструкцию \deff{продолжением вещ. лин. оператора} $\mathcal{A}$ на $V_{\mathbb{C}}$ вещественного пространства $V$.
 
-Очевидно, что в таком случае $\mathcal{A}_\mathbb{C} \in End(V_{\mathbb{C}})$, т.к. $\mathcal{A}$ - линейный оператор.
+Очевидно, что в таком случае $\mathcal{A}_\mathbb{C} \in End(V_{\mathbb{C}})$, т.к. $\mathcal{A}$ --- линейный оператор.
 
-\textbf{Утверждение:} $\mathcal{A} \in End(V)$, $e = (e_1,\ldots, e_n) $ базис $V$ ($\Rightarrow$ базис $V_c$ из теоремы сверху). 
+\textbf{Утверждение:} $\mathcal{A} \in End(V)$, $e = (e_1,\ldots, e_n) $ базис $V$ ($\Rightarrow$ базис $V_{\mathbb{C}}$ из теоремы сверху). 
 
-Тогда, если $\mathcal{A} \xleftrightarrow{e}A$, то $ \mathcal{A}_c \underset{e} \leftrightarrow A$
+Тогда, если $\mathcal{A} \xleftrightarrow{e}A$, то $ \mathcal{A}_{\mathbb{C}} \underset{e} \leftrightarrow A$
 
 \textbf{Доказательство:}
 
@@ -1013,17 +1010,21 @@ $$\mathcal{A}_{\mathbb{C}}  \cdot e_j = \mathcal{A}  \cdot e_j + i\mathcal{A} \z
 \textbf{Свойства $\mathcal{A_\mathbb{C}}$}:
 
 \begin{enumerate}
-    \item $\chi_{\mathcal{A}} (t)= \chi_\mathcal{A_\mathbb{C}}(t)$.
+    \item $\chi_{\mathcal{A}} (t) \equiv \chi_\mathcal{A_\mathbb{C}}(t)$ --- так как матрицы совпадают.
 
     \textbf{Замечание:} 
     
     1) если $\lambda = \alpha + i\beta \in \mathbb{C}, \beta \neq 0$ - корень $\chi(t) \Rightarrow \lambda$ с.ч. $\mathcal{A_\mathbb{C}}$, но не с.ч. $\mathcal{A}$.
 
-    2) если $\lambda = \alpha + i\beta \in \mathbb{C}$ корень $\chi$ $\Rightarrow$ $\overline{\lambda}=\alpha - i\beta$ - тоже корень
+    2) если $\lambda = \alpha + i\beta \in \mathbb{C}$ корень $\chi$ $\Rightarrow$ $\overline{\lambda}=\alpha - i\beta$ - тоже корень, причём той же кратности.
 
     \item $\forall z \in V_{\mathbb{C}}: \overline{A_{\mathbb{C}}z } = A_{\mathbb{C}}\overline{z}$.
 
+    $\overline{A_{\mathbb{C}}z} = \overline{Ax + iAy} = Ax - iAy = A_{\mathbb{C}}\overline{z}$
+
     \item $\lambda$ с.ч $\mathcal{A_\mathbb{C}} $, $z$ - с. в , отвечающий $\lambda$$\Rightarrow$$ \overline{\lambda}$ с.ч. $\mathcal{A_\mathbb{C}}$, $\overline{z}$ с.в., отвечающий $\overline{\lambda}$
+
+    $\mathcal{A}\overline{z} = \overline{\mathcal{A}_{\mathbb{C}}z} = \overline{\lambda z} = \overline{\lambda} \cdot \overline{z}$
 \end{enumerate}
 
 Вернемся к тому старому разделению на случаи. Заметим, что если в таком случае мы возьмем наш третий случай и компелисифицируем, то для полученного оператора $A_{\mathbb{C}}$ мы получим, что он относится либо к первому варианту, либо ко второму.
@@ -1036,11 +1037,11 @@ $$\mathcal{A}_{\mathbb{C}}  \cdot e_j = \mathcal{A}  \cdot e_j + i\mathcal{A} \z
 
 \textbf{Замечание.} $\psi(t) \neq 0$, потому что это нормализованный многочлен - старший коэффицент 1.
 
-$\psi(t) = \prod\limits_{\lambda \text{ - корень}}(t-\lambda)^{m(\lambda)}$ -  так как это многочлен. Перепишем на место $t$ матрицу:
-$$\psi(\mathcal{A} ) = \prod\limits_{\lambda \text{ - корень} }(\mathcal{A} -\lambda  \xi)^{m(\lambda)}$$
-\deff{def:} Аннулятор элемента $x\in V$ наименьшей степени называется \deff{минимальным аннулятором} элемента $x$.   
+$\psi(t) = \prod\limits_{\lambda \text{ - корень}}(t-\lambda)^{m(\lambda)}$ -  так как это многочлен. Здесь $m(\lambda)$ --- кратность корня $\lambda$. Перепишем на место $t$ матрицу:
+$$\psi(\mathcal{A} ) = \prod\limits_{\lambda \text{ - корень} }(\mathcal{A} -\lambda  \varepsilon)^{m(\lambda)}$$
+\deff{def:} Аннулятор элемента $x\in V$ наименьшей степени \\ называется \deff{минимальным аннулятором} элемента $x$.   
 
-\thmm{Теорема: (о существовании минимального аннулятора)}
+\thmm{Теорема: (о существовании и единственности минимального аннулятора)}
 \begin{enumerate}
     \item $\forall $ $x \in V $ $ \exists! \, \psi(t)$ минимальный аннулятор $x$.
     \item $\forall$ другой аннулятор $x$  $\vdots$ на минимальный аннулятор $x$.
@@ -1050,15 +1051,15 @@ $$\psi(\mathcal{A} ) = \prod\limits_{\lambda \text{ - корень} }(\mathcal{A
 \begin{enumerate}
     \item 
     \begin{enumerate}
-        \item Пусть $x = \zero$, $\psi(t)=1$, $\psi(\mathcal{A})=\xi$,  $\xi x=\xi \zero = \zero$
+        \item Пусть $x = \zero$, $\psi(t)=1$, $\psi(\mathcal{A})=\varepsilon$,  $\varepsilon x=\varepsilon \zero = \zero$
 
         \item Пусть $x \ne \zero$. Посмотрю на $x, \mathcal{A}x,\mathcal{A}^2x,\ldots,\mathcal{A}^mx$
 
-        Причем $m$ такое, что $x, \mathcal{A}x, \ldots \mathcal{A}^{m-1}x$ - линейно независимы, а   $x, \mathcal{A}x, \ldots \mathcal{A^{m}x}$ - зависимы.
+        Причем $m$ такое, что $x, \mathcal{A}x, \ldots \mathcal{A}^{m-1}x$ - линейно независимы, а $\, x, \mathcal{A}x, \ldots \mathcal{A}^{m}x$ - зависимы. Такой набор собрать удастся, при этом $m \le n$.
 
     $\Rightarrow  \exists! \, c_0,c_1,\ldots,c_{m-1} \in k$, такие, что $\mathcal{A}^mx = \sum\limits_{j=0}^{m-1}c_j\mathcal{A}^jx$
 
-    Откуда получаем, что  $(\mathcal{A}^m- \sum\limits_{j=0}^{m-1}c_j\mathcal{A}^j)x= \zero$. Получил какой-то оператор, который при умножении на $x$ дает $\zero$. А это значит, аннулятор существует, откуда можно выбрать минимальный.
+    Откуда получаем, что  $(\mathcal{A}^m- \sum\limits_{j=0}^{m-1}c_j\mathcal{A}^j)x= \zero$. Получил какой-то оператор, который при умножении на $x$ дает $\zero$. А это значит, аннулятор существует, причём аннулятор выше минимальный по построению.
     \end{enumerate}
     \item Пусть мой минимальный аннулятор это $\psi(t)$, а $\psi_1(t)$ другой аннулятор $x$.
 
@@ -1078,8 +1079,8 @@ $$\psi(\mathcal{A} ) = \prod\limits_{\lambda \text{ - корень} }(\mathcal{A
 
 \end{enumerate}
 
-\deff{def:} Нормализованный многочлен $\psi(t)$ называется \deff{аннулятором оператора} $\mathcal{A}$, если:
-$$\psi(\mathcal{A}) \equiv \zero , (\text{т.е.} \forall v \in V, \psi(\mathcal{A})v = \zero )$$
+\deff{def:} Нормализованный многочлен $\varphi(t)$ называется \deff{аннулятором оператора} $\mathcal{A}$, если:
+$$\varphi(\mathcal{A}) \equiv \zero , (\text{т.е.} \forall v \in V, \varphi(\mathcal{A})v = \zero )$$
 \deff{def:} \deff{минимальным многочленом оператора} $\mathcal{A}$ называется аннулятор $\mathcal{A}$ наименьшей степени.
 
 \thmm{Теорема: (о существовании и единственности миним. многочлена оператора)}
@@ -1093,22 +1094,22 @@ $$\psi(\mathcal{A}) \equiv \zero , (\text{т.е.} \forall v \in V, \psi(\mathcal
 
 Пусть $e = (e_1,\ldots,e_n)$ - базис $V$. Построим $\psi_{j}(t)$ - минимальный аннулятор $e_j$
 
-Возьму $\psi(t)=$ Н.О.К. \{$\psi_j$\}$^n_{j=1}$, где $j= 1,\ldots,n$. Покажем, что $\psi$ аннулятор $\mathcal{A}$:
+Возьму $\varphi(t)=$ Н.О.К. \{$\psi_j$\}$^n_{j=1}$, где $j= 1,\ldots,n$. Покажем, что $\varphi$ аннулятор $\mathcal{A}$:
 
 Как мы знаем $\forall v \in V, v=\sum\limits_{i=1}^n v_ie_i$. Поэтому:
 
-$$\psi(\mathcal{A})v = \sum\limits_{j=1}^nv_j \cdot \psi(\mathcal{A})\cdot e_j= \sum\limits_{j=1}^nv_j \cdot (\psi_j(\mathcal{A}) \cdot\alpha_j(\mathcal{A}))  = \zero \iff \psi(\mathcal{A}) \equiv \zero$$
+$$\varphi(\mathcal{A})v = \sum\limits_{j=1}^nv_j \cdot \varphi(\mathcal{A})\cdot e_j= \sum\limits_{j=1}^nv_j \cdot (\psi_j(\mathcal{A}) \cdot\alpha_j(\mathcal{A}))  = \zero \iff \psi(\mathcal{A}) \equiv \zero$$
 
 То есть такой многочлен существует. Теперь докажем \uline{единственность}:
 
-Пусть $\psi_a(t)$ другой аннулятор $\mathcal{A}$: Тогда $\forall j = 1,\ldots,n:  \psi_a(\mathcal{A})e_j= \zero$.  
+Пусть $\varphi_a(t)$ другой аннулятор $\mathcal{A}$: Тогда $\forall j = 1,\ldots,n:  \varphi_a(\mathcal{A})e_j= \zero$.  
 
-Тогда $\psi_a$ аннулятор элемента $e_j $ для любого $j$.
+Тогда $\varphi_a$ аннулятор элемента $e_j $ для любого $j$.
 
-По теореме о линейном операторе мы знаем, что  $\psi_a$ делится на $\psi_j$ для любого $j$.
+По теореме о линейном операторе мы знаем, что  $\varphi_a$ делится на $\psi_j$ для любого $j$, то есть $\varphi_a \,\, \vdots \,\, \varphi$.
 
-Откуда я получаю, что $\psi_a$ степени хотя бы такой же, что $\psi$. То есть  $\psi_a$ хотя бы Н.О.К. 
+Откуда я получаю, что $\varphi_a$ степени хотя бы такой же, что $\varphi$. То есть  $\varphi_a$ хотя бы Н.О.К. 
 
-А так  мы предполагаем, что это второй минимальный многочлен, то его степень такая же как и у $\psi$, то есть Н.О.К. То есть они равны.
+А так  мы предполагаем, что это второй минимальный многочлен, то его степень такая же как и у $\varphi$, то есть Н.О.К. То есть они равны.
     
     \hfill Q.E.D.
