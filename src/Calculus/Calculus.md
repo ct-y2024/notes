@@ -8,7 +8,7 @@
 
 #### 1 семестр
 
-[Основной конспект](./semester_1/Calculus.pdf.pdf).
+[Основной конспект](./semester_1/Calculus.pdf).
 
 #### 2 семестр
 
