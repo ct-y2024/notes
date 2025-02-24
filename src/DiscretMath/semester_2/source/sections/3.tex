@@ -5,7 +5,7 @@ $$Cov(\xi,\eta) =E_{\xi \eta} -  E_{\xi}E_{\eta}$$
 \deff{Ковариация} или \deff{корреляционный момент} показывает на сколько зависимы случайные величины это мера зависимости двух случайных величин.
 
 Если $\xi, \eta$ - независимые случайные величины
-$$Cov(\xi,\eta) = 0$$
+$$Cov(\xi,\eta) = 0$$:
 $$Cov(\xi,\xi) = D_\xi = Var_\xi \text{ - вариация}$$
 
 \subsection{Корреляция}
@@ -53,16 +53,16 @@ $$P(|\xi-E\xi|\geq \alpha)\leq \cfrac{D\xi}{\alpha^2} \quad \quad P(|\xi-E\xi|\g
 Возьму вот такие величины:
 $$D_{\xi} = E(\xi-E\xi)^2\quad \quad  \eta = (\xi-E\xi)^2$$
 Заметим, что $E\eta=D\xi$. Используем неравенство Маркова для оценки дисперсии:
-$$P(\eta\geq c*E\eta)\leq \cfrac{1}{c}$$
-Возьму $c= \cfrac{D_{\xi}}{\alpha^2}$ и получу искомое
+$$P(\eta\geq c \cdot E\eta)\leq \cfrac{1}{c}$$
+Возьму $c= \cfrac{D_{\xi}}{\alpha^2}$ и получу искомое.
 
 \hfill Q.E.D.
 
 \textbf{Нечестная монета}. Вот вам дали домашку, вместе  с вопросом $p>\frac{1}{2}$ или $p<\frac{1}{2}$. Что вы можете делать? Только кидать ее, но при этом бесконечное количество раз вы не кинете, у вас дедлайн домашки через час. 
 
 Пусть мы бросили $n$ раз. Выпало $c$ единиц и $n-c$ нулей. Пусть $c\le \frac{n}{2}$:
-$$P(\xi = c)\leq P(\xi\leq c)\leq P(|\xi-pn|\geq pn-c)\leq  P(|\xi-pn|\geq \frac n 2 c)\leq \cfrac{n}{4}\cdot \cfrac{1}{\left(\cfrac{n}{2}-c\right)^2}$$
-Что это концептуально значит? На самом деле то, это дает нам оценку на распределение. Зачем? Чтобы \textbf{\uline{СДАТЬ}} домашку.
+$$P(\xi = c)\leq P(\xi\leq c)\leq P(|\xi-pn|\geq pn-c)\leq  P(|\xi-pn|\geq \frac n 2 - c)\leq \cfrac{n}{4}\cdot \cfrac{1}{\left(\cfrac{n}{2}-c\right)^2}$$
+Что это концептуально значит? На самом деле, это дает нам оценку на распределение. Зачем? Чтобы \textbf{\uline{СДАТЬ}} домашку.
 
 \thmm{Теорема (Граница Чернова)}
 $$P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2+\varepsilon}np} \quad \Leftrightarrow\quad P(\xi\geq (1+\varepsilon)p)\leq e^{-\frac{\varepsilon^2}{2}np}$$
