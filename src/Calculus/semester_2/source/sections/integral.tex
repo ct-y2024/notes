@@ -110,7 +110,7 @@ $$\forall x_1,x_2 \in \langle a,b \rangle: \forall \alpha \in[0,1]:f(\alpha x_1+
 
 \thmm{Теорема (об одностор. дифф-ти вып. функции)}
 
-$f$ - выпукла на $\langle a,b \rangle$. Тогда $\forall x\in(a,b): \exists f'_+(x), f'_-(x)$ (конечные),  а также
+$f$ - выпукла на $\langle a,b \rangle$. Тогда $\forall x\in( a,b): \exists f'_+(x), f'_-(x)$ (конечные),  а также
 
 $\forall x_1<x_2\in \langle a,b\rangle$ выполнено:
 $$f'_-(x_1)\leq f'_+(x_1) \leq \cfrac{f(x_2)-f(x_1)}{x_2-x_1}\leq f'_-(x_2)$$
@@ -280,7 +280,7 @@ todo: вставить рисунок
 
 \textbf{Доказательство:}
 
-$y> x: \lim\limits_{y \rightarrow x+0} \cfrac{\Phi(y)-\Phi(y)}{y-x} = \lim\limits_{y \rightarrow x+0} \cfrac{\int_a^y f - \int_a^x f}{y-x} =\lim\limits_{y \rightarrow x+0} \cfrac{1}{y-x} \integral{x}{y}f =\lim_{y\rightarrow x+0} f(c)$, \\
+$y> x: \lim\limits_{y \rightarrow x+0} \cfrac{\Phi(y)-\Phi(x)}{y-x} = \lim\limits_{y \rightarrow x+0} \cfrac{\int_a^y f - \int_a^x f}{y-x} =\lim\limits_{y \rightarrow x+0} \cfrac{1}{y-x} \integral{x}{y}f =\lim_{y\rightarrow x+0} f(c)$, \\
 где $c$ лежит между $x,y$ из теоремы о среднем.
 
 Получим, что правосторонняя производна равна $f(x)$. Аналогично про левостороннюю. Откуда производная это $f(x)$.
