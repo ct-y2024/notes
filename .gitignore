@@ -1,7 +1,7 @@
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.aux
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.fdb_latexmk
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.fls
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.log
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.out
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.synctex.gz
-Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.toc
+*.toc
+*synctex.gz
+*.out
+*.log
+*.fls
+*fdb_latexmk
+*.aux
