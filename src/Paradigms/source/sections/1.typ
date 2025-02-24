@@ -357,12 +357,6 @@ public class ArrayStack {
     private int size;
     private Object[] elements = new Object[1];
     
-    public static ArrayStackADT create() {
-        ArrayStackADT stack = new ArrayStackADT();
-        stack.elements = new Object[1];
-        return stack;
-    }
-    
     private void ensureCapacity(int capacity) {
         if (elements.length < capacity) {
             elements = 
