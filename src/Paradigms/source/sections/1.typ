@@ -54,6 +54,9 @@ x = expr;
 // Post: P
 ```
 Примеры:
+#block(height: 4em, width: 19em, 
+columns(2,
+[
 ```Java
 // Pre: b = 0
 a = b;
@@ -64,9 +67,15 @@ a = b;
 a += a;
 // Post: a = b
 ```
+]
+)
+)
 
 === Последовательное исполнение
 Из:
+#block(height: 4em, width: 21em, 
+columns(3,
+[
 ```Java
 // Pre: P1
 S1
@@ -77,7 +86,10 @@ S1
 S2
 // Post: Q2
 ```
-$Q 1 => P 2$ 
+#align(horizon, $Q 1 => P 2$) 
+]
+)
+)
 Следует:
 ```Java
 // Pre: P1
@@ -88,6 +100,9 @@ S2
 
 === Ветвление
 Из:
+#block(height: 4em, width: 32em, 
+columns(3,
+[
 ```Java
 // Pre: P && cond
 S1
@@ -97,7 +112,10 @@ S1
 // Pre: P && !cond
 S2
 // Post: Q
-```
+``` 
+]
+)
+)
 Следует:
 ```Java
 // Pre: P
@@ -130,7 +148,7 @@ while (cond) {
 Давайте докажем работу функции из начала.
 ```Java
 // Pre: n >= 0
-// Post: ans = a ^ n
+// Post: R = a ^ n
 int power(int a, int n) {
     int r = 1;
     // r' * a' ^ n' = a ^ n
@@ -149,7 +167,7 @@ int power(int a, int n) {
     }
     // r' * a' ^ n' = a ^ n && n' = 0
     // => r' = a ^ n
-    // => ans = r' 
+    // => R = r' 
     return r;
 }
 ```
@@ -164,7 +182,7 @@ int power(int a, int n) {
 Например:
 ```Java
 // Pre: x > 0
-// Post: ans * ans = x ^ ans >= 0
+// Post: R * R = x ^ R >= 0
 double sqrt(double x) {
     ... 
 }
@@ -176,7 +194,7 @@ double sqrt(double x) {
 int value = 0;
  
 // Pre: v >= 0
-// Post: ans = value + v && value' = value + v
+// Post: R = value + v && value' = value + v
 int add(int v) {
     return value += v;
 }
@@ -188,7 +206,7 @@ int add(int v) {
 int value = 0;
  
 // Pre: v >= 0 && value >= 0
-// Post: ans = value + v && value' = value + v && value >= 0
+// Post: R = value + v && value' = value + v && value >= 0
 int add(int v) {
     return value += v;
 }
@@ -200,7 +218,7 @@ int add(int v) {
 int value = 0;
  
 // Pre: v >= 0
-// Post: ans = value + v && value' = value + v
+// Post: R = value + v && value' = value + v
 int add(int v) {
     return value += v;
 }
@@ -240,25 +258,25 @@ int add(int v) {
 - `pop()`:
  ```Java
  // Pred: n > 0
- // Post: ans = a[n] && n = n' - 1 && immutable(n')
+ // Post: R = a[n] && n = n' - 1 && immutable(n')
  Object pop()
  ```
 - `peek()`:
  ```Java
  // Pred: n > 0
- // Post: ans = a[n] && n = n' && immutable(n)
+ // Post: R = a[n] && n = n' && immutable(n)
  Object pop()
  ```
 - `size()`:
  ```Java
  // Pred: true
- // Post: ans = n && n = n' && immutable(n)
+ // Post: R = n && n = n' && immutable(n)
  Object pop()
  ```
 - `isEmpty()`:
  ```Java
  // Pred: true
- // Post: ans = n > 0 && n = n'&& immutable(n)
+ // Post: R = n > 0 && n = n'&& immutable(n)
  Object pop()
  ```
 == Процедурная реализация
@@ -268,7 +286,7 @@ public class ArrayStackModule {
     private static Object[] elements = new Object[1];
     
     private static void ensureCapacity(int capacity) {
-       if (capacity > elements.length) {
+        if (capacity > elements.length) {
             elements = Arrays.copyOf(elements, 2 * capacity);
         }
     }
@@ -280,26 +298,33 @@ public class ArrayStackModule {
     }
     
     public static Object pop() {
-       assert size > 0;
-        return elements[--size];
+        assert size > 0;
+        size--;
+        Object result = elements[size];
+        elements[size] = null;
+        return result;
+        // если мы собрались управлять памятью руками,
+        // то освобождать её мы тоже должны руками
     }
     
     public static Object peek() {
-       assert size > 0;
+        assert size > 0;
         return elements[size - 1];
     }
  
     public static int size() {
-       return size;
+        return size;
     }
     
     public static boolean isEmpty() {
-       return size == 0;
+        return size == 0;
     }
 }
 ```
+Минус: возможно существование только одного экземпляра.
 
 == Реализация на структурах
+Будем передавать в каждую процедуру экземпляр, с которым происходит действие. Это позволит создать несколько отдельно существующих экземпляров.
 ```Java
 public class ArrayStackADT {
     private static int size;
@@ -325,7 +350,10 @@ public class ArrayStackADT {
     
     public static Object pop(ArrayStackADT stack) {
         assert stack.size > 0;
-        return stack.elements[--stack.size];
+        stack.size--;
+        Object result = stack.elements[stack.size];
+        stack.elements[stack.size] = null;
+        return result;
     }
     
     public static Object peek(ArrayStackADT stack) {
@@ -342,18 +370,12 @@ public class ArrayStackADT {
     }
 }
 ```
-
 == Преобразование в класс
+По сути классы --- синтаксический сахар поверх реализации выше. У каждого метода есть невилимый аргумент `this`, к которому обращаются при обращении к любому полю класса.
 ```Java
 public class ArrayStack {
     private int size;
     private Object[] elements = new Object[1];
-    
-    public static ArrayStackADT create() {
-        ArrayStackADT stack = new ArrayStackADT();
-        stack.elements = new Object[1];
-        return stack;
-    }
     
     private void ensureCapacity(int capacity) {
         if (elements.length < capacity) {
@@ -370,7 +392,10 @@ public class ArrayStack {
         
     public Object pop() {
         assert size > 0;
-        return elements[--size];
+        size--;
+        Object result = elements[size];
+        elements[this] = null;
+        return result;
     }
         
     public Object peek() {
