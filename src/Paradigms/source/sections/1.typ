@@ -280,13 +280,16 @@ int add(int v) {
  Object pop()
  ```
 == Процедурная реализация
+
+Мы показывем, как работает структура стека, но только на одном экземпляре.
+Процедурная реализация создана для простых задач, но ее трудно поддерживать и расширять для сложных проектов.
 ```Java
 public class ArrayStackModule {
     private static int size;
     private static Object[] elements = new Object[1];
     
     private static void ensureCapacity(int capacity) {
-       if (capacity > elements.length) {
+        if (capacity > elements.length) {
             elements = Arrays.copyOf(elements, 2 * capacity);
         }
     }
@@ -298,28 +301,34 @@ public class ArrayStackModule {
     }
     
     public static Object pop() {
-       assert size > 0;
-        return elements[--size];
+        assert size > 0;
+        size--;
+        Object result = elements[size];
+        elements[size] = null;
+        return result;
+        // если мы собрались управлять памятью руками,
+        // то освобождать её мы тоже должны руками
     }
     
     public static Object peek() {
-       assert size > 0;
+        assert size > 0;
         return elements[size - 1];
     }
  
     public static int size() {
-       return size;
+        return size;
     }
     
     public static boolean isEmpty() {
-       return size == 0;
+        return size == 0;
     }
 }
 ```
-Минус: возможно существование только одного экземпляра.
+
 
 == Реализация на структурах
 Будем передавать в каждую процедуру экземпляр, с которым происходит действие. Это позволит создать несколько отдельно существующих экземпляров.
+Это абстрактный класс с явной передачей ссылки на результат. Улучшает связь данных, но все еще не подходит, так как никто не мешает нам производить действия в данной структурк в другом файле(например).
 ```Java
 public class ArrayStackADT {
     private static int size;
@@ -345,7 +354,10 @@ public class ArrayStackADT {
     
     public static Object pop(ArrayStackADT stack) {
         assert stack.size > 0;
-        return stack.elements[--stack.size];
+        stack.size--;
+        Object result = stack.elements[stack.size];
+        stack.elements[stack.size] = null;
+        return result;
     }
     
     public static Object peek(ArrayStackADT stack) {
@@ -362,18 +374,18 @@ public class ArrayStackADT {
     }
 }
 ```
-== Преобразование в класс
-По сути классы --- синтаксический сахар поверх реализации выше. У каждого метода есть невилимый аргумент `this`, к которому обращаются при обращении к любому полю класса.
+== Преобразование в класс (ООП)
+По сути классы --- синтаксический сахар поверх реализации выше. 
+У каждого метода есть невилимый аргумент `this`, к которому обращаются при обращении к любому полю класса.
+
+Наиболее мощный и гибкий подход для больших и сложных проектов, обеспечивающий инкапсуляцию,
+ наследование и полиморфизм, но требует больше планирования и проектирования.
+
+
 ```Java
 public class ArrayStack {
     private int size;
     private Object[] elements = new Object[1];
-    
-    public static ArrayStackADT create() {
-        ArrayStackADT stack = new ArrayStackADT();
-        stack.elements = new Object[1];
-        return stack;
-    }
     
     private void ensureCapacity(int capacity) {
         if (elements.length < capacity) {
@@ -390,7 +402,10 @@ public class ArrayStack {
         
     public Object pop() {
         assert size > 0;
-        return elements[--size];
+        size--;
+        Object result = elements[size];
+        elements[this] = null;
+        return result;
     }
         
     public Object peek() {
