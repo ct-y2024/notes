@@ -4,7 +4,7 @@
 #outline(title: "Содержание", indent: 1em)
 
 #pagebreak()
-#include "sections/1.typ"
+#include "sections/java.typ"
 #pagebreak()
 = Информация о курсе
 #include "sections/info.typ"
