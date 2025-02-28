@@ -1032,7 +1032,7 @@ $$\mathcal{A}_{\mathbb{C}}  \cdot e_j = \mathcal{A}  \cdot e_j + i\mathcal{A} \z
 
     \item $\lambda$ с.ч $\mathcal{A_\mathbb{C}} $, $z$ - с. в , отвечающий $\lambda$$\Rightarrow$$ \overline{\lambda}$ с.ч. $\mathcal{A_\mathbb{C}}$, $\overline{z}$ с.в., отвечающий $\overline{\lambda}$
 
-    $\mathcal{A}\overline{z} = \overline{\mathcal{A}_{\mathbb{C}}z} = \overline{\lambda z} = \overline{\lambda} \cdot \overline{z}$
+    $\mathcal{A}\overline{z} = \overline{\mathcal{A}_{\mathbb{C}}z} = \overline{\lambda z} = \overline{\lambda} \cdot \overline{z}$, тогда $\gamma(\lambda) = \gamma(\overline{\lambda})$
 \end{enumerate}
 
 Вернемся к тому старому разделению на случаи. Заметим, что если в таком случае мы возьмем наш третий случай и компелисифицируем, то для полученного оператора $A_{\mathbb{C}}$ мы получим, что он относится либо к первому варианту, либо ко второму.
@@ -1126,3 +1126,394 @@ $$\varphi(\mathcal{A})v = \sum\limits_{j=1}^nv_j \cdot \varphi(\mathcal{A})\cdot
 Если мы предполагаем, что это многочлен минимальной степени, то он такой же степени, как и $\varphi$. При этом они оба делятся на Н.О.К., а $\varphi$ = Н.О.К. Так же их старшие коэффиценты равны. Поэтому: $\varphi_1 = \varphi$. Исходя из этого получаем, что такой многочлен единственный
     
     \hfill Q.E.D.
+
+\thmm{Теорема (Кэли - Гамильтона)}
+
+$\forall \mathcal{A} \in End(V)$ выполнено, что:
+
+$\chi(t)  = \det (A -t \varepsilon)$ - аннулятор оператора $\mathcal{A}$.
+
+\textbf{Замечание} $\det (\mathcal{A} - \mathcal{A}\cdot \varepsilon)$, $t\in K$. Сюда не предполагается подставлять матрицу.
+
+\textbf{Доказательство:}
+
+Пусть есть базис $e_1,\ldots,e_n$. Тогда $\mathcal{A} \xleftrightarrow{e}A$.
+
+Пусть есть $\mu \in K$ -  не корень $\chi(t)$, где $t \in K$. Посмотрим на $\chi (t) = \det (\mathcal{A} - tE )$. Как мы знаем:
+$\chi(\mu) \neq 0$, поэтому $\det (A - \mu E) \neq 0$. Откуда существует обратная матрица (по теореме об обратной матрице), тк $A$ - не вырожденная:
+$$\exists!(A-\mu E)^{-1} = \cfrac{1}{\det (A- \mu E)}B = \cfrac{1}{\chi(\mu)}B$$
+где $B$ - матрица из алгебраических дополнений.
+
+Наша матрица $B$ выглядит примерно так: $\begin{pmatrix}
+    \sum\limits_{i=0}^{n-1}c_{11i}\mu^i & \ldots& \sum\limits_{i=0}^{n-1}c_{1ni}\mu^i\\
+    \vdots &\ddots& \vdots \\
+    \sum\limits_{i=0}^{n-1}c_{n1i}\mu^i& \ldots& \sum\limits_{i=0}^{n-1}c_{nni}\mu^i 
+\end{pmatrix}$
+
+Давайте разложим нашу матрицу в сумму матриц так, что матрица $B_k$ будет состоять из всех коэффицентов на $k$-ой позиции этих $k$ функций:
+$$B = \sum\limits_{k=0}^{n-1} B_k \mu^k $$
+Тогда вернемся  к тому, что было:
+$$(A - \mu E)^{-1} = \cfrac{1}{\chi(\mu)}\sum\limits_{k=0}^{n-1} B_k \mu^k$$
+Или домножим на $(A - \mu E)$  и получим:
+$$E\chi(\mu) = (A - \mu E) \sum\limits_{k=0}^{n-1} B_k \mu^k$$
+
+Пусть $\chi(t) = \alpha_nt^n + \ldots+\alpha_0t^0$. Давайте расскроем скобки, мы получим:
+
+\hfill
+\begin{minipage}[h]{0.6\linewidth}
+$\mu^0:\quad E \alpha_0 = AB_0$
+
+$\mu^1:\quad E \alpha_1 = AB_1 - B_0$
+
+$\mu^2:\quad E \alpha_2 = AB_2 - B_1$
+
+$\cdots \cdots \cdots \cdots$
+
+$\mu^{n-1}:\,E \alpha_2 = AB_{n-1} - B_{n-2}$
+
+$\mu^n: \quad E \alpha_n = -B_{n-1}$
+\end{minipage}
+
+Теперь умножим каждый $E\alpha_i$ на $A^i$ и сложим. Получится:
+$$\sum\limits_{k=0}^{n} \alpha_kA^k = AB_0 +A^2B_1 - AB_0 + A^3B_2 - A^2B_1+ \ldots + A^nB_{n-1} - A^{n-1}B_{n-2} -A^nB_{n-1} = \zero$$
+
+$\chi (A) = \zero \quad \Rightarrow \chi  $ аннулятор $\mathcal{A}$, т.к. $\chi_{\mathcal{A}}(t)=\chi_{A}(t)$.
+ \hfill Q.E.D.
+
+\textbf{Замечание:} Очевидно, $\forall$ матрицы $A_{n \times n}$ ее характеристический многочлен это аннулятор $\mathcal{A}$.
+
+\textbf{Следствие 1.} $\forall \mathcal{A} \in End(V)$, $\varphi$ - минимальный многочлен, тогда $x \divby \varphi $ (из теоремы о минимальном мн-не.)
+
+\textbf{Следствие 1.5.} $\deg \varphi \leq n$, т.к. $\deg \chi = n$ и $\chi \divby \varphi$.
+
+\textbf{Следствие 2.} $\forall \mathcal{A} \in End(V)$. Если $\deg  \varphi = n = \deg \chi \Leftrightarrow \varphi \equiv \chi \cdot (-1)^n$
+
+\thmm{Теорема (о множестве корней характеристического многочлена)}
+
+$\forall \mathcal{A} \in End(V)$ множество корней $\chi$ совпадает с множеством корней $\varphi$ (без учета кратности)
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item $\lambda$ корень $\varphi \Rightarrow \lambda$ - корень $\chi$. Очевидно.
+    \item Пусть $\lambda$ корень $\chi$. Мы должны показать, что и у $\varphi$ есть такой корень. Тогда есть 2 варианта:
+    \begin{enumerate}
+        \item $\lambda \in K \Rightarrow \lambda$ - с.ч. $\Rightarrow \exists u \text{ - собственный вектор} \neq \zero$
+    
+        Так как $u$ - случайный вектор, то $(\mathcal{A}- \lambda \varepsilon) u {=} \zero$
+       
+        $(t-\lambda)$ - минимальный аннулятор элемента $u$, 
+        $\varphi$ - минимальный многочлен $\Rightarrow$ аннулятор $v$, откуда 
+        $\varphi \ \divby \ (t-\lambda) \Rightarrow \lambda$ корень $\varphi$ - победили
+        
+        \item $\lambda \not \in K \equiv \mathbb{R}$, т.е. $\lambda$ - не собственное число. Прибегаем к \uline{комплесификации}: 
+        
+        Для $\mathcal{A}_{\mathbb{C}}$ $\lambda$ -  корень. Как мы знаем $\chi _{\mathcal{A}_{\mathbb{C}}} 	\equiv \chi_{\mathcal{A}} = \chi$.
+        
+        Тогда по пункту $a$ это корень минимального многочлена в $\varphi_{\mathbb{C}}$.
+
+        Построим минимальный многочлен:
+        
+        Пусть $e_1, \ldots ,e_n$  базис.  $\mathcal{A} \xleftrightarrow{e}A$. $\mathcal{A}_{\mathbb{C}} \xleftrightarrow{e}A$. Начнем строить по определению минимальный многочлен. Для этого мы должны найти $\psi_i(t)$ - аннулятор $e_i$.
+        
+        Выпишу: $ e_i, \mathcal{A}_{\mathbb{C}}e_i, \ldots, \mathcal{A}_{\mathbb{C}}^ke_i$. Причем $k$ такое, что $ e_i, \mathcal{A}_{\mathbb{C}}e_i, \ldots, \mathcal{A}_{\mathbb{C}}^{k-1}e_i$ - линейно независимы, а $e_i, \mathcal{A}_{\mathbb{C}}e_i, \ldots, \mathcal{A}_{\mathbb{C}}^{k}e_i$ - зависимы.         
+         Заметим, что $\mathcal{A}_{\mathbb{C}}e_j =\mathcal{A}e_j$. 
+         
+         Поэтому по алогритму построения мин. многочлена $\varphi_j = \varphi_{j \ \mathbb{C}}$.
+         А уже откуда $\lambda$ корень $\varphi$ - победили!
+         
+          \hfill Q.E.D.
+        
+    \end{enumerate}
+
+\end{enumerate}
+
+\textbf{Замечание:}
+$\chi(t) = \prod(t-\lambda)^{\alpha(\lambda)}$ и $\varphi(t) = \prod (t-\lambda)^{\mu(\lambda)}$, верно, что: $1 \leq \mu(\lambda)\leq \alpha(\lambda)$
+
+
+\subsection{Операторное разложение единицы. Корневое подпространство.}
+
+Пусть у нас есть $\varphi(t)$ - многочлен над полем $K$(все его коэффиценты в $K$).
+
+ Пусть все его корни $\varphi \in K$. Тогда давайте разложим его в произведение корней:
+$$\varphi(t) = \prod\limits_{\lambda} (t-\lambda)^{m(\lambda)}$$
+давайте теперь вынесим один из корней за скобки. Получим:
+$$\varphi(t) = (t-\lambda)^{m(\lambda)} \cdot \prod\limits_{\mu\neq \lambda}(t-\mu)^{m(\mu)}$$
+Переобозначим $\varphi_{\lambda}(t) = \prod\limits_{\mu\neq \lambda}(t-\mu)^{m(\mu)}$ и подставим:
+$$\varphi(t) = (t-\lambda)^{m(\lambda)} \cdot \varphi_{\lambda}(t)$$
+
+Возьмем $P_{m-1}$ - множество всех многочленов над полем $K$ степении $\leq m-1$.
+
+Зафиксируем $\varphi$ и $\lambda$ и назовем  \deff{главным идеалом}, порожденным многочленомом $\varphi_\lambda$:
+$$ I_{\lambda} = \{p \in P_{n-1}| p \divby \varphi _{\lambda }\}$$
+
+Очевидно $I_{\lambda}$ линейное подпространство. Заметим, что $p \divby  \varphi_{\lambda} \Leftrightarrow P(t) = a_{\lambda}(t) \cdot \varphi_{\lambda}(t)$ 
+
+ Поэтому на самом деле: $I_{\lambda} \cong \{a_{\lambda}\} = P_{m(\lambda)-1}$
+
+ Откуда $\dim I_{\lambda} = m(\lambda)$.
+
+ \thmm{Теорема:}
+
+ $P_{m-1} = \bigoplus\limits_{\lambda\text{ - корень $\varphi$}} I_{\lambda}$.
+
+ \textbf{Доказательство:}
+
+ \begin{enumerate}
+     \item Проверим дизъюнктность: 
+	$$\zero = \sum\limits_{\lambda\text{ - корень $\varphi$} }p_{\lambda} \in           I_{\lambda} = \sum\limits_{\lambda} a_{\lambda}(t) \varphi_{\lambda}(t)$$
+	Зафиксируем какую-то $\lambda$ и вынесем ее за скобки:
+        $$a_{\lambda}\varphi_{\lambda}(t) + \sum\limits_{\mu \neq \lambda}a_{\mu}(t)\cdot \varphi_{\mu}(t)$$
+        Как мы знаем, для всех $\mu \neq \lambda: \varphi_{\mu} : (t-\lambda)^{m(\lambda)}$ % заменить деление
+
+        А так же мы знаем, что $\varphi_{\lambda}(t)$ не делится на $(t-\lambda)^\mu$
+
+        Откуда получаем, что $a_{\lambda} \divby (t-\lambda)^{m(\lambda)}$ %заменить деление
+        .А это значит, что $ a_{\lambda} \equiv 0$ %tofo: дописать про степень
+
+        Откуда дизъюнктно.
+
+     \item Проверим размерность $\dim( \bigoplus\limits_{\lambda} I_{\lambda}) =\sum\limits_{\lambda}\dim I_\lambda =\sum\limits_{\lambda}m(\lambda) =\dim P_{m-1}$, откуда прямая сумма.
+ \end{enumerate}
+      \hfill Q.E.D.
+ 
+ \textbf{Следствие 1:} $\forall p \in P_{m-1}: \exists! p = \sum\limits_{\lambda}p_{\lambda}$, где $p_{\lambda}(r) =\alpha_{\lambda}(t) \cdot \varphi_{\lambda}(t)$, $\deg \alpha_{\lambda}\leq m(\lambda)-1$.
+
+ В частности, $1 = \sum\limits_{\lambda \text{ корень}}p_{\lambda}$ - \deff{полиномиальное разложение единицы}
+
+ \textbf{Замечание:}
+
+ \begin{enumerate}
+     \item Пусть $\lambda \neq \mu$ - корни $\varphi$ 
+     
+     $p_{\lambda} \in I_{\lambda},  \ p_{\mu} \in I_{\mu},  \ p_{\lambda}p_{\mu} \divby \varphi$
+     
+     $p_{\lambda}(t) = \alpha_{\lambda}\varphi_{\lambda}(t)$, $p_{\mu}(t) = \alpha_{\mu}\varphi_{\mu}(t)$
+
+    $p_{\lambda}(t)p_{\mu}(t)=\alpha_{\lambda}\varphi_{\lambda}(t)\alpha_{\mu}\varphi_{\mu}(t) \divby \varphi$
+    \item Пусть $\forall  \lambda , \ m(\lambda)=1$, тогда $\varphi(t) = \prod\limits_{\lambda}(t-\lambda)$.
+
+    $I_{\lambda} \ni p_{\lambda}=\alpha_{\lambda}\varphi_{\lambda}$, тогда $ \alpha_{\lambda} = \text{const}$. Это можно понять так же из $0 \leq \deg \alpha_{\lambda} \leq m(\lambda) -1 =0$
+ \end{enumerate}
+
+
+
+\thmm{Теорема (Лагранж)}
+
+Пусть $\forall \lambda : m(\lambda) = 1$, то есть $\varphi(t) = \prod\limits_{\lambda}(t-\lambda)$.Тогда: $$ \forall p \in P_{m-1}: p(t) = \sum\limits_{\lambda}\cfrac{p(\lambda)}{\varphi'(\lambda)}\cdot \varphi_{\lambda}(t)\text{, где } p_{\lambda} \in I_{\lambda}$$
+\textbf{Доказательство:}
+
+Возьму многочлен $p$ и посмотрю значение в $\lambda$.
+
+$p(\lambda) = \sum\limits_{\mu}p_{\mu}$ - я могу так разложить из следствия 1 (см. выше).  Также заметим, что $a_\mu$ - константы. Тогда получается вот такая формула:
+$$p(\lambda) = \sum\limits_{\mu}p_{\mu}=\sum\limits_{\mu}a_\mu\varphi_{\mu}(\lambda)$$
+Заметим, что при $\mu \neq \lambda$ у нас заннуляется сумма, так что $p(\lambda) = a_{\lambda }\varphi_{\mu}(\lambda)$.
+
+Откуда получаю, что $ \alpha_{\lambda}= \frac{p(\lambda)}{\varphi_{\lambda}(\lambda)}$.
+
+Теперь про производную:  $\varphi^{\prime}(t)=((t- \lambda)\cdot \varphi_{\lambda}(t))^{\prime} = \varphi_{\lambda}(t) + (t- \lambda) \varphi^{\prime}_{\lambda}(t) $
+
+Зафиксируем $\lambda$. Получу, что в таком случае $\varphi'(\lambda)=\varphi_{\lambda}(\lambda)$. Откуда, если присмотреться, мы получаем формулу из теоремы.
+
+ \hfill Q.E.D.
+ 
+\textbf{Следствие:} $\forall \lambda: m(\lambda)=1$: Пусть $1 = \sum\limits_{\lambda}\cfrac{1}{\varphi(\lambda)} \varphi_\lambda(t) = \sum\limits_{\lambda}p_{\lambda}(t) \Rightarrow t = \sum\limits_{\lambda}\lambda p_{\lambda}(t)$
+
+\textbf{Доказательство:}  $\displaystyle t = \sum\limits_{\lambda}\cfrac{\lambda}{\varphi'(t)}\varphi_{\lambda}(t) = \sum\limits_{\lambda}\lambda p_{\lambda}$
+
+ \hfill Q.E.D.
+
+ Вернемся к операторам. Возьмем $A \in End(V)$:
+
+$\varphi(t)$ минимальный многочлен, все корни $\varphi \in K (\Leftrightarrow \text{все корни $\chi \in K$ })$, то есть являются случайными числами.
+
+$\exists! 1 = \sum\limits_{\lambda \text{ - корни } \varphi}p_{\lambda}(t)$ ---\deff{полиномиальное разложение единицы}.
+
+
+$\varepsilon = \sum\limits_{\lambda}P_{\lambda}(\mathcal{A})$, $\varepsilon = \sum\limits_{\lambda}P_{\lambda}$ --- \deff{оператор разложения единицы}.
+
+Позамечаем некоторые интересные факты:
+\begin{enumerate}
+    \item $P_{\lambda} \in End(V)$
+    \item Возьму $\lambda \neq \mu$. Замечу, что $ p_{\lambda}\cdot p_{\mu} \divby \varphi$. Тогда $p_{\lambda}(t) p_{\mu}(t) = \alpha(t)\varphi(t)$, откуда:
+    
+    $\forall v \in V: P_{\lambda}P_{\mu}v =  a(\mathcal{A})\varphi(\mathcal{A})v = \zero$, из-за того, что $\varphi$ - минимальный многочлен.
+    
+    Откуда $ P_{\lambda}P_{\mu}$ - аннулятор $\mathcal{A}$ или $ P_{\lambda}P_{\mu} = \zero$
+
+    \item $\Rightarrow \begin{cases}
+    \varepsilon = \sum\limits_{\lambda}P_{\lambda}\\
+    P_{\lambda}\cdot P_{\mu} =\zero 
+\end{cases} \Leftrightarrow P_{\lambda}$  - по теореме это проекторы на $\Im P_{\lambda} , \ V= \bigoplus \Im P_{\lambda}$
+\end{enumerate}
+
+Такие проекторы называются \deff{спектральными}. Это не те самые проекторы на $V_{\lambda}$. Пока что это проекторы на их собственные подпространства. Они обладают теми свойствами проекторов, что мы вывели до этого.
+
+\textbf{\uline{ЕСЛИ  $\forall \lambda: m(\lambda)=1$}}, тогда по следствию из матрицы Лагранжа, мы знаем 
+
+$\varepsilon = \sum\limits_{\lambda}P_{\lambda} $, $\mathcal{A} = \sum\limits_{\lambda}P_{\lambda}\cdot \lambda \Rightarrow \mathcal{A}$ о.п.с., $\lambda$ - с.ч $\mathcal{A}$.
+
+Откуда это будут проекторы на собственные подпространства.
+
+\textbf{Следствие:} T.e. $\mathcal{A}$ о.п.с. достаточно удотворять: $\forall \lambda : m(\lambda) = 1$ в минимальном многочлене.
+
+\deff{def:} $\mathcal{A} \in End(V)$, $\lambda$ - с.ч. $\mathcal{A}$. $K_{\lambda}$ - \deff{корневое подпространство}, если:
+
+$K_{\lambda} = \ker (A- \lambda \varepsilon)^{m(\lambda)}$, где $m(\lambda)$ кратность $\lambda$ в мин. многочлене $\varphi$. $\varphi(t)=\prod\limits_{\lambda}(t-\lambda)$
+
+Очевидно $V_{\lambda}\subseteq K_{\lambda}$.
+
+\thmm{Теорема (о корневом подпространстве)}
+\begin{enumerate}
+    \item $K_{\lambda}$ - инвариантно относительно $\mathcal{A}$.
+    \item $\Im P_{\lambda} = K_{\lambda}$, где $\varepsilon = \sum\limits_{\lambda}P_{\lambda}$ - оператор разложение единыц. 
+
+    Называются образами спектром проекторв
+
+    $\Rightarrow \bigoplus\limits_{\lambda} K_{\lambda} = V$
+
+    \item $(t-\lambda)^{m(\lambda)}$ - минимальный многочлен для $B = \mathcal{A}\Big|_{K_{\lambda}}\in End(K_{\lambda})$
+\end{enumerate}
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item Возьмем $v \in K_{\lambda} = \ker(\mathcal{A} - \lambda \varepsilon)^{m(\lambda)} $
+
+    Заметим, что $(\mathcal{A} - \lambda \varepsilon)^{m(\lambda)}$  - многочлен от $\mathcal{A}$. Тогда:
+    $$\mathcal{A}(\mathcal{A} - \lambda \varepsilon)^{m(\lambda)} = (\mathcal{A} - \lambda \varepsilon)^{m(\lambda)} \mathcal{A}$$
+    Умножим и левую и правую часть на $v$. Получим:
+    $$(\mathcal{A} - \lambda \varepsilon)^{m(\lambda)}(\mathcal{A}v)=\mathcal{A}(\mathcal{A} -\lambda \varepsilon)^{m(\lambda)}v = \zero$$
+
+
+    Откуда $ \mathcal{A} v \in \ker(\mathcal{A} -\lambda \varepsilon)^{m(\lambda)} = K _{\lambda} \Rightarrow K_{\lambda} $ инвариантно относительно $\mathcal{A}$
+
+    \item Вспомним, что: $\varepsilon = \sum\limits_{\lambda}P_{\lambda}, \ P_{\lambda }= p_{\lambda}(\mathcal{A})$, $p_{\lambda}(t)=\alpha_{\lambda}(t) \cdot \varphi_{\lambda}(t)$
+   
+    Пусть $v \in V$. Тогда посмотрим на:
+     $$( \mathcal{A}-\lambda \varepsilon)^{m(\lambda)} \cdot P_{\lambda}v = $$
+    Заменим $P_{\lambda}$ по формуле:
+    $$= ((\mathcal{A} -\lambda \varepsilon)^{m(\lambda)} \cdot \alpha_{\lambda}(\mathcal{A})\cdot \varphi_{\lambda}(\mathcal{A}))v =$$
+
+    Так как это все многочлены от $\mathcal{A}$, то они перестановочны:
+    $$ = (\alpha_{\lambda}(\mathcal{A})\cdot (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)} \cdot \varphi_{\lambda}(\mathcal{A}))v = (\alpha_{\lambda}(\mathcal{A})\varphi(\mathcal{A}))v= \zero$$
+    Так как $\varphi(\mathcal{A}) v = \zero$ (минимальный многочлен).
+    
+
+
+    Откуда $ P_{\lambda}v \in \ker (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)} = K_{\lambda}$. Следовательно $ \Im P_{\lambda} \subseteq K_{\lambda}$.
+
+    
+    
+    \uline{Теперь докажем, что они совпадают:}
+    
+    Возьму $\mu \ne \lambda$, а также $v \in K_{\lambda}$.  Посмотрим на $P_{\lambda}v$:
+$$P_{\mu}v= \alpha_{\mu}(\mathcal{A})\varphi_{\mu}(\mathcal{A})v =$$
+ Мы знаем, что в $\varphi_\mu$ содержится $(\mathcal{A}-\lambda\varepsilon)^{m(\lambda)}$. Давайте его вынесем за скобки, получим:
+ $$\alpha_{\mu}(\mathcal{A})\varphi_{\mu}(\mathcal{A})v =\alpha_{\mu}(\mathcal{A})\beta_{\mu}(\mathcal{A})(\mathcal{A} -\lambda \varepsilon)^{m(\lambda)}v$$
+ Так как $v \in K_{\lambda} = \ker (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}$, то $ (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}v = \zero$, откуда $P_{\mu}v = \zero$.
+
+    Откуда получаю, что $\forall v \in K_{\lambda}, \, v= \varepsilon v = \sum\limits_{\mu}P_{\mu}v=P_{\lambda}v$. Следовательно $ K_{\lambda }\subseteq \Im P_{\lambda}$, но мы уже сказали, что  $ \Im P_{\lambda} \subseteq K_{\lambda}$, поэтому $ K_{\lambda }= \Im P_{\lambda}$.
+    
+
+    \item $B = \mathcal{A}\Big|_{K_{\lambda}}\in End(K_{\lambda})$
+    
+    $\forall v \in K_{\lambda}:(\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}v = \zero$, откуда получаем, что $\psi(t) = (t-\lambda)^{m(\lambda)}$ - аннулятор $\mathcal{B}$. 
+
+    \uline{Хотим понять: минимальный ли это многочлен?} 
+    
+    Предположим, что он не минимальный, тогда есть $\psi_i(t)$ - минимальный многочлен $\mathcal{B}$: $\deg \psi_i <\deg \psi$. Заметим, что любой аннулятор $\mathcal{B}$ делится на минимальный многочлен, поэтому $\psi_i(t) =(t-\lambda )^{k}$, причем $k \leq m(u)-1$. Тогда заметим, что $\psi_1(t) = (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)-1}$ - тоже аннулятор $\mathcal{B}$. 
+
+    Если мы покажем, что $\varphi_1(t)=\psi_1(t)\cdot \varphi_{\lambda}(t)$ - минимальный многочлен $\mathcal{A}$, тогда наш искомый минимальный многочлен не был минимальным. Как мы знаем:
+    $$\forall v \in V: \exists! v =\sum\limits_{\mu} v_{\mu}\text{, где }v_{\mu}\in \Im P_\mu =  K_\mu$$
+    Покажем, что $\varphi_1(t)$ - минимальный многочлен:
+$$\varphi_1(\mathcal{A})=\psi_1(\mathcal{A}) \varphi_{\lambda}(\mathcal{A})v = \psi_1(\mathcal{A}) \varphi_{\lambda}(\mathcal{A})\sum\limits_{\mu} v_{\mu} = \varphi_{\lambda}(\mathcal{A})\psi_1(\mathcal{A})v_\lambda + \sum\limits_{\mu\neq \lambda}\psi_1(\mathcal{A}) \varphi_{\lambda}(\mathcal{A}) v_{\mu}$$
+Как мы сказали выше: $\psi_1(t)$ - аннулятор $B$, откуда $\psi_1(\mathcal{A})v_{\lambda} = 0$ (тк $v_\lambda \in K_\lambda$). Также как мы знаем в $\varphi_\lambda(\mathcal{A})$ содержится $(\mathcal{A}-\mu\varepsilon)^{m(\mu)}$. А $v_{\mu} \in K_{\mu} = \ker (\mathcal{A}-\mu\varepsilon)^{m(\mu)}$. То есть наш многочлен и вправду минимальный. То есть мы пришли к противоречию. 
+
+Откуда $(t-\lambda)^{m(\lambda)}$ - минимальный многочлен для $\mathcal{B}$.
+    
+\end{enumerate}
+ \hfill Q.E.D.
+
+ 
+\textbf{Следствие 1:} Очевидно, что тогда $1 \leq m(\lambda) \leq \dim (K_{\lambda}) $.
+
+\textbf{Следствие 2:} $\mathcal{A}$ - о.п.с $\Leftrightarrow$ $\varphi(t) = \prod\limits_{\lambda}(t-\lambda)$, т.е $\forall \lambda: m(\lambda) =1$, (все корни $\varphi \in K$)
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item[$\Rightarrow$] Пусть $\mathcal{A}$ - о.п.с.. Тогда мы знаем, что:
+    $$V = \bigoplus\limits_{\lambda - \text{с.ч}}V_\lambda, \lambda \text{ - корень } \varphi$$
+    $(\mathcal{A}-\lambda \varepsilon)v = 0 \Rightarrow (t-\lambda)$ - минимальный аннулятор $v$, где $v$ - собственный вектор. Мы знаем, что:
+    $$\forall v \in V: \exists! v=\sum\limits_{\lambda}v_{\lambda}$$
+    Докажем, что  $\varphi(t) = \prod\limits_{\lambda}(t-\lambda)$ - минимальный многочлен:
+    $$\varphi(\mathcal{A})\cdot v\left(\prod\limits_{\lambda}(\mathcal{A}-\lambda \varepsilon)\right)\sum\limits_{\mu}v_{\mu}  = \zero$$
+    Это верно, потому что в это произведение входят анулляторы собственных подпространств $(t-\lambda)$, которые будут занулять каждое из слагаемых. Откуда это аннулятор $\mathcal{A}$. А так как корни характеристического и минимального совпадают по  теореме о множестве корней характеристического многочлена, а так же потому что $\lambda$ - случайные числа - получаем, что данный многочлен - минимальный.
+    
+    \item[$\Leftarrow$] Уже доказывали, смотрите \textbf{ЕСЛИ} над теоремой о корневом подпространстве.
+\end{enumerate}
+ \hfill Q.E.D.
+
+
+
+
+\pagebreak
+
+
+\subsection{Нильпотентный оператор. Разложение Жардана }
+
+\textbf{!!! Не путать разложение жардана с жардановой формой матрицы !!!}
+
+\deff{def:} $B \in End(V)$ называется \deff{нильпотентным}, если его минимальный многочлен $ = t^v$,
+
+(т.е. $B^\nu = \zero$), где $\nu$ - \deff{индекс нильпотентности}.
+
+
+\thmm{Теорема (Разложение Жардана)}
+
+$\forall \mathcal{A}\in End(V)$, все корни $\chi,\varphi \in K$. Надо доказать, что:
+
+$\mathcal{A} = \mathcal{D} +\mathcal{B} $, где $\mathcal{D}$ - о.п.с, $\mathcal{B}$ - нильпотентный, причем $DB =BD$.
+
+\textbf{Доказательство:}
+
+Возьмем оператор $\mathcal{A}$. У него есть $\varphi = \prod\limits_{\lambda}(t-\lambda)^{m(\lambda)}$ - минимальный многочлен. 
+
+Разложим на операторы разложения единицы:
+$$\varepsilon = \sum\limits_{\lambda\text{ -  корень $\varphi$}}P_{\lambda}$$
+Позже мы этим воспользуемся.
+
+Возьму $\mathcal{D}:= \sum\limits_{\lambda}\lambda P_{\lambda}$ --- очевидно, $\mathcal{D}$ - о.п.с. (смотрите теоремы о.п.с).
+
+Возьму $\mathcal{B}:= \mathcal{A}-\mathcal{D}$. Все, что осталось проверить - нильпотентность $\mathcal{B}$.
+
+Пусть $\nu = \max (m_{\lambda})$, где $\lambda$ - корень $\varphi$. Тогда:
+$$\mathcal{B}^{\nu} = \left(\mathcal{A}-\sum\limits_{\lambda}\lambda P_\lambda\right)^\nu = \left(\mathcal{A}\sum\limits_{\lambda}P_{\lambda }- \sum\limits_{\lambda}\lambda P_{\lambda}\right)^\nu = \left(\sum\limits_{\lambda}\left(\mathcal{A-\lambda\varepsilon}\right)P_{\lambda}\right)^\nu$$
+Как мы помним $\forall \mu\neq \lambda:P_\lambda\cdot P_{\mu}=\zero$, а также $P_{\lambda}^2=P_\lambda$. Поэтому:
+$$\left(\sum\limits_{\lambda}\left(\mathcal{A}-\lambda\varepsilon\right)P_{\lambda}\right)^\nu = \sum\limits_{\lambda}\left(\mathcal{A}-\lambda\varepsilon\right)^\nu P_\lambda$$
+А как мы помним из определения $P_\lambda = a_\lambda(\mathcal{A})\varphi_\lambda(\mathcal{A})$. А также, так как $\nu = \max(m_\lambda)$, то внутри каждой скобки есть множитель $(\mathcal{A}-\lambda\varepsilon)^{m(\lambda)}$. Откуда $\mathcal{B}$ и вправду нильпотентно.
+
+Теперь докажем перестановочность.
+$\mathcal{B}\mathcal{D} = \left(\mathcal{A}-\sum\limits_{\lambda}\lambda P_\lambda\right)\sum\limits_{\lambda}\lambda P_{\lambda}$
+
+А так как это многочлены от $\mathcal{A}$, то они перестановочны.  Поэтому и получается наша перестановочность
+
+ \hfill Q.E.D.
+ 
+\textbf{Замечание:} $\mathcal{A}\mathcal{D} = \mathcal{D} \mathcal{A}$, $\mathcal{A}\mathcal{B} = \mathcal{B} \mathcal{A}$
+
+\thmm{Теорема (единственность разложения Жордана):} 
+
+$\forall \mathcal{A} \in End(V)$. Доказать, что разложение Жордана единственно, то есть $\exists! D, B$.
+
+\textbf{Доказательство:}
+
+Пусть $\mathcal{A} = \mathcal{D}'  + \mathcal{C}$, $D'C=CD'$
+
+
+
+$\mathcal{A} = \sum\limits_{\lambda}\lambda P_{\lambda} + B$
+
+Нужно доказать, что $\{\lambda\} = \{\mu\}$, а также $\Im Q_\mu = K_{\lambda} = \Im P_{\lambda} = \ker (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}$
+
+я ее еще не понял :)

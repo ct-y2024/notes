@@ -24,7 +24,9 @@
 \usepackage{etoolbox} % <--- added
 
 
-
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
+}
 \AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
 \newcommand{\ctd}{\begin{flushright} $\square$ \end{flushright}}
 
@@ -130,6 +132,29 @@
 \newcommand{\iinf}[1]{\int\limits_{#1}^{+\infty}}
 \newcommand{\ioinf}{\int\limits_{0}^{+\infty}}
 \newcommand{\ipminf}{\int\limits_{-\infty}^{+\infty}}
+
+
+\newenvironment{Word}[2]{
+    \vspace{2pt}
+    \textbf{words:}
+    \vspace{-7pt}
+    \begin{multicols}{#1}
+    \begin{enumerate}[#2]       
+}{\end{enumerate}\end{multicols}}
+
+\usepackage{lipsum} % sample text
+\usepackage{wrapfig}
+\usepackage{minted}
+\setminted{
+    linenos=true,
+    frame=leftline,
+    fontsize=\ttfamily\small,
+    framesep=4mm,
+    numbersep=4pt,
+    tabsize=4,
+    breaklines=true,
+    breakautoindent=true
+}
 
 \usepackage{subfiles}
 \usepackage{fancyhdr}
