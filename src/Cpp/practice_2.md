@@ -201,4 +201,70 @@ int main(int argc, char **argv) {
 
 ### Совпадение содержимого файла со строчкой
 
+``` cpp 
+#include <array>
+#include <cerrno>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+int main(int argc, char ** argv)
+{
+    if (argc != 3) {
+        std::fprintf(stderr, "Usage: %s <file_path> <text>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    const char * file_path = argv[1];
+    const char * text = argv[2];
+
+    int * ptr = static_cast<int *>(std::malloc(10 * sizeof(int)));
+    ptr[4] = 42;
+    std::free(ptr);
+
+    std::FILE * fd = std::fopen(file_path, "rb");
+    if (fd == nullptr) {
+        std::fprintf(
+            stderr,
+            "Could not open file '%s': %s\n",
+            file_path,
+            std::strerror(errno)
+        );
+        return EXIT_FAILURE;
+    }
+
+    const char * text_it = text;
+
+    while (true) {
+        int current = std::fgetc(fd);
+
+        if (*text_it == '\0') {
+            if (current == EOF) {
+                // TODO can be a function returning bool
+                std::puts("Matches!");
+            } else {
+                std::puts("Doesn't match :(");
+            }
+            break;
+        }
+        if (static_cast<unsigned char>(*text_it) != current) {
+            std::puts("Doesn't match :(");
+            break;
+        }
+
+        ++text_it;
+    }
+
+    if (std::ferror(fd)) {
+        std::perror("Read error");
+        std::fclose(fd);
+        return EXIT_FAILURE;
+    }
+
+    std::fclose(fd);
+    return EXIT_SUCCESS;
+}
+```
+
+
 > Данную практику писал Чепелин Вячеслав. Скопирован файл Артема  с нашей практики и на нем объяснен код
