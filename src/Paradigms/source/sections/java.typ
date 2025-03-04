@@ -1,14 +1,3 @@
-#show raw.where(block: false): box.with(
-    inset: (x: 3pt, y: 0pt),
-    outset: (y: 3pt),
-    radius: 2pt,
-)
-#show raw.where(block: true): block.with(
-    inset: 5pt,
-    radius: 4pt,
-    stroke: 1pt,
-)
-
 == Программирование по контракту
 Рассмотрим данную функцию:
 ```Java
