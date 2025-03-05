@@ -158,7 +158,6 @@ int main(int argc, char **argv) {
     return 0;
 }
 ```
-todo: добавить комментарии
 
 Что делать если fclose завершился с ошибкой - вопрос философский.
 
@@ -201,70 +200,61 @@ int main(int argc, char **argv) {
 
 ### Совпадение содержимого файла со строчкой
 
-``` cpp 
-#include <array>
-#include <cerrno>
+```cpp
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
+#include <memory>
 
-int main(int argc, char ** argv)
-{
+int main(int argc, char **argv) {
+    // Проверка правильного количества аргументов
     if (argc != 3) {
-        std::fprintf(stderr, "Usage: %s <file_path> <text>\n", argv[0]);
-        return EXIT_FAILURE;
+        std::fprintf(stderr, "Expected 2 arguments, got %d\n", argc - 1);
+        return 1;
     }
 
-    const char * file_path = argv[1];
-    const char * text = argv[2];
-
-    int * ptr = static_cast<int *>(std::malloc(10 * sizeof(int)));
-    ptr[4] = 42;
-    std::free(ptr);
-
-    std::FILE * fd = std::fopen(file_path, "rb");
-    if (fd == nullptr) {
-        std::fprintf(
-            stderr,
-            "Could not open file '%s': %s\n",
-            file_path,
-            std::strerror(errno)
-        );
-        return EXIT_FAILURE;
+    const char *filename = argv[1];  // Имя файла из первого аргумента
+    std::FILE *f = std::fopen(filename, "r");  // Открытие файла для чтения
+    if (!f) {
+        std::fputs("File not opened!\n", stderr);
+        return 1;
     }
 
-    const char * text_it = text;
+    bool equals = true;  // Флаг совпадения содержимого
+    const char *const pattern = argv[2];  // Строка для сравнения из второго аргумента
+    size_t len = std::strlen(pattern);  // Длина строки для сравнения
 
-    while (true) {
-        int current = std::fgetc(fd);
-
-        if (*text_it == '\0') {
-            if (current == EOF) {
-                // TODO can be a function returning bool
-                std::puts("Matches!");
-            } else {
-                std::puts("Doesn't match :(");
-            }
+    // Посимвольное сравнение содержимого файла со строкой
+    for (size_t i = 0; i < len; ++i) {
+        int c = std::fgetc(f);  // Чтение символа из файла
+        if (c == EOF) {  // Если достигнут конец файла раньше времени
+            equals = false;
             break;
         }
-        if (static_cast<unsigned char>(*text_it) != current) {
-            std::puts("Doesn't match :(");
+        unsigned char cc = static_cast<unsigned char>(c);
+        char ccc = static_cast<char>(cc);
+        if (ccc != pattern[i]) {  // Если символы не совпадают
+            equals = false;
             break;
         }
-
-        ++text_it;
     }
 
-    if (std::ferror(fd)) {
-        std::perror("Read error");
-        std::fclose(fd);
-        return EXIT_FAILURE;
+    // Проверка на ошибки чтения
+    if (std::ferror(f)) {
+        std::fputs("Error while reading\n", stderr);
+        std::fclose(f);
+        return 1;
     }
 
-    std::fclose(fd);
-    return EXIT_SUCCESS;
+    // Проверка, что файл не содержит дополнительных символов
+    if (std::fgetc(f) != EOF) {
+        equals = false;
+    }
+
+    // Вывод результата
+    std::fputs(equals ? "Yes\n" : "No\n", stdout);
+
+    std::fclose(f);  // Закрытие файла
+    return 0;
 }
 ```
-
-
-> Данную практику писал Чепелин Вячеслав. Скопирован файл Артема  с нашей практики и на нем объяснен код
+> Данную практику писал Чепелин Вячеслав. Скопирован файл Артема и Льва с нашей практики и на нем объяснен код
