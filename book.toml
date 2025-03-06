@@ -5,17 +5,15 @@ multilingual = false
 src = "src"
 title = "CT Notes y2024"
 
+
 [build]
 build-dir = "book"
 
 [output.html]
 default-theme = "ayu"
-mathjax-support = false  # Отключаем MathJax
-katex-support = true     # Включаем KaTeX
-curly-quotes = false     # Отключаем умные кавычки
+mathjax-support = true
+#curly-quotes = false  # Отключает преобразование прямых кавычек в "умные" кавычки
 git-repository-url = "https://github.com/ct-y2024/notes"
 
-# Опционально: явно задаем разделители для KaTeX (если поддерживается)
-[output.html.katex]
-use-inline-delimiters = ["$", "$"]
-use-block-delimiters = ["$$", "$$"]
+
+
