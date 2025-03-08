@@ -71,7 +71,7 @@ pair<node *, node *> split(node *root, long long x) {
 Кратко опишу логику остальных операций:
 
 - **insert** (в начало/конец) - **merge**
-- **insert** (в любое место) - **split**+**split**+**merge**+**merge**
+- **insert** (в любое место) - **split**+**merge**+**merge**
 - **remove** (первый/последний) - **split**
 - **remove** (отрезка или одной вершины) - **split**+**split**+**merge**
 
