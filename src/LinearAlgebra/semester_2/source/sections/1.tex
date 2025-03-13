@@ -348,7 +348,7 @@ $$\Leftrightarrow\begin{cases}
     \mathcal{A} \xleftrightarrow{e} A,\det A \neq 0 \\
     \rg A = n
 \end{cases}$$
-Мы знаем, что существует $\mathcal{A}^{-1}$. А также $\mathcal{A}\cdot \mathcal{A}^{-1}=\varepsilon$. Откуда по свойству 3 получаем, что $\det\mathcal{A} ^{-1}=\det \mathcal{A}$.
+Мы знаем, что существует $\mathcal{A}^{-1}$. А также $\mathcal{A}\cdot \mathcal{A}^{-1}=\varepsilon$. Откуда по свойству 3 получаем, что $\det \mathcal{A}^{-1} = \cfrac{1}{\det \mathcal{A}}$
 
 \hfill Q.E.D.
 
@@ -1510,15 +1510,99 @@ $\forall \mathcal{A} \in End(V)$. Доказать, что разложение 
 
 \textbf{Доказательство:}
 
-Пусть $\mathcal{A} = \mathcal{D}'  + \mathcal{C}$, $D'C=CD'$
+Пусть у нас есть еще одно разложение Жордана: $\mathcal{A} = \mathcal{D}'  + C$, $\mathcal{D}'C=C\mathcal{D}'$, где $\mathcal{D}'$ - о.п.с, а $C$ - нильпотентый оператор.
+
+$\mathcal{D'} = \sum\limits_{\mu}\mu Q_\mu$, где $Q_{\mu}$ - проекторы.
+
+Давайте разметим план доказательства:
+\begin{enumerate}
+    \item[1.] Множество $\lambda$ совпадает с множеством $\mu$.
+    \begin{enumerate}
+        \item[1.1] Докажем, что $CQ_{\mu}=Q_{\mu}C$.
+        \item[1.2] Докажем, что $(\mathcal{A-\mu\varepsilon})^kQ_{\mu} = C^kQ_{\mu}$.
+        \item[1.3] Покажем для каждого $\mu$ аннуляторы $\Im Q_{\mu}$. $\psi_{\mu} = (t-\mu)^{k(\mu)}$ 
+        \item[1.4] Покажем, что произведение $\psi_{\mu}$ - аннулятор $\mathcal{A}$.
+        \item[1.5] Покажем, что на самом деле это минимальный многочлен, откуда множество корней совпадет.
+    \end{enumerate}
+    \item [2.] Докажем совпадение $\mathcal{D}$ и $\mathcal{D}'$.
+\end{enumerate}
+Начнем доказательство:
+\begin{enumerate}
+    \item[1.1]  Возьмем $ \mu$. Докажем, что $CQ_{\mu}=Q_{\mu}C$
+    
+    Посмотрим на $\mathcal{D}'Q_{\mu}$. Используя свойства проекторов, оно равно:
+    $$\mathcal{D}'Q_{\mu}= \left(\sum\limits_{\xi}\xi Q_\xi\right) Q_{\mu } = \mu Q_{\mu}$$
+     Посмотрим на $Q_{\mu}\mathcal{D}'$. Используя свойства проекторов, оно равно:
+    $$Q_{\mu}\mathcal{D}'= Q_{\mu }\left(\sum\limits_{\xi}\xi Q_\xi\right)  = \mu Q_{\mu}$$
+    Откуда $\mathcal{D}'$ и $Q_{\lambda}$ - перестановочны.
+
+    Возьмем $\xi, \mu$. Для них выполнено:
+    $$(\xi-\mu)Q_{\xi} CQ_{\mu} = \xi Q_{\xi}CQ_{\mu}-Q_{\xi}C\mu Q_{\mu}$$
+    Как мы только что доказали: $\mu Q_{\mu}=\mathcal{D}'Q_{\mu}$. Поэтому:
+    $$\xi Q_{\xi}CQ_{\mu}-Q_{\xi}C\mu Q_{\mu} = \mathcal{D}' Q_{\xi}CQ_{\mu}-Q_{\xi}C\mathcal{D}'Q_{\mu}$$
+    А так же мы только что доказали, что $\mathcal{D}'$ и $Q_{\mu}$ перестановочны для любого $\mu$. Откуда:
+    $$\mathcal{D}' Q_{\xi}CQ_{\mu}-Q_{\xi}C\mathcal{D}'Q_{\mu} =  Q_{\xi}\mathcal{D}'CQ_{\mu}-Q_{\xi}C\mathcal{D}'Q_{\mu} = Q_{\xi}(\mathcal{D}'C - C\mathcal{D}
+    ')Q_{\mu}$$
+    А как мы знаем из определения жорданового разложения $C$ и $D'$ перестановочны. Это значит, что $D'C-CD' = \zero$. Откуда:
+    $$(\xi-\mu)Q_{\xi} CQ_{\mu} = \zero = (\mu-\xi)Q_{\mu} CQ_{\xi}$$
+    То есть для $\xi\neq \mu: Q_{\xi} CQ_{\mu} = Q_{\mu} CQ_{\xi} = \zero$
+    Теперь вернемся к тому, что мы изначально хотели - перестановочность $C,Q_{\mu} $:
+    $$CQ_{\mu} = \varepsilon C Q_{\mu } = \left(\sum\limits_{\xi}Q_{\xi}\right)CQ_{\mu}$$
+    Хочу использовать только что доказанный факт:$Q_{\xi} CQ_{\mu} = Q_{\mu} CQ_{\xi}$:
+    $$\left(\sum\limits_{\xi}Q_{\xi}\right)CQ_{\mu}  = \sum\limits_{\xi}Q_{\mu}CQ_{\xi}=Q_{\mu}C \left(\sum\limits_{\xi}Q_{\xi}\right)= Q_{\mu}C$$
+    Откуда $Q_{\mu}C = C Q_{\mu}$ --- перестановочны.
+    \item[1.2] Докажем, что $(\mathcal{A-\mu\varepsilon})^kQ_{\mu} = C^kQ_{\mu}$.
+    Сначала посмотрим на случай $k=1$:
+    $$(\mathcal{A-\mu\varepsilon})Q_{\mu} = (\mathcal{D}'+C - \mu \varepsilon)Q_{\mu}=(\sum\limits_{\xi}\xi Q_{\xi} + C  - \mu \sum\limits_{\xi}\xi)Q_{\mu}$$
+    Воспользуемся свойствами проекторов и получим, что:
+    $$(\sum\limits_{\xi}\xi Q_{\xi} + C  - \mu \sum\limits_{\xi}\xi)Q_{\mu} = \mu Q_{\mu} + C Q_{\mu}- \mu Q_{\mu}= CQ_{\mu}$$
+    Воспользуемся индукцией:
+
+    \textbf{База:} $k=1$ доказана сверху.
+
+    \textbf{Индукционный переход:} Пусть выполнено $(\mathcal{A-\mu\varepsilon})^kQ_{\mu} = C^kQ_{\mu}$,  тогда выполнено:\\
+    $(\mathcal{A-\mu\varepsilon})^{k+1}Q_{\mu} = C^{k+1}Q_{\mu}$. Докажем:
+    $$(\mathcal{A-\mu\varepsilon})^{k+1}Q_{\mu}  = (\mathcal{A-\mu\varepsilon})^{1}(\mathcal{A-\mu\varepsilon})^{k}Q_{\mu} = (\mathcal{A-\mu\varepsilon}) C^kQ_{\mu} = C^k(\mathcal{A-\mu\varepsilon})Q_{\mu} = C^{k+1}Q_{\mu}$$
+    
+    \item[1.3] Посмотрим на $(\mathcal{A}-\mu \varepsilon)^k Q_{\mu}$. Как мы доказали в пункте 1.2 $(\mathcal{A}-\mu \varepsilon)^k Q_{\mu}= C^{k}Q_{\mu}$. Как мы помним, $C$ - нильпотентная, откуда есть $k$ начиная с которого  $(\mathcal{A}-\mu \varepsilon)^k Q_{\mu} = \zero$. Давайте для каждого $\mu$ введем свое $k(\mu)$ - минимальная степень, чтобы получился ноль. Из перестановочности $C^jQ, QC^j$ получаю, что $(A-\mu\varepsilon)^{k(\mu)}Q =Q(A-\mu\varepsilon)^{k(\mu)} $
+
+    То есть $Q_{\mu}(\mathcal{A}-\mu \varepsilon)^{k(\mu)} =(\mathcal{A}-\mu \varepsilon)^{k(\mu)}Q_{\mu}=C^{k(\mu)}Q_{\mu}=\zero$. Это значит, что любой вектор из $\Im Q_{}\mu$ применяя к нему $(\mathcal{A}-\mu \varepsilon)^{k(\mu)}$  будет получаться ноль.
+    То есть многочлен $(t-\mu)^{k(\mu)}$ - минимальный аннулятор векторов из $\Im Q_m$. 
+
+    \textbf{Замечание:}  именно здесь применяется пункт 1.1.
+
+    \item[1.4] Возьму $\psi = \prod\limits_{\mu}(t-\mu)^{k(\mu)}$. Покажу, что это аннулятор $\mathcal{A}$. 
+
+    $\forall x: \exists!x = \sum\limits_{\mu}x_{\mu} $, где $x_{\mu} \in Q_{\mu}$ - по определению проекторов.
+
+    Подействуем на $x$ нашим минимальным многочленом:
+    $$\psi(\mathcal{A})x = \left( \prod\limits_{\mu}(\mathcal{A}-\mu \varepsilon)^{k(\mu)}\right)\sum\limits_{\xi}x_{\xi} =\sum\limits_{\xi}\left( q_{\xi}\cdot(\mathcal{A}-\xi)^{k(\xi)} \cdot x_{\xi}\right) = \zero $$
+    Это ноль потому что каждое слагаемое в сумме ноль, а каждое слагаемое ноль, потому что в $\psi(\mathcal{A})$ входит множитель $t(\mathcal{A}-\xi)^{k(\xi)}$ - аннулятор векторов из $\Im Q_\mu$.
+
+    Откуда $\psi$ аннулятор $\mathcal{A}$.
+    \item[1.5] Как мы знаем минимальный многочлен делится на минимальные аннуляторы векторов, откуда $\varphi $ делится на каждое $\psi_{\lambda}$. Также мы только что доказали, что $\psi$ аннулятор $\mathcal{A}$, откуда $\psi$ делится на $\varphi$. А раз  $\psi$ делится на $\varphi$ и $\varphi$ делится на $\psi$, то $\psi \equiv \varphi $ - минимальный аннулятор. Из этого следует, что множество $\lambda$ и множество $\mu$ совпадает.
+
+    \textbf{Замечание:} совпадение  $\lambda$ и $\mu$ еще не говорит нам о том, что $\mathcal{D}' = \mathcal{D}$.
+    \item[2.] $k(\lambda) = m(\lambda)$ из того, что совпали $\psi, \varphi$.
+    $$(\mathcal{A}-\mu\varepsilon)^{m(\lambda)}Q_{\lambda} =Q_{\lambda}(\mathcal{A}-\mu\varepsilon)^{m(\lambda)} =\zero$$
+    Откуда векторы из $\Im Q_{m} \subseteq \ker (\mathcal{A}-\lambda\varepsilon)^{m(\lambda)} = K_{\lambda}$. Но мы помним, что $\bigoplus\limits_{\lambda}K_{\lambda} = V$ и  $\bigoplus\limits_{\lambda}\Im Q_{\lambda} = V$, откуда они совпадают. Откуда $\mathcal{D} = \mathcal{D}'$.
+\end{enumerate}
+
+
+ \hfill Q.E.D.
 
 
 
-$\mathcal{A} = \sum\limits_{\lambda}\lambda P_{\lambda} + B$
 
-Нужно доказать, что $\{\lambda\} = \{\mu\}$, а также $\Im Q_\mu = K_{\lambda} = \Im P_{\lambda} = \ker (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}$
 
-я ее еще не понял :)
+
+
+
+
+
+
+
+
 
 
 \thmm{Теорема:}
@@ -1531,19 +1615,19 @@ $\chi_{\mathcal{A}}\equiv \chi_\mathcal{D}$
 По теореме о о.п.с у $\mathcal{A}$ и $\mathcal{D}$ совпадает множество корней. 
 
 Но нам надо теперь понять что-то про степени. $\nu = \max(m(\lambda)); \mathcal{B}^\nu = \zero$. Тогда:
-$$(\mathcal{A}-\mu \varepsilon)^{\nu}=(\mathcal{A}-\mu \varepsilon)^{\nu} - \mathcal{B}^\nu t^\nu = (\mathcal{A-\mu \varepsilon-\mathcal{B}})((\mathcal{A}-\mu\varepsilon)^{\nu-1}+ (\mathcal{A}-\mu\varepsilon)^{\nu-2}\mathcal{B}t + \ldots + (\mathcal{B}t)^{\nu-1})$$
+$$(\mathcal{A}-\mu \varepsilon)^{\nu}=(\mathcal{A}-\mu \varepsilon)^{\nu} - \mathcal{B}^\nu t^\nu = (\mathcal{A-\mu \varepsilon-\mathcal{B}}t)((\mathcal{A}-\mu\varepsilon)^{\nu-1}+ (\mathcal{A}-\mu\varepsilon)^{\nu-2}\mathcal{B}t + \ldots + (\mathcal{B}t)^{\nu-1})$$
 Так как $\mathcal{B}$ - многочлен от $\mathcal{A}$, то мы можем так разложить
 
 Возьмем $\mu$ не корень. Посчитаем определители. С одной стороны это:
 $\det (A-\mu \varepsilon)^\nu = (\chi_{\mathcal{A}})^\nu$  - не зависит от $t$.
 С другой стороны это:
-$$\det (A-\mu \varepsilon)^\nu = \det(\mathcal{A-\mu \varepsilon-\mathcal{B}t})\det ((\mathcal{A}-\mu\varepsilon)^{\nu-1}+ (\mathcal{A}-\mu\varepsilon)^{\nu-2}\mathcal{B}t + \ldots + (\mathcal{B}t)^{\nu-1})$$
+$$\det (A-\mu \varepsilon)^\nu = \det(\mathcal{A-\mu \varepsilon-\mathcal{B}}t)\det ((\mathcal{A}-\mu\varepsilon)^{\nu-1}+ (\mathcal{A}-\mu\varepsilon)^{\nu-2}\mathcal{B}t + \ldots + (\mathcal{B}t)^{\nu-1})$$
 Тут два многочлена зависящих от $t$ (оба не нули, иначе $\mu$ - корень).
 
 Заметим, что слева многочлен нулевой степени $t$. Когда произведение двух многочленов от $t$ дает в произведении многочлен нулевой степени? Когда это многочлены нулевой степени. Откуда это константы
 
 Давайте посчитаем эти константы. Подставим в первый многочлен $t=1$, а во второй подставим $t=0$. Получим:
-$$(\chi_{\mathcal{A}}(\mu))^{\nu-1} = \chi_{\mathcal{D}}(\mu) (\chi_{\mathcal{A}}(\mu))^\nu)$$
+$$(\chi_{\mathcal{A}}(\mu))^{\nu} = \chi_{\mathcal{D}}(\mu) (\chi_{\mathcal{A}}(\mu))^{\nu-1})$$
 Откуда $\chi_{\mathcal{A}}(\mu)=\chi_{\mathcal{D}}(\mu)$. Получили, что в любой точке - не корне, у нас совпадение многочленов. В корнях они оба заннуляются, откуда $\chi_{\mathcal{A}} \equiv \chi_{\mathcal{D}}$.
 
 \hfill Q.E.D.
@@ -1568,7 +1652,7 @@ $D = \sum\limits_{\lambda}\lambda P_{\lambda}$, $\mathcal{D}$ - о.п.с. $\fora
 
 $K=K_{\lambda} = \ker (A-\lambda)^{m(\lambda)},B = (\mathcal{A}-\lambda\varepsilon)\Big|_{K},m = m(\lambda),\alpha= \alpha(\lambda),\gamma=\gamma(\lambda)$.
 
-Возьмем $K_r = \ker(B^r) = \ker((\mathcal{A}-\lambda\varepsilon)^r),r= 1,\ldots, m: K_1 \subseteq K_2 \subseteq\ldots \subseteq K_m = K  =K_1= K_{\lambda}$. Заметим, что $m$ - минимальная степень, когда он зануляется. Докажем, что там строгое включение:
+Возьмем $K_r = \ker(B^r) = \ker((\mathcal{A}-\lambda\varepsilon)^r),r= 1,\ldots, m: K_\lambda = K_1 \subseteq K_2 \subseteq\ldots \subseteq K_m = K $. Заметим, что $m$ - минимальная степень, когда он зануляется. Докажем, что там строгое включение:
 
 \textbf{Доказательство:}
 
@@ -1588,7 +1672,7 @@ $\rg B^r = \rg B^{r+1}, \Im B^{r+1} \subseteq \Im B^r\Rightarrow \Im B^{r+1} =\I
    \includegraphics[width = 15cm]{assets/7_9-zhordan-sample.png}
 \end{center}
 
-Рассмотрим такое $K$, что его ранг $24$. И давайте  сопоставим точкам на рисунке базисные вектора. Тогда у $K_1$ будет $6$ базисных векторов, у $K_2$ будет $11$ и так далее. Тогда давайте введем новое определение: $\overline{K}_5$, такое подпространство, что $K_4 \oplus \overline{K}_5 = K$. Возьму оттуда первый базисный вектор. Назову его $j_5$. На картинке вы можете это отчетливо видеть. Тогда возьму $j_4 =Bj_5$, $j_3 =Bj_4$, $j_2 =Bj_3$, $j_1 =Bj_2$. Причем заметим, что в таком случае $j_i \in K_i$. 
+Рассмотрим такое $K$, что его ранг $24$. И давайте  сопоставим точкам на рисунке базисные вектора. Тогда у $K_1$ будет $6$ базисных векторов, у $K_2$ будет $11$ и так далее. Тогда давайте введем новое определение: $\overline{K}_5$, такое подпространство, что $(KB + K_4) \oplus \overline{K}_5 = K$. Возьму оттуда первый базисный вектор. Назову его $j_5$. На картинке вы можете это отчетливо видеть. Тогда возьму $j_4 =Bj_5$, $j_3 =Bj_4$, $j_2 =Bj_3$, $j_1 =Bj_2$. Причем заметим, что в таком случае $j_i \in K_i$. 
 
 Такие $j_5,j_4,j_3,j_2,j_1$ мы будем называть \deff{циклическим базисом} длины 5, а $j_4,j_3,j_2,j_1$ будут называться \deff{присоединяемыми}.
 
@@ -1646,6 +1730,7 @@ $T = T_{\text{кан $\rightarrow$ жорд. базис}} = \text{объедин
 
 \textbf{А ТЕПЕРЬ НА ЯЗЫКЕ МАТЕМАТИКИ:}
 
+$B = (\mathcal{A}-\lambda\varepsilon)\Big|_{K}$. 
 Введу $K_1 \subset K_2 \subset \ldots \subset K_r \subset \ldots \subset K_m = K$, где $K_r = \ker B^r$.
 
 Введем временное обозначение:
@@ -1657,13 +1742,13 @@ $z_r = BK + K_r$\\
 $\vdots$\\
 $z_m = BK + K_m = K$
 
-Заметим, что в таком случае: $z_0 \subseteq z_1 \subseteq \ldots \subseteq z_m $, а также $z_{r+1}= z_r \oplus \overline{K}_{r+1}$, где $\overline{K}_r$ - \deff{опорное подпространство} - отличие между $K_r$ и $K_{r-1}$ ($K_i \oplus \overline{K}_{i+1}=K_{i+1}$). Тогда заметим вот такую формулу:
+Заметим, что в таком случае: $z_0 \subseteq z_1 \subseteq \ldots \subseteq z_m $, а также $z_{r+1}= z_r \oplus \overline{K}_{r+1}$, где $\overline{K}_r$ - \deff{опорное подпространство}. Тогда заметим вот такую формулу:
 $$K = z_m= BK+K_m  = z_{m-1} \oplus \overline{K}_m = BK \oplus\overline{K}_1 \oplus \overline{K}_2 \oplus \ldots \oplus \overline{K}_m$$ 
 Прямую сумму $K_{\lambda}$ называют \deff{прямой суммой опорных подпространств}.
 
 \thmm{Теорема:}
 
-$\forall r: 1\leq r \leq m-1$ будет выполнено: $B^rK = B^{r+1}K \oplus B^r K_{r+1}\oplus B^r K_{r+2}\oplus\ldots\oplus B^r K_m$
+$\forall r: 1\leq r \leq m-1$ будет выполнено: $B^rK = B^{r+1}K \oplus B^r \overline{K}_{r+1}\oplus B^r \overline{K}_{r+2}\oplus\ldots\oplus B^r \overline{K}_m$
 
 \textbf{Доказательство:}
 
@@ -1672,12 +1757,12 @@ $$x_{*} = Bx + x_1 + x_2 +\ldots +x_n\text{, где }x_j \in \overline{K}_{j}$$
 Теперь умножим правую и левую часть на $B^r$:
 $$B^r x_*  = B^{r+1}x + B^r x_1 +\ldots + B^r x_r + \ldots + B^r x_m$$
 Заметим, что в таком случае все $x_j$, где $j\leq r$ уйдут, потому что $x_j \in \overline{K}_j$, то есть $B^{j}x_j = \zero$.
-$$B^rK = B^{r+1}K + B^r K_{r+1}+ B^r K_{r+2}+\ldots+ B^r K_m$$
+$$B^rK = B^{r+1}K + B^r \overline{K}_{r+1}+ B^r \overline{K}_{r+2}+\ldots+ B^r \overline{K}_m$$
 Осталось проверить дизъюнктность, то есть проверить тривиальность разложения нуля:
 $$\zero = B^{r+1}x + B^{r}x_{r+1} + \ldots + B^r x_m = B^r(Bx + \ldots +x_m)$$
 Заметим, что то, что находится внутри скобок находится в $\ker B^r\subset z_r = BK\oplus \overline{K}_1 \oplus\ldots\oplus \overline{K}_r$. Откуда существует единственное разложение через эту прямую сумму:
 $$Bx + x_{r+1}\ldots +x_m = By + x_1 +\ldots + x_r$$
-Но, как мы помним $BK$ и $\overline{K}_j$ - дизъюнктны. То есть $x_1=x_2 =\ldots = x_m =0$. Откуда получаем, что $Bx$ тоже ноль, откуда разложение нуля - тривиально.
+Но, как мы помним $BK$ и $\overline{K}_j$ - дизъюнктны из прямой суммы опорных пространств и $\Im B =BK$.  То есть $x_1=x_2 =\ldots = x_m =0$. Откуда получаем, что $Bx$ тоже ноль, откуда разложение нуля - тривиально.
 
 \hfill Q.E.D.
 
@@ -1690,7 +1775,7 @@ $K = \overline{K}_1 \oplus \ldots \oplus \overline{K}_m \oplus B\overline{K}_2 \
 
 
 $K = BK \oplus \overline{K}_1\ldots \oplus \overline{K}_m$\\
-$ BK = B^2K \oplus B\overline{K}_1\ldots \oplus B\overline{K}_m$\\
+$ BK = B^2K \oplus B\overline{K}_2\ldots \oplus B\overline{K}_m$\\
 $\vdots$\\
 $B^{m-1}K = B^m K \oplus B^{m-1}\overline{K}_m = B^{m-1} \overline{K}_m $\\
 Подставьте рекурсивно и получите все, что нам надо.
@@ -1716,7 +1801,7 @@ $\overline{K}_r \oplus B\overline{K}_r \oplus \ldots \oplus B^{r-1}\overline{K}_
 
 Все этажи башни высоты $r$ имеют одну и ту же $\dim$ (называем ее шириной $d_r$)
 
-$\dim \overline{K}_r = \dim B \overline{K}_r = \ldots = B^{r-1}\overline{K}_r = d_r$.
+$\dim \overline{K}_r = \dim B \overline{K}_r = \ldots = \dim B^{r-1}\overline{K}_r = d_r$.
 
 \textbf{Доказательство:}
 
@@ -1724,7 +1809,9 @@ $\forall j=1,\ldots,r-1:B^j: \overline{K}_r \rightarrow B^j\overline{K}_r$. По
 
 Заметим, что у нашего отображения уже есть сюръективность (потому что мы буквально сужаем, то куда переводит наше отображение). Значит, чтобы доказать изоморфность нам нужна инъективность. А что такое инъективность? Это то, что $\exists x_1,x_2 \in \overline{K}_r$, что $B^jx_1=B^jx2 \Leftrightarrow B^j(x_1-x_2)=\zero$. То есть если мы покажем тривиальность ядра $B^j$, то тогда наша функция будет инъективной:
 
-Пусть $x \in \ker B^j$ и $x\in \overline{K}^r$, тогда $x\in \ker B^j \cap \overline{K}_r = K_j \cap \overline{K}_r$. А как мы знаем $ K_j \cap \overline{K}_r = \{\zero\}$(достаточно посмотреть на рисунок, $K_j$ соответствует $j$-ому и меньшим этажам). А это значит, что $x \in \{\zero\} \Leftrightarrow x =\zero$, откуда ядро тривиально, наша функция инъективна, а из этого уже следует изоморфность, то есть биекция.
+Пусть $x \in \ker B^j$ и $x\in \overline{K}_r$, тогда $x\in \ker B^j \cap \overline{K}_r = K_j \cap \overline{K}_r$. А как мы знаем $ K_j \cap \overline{K}_r = \{\zero\}$. Если бы был $x$ в их пересечении, то тогда $x \in \ker B^j =K_j$ и $x \in \overline{K}_{r}$. Но как мы знаем x находится именно в $\overline{K}_r$, поэтому $B^{r-1}x \neq \zero$, но как я сказал ранее:  $x \in \ker B^j $. Противоречие.
+
+То есть  А это значит, что $x \in \{\zero\} \Leftrightarrow x =\zero$, откуда ядро тривиально, наша функция инъективна, а из этого уже следует изоморфность, то есть биекция.
 
 \hfill Q.E.D.
 
@@ -1751,7 +1838,7 @@ $p_{m-1}-p_m = \quad\quad\quad\quad \quad \,\,d_m$
 
 \textbf{Замечание:} Такое равенство в теореме не очень удобно, потому что $B $ - суженное изображение.  todo: дописать формулу с практики
 
-\begin{wrapfigure}[13]{r}{0.4\linewidth} 
+\begin{wrapfigure}[12]{r}{0.4\linewidth} 
 \begin{center}
     \includegraphics[width = 8cm]{assets/7_9-zhordan-table.png}
 \end{center}
@@ -1773,4 +1860,91 @@ $$A\Big|_S  \xleftrightarrow{j}\begin{pmatrix}
 \end{pmatrix}$$
 $V = \bigoplus\limits_{\lambda\text{ - с.ч.}} K_\lambda = \bigoplus\limits_{\lambda}\bigoplus\limits_{r}\bigoplus\limits_{p}S_{p,\lambda,r}$ - объединение всех базисов называется \deff{Жордановым базисом}.
 
-\sout{стоит ли так вставлять рисунок?}
+\subsection{Функция оператора матрицы, приводимой к Жордановой форме.}
+
+$f(x) = \sum\limits_{m = 0}^{\infty}c_m x^m, |x|< r$ 
+
+$f(A) = \sum\limits_{m=0}^{\infty}c_m A^m$, $|\lambda|< r$ - все случайные числа.
+
+Как мы знаем матрицу можно привести к жордановой форме. $A = TJT^{-1}$.
+
+$J = \begin{pmatrix}
+    J(\lambda) & \ldots & \ldots & 0 \\
+    \vdots & J(\mu) & \ddots & \vdots\\
+    \vdots & \ddots & \ddots & \vdots\\
+    0 & \cdots & \cdots & J(\xi)\\
+\end{pmatrix}$
+
+Давайте посчитаем функцию от матрицы $A$:
+$$f(A) = f(TJT^{-1}) = T \begin{pmatrix}
+    f(J(\lambda)) & \ldots & \ldots & 0 \\
+    \vdots & f(J(\mu)) & \ddots & \vdots\\
+    \vdots & \ddots & \ddots & \vdots\\
+    0 & \cdots & \cdots & f(J(\xi))\\
+\end{pmatrix} T^{-1}$$
+Посмотрим на блок высшего уровня. Он состоит из клеток:
+
+$J(\lambda ) = \begin{pmatrix}
+    K_1 & \ldots & \ldots & 0 \\
+    \vdots & K_2 & \ddots & \vdots\\
+    \vdots & \ddots & \ddots & \vdots\\
+    0 & \cdots & \cdots & K_k\\
+\end{pmatrix}$, где $K_i$ - жорданова клетка.
+
+Тогда $f(J(\lambda)) = \begin{pmatrix}
+   f(K_1) & \ldots & \ldots & 0 \\
+    \vdots & f(K_2) & \ddots & \vdots\\
+    \vdots & \ddots & \ddots & \vdots\\
+    0 & \cdots & \cdots & f(K_{ind})\\
+\end{pmatrix}$
+
+Посмотрим ситуацию для одной клетки. $J_k = \lambda E + I_k$.
+
+$(\lambda E + I_k)^m = \sum\limits_{j=0}^m C_m^j \lambda^{m-j} (I_k)^j  $ % правый низ первого листа
+
+Теперь мы можем показать соответствующую матрицу (туда была добавлена t):
+\begin{center}
+ \includegraphics[width = 15cm]{assets/7_10-function.png}    
+\end{center}
+Теперь посмотрим $f(J_kt)=\sum\limits_{m=0}^{\infty}c_m J_k^mt^m = $
+\begin{center}
+ \includegraphics[width = 15cm]{assets/7_10-limit-function.png}    
+\end{center}
+%проскипай до примераd
+У ряда мы можем брать производную сколько угодно раз (факт из математического анализа) (от функции в которую подставлен $\lambda t$)
+
+Откуда наша страшная формула равна $f(\lambda t) = \begin{pmatrix}
+    f(\lambda t) & \cfrac{t}{1}f'(\lambda t) & \cfrac{t^2}{2}f^{(2)}(\lambda t) & \ldots & \ldots & \\
+    0 & f(\lambda t) & \cfrac{t}{1}f'(\lambda t) &\ddots &\ldots 
+    \\
+    \vdots & \ddots & \ddots & \ddots& \ldots
+\end{pmatrix}$
+
+
+\textbf{Пример:}
+
+% напиши пример, сначала J_n = n, потом f'(n),f''(n),f'''(n), только ну не пиши f^{(3)}, а не f''', потом то что осталось. Как напишешь переходи в 2.tex
+
+$\begin{pmatrix}
+    \lambda & 1 & 0 & 0 \\
+    0 & \lambda & 1 & 0\\
+    0 & 0 & \lambda & 1\\
+    0 & 0 & 0 & \lambda
+\end{pmatrix}$
+
+$f(x)=\cos x$, /$f'{(x)} = - \sin x$, $f^{(2)}{(x)} = - \cos x$, $f^{(3)}{(x)} =  \sin x$
+
+$f'(\lambda t)=- \sin \lambda t$
+
+$\cos (J_4t) = \begin{pmatrix}
+    \cos \lambda t & \frac{t}{1!}(-\sin \lambda t) &\frac{t^2}{2!}(-\cos \lambda t) & \frac{t^3}{3!}(-\sin \lambda t)\\
+    \vdots & \cos \lambda t & \frac{t}{1!}(-\sin \lambda t) &\frac{t^2}{2!}(-\cos \lambda t) \\
+    \vdots & \ddots & \cos \lambda t & \frac{t}{1!}(-\sin \lambda t) \\
+    0 & \ldots & \ldots & \cos \lambda t
+\end{pmatrix}$
+
+
+
+
+
+
