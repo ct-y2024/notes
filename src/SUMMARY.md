@@ -13,7 +13,7 @@
     2. [Внешняя память](./Algorithms/semester_2/04_external-memory.md)
     3. [Курево](./Algorithms/semester_2/Treap.md)
 - [Cpp](./Cpp/Cpp.md)
-    1. [Ассемблер](./Cpp/01_assembler.md)
+    1. [Ассемблер](./Cpp/01_ass.md)
     2. [Операционные системы](./Cpp/02_lecture.md)    
     3. [Введение в C++](./Cpp/03_cpp.md)   
     4. [Компиляция](./Cpp/05_compilation.md)
