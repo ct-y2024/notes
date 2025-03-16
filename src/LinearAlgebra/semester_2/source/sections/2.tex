@@ -118,7 +118,7 @@ $$\begin{pmatrix}
     \vdots \\
     {w}^n
 \end{pmatrix}$$
-Пусть $T_{e \to e'}=S^{-1}=T=(t^i_j)_{n \times n}$ - невырожден. $\Rightarrow e' = eT$ базис в пр-ве $V$.
+Пусть $S^{-1}=T=(t^i_j)_{n \times n}$ - невырожденная, то если думать о ней как о $T_{e \to e'}$, получим, что $ e' = eT$ базис в пр-ве $V$.
 
 Осталось показать, что $w'$ будет сопряженным к $e'$, т.е. показать ${w'}^{ i}(x)={x'}^i, \, x = {x'}^i {e'}_i$, для всех $ x \in V$. Тк $w'^i$ - линейная форма, то:
 $${w'}^i({x'}^i{e'}_j)= {x'}^j {w'}^i(e'_j)$$
@@ -126,29 +126,26 @@ $${w'}^i({x'}^i{e'}_j)= {x'}^j {w'}^i(e'_j)$$
 $$ {w'}^i(e'_j)=  S^i_kw^k(t^m_je_m)  = S_k^jt_{j}^m w^k(e_m) = S^i_mt^m_j=(ST)^i_j = $$
 \hfill Q.E.D.
 
-\textbf{Следствие.} $e,e'$ базисы $V$. $w,w'$ сооотв. сопряженные базисы к $e,e'$ в $V^*$. 
+\textbf{Следствие.} $e,e'$ базисы $V$, $w,w'$ сооответственные сопряженные базисы к $e,e'$ в $V^*$.
 
-$T = T_{e\rightarrow e'}, S = T^{-1} \Rightarrow \forall x \in V: \forall f \in V^*$
+$T = T_{e\rightarrow e'}, S = T^{-1}$
 
-$x' = SX$
-
-$a' = aT$
+$ \Rightarrow \forall x \in V: \forall f \in V^*:x' = Sx, a' = aT$, где $a$ - разложение $f$ в базисе.
 
 \textbf{Доказательство:}
 
-$T=T_{e\rightarrow E'}$ 
+$T=T_{e\rightarrow e'}$ и мы уже знаем, что $x' = T_{e'\rightarrow e}x = Sx$ 
 
+$(T_{w\rightarrow w'})^T = S$. Как мы знаем из матрицы перехода:
+$$a^T = T_{w\rightarrow w'}(a')^T$$ 
+Откуда:
+$$a = a'(T_{w\rightarrow w'})^T = a'S$$
+А уже отсюда получаем, что $a' = aS^{-1} = aT$.
 
-$(T_{w\rightarrow w'})^T = S$ - связь координат в старых и новых координатых
+\hfill Q.E.D.
 
-$a^T = T_{w\rightarrow w'}(a')T$
+\textbf{Замечание от Славы.} Очень удобно менять базис, когда у нас один из базисов канонический. А также, зная матрицу перехода $T_{w\rightarrow w'}$ мы уже знаем матрицу перехода из $T_{e\rightarrow e'} =((T_{w\rightarrow w'})^T)^{-1} $
 
-$a = a'(T_{w\rightarrow w'})^T = a'S$
-
-Откуда  $a' = aS^{-1} = aT$.
-
-
-%там будет схемка со стрелками, это
 
 Преобразование координат, согласованных по тому же закону, что и базис:
 $a' =a T$
@@ -161,7 +158,9 @@ $x' = Sx$
 \deff{def:} Преобразование координат векторов пространства $V$ происходит по тому же закону, что преобразованию базисов в пространстве $V$(т.е. согласованно) называется \deff{ковариантным} преобразованиям.
 Координаты векторов пространства $V^* $ называется \deff{ковариантным}(индексы пишутся внизу)
 
-$\forall f \in V^* \leftrightarrow (a_1,\ldots, a_n), a_j = f(e_j)$.
+Позамечаем интересные факты:
+
+$\forall f \in V^* \leftrightarrow (a_1,\ldots, a_n), a_j = f(e_j)$ - каждой функции, как и говорилось ранее, на заданном базисе, я могу сопоставить $a$. Поэтому возьму $n$ функций и векторов, и захочу посчитать значение каждой функции в каждой точке : 
 
 $\forall f^1, \ldots f^n \in V^*: f^j \xleftrightarrow{w} a^j = (a_1^j,\ldots , a_n^j)$
 
@@ -171,12 +170,14 @@ $\forall x_1, \ldots, x_n \in V: x_i \xleftrightarrow{e}x_i = \begin{pmatrix}
     x^n_i
 \end{pmatrix}$
 
+Хочу посчитать вот такую вот страшную матрицу (значение каждой функции в каждой точке):
+
 $(f^j(x_i))_{n\times n} = \begin{pmatrix}
     f^1(x_1) & f^1(x_2) & \dots & f^1(x_n)\\
     f^2(x_1) & f^2(x_2) & \dots & f^2(x_n)\\
     \vdots & \ddots & \ddots & \vdots \\
     f^n(x_1) & f^n(x_2) & \dots & f^n(x_n)\\
-\end{pmatrix} = f^j(x_i)= a^j x_i $
+\end{pmatrix} = f^j(x_i)= a^j x_i  = $
 
 
 $=\begin{pmatrix}
@@ -189,17 +190,24 @@ $=\begin{pmatrix}
      x_1^2 & \ddots & \ddots& x^2_n\\ 
       \vdots & \ddots & \ddots& \vdots\\ 
       x_1^n & \ldots & \ldots& x^n_n\\ 
-\end{pmatrix}  $
+\end{pmatrix} = \begin{pmatrix}
+    f^1\\
+    f^2\\
+    \vdots\\
+    f^n
+\end{pmatrix} \cdot \begin{pmatrix}
+    x_1 & x_2 & \ldots & x_n
+\end{pmatrix}$ - лаконичная запись!
 
-$w^i(e_j)=\sigma ^i_j$
 
-$\begin{pmatrix}
+
+Интересный факт, который идет из такого произведения:
+$$\begin{pmatrix}
     w^1 \\
     w^2 \\
     \vdots \\
     w^n \\
-\end{pmatrix} \cdot (e_1e_1 \dots e_n) = E $
-% ?????
+\end{pmatrix} \cdot (e_1e_2 \dots e_n) = E $$
 
 \deff{def:} $V^{**} = (V^*)^*$ \deff{дважды сопряженное} пространство.
 
@@ -213,7 +221,7 @@ $"x"(\lambda f^1+f^2) = (\lambda f^1 + f^2)(x) = \lambda f^1(x) + f^2(x) = \lamb
 
 $\Rightarrow "x"$ линейное отображение $\Rightarrow"x" \in (V^*)^*$
 
-Дальше у $"x"$ будут упускаться $""$ :))
+Дальше у $"x"$ будут упускаться "" :))
 
 \thmm{Теорема 3 (О естественном изоморфизме)}
 
@@ -232,19 +240,23 @@ $x_1 + \lambda x_2 \in V: x_1 \rightarrow "x_1"$, $x_2 \rightarrow "x_2"$
 
 $\forall f\in V^*: "x_1+\lambda x_2"(f) = f(x_1+\lambda x_2) = f(x_1) + \lambda f(x_2) = "x_1"(f) + \lambda"x_2"(f) $. Откуда $\varphi$ линейно.
 
-%вставить картинку и комментарий
+\begin{center}
+    \includegraphics[width =15cm]{assets/8_1-varphi-linear.png}
+\end{center}
 
-Пусть $e_1,\dots e_n$ базис $V$
+Покажем, что $\varphi$, это изоморфизм.
 
-$\rightarrow "e_1",\ldots, "e_n"$. Покажем, что это базис в $V^{**}$.
+Пусть $e_1,\ldots, e_n$ базис $V$. Им соответствуют $ "e_1"$$,\ldots, "e_n"$. Покажем, что это базис в $V^{**}$:
 
-Мы знаем, что $\dim (V^*)^* = \dim V^* = \dim V = n$. Откуда достаточно показать, что $"e_1",\ldots, "e_n"$ - линейно независимы.
+Мы знаем, что $\dim (V^*)^* = \dim V^* = \dim V = n$. Откуда достаточно показать, что $"e_1"$ $,\ldots, "e_n"$ - линейно независимы. Для этого покажем единственность разложения нуля.
 
 $0= \sum\limits_{i=1}^n \alpha_i "e_i"(w_i)=\sum\limits_{i=1}^n\alpha_i w^j(e_j) = \alpha_j \Rightarrow$ линейно независимы, откуда базис.
 
-$x \in V \leftrightarrow "x" \in V$ - изомофризм
+Откуда отображение $\varphi$ это изоморфизм.
 
-$f\in V^{*}, x \in V$
+\hfill Q.E.D.
+
+Как мы только что поняли: $x \in V \leftrightarrow "x" \in V^{**}$ - изомофризм. $f\in V^{*}, x \in V$.
 
 $x(f)= f(x) = x^i a_i = w^i(x) a_i = x(w^i)a_i =x^ia_i=x^i f(e_i)=x^ie_i(f)$
 
@@ -252,9 +264,12 @@ $e \text{ и }w$ взаимно сопряж.
 
 $x=x^ie_i, w^i(x)=x^i,$ где $x \in V$
 
-$e_j(f)=f(e_j)=a_j(f \in V^*)$
+$e_j(f)=f(e_j)=a_j(f \in V^*)$, $e_j \in V^{**}$ - коорд. формы относительно базиса $w^i$.
 
-$e_j \in V^{**}$ - коорд. формы относительно базиса $w^i$.
+Я категорически не помню для чего Кучерук это написала, напомните мне пж.
+
+
+
 
 
 \textbf{Пример:}
@@ -265,9 +280,9 @@ $V = \bigoplus\limits_{\lambda}V_{\lambda} = \span (v_1,\ldots,v_n)$
 
 $w^1,\ldots,w^n$ сопряж. базис к $v$  % дописать
 
-$\Rightarrow \forall x \in V: w^j(x) =x^i: x^iv_j = x$ %я нихуя не понимаю пупупупупупупууп. приехали. Я попробую попонимать, а потмо ели что перейду в режим теха конец
+$\Rightarrow \forall x \in V: w^j(x) =x^i: x^iv_j = x$ 
 
-
+\newpage
 \subsection{Два определения тензора. Линейное пространство тензоров. Многомерная матрица тензоров.}
 
 \deff{def:} Есть $V,V^*$ и $p,q \in N$.
@@ -293,17 +308,3 @@ $f(\xi_1,\ldots,\xi_p,\eta^1,\ldots, \eta^q) = \xi_1^{j_1}\ldots\xi_p^{j_p}\eta_
 %тут что-то пропщено я потерялся в мире
 
 \deff{def:} $M$ - многомерная матрица $r = (p+q)$ мерная  размерности $n$. %Что блять?
-
-%кринжа
-$M= \begin{pmatrix}
-    & i_1  \dots i_q\\
-    \alpha \\
-    & j_1 \dots j_p
-\end{pmatrix}$
-
-$i_m \in (1,\dots,n)$
-
-$j_k \in (1,\dots,n)$
-
-\textbf{Пример:} % не пиши его
-
