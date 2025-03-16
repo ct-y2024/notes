@@ -215,7 +215,7 @@ $f,g: (a,b) \rightarrow\mathbb{R}$, дифф $g'\neq 0$ на $(a,b)$
 
 $\cfrac{f'(x)}{g'(x)} \xrightarrow{x \rightarrow a+0} A \in \overline{\mathbb{R}}$. Пусть $\lim\limits_{x\rightarrow a+0}\cfrac{f(x)}{g(x)}$ - неопределенность $\left(\cfrac{0}{0}, \cfrac{\infty}{\infty}\right)$
 
-Тогда: $\lim\limits_{x\rightarrow a+0}\cfrac{f(x)}{g(x)}$
+Тогда: $\lim\limits_{x\rightarrow a+0}\cfrac{f(x)}{g(x)}=\lim\limits_{x\rightarrow a+0} \cfrac{f'(x)}{g'(x)}$
 
 \textbf{Доказательство:} 
 
@@ -224,8 +224,103 @@ $\cfrac{f'(x)}{g'(x)} \xrightarrow{x \rightarrow a+0} A \in \overline{\mathbb{R}
 По Гейне. Возьму $(x_n): x_n \rightarrow a,x_n\neq a$. Берем $y_n$ из Лопиталя. 
 
 Теорема Коши: $\cfrac{f(x_k)-f(y_k)}{g(x_k)-g(y_k)} = \cfrac{f'(\xi_k)}{g'(\xi_k)}$, где $\xi_k \in (x_k, y_k)$.
+$$\cfrac{f(x_k)}{g(x_k)} = \cfrac{f(y_k)}{g(x_k)} + \cfrac{f'(\xi_k)}{g'(\xi_k)}\left(1 - \cfrac{g(y_k)}{g(x_k)}\right)$$
+    
+Посмотрим, куда это стремится. Справа это стремится к $A$. Значит и слева должна.
 
-$\cfrac{f(x_k)}{g(x_k)} = \cfrac{f(y_k)}{g(x_k)} + \cfrac{f'(\xi_k)}{g(\xi_k)}\left(1 - \cfrac{g(y_k)}{g(x_k)}\right)$
+\hfill Q.E.D.
+
+\textbf{Пример неаналитической функции:}
+
+\deff{Неаналитическая} - та, которую нельзя представить в виде разложение тейлора для бесконечности.
+
+\textbf{Пример:}
+
+$f(x) = \begin{cases}
+    e^\frac{-1}{x}, x>0\\
+    0,x\leq 0
+\end{cases}$
+
+$\forall x: \exists f^{(k)}(0) = 0$. Если разложить ее в нуле, то она будет эквивалентна нулевой
+
+
+$a_{n+1}-a_n$ - аналог производной.
+
+\thmm{Теорема (Штольца)}
+
+$x_n,y_n$ - вещ. последовательности, $x_n \rightarrow 0 , y_n \rightarrow 0$. $y_n$ монотонный, начиная с какого-то места
+
+Пусть $\lim\limits_{n\rightarrow \infty} \cfrac{x_{n+1}-x_n}{y_{n+1}-y_n} =  a\in \overline{\mathbb{R}}\cup \{0\}^*$. Тогда: $\exists \lim\limits_{n \rightarrow\infty}\cfrac{x_n}{y_n} = a$.
+
+\textbf{Доказательство:}
+
+1) $a>0, a \in \mathbb{R}$
+
+$\forall a>\varepsilon>0:\exists N_1: \forall N>N_1: a-\varepsilon < \cfrac{x_{N+1}-x_N}{y_{N+1}-y_N} <a+\varepsilon$
+
+Зафиксирую $N$. Возьму $n>N$ и напишу дроби $\cfrac{x_{N+1}-x_N}{y_{N+1}-y_N}$, $\cfrac{x_{N+2}-x_{N+1}}{y_{N+2}-y_{N+1}}$,\ldots, $\cfrac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}}$.
+
+Заметим интересный факт, что (для положит. дробей) $\cfrac{p}{q}<\cfrac{r}{s} \Rightarrow \cfrac{p}{q}<\cfrac{p+r}{q+s}<\cfrac{r}{s} $. Поэтому, если мы сложим, все вышесказанные дроби так, как показано, то они будут между $a-\varepsilon$ и $a+\varepsilon$. А вышесказанные дроби положит, потому что у нас начиная с какого-то места монотонен $y$ и $a>0$. Поэтому:
+$$a-\varepsilon<\cfrac{x_n-x_N}{y_n-y_N}<a+\varepsilon$$
+Что я получил? Устремим $n \rightarrow \infty$ и получим по условию, что $a-\varepsilon\leq\cfrac{x_N}{y_N}\leq a + \varepsilon$
+
+2) $a = +\infty$. Аналогично, только смотрим на предел с одной стороны
+
+3) $a = [-\infty, 0 )$, поменяем у $y_n: = -y_n$, тогда все стало положительным = счастье.
+
+4) $a = 0$. Считаем, что $x_n, y_n$ монотонны (строго) с какого-то момента. Тогда дробь $\cfrac{x_{n+1}-x_n}{y_{n+1}-y_n} \rightarrow 0 $ с какого-то момента. Тогда  $\cfrac{y_{n+1}-y_n}{x_{n+1}-x_n} \rightarrow +\infty $, вернемся к пункту 1 и выиграем.
+
+\hfill Q.E.D.
+
+\textbf{Замечание.} Для неопределенности вида $+\infty,+\infty$ теорема верно (обе посл. монотонны). (Загадка)
+
+\thmm{Теорема (Гаусса)}
+
+Хотим доказать сумму $1 + 2 + \ldots + n = \cfrac{n(n+1)}{2}$.
+
+\textbf{Доказательство:}
+
+1) $x_n = 1 + 2 + \ldots + n$, Хочу найти $y_n$ такую, что
+$\lim\limits_{n\rightarrow \infty} \cfrac{x_n}{y_n} = 1$. О чем нам говорит теорема Штольца? Что если $y$ будет таким, что $\lim\limits_{n\rightarrow \infty} \cfrac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}} = 1$, то такой $y_n$ нам подходит
+
+$y_n = n^2$ не подходит, $y_n = \cfrac{n^2}{2}$ подходит и дает в пределе 1. 
+Мы доказали, что $1+2+3 +\ldots + n $ эквивалетно $n^2$. Но это еще не то, что нам надо
+
+2) $x_n = 1+2+\ldots + n -\cfrac{n^2}{2}$, хотим опять по теореме Штольца найти чему это эквивалентно. $\lim \cfrac{x_n-x_{n-1}}{y_n-y_{n-1}} = \lim \cfrac{\frac{1}{2}}{y_n-y_{n-1}}=1$. О, возьму $y_n = \cfrac{n}{2}$. И все хорошо.
+
+$1 + 2 + \ldots + n = \cfrac{n^2}{2} + \cfrac{n}{2} + o(n)$. Пока это тупик.
+
+\hfill Q.E.D.
+
+\textbf{Доказательство 2:}
+
+$f(x) = x + x^2 + x^3 +\ldots + x^n$.
+
+$f'(x) = 1 + 2x + 3x^2 + \ldots +x^n$
+
+$xf'(x) = x + \ldots + nx^n  = (x\cfrac{d}{dx})f(x)$
+
+$(x\cfrac{d}{dx})^Nf(x) = 1^Nx +2^Nx^2 +\ldots +n^Nx^n $
+
+Заметим, что $f(x) = \cfrac{x^{n+1}-1}{x-1}-1$. Хочу посчитать значение функции в единице:
+$$\left((x\cfrac{d}{dx})^Nf(x)\right)(1) =\left((x\cfrac{d}{dx})^N \left(\cfrac{x^{n+1}-1}{x-1}\right)\right)(1)$$
+Заметим, что после $N$ раз дифференцирования знаменатель будет $(x-1)^{N+1}$. Но я хочу посчитать значение функции в точке $1$. Мы не можем так сделать, но заметим, что наша функция непрерывна, откуда мы знаем, что у нее есть предел  в этой точке. Применим $n+1$ раз правило Лопиталя идеологически??????? 
+
+\textbf{Замечание от Славы. }Да именно такое говорит Константин Петрович на лекции в связи  с чем этот конспект хочется забросить и мне хочется выброситься в окно.  Так что со всех респект и уважение, что я сижу и разбираю.
+
+Так что же тут подразумевал Константин Петрович? У нас  знаменатель будет $(x-1)^{N+1}$. Но значение функции в точке $1$ у нас есть. 
+
+Из непрерывности мы знаем, что $(1^Nx +2^Nx^2 +\ldots +n^Nx^n)(1) = \lim\limits_{x \rightarrow 1} (1^Nx +2^Nx^2 +\ldots +n^Nx^n)$. И та наша формула, которую мы свернули с помощью геом. прогрессии ведет себя точно так же в окрестностях единицы. Также на самом деле числитель этой функции просто имеет множитель $(x-1)^{N+1}$. Поэтому мы можем думать, что мы ищем $\lim\limits_{x\rightarrow1} \cfrac{(x-1)^{N+1}\cdot h(x)}{(x-1)^{N+1}}$. Поэтому применим ${N+1}$ раз правило Лопиталя и знаменатель пропадет. Что мы получили? Мы получим, что теперь мы ищем предел по какой-то другой(непрерывной (тк многочлен)) функции при $x\rightarrow 1$. Значит, что мы можем просто посчитать значение в точке $1    $. Это то, что Константи Петрович назвал идеологически применить правило Лопиталя. То есть надо умножить нашу дробь на знаменатель $N$ раз ее продифференцировать и поделить на производную $N$-ой степени знаменателя:
+$$= \cfrac{1}{(N+1)!}(\cfrac{d}{dx})^N\left((x-1)^{N+1}\left((x\cfrac{d}{dx})^N \left(\cfrac{x^{n+1}-1}{x-1}\right)\right)\right)$$
+Дальше подставляете $N=1$ и все, ищите значение этой фигни в точке 1 и ваша жизнь прекрасна.
+
+\hfill Q.E.D.
+
+
+
+
+
+
 
 \pagebreak
 
@@ -598,3 +693,299 @@ $$\sigma(G)= \frac{1}{2}\integral{-\frac{\pi}{2}}{\frac{\pi}{2}}\rho^2(\varphi)\
 d\overline{\varphi}=$$
 
 $$=\frac{1}{2}\integral{\frac{\pi}{2}}{0}\rho^2(\varphi) + \rho^2(\varphi - \frac{\pi}{2}) d\varphi = \cfrac{1}{2}\integral{0}{\frac{\pi}{2}}"AB^2" d\varphi \leq \cfrac{1}{2}\integral{0}{\frac{\pi}{2}}d^2 d\varphi = \frac{d^2\pi}{4}$$
+
+\thmm{Теорема (обобщ. теорема о плотности)}
+
+$\varPhi: Segm(\langle a,b\rangle) \rightarrow \mathbb{R}$ - а.ф.п. $f: \langle a,b \rangle \rightarrow \mathbb{R}$ - непрерывно.
+
+Пусть $\forall\Delta \in Segm(\langle a,b \rangle)$ заданы $m_\Delta, M_{\Delta} $ - функции от сегмента:
+
+\begin{enumerate}
+    \item $m_\Delta\cdot l(\Delta) \leq \varPhi(\Delta) \leq M_{\Delta} \cdot l(\Delta)$
+    \item $\forall x  \in \Delta: m_{\Delta}\leq f(x)\leq M_{\Delta}$
+    \item $\forall$ фикс. $x\in \langle a,b \rangle$, $M_{\Delta}-m_{\Delta}\rightarrow 0$, при $l(\Delta)\rightarrow 0 $ и $x\in \Delta$ 
+\end{enumerate}
+Тогда $f$ - плотность $\varPhi$. 
+
+\textbf{Доказательство:}
+
+Н.у.о мы работаем на $[a,b]$.  $F(x) = \begin{cases}
+    \varPhi([a,x]), x>a\\
+    0,x =a
+\end{cases}$
+
+Напишем то, что нам дает условие в конкретной точке $x$:
+$$m_{\Delta}\leq\cfrac{F(x+h)-F(x)}{h}\leq M_{\Delta}\text{, где }\Delta = [x,x+h], h>0$$
+$$m_\Delta \leq f(x) \leq M_{\Delta}$$
+Вычтем из одного другое:
+$$\left|\cfrac{F(x+h)-F(x)}{h } -f(x)\right|\leq M_{\Delta}-m_{\Delta}$$
+Устремим $h$ к нулю и получим, что $M_{\Delta}-m_{\Delta} \rightarrow 0$. Откуда $\left|\cfrac{F(x+h)-F(x)}{h } -f(x)\right|\rightarrow 0 $, а это $f(x) = F_{+}'(x)$. Аналогично $f(x) = F'_i(x) $.
+
+\hfill Q.E.D.
+
+1.48 - 4 лекция - кохась рассказывает интересную историю про отрубленные пальцы
+
+\textbf{Пример (Объем вращения фигур)}
+
+\begin{center}
+   \includegraphics[width = 10 cm]{assets/integral-v-figure.png}
+\end{center}
+
+$a>0,b>0, f>0$. Вращаем ПГ$(f[a,b])$ вокруг оси $Oy$. Получается вот что-то такое(см рисунок). Хочу найти объем этой фигуры 
+
+$\varPhi([a,b]) = Vol(\{(x,y,z): a^2\leq x^2 + y^2 \leq b^2, 0\leq z \leq f(\sqrt{x^2+y^2})\})$. Тогда выполнено:
+$$\varPhi([a,b]) = 2\pi \integral{a}{b}xf(x)dx$$
+\textbf{Доказательство:}
+
+$A_1$ - прямоугольник, такой что его высота $ = \min\limits_{(a,b)}f$. $A_1 = [a,b] \times [0,\min f]$
+
+$Vol A_1 = \pi b^2 \min f - \pi a^2 \min f$
+
+$A_2$ - прямоугольник, такой что его высота $ = \max\limits_{(a,b)}f$. $A_2 = [a,b] \times [0,\max f]$
+
+$Vol A_2 = \pi b^2 \max f - \pi a^2 \max f$.
+
+$\forall \Delta$ положим $m_{\Delta} = \pi \min_{\Delta
+}f \cdot \min(2x) $, $M_{\Delta} = \pi \max_{\Delta} f \cdot \max 2x$, $x\in \Delta$ 
+
+Тогда: как мы только что доказали: $$\varPhi(\Delta)\leq Vol(A_2(\Delta)) = \pi \max f \cdot (\overline{b}+\overline{a})(\overline{b}-\overline{a})\leq M_{\Delta}(\overline{b}-\overline{a})\leq M_{\Delta}l(\Delta)$$
+Выше в формуле подразумеваются текущие $\overline{a},\overline{b}$ для $\Delta$. Аналогично для $m_{\Delta}$.
+
+При $x \in \Delta: m_{\Delta}\leq \pi f(x)2x\leq M_{\Delta}$ - очевидно.
+
+Фиксируем $x: M_{\Delta}-m_{\Delta}\rightarrow 0 $ при $\Delta \rightarrow0$ - очевидно. Откуда выполнено условие теоремы о плотности а это то, что нам и требовалось.
+
+\hfill Q.E.D.
+
+\textbf{Пути:}
+
+$\gamma :[a,b] \rightarrow \mathbb{R}^m$. То есть $t\rightarrow (\gamma_1(t),\gamma_2(t),\ldots,\gamma_m(t)) = \gamma(t)$. Мы обычно думаем, что они непрерывны
+
+$\lim\limits_{\tau \rightarrow 0} \cfrac{\gamma(t + \tau )-\gamma(t)}{\tau}$ - интересно как меняется.
+
+$\gamma'(t) = (\gamma_1'(t),\gamma_2'(t),\ldots,\gamma_m'(t))$ - \deff{вектор скорости}.
+
+\deff{Носитель пути} - траектория пути.
+
+\deff{def:} Функция $l$, заданная на множестве гладких путей (непрерывны, дифференцируемы) называется длиной пути, если выполняются следующие условия:
+
+\begin{enumerate}
+    \item $l\geq 0$
+    \item аддитивна: $\forall [a,b]$, $\forall \gamma:[a,b]\rightarrow\mathbb{R}^m$ для любого $c\in [a,b]: l(\gamma) = l(\gamma\Big|_{[a,c]}) + l(\gamma\Big|_{[c,b]})$
+    \item $\gamma, \overline{\gamma}$ --- два пути. $C_{\gamma},C_{\overline{\gamma}}$ --- носители пути.
+    
+    Если $\exists T: C_{\gamma} \rightarrow C_{\overline{\gamma}}$ --- сжатие ($\forall M,N:\rho(T(M), T(N))\leq \rho(M,N)$), то $l(\overline{\gamma})\leq l(\gamma)$
+    \item $\gamma$ - линейный путь, то $l(\gamma) = \rho(A,B)$, где $A$ - начало, $B$ - конец.
+\end{enumerate}
+
+А такая штука вообще существует? 
+    
+\textbf{Замечание:} Из свойства 3 следует, что длина хорды меньше длины дуги.
+
+\textbf{Замечание:} При растяжении длина пути растет.
+
+\textbf{Замечание:} Длина пути не меняется при движениях пространства $R^m$ (очевидно из свойства 3).
+
+\thmm{Теорема:}
+
+$\gamma: [a,b] \rightarrow \mathbb{R}^m$ - $C^1$ - непрерывно дифференцируемо. Тогда $l(\gamma) = \integral{a}{b}||\gamma'(t)||dt$.
+
+\textbf{Доказательство:}
+
+Считаем $\gamma$ - инъективный.
+
+$[p,q]\in Segm[a,b]: \varPhi([p,q]) = l(\gamma\Big|_{[p,q]})$. Проверим $||\gamma'(t)||$ - плотность $\varPhi$.
+
+$\Delta:\forall i = 1,\ldots,m: m_i(\Delta) = \min_{\delta} |\gamma'_{i}(t)|$, $M_i(\Delta) = \max|\gamma_i'(t)|$.
+
+Возьму $m_{\Delta} = \sqrt{\sum\limits_{i=1}^m m_i^2(\Delta)}$, $M_{\Delta} = \sqrt{\sum\limits_{i=1}^m M_i^2(\Delta)}$. Проверяем 1, 2, 3 из обобщенной теоремы о плотности. 2 и 3 очевидно выполнены. 
+
+Проверим 1: $m_{\Delta} l(\Delta) \leq \varPhi(\Delta)\leq M_\Delta l(\Delta)$. Завожу $\overline{\gamma}:\Delta \rightarrow R^m$ - линейный путь: $\gamma(t) = (M_1(\Delta)t,M_2(\Delta)t,\ldots,M_m(\Delta)t)$. Строю $T: C_{\gamma} \rightarrow C_{\overline{\gamma}}$, такое, что $\gamma(t) \rightarrow \overline{\gamma}(t)$. Проверим, что это растяжение. Давайте считать расстояние. $\rho(\gamma(t_0),\gamma(t_1)) = \sqrt{\sum\limits_{i=1}(\gamma_i(t_0)-\gamma_i(t_1))^2}$. По теореме Лагранжа: $$\sqrt{\sum\limits_{i=1}(\gamma_i(t_0)-\gamma_i(t_1))^2} =\sqrt{ \sum \gamma_i'(\tau_i)(t_0-t_1)^2} =\sqrt{\sum \gamma_i'(\tau_i)}|t_0-t_1| \leq M_{[t_0,t_1]}|t_0-t_1|$$
+$$\leq M_{\Delta}|t_0-t_1| = \rho(T(\gamma(t_0)),T(\gamma(t_1)) =\rho(\overline{\gamma}(t_0),\overline{\gamma}(t_1))$$
+Откуда выполнен пункт один и выполнена обобщенная теорема о плотности.
+
+
+\hfill Q.E.D.
+
+\textbf{Примеры:}
+\begin{enumerate}
+    \item В $\mathbb{R}^2:\gamma(t) = (x(t),y(t))$ - обычные декартовы.
+
+    $$l = \integral{a}{b}\sqrt{x'(t)^2+y'(t)^2} dt$$
+    \item $\mathbb{R}^2$, полярные координаты $r(t)$,$\varphi(t)$
+    $$l = \integral{a}{b} \sqrt{((r(t) \cos \varphi(t))')^2+((r(t) \sin\varphi(t))')^2} = \integral{a}{b} \sqrt{r(t)^2+r'(t)^2}dt$$
+    \item Длина графика $x(t) =t, y(t) = f(t)$. 
+    $$l = \integral{a}{b}\sqrt{1 + y'(x)^2}dx$$
+\end{enumerate}
+
+Вернемся к вопросу существованию такой штуки.
+
+\textbf{Существование длины пути} - Супремум длин вписанных ломаных. Разбиваю отрезок на $n$ кусочков и считаю сумму длины ломанных: $a=x_1<x_2<\ldots<x_n =b$
+
+Теперь будем рассматривать пути в $\mathbb{R}^1$.
+
+$l(\gamma) = \sup (\sum\limits\gamma(t_k)-\gamma(t_{k-1}) | a = t_0<t_1<\ldots<t_n=b)$.
+
+\textbf{Замечание:} $\gamma \in C^1:$ $l(\gamma) = \integral{a}{b}|\gamma'(t)|dt$.
+
+\textbf{Замечание:} Пусть $f$ - любая из $[a,b] \rightarrow \mathbb{R}$. Тогда \deff{вариация функции} на [a,b]: $$\Var_a^b f = \sup (\sum\limits_{k=1}^n |f(t_k)-f(t_{k-1})|)$$
+Пример:
+$f(x) = \begin{cases}
+    1,x \in \Q \\
+    0, x \in \R, x\not \in \Q 
+\end{cases}$, $\Var_{a}^b f = +\infty$
+
+Если для $f$ выполнено: $\Var_a^b f < + \infty$, то она называется \deff{ограниченной} вариации.
+
+\textbf{Экскурсия в зоопарк.}
+
+\deff{Кривая Пеано} - это путь в $\R^2$, такой, что я сначала разбиваю отрезок $[0,1]$ на 4 равных части так, что отображение первой части отрезка находится в части 1(см рисунок), второй части отрезка в части 2 и так далее. Потом повторяю то же самое в каждом квадратике. Потом повторяю то же самое в каждом квадратике квадратика и так далее. Изображение внизу описывает это построение поэтапно.
+
+\begin{center}
+   \includegraphics[width = 15 cm]{assets/integral_hilbert_curve.svg.png}
+\end{center}
+
+Заметим, что у нас биекция между $\R$ и в $\R^2$. 
+
+\newpage
+\subsection{Верхний и нижний пределы последовательностей}
+
+\deff{def:} $(x_n)$ - вещ. последовательность $L\in \mathbb{R}$ - \deff{частичный предел} $x_n: \exists (n_k):n_1<n_2<\ldots: \lim\limits_{n\rightarrow \infty} x_{n_k}=L$.
+
+\deff{def:} $x_n$ - вещ. последовательность. Рассмотрим $y_n = \sup (x_n, x_{n+1},\ldots),z_n = \inf(x_n,x_{n+1},\ldots)$. $y_n$ - \deff{верхне огибающая}, $z_n$ - \deff{нижне огибающая}. 
+
+$y_n$ - не возрастает, $z_n$ - не убывает. $\forall n: z_n\leq x_n \leq y_n$
+
+Если изменить конечное число членов последовательности, то $y_n,z_n$ изменятся конечное число раз.
+
+\deff{Верхний предел последовательности}--- $\overline{\lim\limits_{n\rightarrow \infty}}x_n=\lim y_n \in \overline{R}$
+
+\deff{Нижний предел последовательности}--- $\underline{\lim\limits_{n\rightarrow \infty}}x_n=\lim y_n \in \overline{R}$
+
+\thmm{Теорема (о свойствах верхнего и нижнего предела)}
+
+$(x_n), (\overline{x_n})$ --- произвольные вещ последовательности
+
+\begin{enumerate}
+    \item $\underline{\lim}x_n \leq \overline{\lim }x_n$
+    \item Если $\forall n : x_n \leq \overline{x_n}$, то $\overline{\lim} x_n\leq \overline{\lim} \overline{x_n}$ и $\underline{\lim} x_n\leq \underline{\lim} \overline{x_n}$
+    
+    \textbf{Замечание от Славы:} На самом деле здесь можно сказать, что $\exists N$ начиная с которого выполнено $x_n \leq \overline{x_n}$, но КПК почему-то решил так ввести это свойство.
+
+    \item $\forall \lambda \in\mathbb{R}, \lambda\geq 0$. Тогда $\overline{\lim}\lambda x_n = \lambda \overline{\lim} x_n$ и $\underline{\lim}\lambda x_n = \lambda \underline{\lim} x_n$. (Считаем $0 \cdot \infty = 0$)
+    \item $\overline{\lim}(-x_n)= - \underline{\lim}x_n$
+    \item $\overline{\lim }(x_n + \overline{x}_n) \leq \overline{\lim }  {x}_n + \overline{\lim }\overline{x}_n $
+    \item Пусть $t_n \rightarrow l \in \R$. Тогда $\overline{\lim}(x_n + t_n) = \overline{\lim} (x_n) + l $ и $\underline{\lim}(x_n + t_n) = \underline{\lim} (x_n) + l $
+    \item $t_m \rightarrow l>0 (l\in \R)$. Тогда $\overline{\lim} (t_nx_n) =l  \overline{\lim} (x_n)$ и  $\underline{\lim} (t_nx_n) =l  \underline{\lim} (x_n)$
+\end{enumerate}
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item т.к. $\forall n: z_n\leq x_n \leq y_n$, то используем теорему о предельном переходе и получим то, что нам надо.
+    \item Используем теорему о предельном переходе и получим то, что нам надо.
+    \item Очевидно из свойств предела.
+    \item Очевидно из свойств супремума.
+    \item $\sup(x_n + \overline{x_n}, \ldots)\leq \sup(x_n,\ldots) + \sup(\overline{x}_n)$ - первое значение в паре не больше $\sup(x_n,\ldots)$, второе не больше $\sup(\overline{x}_n)$.
+    \item $\forall \varepsilon >0: \exists N_0: \forall x > N_0: x_k+ l - \varepsilon < x_k + t_k < x_k + l + \varepsilon$ - верно из условия.
+
+    Возьмем $N> N_0$ при $n\geq N$ выполнено, откуда перейдем к супремумам множеств:
+    $$y_N + l - \varepsilon \leq \sup (x_N + t_N, x_{N+1} + t_{N+1},\ldots )\leq y_N + l + \varepsilon$$
+    Устремлю $N$ к бесконечностти:
+    $$\overline{\lim} y_n + l - \varepsilon \leq \lim \sup(...)\leq \overline{\lim} y_n + l + \varepsilon $$
+    \item Аналогично прошлому пункту.
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\thmm{Теорема (техническое определение верхнего предела).}
+
+$(x_n)$ - произвольная вещ. последовательность.
+
+\begin{enumerate}
+    \item $\overline{\lim}x_n = + \infty \Leftrightarrow x_n$ - не ограничено сверху
+    \item $\overline{\lim}x_n = - \infty \Leftrightarrow x_n \rightarrow - \infty$.
+    \item $\overline{\lim}x_n = l \Leftrightarrow$
+    \begin{enumerate}
+        \item $\forall \varepsilon >0: \exists :\forall n>N: x_n<l+\varepsilon$
+        \item $\forall \varepsilon >0$ неравенство $l-\varepsilon\leq x_n$ выполнено для бесконечного множества $x$-ов
+    \end{enumerate}
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item Очевидно.
+    \item $x_n\leq y_n$ Тогда по теореме о предельном переходе(или двух городовых) $x_n \rightarrow -\infty$. А в обратную сторону очевидно из определения предела.
+    \item $\Rightarrow$ $\forall  \varepsilon: \exists N: \forall n> N: x_n\leq y_n < \varepsilon+l$ - пункт а доказан просто определением предела $y_n$.
+
+    $\forall \varepsilon >0: \exists N:\forall n >  N: l-\varepsilon < y_n$. 
+    
+    Тогда по техническому описанию супремума $\exists k \geq n : l-\varepsilon < x_k \leq y_n$. Потом возьмите $n>k$ и так далее. Мы научились делать бесконечное кол-во таких $k$-шек, откуда пункт б доказан.
+    
+    $\Leftarrow$ $y_n$ - убывающая. Если мы имеем a, то $\forall \varepsilon>0: \exists N: \forall n > N: x_n < l + \varepsilon$. Из этого следует $y_n\leq l + \varepsilon$. И благодаря пункту б у нас выполнено техническое описание супремума то есть $y_n \rightarrow l$
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\thmm{Теорема}
+
+$\exists \lim(x_n) = L \in \overline{\mathbb{R}} \Leftrightarrow \underline{\lim}x_n = \overline{\lim} x_n = L$.
+
+\textbf{Доказательство:}
+
+$L = + \infty$ - см прошлую теорему. Аналогично c $-\infty$.
+
+$L\in \mathbb{R}$. В правую сторону очевидно из технического описания. В левую сторону: $z_n\leq x_n\leq y_n$ по теореме о двух городовых верно.
+
+\hfill Q.E.D.
+
+
+\thmm{Теорема о характеризации верхнего предела как частичного}
+
+$(x_n)$ - вещ последовательность. Тогда:
+
+\begin{enumerate}
+    \item Если $l \in \overline{\mathbb{R}} - $ частичный предел $x_m$, то $\underline{\lim}x_n\leq l \leq \overline{\lim}x_n$
+    \item $\exists n_k, m_k: x_{n_k}\rightarrow \overline{\lim} x_{n}, x_{m_k}\rightarrow \underline{\lim}x_n$
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item $x_{n_k} \rightarrow l$: $z_{n_k}\leq x_{n_k}\leq y_{n_k}$. Устремим к $+\infty$ и получис то, что надо.
+    \item Очевидно из технического описания супремума и техн. описания верхнего предела (будем выбирать все более и более близкие к l).
+\end{enumerate}
+
+\hfill Q.E.D.
+
+
+
+\newpage
+\subsection{Интегральные суммы.}
+
+\deff{def:} $[a,b]$ \deff{дробление} отрезка $[a,b]$ (на $n$ частей):
+
+$x_0 = a <x_1<x_2<\ldots <x_n=b$.
+
+\deff{Ранг} дробления(мелкость) - $\max |x_k-x_{k-1}|$
+
+\deff{Оснащение дробления} - $\{\xi_1,\ldots, \xi_n\}: \xi_i \in [x_{i-1},x_i]$
+
+Пусть задана $f:[a,b] \rightarrow \R$. Тогда \deff{Риманова сумма}: $\sum\limits_{i=1}^n f(\xi_i)(x_i-x_{i-1})$.
+
+\thmm{Теорема(об интеграле, как о пределе частичных сумм)}
+
+$f\in C([a,b])$. Тогда $\forall \varepsilon >0: \exists \delta >0 : \forall$ дробления $(x_0,\ldots,x_m)$ ранга $< \delta$. Тогда $\forall$ оснащ.:
+$$\left|\integral{a}{b}f(x)dx - \sum\limits_{i=1}^nf(\xi_i) (x_i-x_{i-1})\right|<\varepsilon$$
+\textbf{Доказательство:}
+
+Используем теорему Кантора о равномерной непрерывности: $$\forall \varepsilon> 0: \exists \delta >0: \forall x,\overline{x} \in [a,b]: |x-\overline{x}|<\delta: |f(x) - f(\overline{x})|<\varepsilon$$
+$$\integral{a}{b}f(x)dx - \sum\limits_{i=1}^nf(\xi_i)(x_i-x_{i-1})= \sum\limits_{i=1}^n \integral{x_{i-1}}{x_i}f(x)dx - f(\xi_i)(x_i-x_{i-1}) = $$
+$$=\sum\limits_{i=1}^n \integral{x_{i-1}}{x_i}f(x)dx - \integral{x_{i-1}}{x_i}f(\xi_i)dx  = \sum\limits_{i=1}^n \integral{x_{i-1}}{x_i}(f(x) - f(\xi_i))dx $$
+Теперь возьму $\delta$ и $\epsilon$ из теоремы Кантора, возьму любое дробление ранга меньше $\delta$, получу, что $|x_i-\xi_i|<\delta$ и $|\xi_i- x_{i-1}|<\delta$. Откуда выполнено теорема Кантора и разность $|f(x)-f(\xi_i)|<\varepsilon$. Откуда:
+$$\left|\integral{a}{b}f(x)dx - \sum\limits_{i=1}^nf(\xi_i) (x_i-x_{i-1})\right| \leq \sum\limits_{i=1}^n \integral{x_{i-1}}{x_i}|(f(x) - f(\xi_i))|dx\leq \sum\limits_{i=1}^n \integral{x_{i-1}}{x_i}\varepsilon dx = \varepsilon(b-a)$$
+Откуда по теореме о бюрократном учете получим искомое.
+
+\hfill Q.E.D.
+
+
