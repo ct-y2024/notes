@@ -109,17 +109,17 @@ $\varnothing$ - пустое множество, $\varepsilon$ - пустая с
 
 В разделе марковских цепей у нас были графы с вероятностями на ребрах. А давайте теперь удалим вероятности. 
 
-$A = \langle \Sigma, Q,S,T, \sigma: Q \times \Sigma \rightarrow Q$, где
+$A = \langle \Sigma, Q,S,T, \delta: Q \times \Sigma \rightarrow Q$, где
 
 \begin{enumerate}
     \item $\Sigma$ - алфавит
     \item $Q$ - конечное множество состояний
     \item $S\in Q$ - начальное состояние.
     \item $T\subset Q$ - допускающее (конечное) состояние. 
-    \item $\sigma$ - функция перехода, которая по текущему состоянию переходит
+    \item $\delta$ - функция перехода, которая по текущему состоянию переходит
 \end{enumerate}
 
-$Snap = Q \times \Sigma^*$ --- \deff{множество мгновенных описаний} автомата или состояний. 
+$Snap = Q \times \Sigma^*$ --- \deff{множество мгновенных описаний} автомата или состояний.  $\vdash$ - операция перехода от одного описания к другому.
 
 $\vdash: \langle a, \alpha \rangle \vdash \langle r,\beta\rangle$
 \begin{enumerate}
@@ -133,6 +133,14 @@ $$\langle ch, 0101\rangle \vdash \langle ch, 101\rangle \vdash \langle nech, 01\
 
 \thmm{Теорема (Клини) } 
 
-$Reg = Aut$, где $Aut$ - множество языков, задающихся ДНК.
+$Reg = Aut$, где $Aut$ - множество языков, задающихся ДКА.
 
 Доказательства не будет
+
+Пример ДКА:
+
+\begin{center}
+    \includegraphics[width = 14cm]{assets/7_4_1.png}
+\end{center}
+
+Это автомат для поиска образца в тексте для строки abbab.
