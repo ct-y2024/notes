@@ -293,18 +293,275 @@ $\Rightarrow \forall x \in V: w^j(x) =x^i: x^iv_j = x$
 
 $\xi_j \in v, \eta^i \in V^*$
 
-$f(\xi_1,\ldots,\xi_p,\eta^1,\ldots, \eta^q)$ - линейно по каждому аргументу
+$f(\xi_1,\ldots,\xi_p,\eta^1,\ldots, \eta^q)$ - линейно по каждому аргументу (или полилинейная)
 
-$e = (e_1,\ldots, e_n)$ - базис $V$
+Пусть $e = (e_1,\ldots, e_n)$ - базис $V$, $w = (w^1,\ldots, w^n)$ - базис $V^*$. Тогда сделаем похожую вещь, как когда мы считали определитель. По линейности вынесем, то есть:
+$$\xi_j = \xi_j^{j_k}e_{j_k};\eta^i = \eta_{i_m}^iw^{i_m}$$
+$$f(\xi_1,\ldots,\xi_p,\eta^1,\ldots, \eta^q) = \xi_1^{j_1}\ldots\xi_p^{j_p}\eta_{i_1}^1 \ldots \eta^q_{i_p} \cdot f(\xi_{j_1},\ldots, \xi_{j_p},w^{i_1},\ldots, w^{i_q})$$
+То есть  на самом деле наша функция задается матрицей значений на базисных векторах. Обозначим $f(\xi_{j_1},\ldots, \xi_{j_p},w^{i_1},\ldots, w^{i_q}) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q}$
 
-$w = (w^1,\ldots, w^n)$ - базис $V^*$
+\deff{def:} $M$ - \deff{многомерная матрица} тензора $r = (p+q)$ мерная  размерности $n$. 
 
-$\xi_j = \xi_j^{j_k}e_{j_k}$
+\textbf{Замечание:} Если говорить программистким языком, то наша матрица это просто:
 
-$\eta^i = \eta_{i_m}^iw^{i_m}$
+\begin{lstlisting}[mathescape]
+for (i1 = 1 ... n):
+    for(i2 = 1 ... n):
+        ...
+        for(iq = 1 ... n):
+            for(j1 = 1 ... n):
+                ...
+                for(jp = 1 ... n):
+                    m[i1][i2]...[iq][j1]...[jp] = f($\text{соответсвенных значений}$)
+\end{lstlisting}
 
-$f(\xi_1,\ldots,\xi_p,\eta^1,\ldots, \eta^q) = \xi_1^{j_1}\ldots\xi_p^{j_p}\eta_{i_1}^1 \ldots \eta^q_{i_q} \cdot f(\xi_{j_1},\ldots, \xi_{j_p},w^{i_1},\ldots, w^{i_n})$
+\deff{Соглашение о записи элементов многомерной матрицы}
 
-%тут что-то пропщено я потерялся в мире
+$\alpha^{i_1,\ldots,i_q}_{j_1,\ldots, j_p} \in M_{p+q}$ - многомерная матрица порядка $n$. $i_k \in (1,\ldots,n); j_m \in (1,\ldots, m)$
 
-\deff{def:} $M$ - многомерная матрица $r = (p+q)$ мерная  размерности $n$. %Что блять?
+Мы читаем сначала верхние индексы, потом нижние в записи
+
+\textbf{Пример:}
+\begin{enumerate}
+    
+
+\item $r =2: (\alpha^i_j), (\alpha^{ij}),(\alpha_{ij})$
+
+$1$-ый индекс номер строки
+
+$2$-ой индекс номер столбца
+
+Например при $n= 3$:
+
+$(a^{i}_j) = \begin{pmatrix}
+    \alpha^{1}_1 &\alpha^1_2 & \alpha_3^1\\
+    \alpha_1^2 & \alpha_2^2 & \alpha_3^2 \\
+    \alpha_1^3 & \alpha_2^3 & \alpha_3^3
+\end{pmatrix}$ 
+или 
+$(a^{ij}) = \begin{pmatrix}
+    \alpha^{11} &\alpha^{12} & \alpha^{13}\\
+    \alpha^{21} & \alpha^{22} & \alpha^{23} \\
+    \alpha^{31} & \alpha^{32} & \alpha^{33}
+\end{pmatrix}$ 
+
+\item $r=3: (\alpha^{ijk}), (\alpha^{ij}_k), (\alpha^{i}_{jk}), (\alpha_{ijk}) $
+
+    1-ый индекс всегда стр
+
+    2-ой индекс всегда столб
+
+    3-ий индекс всегда слой
+
+Например при $n=3$:
+
+$(a^i_{jk}) = \begin{pmatrix}[ccc|ccc|ccc]
+    \alpha^1_{11} &\alpha^1_{21} & \alpha^1_{31} & \alpha^1_{12} &\alpha^1_{22}&\alpha^1_{32} & \alpha^1_{13} & \alpha^1_{23} & \alpha^1_{33}\\
+    \alpha^2_{11} &\alpha^2_{21} & \alpha^2_{31} & \alpha^2_{12} &\alpha^2_{22}&\alpha^2_{32} & \alpha^2_{13} & \alpha^2_{23} & \alpha^2_{33}\\
+    \alpha^3_{11} &\alpha^3_{21} & \alpha^3_{31} & \alpha^3_{12} &\alpha^3_{22}&\alpha^3_{32} & \alpha^3_{13} & \alpha^3_{23} & \alpha^3_{33}
+\end{pmatrix}$ 
+
+\item $r=4: (\alpha^{ijkm}),(\alpha^{ijk}_{m}),(\alpha^{ij}_{km}), (\alpha^{i}_{jkm}), (\alpha_{ijkm})$
+
+1-ый индекс всегда стр
+
+2-ой индекс всегда столб
+
+3-ий индекс всегда слой
+
+4-ый индекс срез 
+
+Например при $n=2$ мы имеем:
+
+$(a^i_{jk}) = \begin{pmatrix}[cc|cc]
+  \alpha^{11}_{11} & \alpha^{12}_{11} &\alpha^{11}_{12} &\alpha^{12}_{12}\\
+  \alpha^{21}_{11} & \alpha^{22}_{11} &\alpha^{21}_{12} &\alpha^{22}_{12}\\
+\hline
+    \alpha^{11}_{21} & \alpha^{12}_{21} &\alpha^{11}_{22} &\alpha^{12}_{22}\\
+  \alpha^{21}_{21} & \alpha^{22}_{21} &\alpha^{21}_{22} &\alpha^{22}_{22}\\
+\end{pmatrix}$
+
+
+\item $r=1: (\alpha^i), (a_i)$ 
+
+При первой записи мы считаем, что она в столбик, а при второй считаем, что она строчка 
+
+\end{enumerate}
+
+
+\textbf{Пример:} 
+
+$f:V_3\times V_3 \rightarrow \mathbb{R}$
+
+$\forall \overline{a}, \overline{b}: f(\overline{a},\overline{b}) = |\overline{a}||\overline{b}|\cos \varphi$
+
+$f\in T(2,0)$. Зафиксируем базис $e_1,e_2,e_3$:
+
+$f(a^ie_i,b^jr_j) = a^ib^j f(e_i,e_j)$
+
+Пусть $e_1,e_2,e_3$ вектора, между которыми $2$ угла по $60$ градусов и $1$ $120$  и $|e_i|=i$.
+
+Тогда $(a_{ij})= \begin{pmatrix}
+    1 & 1 & \cfrac{3}{2} \\
+    1 & 4& 3 \\
+    \cfrac{3}{2} & 3 & 9
+\end{pmatrix}$
+
+
+\textbf{Вернемся в реальность}.
+
+Пускай $f \in T(p,q) \xleftrightarrow{e,w} \left(\alpha^{i_1,\ldots,i_q}_{j_1,\ldots,j_p}\right)$, где $e$ - базис, $w$ - дуально сопряженный
+
+$f: V^p \times (V^*)^q\rightarrow K$
+
+Возьмем $e' = (e_1',\ldots,e_n' )$ и дуальный к нему $w'=(w'_1,\ldots, w'm)$
+
+$T = (e\rightarrow e'), S = T^{-1} = (T_{w\to w'}^T)$
+
+Замечу, что $\xi =\xi^i e_i: \xi = T \xi' \leftrightarrow \xi^i = t_k^i\xi'^k$
+и $\eta = \eta_j w^j; \eta = \eta'S \leftrightarrow \eta^j = s_{j}^k \eta'_k $
+
+Возьму $\xi_1,\ldots,\xi_p \in V$ и $\eta^1,\ldots, \eta^q\in V^*$:
+$$f(\xi_1,\ldots,\xi_p,\eta^1,\ldots,\eta^q)=\alpha^{i_1,\ldots,i_q}_{j_1,\ldots, j_p}\xi_1^{j_1}\ldots \xi_{p}^{j_p} \eta_{i_1}^1 \ldots \eta_{iq}^q =\alpha^{i_1,\ldots,i_q}_{j_1,\ldots, j_p} \cdot t_{k_1}^{j_1}\xi_1'^{k_1}\ldots t_{k_p}^{{j_p}}\xi'^{k_p}_p \cdot s_{i_1}^{m_1}\eta'^1_{m_1}\ldots s_{i_q}^{m_q}\eta'^1_{m_q}$$
+$$= \alpha^{i_1,\ldots i_q}_{j_1,\ldots, j_p} \cdot t_{k_1}^{j}\ldots t_{k_p}^{j_p}\cdot s_{i_1}^{m_1}\ldots s_{i_q}^{m_q}\cdot \xi_1'^{k_1}\ldots \xi_{p}'^{k_p} \cdot \eta'^{1}_{m_1}\ldots \eta'^{q_1}_{m_q}$$
+Откуда подставив новые базисные вектора в эту формулу:
+$$\alpha_{k_1,\ldots,k_p}'^{\,m_1,\ldots, m_q} = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots, i_q}t_{k_1}^{j_1}\ldots t_{k_p}^{j_p}\ldots s_{i_1}^{m_1}\ldots s_{i_q}^{m_q}$$
+$j_1,\ldots, j_p$ ковариантные индексы матрицы, $i_1,\ldots, i_q$ контрвариантые, откуда название тензора $f\in T(p,q)$ $p$-раз ковариантный, $q$ раз контрвариантный.
+
+\textbf{Замечание:} это формула перехода(смены базиса) потом будет очень много везде использоваться.
+
+
+\deff{2-ое определение тензора:} $\alpha$ - $r = p+q$ мерная матрица $n$ - геометрический объект над пространством $V(\dim V =n)$, такой, что при смене базиса пространства $V$ элементы матрицы пересчитываются по формуле:
+$$\alpha_{k_1,\ldots,k_p}'^{m_1,\ldots, m_q} = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots, i_q}t_{k_1}^{j_1}\ldots t_{k_p}^{j_p}\ldots s_{i_1}^{m_1}\ldots s_{i_q}^{m_q}$$(геометрический объект - независимый от выбора базиса, но согласованный с заменой базиса, т.е. после замены базиса остается тем же объектом с теми же свойствами)
+
+Если матрицы одного порядка, то мы умеем складывать их и умножать на скаляр, есть нулевая и противоположная, откуда это линейное пространство.  
+
+Осталось показать, что эти операции не ломают второе определение (формулу перехода):
+$$(\alpha + \lambda \beta)_{k_1,\ldots,k_p}'^{\,m_1,\ldots,m_q} = \alpha_{k_1,\ldots,k_p}'^{\, m_1,\ldots, m_q} + \lambda \beta_{k_1,\ldots,k_p}'^{\, m_1,\ldots, m_q} = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} \cdot t_{k_1}^{j_1} \ldots t_{k_p}^{j_p}\cdot s_{i_1}^{m_1}\ldots s_{i_q}^{m_q} + \lambda\beta_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} \cdot t_{k_1}^{j_1} \ldots t_{k_p}^{j_p}\cdot s_{i_1}^{m_1}\ldots s_{i_q}^{m_q} $$
+$$= (\alpha_{j_1,\ldots, j_p}^{i_1,\ldots,i_q} + \lambda \beta_{j_1,\ldots, j_p}^{i_1,\ldots,i_q})t_{k_1}^{j_1}\ldots s_{i_q}^{m_q}$$
+Откуда корректно.
+
+\textbf{Замечание:} в дальнейшем мы будем называть формулу перехода - свойством линейного пространства.
+
+То есть теперь наше линейное пространство сохраняет заданное свойство.
+
+
+Заметим, что мы получили равносильность первого и второго определения.
+
+
+\subsection{Произведение тензоров. Базис пространства тензоров. Свертка тензоров.}
+
+\deff{def:} $\alpha \in T(p_1,q_1),\beta \in T(p_2,q_2)$. Тогда \deff{произведением} тензоров называется тензор $\gamma \in T(p_1+p_2,q_1+g_2):$ 
+$$\gamma^{i_1,\ldots i_{q_1},m_1,\ldots,m_{q_2}}_{j_1,\ldots,j_{p_1},k_1,\ldots, k_{p_2}}:= \alpha^{i_1\ldots i_q}_{j_1,\ldots,j_p} \beta^{m_1,\ldots,m_{q_2}}_{k_1,\ldots, k_{p+2}}$$
+Проверим корректность, то есть то что выполняется свойство тензора:
+$$\gamma_{\widetilde{j_1},\ldots,\widetilde{j}_{p_1}, \widetilde{k}_1,\ldots, \widetilde{k}_{p_2}}'^{\, \widetilde{i_1},\ldots,\widetilde{i}_{q_1}, \widetilde{m}_1,\ldots, \widetilde{m}_{q_2}} = \alpha_{\widetilde{j_1},\ldots,\widetilde{j}_{p_1}}'^{\, \widetilde{i_1},\ldots,\widetilde{i}_{q_1}} \cdot \beta_{ \widetilde{k}_1,\ldots, \widetilde{k}_{p_2}}'^{\,\widetilde{m}_1,\ldots, \widetilde{m}_{q_2}} = $$
+$$= \alpha_{j_1,\ldots j_{p_1}}^{i_1,\ldots, i_{q_1}} t_{\widetilde{j}_1}^{j_1}\ldots t_{\widetilde{j}_{p_1}}^{j_{p_1}} s_{i_1}^{\widetilde{i}_1}\ldots s_{i_{q_1}}^{\widetilde{i}_{q_1}}\cdot \beta_{k_1,\ldots k_{p_2}}^{m_1,\ldots, m_{q_2}} t_{\widetilde{k}_1}^{k_1}\ldots t_{\widetilde{k}_{p_2}}^{k_{p_2}} s_{m_1}^{\widetilde{m}_1}\ldots s_{m_{q_2}}^{\widetilde{m}_{q_2}} = $$
+$$=\gamma_{j_1,\ldots,j_{p_1},k_1,\ldots , k_{p_2}}^{i_1,\ldots, i_{q_1}, m_1,\ldots,m_{q_2}}\cdot t_{\widetilde{j}_1}^{j_1}\ldots t_{\widetilde{j}_{p_1}}^{j_{p_1}} s_{i_1}^{\widetilde{i}_1}\ldots s_{i_{q_1}}^{\widetilde{i}_{q_1}}\cdot t_{\widetilde{k}_1}^{k_1}\ldots t_{\widetilde{k}_{p_2}}^{k_{p_2}} s_{m_1}^{\widetilde{m}_1}\ldots s_{m_{q_2}}^{\widetilde{m}_{q_2}}$$
+Откуда получаем, что верно, это тензор!!! \sout{я устал это писать}
+
+Обозначается $\gamma = \alpha \otimes \beta$.
+
+Произведение ассоциативно, дистрибутивно, не коммутативно
+
+
+
+\textbf{Пример:}
+
+Пусть $\alpha \in T(1,0), \beta \in T(0,1)$. Тогда $\gamma = \alpha \otimes \beta  \in T(1,1)$.
+
+$\alpha = (\alpha_1,\alpha_2,\alpha_3); \beta =(\beta_1,\beta_2,\beta_3)^T$. Тогда
+$$\gamma^i_j =\alpha^i\beta_j \leftrightarrow \gamma = \begin{pmatrix}
+    \alpha^1\beta_1 &\alpha^1\beta_2 & \alpha^1 \beta_3 \\
+    \alpha^2\beta_1 &\alpha^2\beta_2 & \alpha^2 \beta_3 \\
+     \alpha^3\beta_1 &\alpha^3\beta_2 & \alpha^3 \beta_3 \\
+\end{pmatrix}$$
+
+
+
+Возьмем $\alpha \in T(p_1,q_1) \leftrightarrow f: V^{p_1}\times(V^{q_1})^* \rightarrow K$. 
+
+Возьмем $\beta \in T(p_1,q_1) \leftrightarrow g: V^{p_2}\times(V^{q_2})^* \rightarrow K$.
+
+$\xi_1,\ldots, \xi_{p_1} \in V;\eta^1,\ldots, \eta^{q_1}\in V^*;\zeta_1,\ldots, \zeta_{p_2}\in V; \theta^1,\ldots, \theta^{q_2}\in V^*$
+
+$\gamma = a \otimes \beta \in T(p_1+p_2, q_1+q_1)\leftrightarrow t: V^{p_1+p_2}\times (V^*)^{q_1+q_2}\rightarrow K$
+$$t(\xi_1,\ldots,\xi_{p_1},\zeta_1,\ldots,\zeta_{p_2}, \eta^1,\ldots, \eta^{q_1},\theta^1,\ldots, \theta^{q_2}) =$$$$= \gamma_{j_1,\ldots,j_{p_1},k_1,\ldots,k_{:p_2}}^{i_1,\ldots,i_{q_1},m_1,\ldots,m_{q_2}} \xi_1^{j_1}\ldots \xi_{p_1}^{j_p}\cdot \zeta_1^{k_1}\ldots \zeta_{p_2}^{k_{p_2}} \cdot \eta^1_{i_1}\ldots \eta_{i_{q_1}}^{q_1} \cdot \theta_{m_1}^1\ldots \theta^1_{m_1}\ldots \theta^{q_2}_{m_{q_2}} = $$
+$$=f(\xi_1,\ldots, \xi_{p_1},\eta^1,\ldots, \eta^{q_1})\cdot g(\zeta_1,\ldots \zeta_{p_2}, \theta^1,\ldots \theta^{q_2}) $$
+Вывели формулу, по которой мы можем легко находить значения функций. Воспользуемся нашей формулой и выведем еще одну:
+
+$f^1,\ldots , f^p \in V^* = T(1,0)$ --- $f^j:V\rightarrow K$  - линейная форма
+
+$g_1,\ldots,g_q\in V^{**} = T(0,1)$ --- $g_i:V^*\rightarrow k$
+
+$\gamma = f^1\otimes \ldots \otimes f^p \otimes g_1 \otimes \ldots \otimes g_q \leftrightarrow a^1_{j1}\ldots a^{p}_{j_p}b_1^{i_1}\ldots b_q^{i_q}= \gamma^{i_1,\ldots, i_q}_{j_1,\ldots, j_p}$, $\gamma \in T(p,q)$.
+
+Воспользуемся только что доказанной формулой и получим:
+$$\gamma(\xi_1,\ldots \xi_p, \eta^1,\ldots, \eta^q)= f^1(\xi_1)\ldots f^q(\xi_q)\cdot g_1(\eta^1)\ldots g_q(\eta^q)$$
+Продолжим играться с этой формулой:
+
+Пусть $f^j = w^j$, а $g_i = e_i$ (сопряженные базисы), и подставим это в нашу формулу:
+
+$w^{j_1} \otimes \ldots \otimes w^{j_p} \otimes e_{i_1} \otimes \ldots \otimes  e_{i_q}\in T(p,q) $
+
+Как мы вывели ранее:
+$$w^{j_1}\otimes \ldots \otimes w^{j_p} \otimes e_{i_1}\otimes \ldots \otimes e_{i_q} (\xi_1,\ldots , \xi_p, \eta^1,\ldots,\eta^q) = w^{j_1}(\xi_1)\ldots w^{j_p}(\xi_q)\cdot e_{i_1}(\eta^1)\ldots g_{i_q}(\eta^q) = $$
+$$=\xi_1^{j_1}\xi_2^{j_2}\ldots \xi_p^{j_p} \cdot \eta_{i_1}^1 \ldots \eta_{i_q}^q $$
+Получили вот такую относительно простую формулу для базисных векторов
+
+
+\thmm{Теорема (о базисе пространства тензоров типа (p,q))}
+
+Набор тензоров $w^{j_1}\otimes \ldots \otimes w^{j_p} \otimes e_{i_1}\otimes \ldots \otimes e_{i_q}$, где $j_k \in (1,\ldots,n),i_m\in(1,\ldots,n)$ --- базис пространства $T(p,q)$.
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item Докажем, что порождающее. Пусть $f\in T(p,q): \forall \xi_1,\ldots \xi_p \in V, \forall \eta^1,\ldots \eta^q\in V^*:$
+
+    Давайте найдем значение функции в этой точке:
+    $$f(\xi_1,\ldots, \xi_p,\eta^1,\ldots, \eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q}\xi_1^{j_1}\ldots \xi_{p}^{j_p}\cdot \eta_{i_1}^1 \ldots \eta_{i_q}^q = $$
+    Выразим координаты через базис и дуальный к нему:
+    $$=\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}(\xi_1)\ldots w^{j_p}(\xi_p) e_{i_1}(\eta^1)\ldots e_{i_q}(\eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}\otimes \ldots \otimes p_{i_q}(\xi_1,\ldots, \eta^q)$$
+    Что мы получили? Разложение в нашем базисе с коэффицентами: $\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} $
+
+    Откуда порождаемо.
+    \item Докажем, что линейно независимо. Для этого, как обычно, покажем единственность разложения нуля:
+    $$\gamma = \alpha_{j_1,\ldots, j_p}^{i_1,\ldots,i_q}w^{j_1}\otimes\ldots\otimes w^{j_p}\otimes e_{i_1}\otimes \ldots \otimes e_{i_q}=\zero$$
+    Давайте подставим какие-то базисные векторы:
+    $$\gamma(e_{\widetilde{j}_1},\ldots, e_{\widetilde{j}_p}, w^{\widetilde{i}_1},\ldots, w^{\widetilde{i}_q}) = $$
+    $$\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q}w^{j_1}(e_{\widetilde{j}_1})\ldots w^{j_p}(e_{\widetilde{j}_p}) \cdot e_{i_1}(w^{\widetilde{i}_1})\ldots e_{i_q}(w^{\widetilde{i}_q})$$
+    Заметим, что каждая из $w^{j_k}(e_{\widetilde{j}_k}) = \delta_{\widetilde{j}_k}^{j_k}$ и $e_{i_k}(w^{\widetilde{i}_k}) = \delta^{\widetilde{i}_i}_{i_i}$, поэтому получим, что:
+    $$ = \alpha_{\widetilde{j}_1,\ldots,\widetilde{j}_p}^{\widetilde{i}_1,\ldots, \widetilde{i}_q}$$
+    Но с другой стороны это ноль (тк мы смотрим на разложение тензора, выдающего всегда ноль (нуля)). Тогда получаем, что все $\alpha = 0$, откуда единственно
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} элементы матрицы тензора это его координаты в базисе пространства $T(p,q): w^{j_1}\otimes \ldots\otimes w^{j_p}\otimes e_{i_1}\otimes \ldots \otimes e_{i_q}$
+
+С одной стороны элементы матрицы - значения на базисном наборе, а с другой стороны коэффицент при базисном элементе.
+
+
+\textbf{Замечание.} Канонический базис состоит из тензоров,в матрицах которых есть ровно одна единица, а все остальные значения нули.
+
+\deff{def:} Пусть $\alpha \in T(p,q): p,q \geq 1$, тогда тензор $\beta$ называется \deff{сверткой} тензора $\alpha$, если
+$$\beta^{i_1,\ldots, \widehat{i}_k,\ldots,i_q}_{j_1,\ldots,\widehat{j}_m,\ldots,j_p} = \alpha_{j_1,\ldots,j_{m-1}, \ae,j_{m+1},\ldots,j_p}^{i_1,\ldots,i_{k-1},\ae, i_{k+1},\ldots,i_q}$$
+Причем $\widehat{i}_k$ - нет индекса на этой позиции.
+
+\textbf{Замечание:} Этого не говорили на лекции, но $k,m$ фиксированны. Отсюда я бы хотел написать похожее определение, которое может быть более понятным:
+$$\beta_{j_1,\ldots,j_{m-1},j_{m+1},\ldots,j_p}^{i_1,\ldots,i_{k-1},i_{k+1},\ldots,i_q} = \alpha_{j_1,\ldots,j_{m-1}, \ae,j_{m+1},\ldots,j_p}^{i_1,\ldots,i_{k-1},\ae, i_{k+1},\ldots,i_q}$$
+(Причем тут скрыта сумма в правой части)
+
+Получили, что $\beta \in T(p-1,q-1)$, но нам осталось проверить свойство:
+$$\beta_{\widetilde{j_1},\ldots,\hat{\widetilde{j}}_m,\ldots,\widetilde{j}_p}'^{\widetilde{i}_1,\ldots,\hat{\widetilde{i}}_k,\ldots, \widetilde{i}_q} =\alpha_{\widetilde{j_1},\ldots,\ae,\ldots,\widetilde{j}_p}'^{\widetilde{i}_1,\ldots,\ae,\ldots, \widetilde{i}_q} = $$
+$$= \alpha_{j_1,\ldots,j_m,\ldots,j_p}^{i_1,\ldots,i_k,\ldots,i_q} \cdot t_{\widetilde{j}_1}^{j_1}\ldots t^{j_m}_{\ae}\ldots t^{j_p}_{\widetilde{j}_p}\cdot s_{i_1}^{i_1}\ldots s^{\ae}_{i_k}\ldots s_{i_q}^{\widetilde{i}_q} = $$
+Что у нас происходит с $\ae$? Мы умножаем $j_m$ строчку $T$ на $i_k$ строчку $S$, откуда $t^{j_m}_{\ae} \cdot s_{i_k}^{\ae} = (TS)_{i_k}^{j_m} =\delta_{i_k}^{j_m}$. Тогда в нашей сумме сохранится только суммы, когда $i_k = j_m = \widetilde{\ae} $:
+$$=\alpha_{j_1,\ldots,\widetilde{\ae},\ldots,j_p}^{i_1,\ldots, \widetilde{\ae},\ldots, i_q}t_{\widetilde{j}_1}^{j_1}\ldots \widehat{t^{j_m}_{\ae}}\ldots t^{j_p}_{\widetilde{j}_p}\cdot s_{i_1}^{i_1}\ldots \widehat{s^{\ae}_{i_k}}\ldots s_{i_q}^{\widetilde{i}_q}$$
+(переменные с крышками как бы пропали)
+
+Откуда получили то, что нужно.
+
+\textbf{Замечание:} Свертка может происходить по нескольким парам символов.
+
+\textbf{Замечание:} Если в результате свертки получалась константа, то такая свертка называется \deff{полной}.
+
