@@ -1416,6 +1416,10 @@ $$P_{\mu}v= \alpha_{\mu}(\mathcal{A})\varphi_{\mu}(\mathcal{A})v =$$
  Так как $v \in K_{\lambda} = \ker (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}$, то $ (\mathcal{A}-\lambda \varepsilon)^{m(\lambda)}v = \zero$, откуда $P_{\mu}v = \zero$.
 
     Откуда получаю, что $\forall v \in K_{\lambda}, \, v= \varepsilon v = \sum\limits_{\mu}P_{\mu}v=P_{\lambda}v$. Следовательно $ K_{\lambda }\subseteq \Im P_{\lambda}$, но мы уже сказали, что  $ \Im P_{\lambda} \subseteq K_{\lambda}$, поэтому $ K_{\lambda }= \Im P_{\lambda}$.
+
+    Частный случай: если нет $\mu \ne \lambda$, т.е. $\lambda$ --- единственное с.ч. $\mathcal{A}$, то $\varphi(t) = (t - \lambda)^{m(\lambda)} \Rightarrow \varphi_{\lambda}(t) \equiv 1 \Rightarrow a_{\lambda}(t) \equiv 1 \Rightarrow \mathcal{P}_{\lambda} = \varepsilon \Rightarrow \Im\mathcal{P}_{\lambda} = V$.
+
+    С другой стороны, $K_{\lambda} = Ker(\mathcal{A} - \lambda\varepsilon)^{m(\lambda)}$, но $(\mathcal{A} - \lambda\varepsilon)^{m(\lambda)}$ это буквально $\varphi(\mathcal{A}) = \zero$, так что $K_{\lambda} = V = \Im\mathcal{P}_{\lambda}$.
     
 
     \item $B = \mathcal{A}\Big|_{K_{\lambda}}\in End(K_{\lambda})$
@@ -1905,7 +1909,7 @@ $J(\lambda ) = \begin{pmatrix}
 
 $(\lambda E + I_k)^m = \sum\limits_{j=0}^m C_m^j \lambda^{m-j} (I_k)^j  $ % правый низ первого листа
 
-Теперь мы можем показать соответствующую матрицу (туда была добавлена t):
+Теперь мы можем показать соответствующую матрицу (туда была добавлена $t$):
 \begin{center}
  \includegraphics[width = 15cm]{assets/7_10-function.png}    
 \end{center}
