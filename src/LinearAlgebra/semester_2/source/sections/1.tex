@@ -765,6 +765,7 @@ $$T^{-1}AT = \Lambda = diag (\lambda_1 \dots \lambda_n), A = T \Lambda T^{-1}$$
 А также у такой матрицы есть \uline{спектральное разложение}:
 $$A=\sum\limits_{\lambda  \text{ c.ч.}}\lambda P_{\lambda}$$
 Просьба не путать эти две формулы!
+
 \textbf{СЕЙЧАС НАЧНЕТСЯ ЧТО-ТО СТРАШНОЕ}
 
 \deff{def:} $A_k = (a_{ij}^k)_{n\times n}$ - последовательность матриц $n\times n$.
@@ -773,7 +774,7 @@ $$A=\sum\limits_{\lambda  \text{ c.ч.}}\lambda P_{\lambda}$$
 
 Раз это последовательность, то давайте введем на ней вот такой предел:
 $$A = \lim\limits_{n\rightarrow \infty} A_k = \forall i,j: a_{ij}=\lim\limits_{k\rightarrow \infty}a_{ij}^k$$
-Для лучшего понимания этого мира смотрите на приведеный ниже пример:
+Для лучшего понимания этого мира смотрите на приведенный ниже пример:
 $$\lim\limits_{k\rightarrow \infty}\left(
  \begin{matrix}
  (1+ \frac{2}{k})^k & \sqrt[k]{k} \\
@@ -1030,12 +1031,14 @@ $$\mathcal{A}_{\mathbb{C}}  \cdot e_j = \mathcal{A}  \cdot e_j + i\mathcal{A} \z
 
      $\overline{A_{\mathbb{C}}z} = \overline{Ax + iAy} = Ax - iAy = A_{\mathbb{C}}\overline{z}$
 
-    \item $\lambda$ с.ч $\mathcal{A_\mathbb{C}} $, $z$ - с. в , отвечающий $\lambda$$\Rightarrow$$ \overline{\lambda}$ с.ч. $\mathcal{A_\mathbb{C}}$, $\overline{z}$ с.в., отвечающий $\overline{\lambda}$
+    \item $\lambda$ с.ч $\mathcal{A_\mathbb{C}} $, $z$ - с. в , отвечающий $\lambda \Rightarrow \overline{\lambda}$ с.ч. $\mathcal{A_\mathbb{C}}$, $\overline{z}$ с.в., отвечающий $\overline{\lambda}$
 
-    $\mathcal{A}\overline{z} = \overline{\mathcal{A}_{\mathbb{C}}z} = \overline{\lambda z} = \overline{\lambda} \cdot \overline{z}$, тогда $\gamma(\lambda) = \gamma(\overline{\lambda})$
+    $\mathcal{A}\overline{z} = \overline{\mathcal{A}_{\mathbb{C}}z} = \overline{\lambda z} = \overline{\lambda} \cdot \overline{z}$.
+
+    \item $\gamma(\lambda) = \gamma(\overline{\lambda})$, $\dim V_{\lambda} = \dim V_{\overline{\lambda}}$
 \end{enumerate}
 
-Вернемся к тому старому разделению на случаи. Заметим, что если в таком случае мы возьмем наш третий случай и компелисифицируем, то для полученного оператора $A_{\mathbb{C}}$ мы получим, что он относится либо к первому варианту, либо ко второму.
+Вернемся к тому старому разделению на случаи. Заметим, что если в таком случае мы возьмем наш третий случай и комплексифицируем, то для полученного оператора $A_{\mathbb{C}}$ мы получим, что он относится либо к первому варианту, либо ко второму.
 
 \subsection{Минимальный многочлен линейного оператора. Теорема Кэли - Гамильтона}
 
@@ -1182,7 +1185,7 @@ $\chi (A) = \zero \quad \Rightarrow \chi  $ аннулятор $\mathcal{A}$, т
 
 \textbf{Замечание:} Очевидно, $\forall$ матрицы $A_{n \times n}$ ее характеристический многочлен это аннулятор $\mathcal{A}$.
 
-\textbf{Следствие 1.} $\forall \mathcal{A} \in End(V)$, $\varphi$ - минимальный многочлен, тогда $x \divby \varphi $ (из теоремы о минимальном мн-не.)
+\textbf{Следствие 1.} $\forall \mathcal{A} \in End(V)$, $\varphi$ - минимальный многочлен, тогда $\chi \divby \varphi $ (из теоремы о минимальном мн-не.)
 
 \textbf{Следствие 1.5.} $\deg \varphi \leq n$, т.к. $\deg \chi = n$ и $\chi \divby \varphi$.
 
@@ -1206,7 +1209,7 @@ $\forall \mathcal{A} \in End(V)$ множество корней $\chi$ совп
         $\varphi$ - минимальный многочлен $\Rightarrow$ аннулятор $v$, откуда 
         $\varphi \ \divby \ (t-\lambda) \Rightarrow \lambda$ корень $\varphi$ - победили
         
-        \item $\lambda \not \in K \equiv \mathbb{R}$, т.е. $\lambda$ - не собственное число. Прибегаем к \uline{комплесификации}: 
+        \item $\lambda \not \in K \equiv \mathbb{R}$, т.е. $\lambda$ - не собственное число. Прибегаем к \uline{комплексификации}: 
         
         Для $\mathcal{A}_{\mathbb{C}}$ $\lambda$ -  корень. Как мы знаем $\chi _{\mathcal{A}_{\mathbb{C}}} 	\equiv \chi_{\mathcal{A}} = \chi$.
         
@@ -1234,18 +1237,18 @@ $\chi(t) = \prod(t-\lambda)^{\alpha(\lambda)}$ и $\varphi(t) = \prod (t-\lambda
 
 \subsection{Операторное разложение единицы. Корневое подпространство.}
 
-Пусть у нас есть $\varphi(t)$ - многочлен над полем $K$(все его коэффиценты в $K$).
+Пусть у нас есть $\varphi(t)$ - многочлен над полем $K$ (все его коэффициенты в $K$).
 
  Пусть все его корни $\varphi \in K$. Тогда давайте разложим его в произведение корней:
 $$\varphi(t) = \prod\limits_{\lambda} (t-\lambda)^{m(\lambda)}$$
-давайте теперь вынесим один из корней за скобки. Получим:
+давайте теперь вынесем один из корней за скобки. Получим:
 $$\varphi(t) = (t-\lambda)^{m(\lambda)} \cdot \prod\limits_{\mu\neq \lambda}(t-\mu)^{m(\mu)}$$
 Переобозначим $\varphi_{\lambda}(t) = \prod\limits_{\mu\neq \lambda}(t-\mu)^{m(\mu)}$ и подставим:
 $$\varphi(t) = (t-\lambda)^{m(\lambda)} \cdot \varphi_{\lambda}(t)$$
 
-Возьмем $P_{m-1}$ - множество всех многочленов над полем $K$ степении $\leq m-1$.
+Возьмем $P_{m-1}$ - множество всех многочленов над полем $K$ степени $\leq m-1$.
 
-Зафиксируем $\varphi$ и $\lambda$ и назовем  \deff{главным идеалом}, порожденным многочленомом $\varphi_\lambda$:
+Зафиксируем $\varphi$ и $\lambda$ и назовем  \deff{главным идеалом}, порожденным многочленом $\varphi_\lambda$:
 $$ I_{\lambda} = \{p \in P_{n-1}| p \divby \varphi _{\lambda }\}$$
 
 Очевидно $I_{\lambda}$ линейное подпространство. Заметим, что $p \divby  \varphi_{\lambda} \Leftrightarrow p(t) = a_{\lambda}(t) \cdot \varphi_{\lambda}(t)$ 
@@ -1280,7 +1283,7 @@ $$ I_{\lambda} = \{p \in P_{n-1}| p \divby \varphi _{\lambda }\}$$
  
  \textbf{Следствие 1:} $\forall p \in P_{m-1}: \exists! p = \sum\limits_{\lambda}p_{\lambda}$, где $p_{\lambda}(t) =\alpha_{\lambda}(t) \cdot \varphi_{\lambda}(t)$, $\deg \alpha_{\lambda}\leq m(\lambda)-1$.
 
- В частности, $1 = \sum\limits_{\lambda \text{ корень}}p_{\lambda}$ - \deff{полиномиальное разложение единицы}
+ В частности, $1 = \sum\limits_{\lambda \text{ корень}}p_{\lambda}$ - \deff{ полиномиальное разложение единицы}
 
  \textbf{Замечание:}
 
@@ -1352,7 +1355,7 @@ $\varepsilon = \sum\limits_{\lambda}p_{\lambda}(\mathcal{A})$, $\varepsilon = \s
 
 Такие проекторы называются \deff{спектральными}. Это не те самые проекторы на $V_{\lambda}$. Пока что это проекторы на их собственные подпространства. Они обладают теми свойствами проекторов, что мы вывели до этого.
 
-\textbf{\uline{ЕСЛИ  $\forall \lambda: m(\lambda)=1$}}, тогда по следствию из матрицы Лагранжа, мы знаем 
+\textbf{\uline{ЕСЛИ  $\forall \lambda: m(\lambda)=1$}}, тогда по следствию из теоремы Лагранжа, мы знаем: 
 
 $\varepsilon = \sum\limits_{\lambda}P_{\lambda} $, $\mathcal{A} = \sum\limits_{\lambda}P_{\lambda}\cdot \lambda \Rightarrow \mathcal{A}$ о.п.с., $\lambda$ - с.ч $\mathcal{A}$.
 
@@ -1417,7 +1420,7 @@ $$P_{\mu}v= \alpha_{\mu}(\mathcal{A})\varphi_{\mu}(\mathcal{A})v =$$
 
     Откуда получаю, что $\forall v \in K_{\lambda}, \, v= \varepsilon v = \sum\limits_{\mu}P_{\mu}v=P_{\lambda}v$. Следовательно $ K_{\lambda }\subseteq \Im P_{\lambda}$, но мы уже сказали, что  $ \Im P_{\lambda} \subseteq K_{\lambda}$, поэтому $ K_{\lambda }= \Im P_{\lambda}$.
 
-    Частный случай: если нет $\mu \ne \lambda$, т.е. $\lambda$ --- единственное с.ч. $\mathcal{A}$, то $\varphi(t) = (t - \lambda)^{m(\lambda)} \Rightarrow \varphi_{\lambda}(t) \equiv 1 \Rightarrow a_{\lambda}(t) \equiv 1 \Rightarrow \mathcal{P}_{\lambda} = \varepsilon \Rightarrow \Im\mathcal{P}_{\lambda} = V$.
+    \uline{Частный случай:} если нет $\mu \ne \lambda$, т.е. $\lambda$ --- единственное с.ч. $\mathcal{A}$, то $\varphi(t) = (t - \lambda)^{m(\lambda)} \Rightarrow \varphi_{\lambda}(t) \equiv 1 \Rightarrow a_{\lambda}(t) \equiv 1 \Rightarrow \mathcal{P}_{\lambda} = \varepsilon \Rightarrow \Im\mathcal{P}_{\lambda} = V$.
 
     С другой стороны, $K_{\lambda} = Ker(\mathcal{A} - \lambda\varepsilon)^{m(\lambda)}$, но $(\mathcal{A} - \lambda\varepsilon)^{m(\lambda)}$ это буквально $\varphi(\mathcal{A}) = \zero$, так что $K_{\lambda} = V = \Im\mathcal{P}_{\lambda}$.
     
