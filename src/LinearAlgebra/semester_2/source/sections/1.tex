@@ -29,13 +29,13 @@ $$\ \forall u \in U: (\lambda\mathcal{A}) u = \lambda(\mathcal{A} u)$$
     $$ \forall u \in U:(\mathcal{A} + \mathcal{B}) u = \mathcal{A}u + \mathcal{B}u $$
     
 
-    \item  $\mathcal{B}\in L(U,W)$, $\mathcal{A} \in (L(W,V)$. Введем операцию произведения:
+    \item  $\mathcal{B}\in L(U,W)$, $\mathcal{A} \in L(W,V)$. Введем операцию произведения:
     $$\forall u \in U:(\mathcal{A} \cdot \mathcal{B}) u = \mathcal{A}(\mathcal{B}u)$$
     
 \end{enumerate}
 
 
- $\Im \mathcal{A} = \{v \in V:v =\mathcal{A} u| \forall u\in U \}$ --- \deff{образ линейного пространства.}
+ $\Im \mathcal{A} = \{v \in V:v =\mathcal{A} u| \forall u\in U \}$ --- \deff{образ линейного отображения.}
 
 \textbf{Замечание:} $\Im \mathcal{A}$ --- линейное подпространство.
 
@@ -305,7 +305,7 @@ $$= \sum\limits_{\sigma \in S_n}  a_{i_11}\cdot\ldots\cdot a_{i_nn} \cdot (-1)^{
 
 \textbf{Замечание:} $\det \mathcal{A}$ \uline{инвариант} линейного оператора, он не зависит от базиса.
 
-\textbf{Следствие 1:} $\forall n$ - форма $f$ на $V$:
+\textbf{Следствие 1:} $\forall n$ - форма $f$ на $V$, $\forall \mathcal{A} \in End(V)$:
 $$\forall \xi_1,\ldots, \xi_n \in V: f(\mathcal{A}\xi_1.\ldots, \mathcal{A}\xi_n) =\det A f(\xi_1,\ldots, \xi_n)$$
 \textbf{Доказательство:}
 
@@ -1272,8 +1272,8 @@ $$ I_{\lambda} = \{p \in P_{n-1}| p \divby \varphi _{\lambda }\}$$
 
         А так же мы знаем, что $\varphi_{\lambda}(t)$ не делится на $(t-\lambda)^\mu$
 
-        Откуда получаем, что $a_{\lambda} \divby (t-\lambda)^{m(\lambda)}$ %заменить деление
-        .А это значит, что $ a_{\lambda} \equiv 0$ %tofo: дописать про степень
+        Откуда получаем, что $a_{\lambda} \divby (t-\lambda)^{m(\lambda)}.5$ %заменить деление
+        А это значит, что $ a_{\lambda} \equiv 0$ %tofo: дописать про степень
 
         Откуда дизъюнктно.
 
