@@ -14,4 +14,6 @@
 
 [Основной конспект](./semester_2/Calculus.pdf).
 
+[Конспект практики](./semester_2/CalculusPractice.pdf).
+
 
