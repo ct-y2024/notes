@@ -20,3 +20,6 @@
 
 [Основной конспект](./semester_2/LinearAlgebra.pdf).
 
+Некоторые задачи:
+- [Разбор Кр по линейным отображениям](./semester_2/linear-mappings.pdf).
+- [Разбор КР по тензорам](./semester_2/tensor.pdf)
