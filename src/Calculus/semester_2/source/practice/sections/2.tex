@@ -1,0 +1,36 @@
+\subsection{Продолжение неопределенных интегралов.}
+
+\begin{enumerate}
+    \item $x^2+px+ q$ не имеет корней. Найти $\integral{}{}\cfrac{ax+b} {x^2+px+q}dx$
+    $$\integral{}{} \cfrac{ax+b}{x^2+px_q}dx = \integral{}{}\cfrac{ax+b}{(x+\cfrac{p}{2})^2 + q -\cfrac{p^2}{4}}dx =$$
+    Сделаем замену $y = x + \cfrac{p}{2}, \gamma^2 = q-\cfrac{p^2}{4}>0$ из-за того что корней нет
+    $$ = \integral{}{}\cfrac{ay+b-a\cfrac{p}{2}}{y^2+\gamma^2}=\cfrac{a}{2}\integral{}{}\cfrac{2y+\cfrac{2b}{a}-p}{y^2+\gamma^2} = \integral{}{}\cfrac{2ydy}{y^2+\gamma^2} + \cfrac{a}{2}\left(\cfrac{2b}{a}-p\right)\integral{}{}\cfrac{dy}{y^2+\gamma^2} = $$
+    $$= \cfrac{a}{2}\ln (y^2 + \gamma^2) + \cfrac{ac}{2} + \cfrac{a}{2}(\cfrac{2b}{a}-p)\left(\arctg\left( \cfrac{x+ \cfrac{p}{2}}{\sqrt{q-\frac{p^2}{4}}}\right)\right)\cdot \cfrac{1}{\sqrt{q-\frac{p^2}{4}}}$$
+\end{enumerate}
+Пусть у нас есть функция от двух рациональных переменных $R(x,y)$:
+
+Пример: $\cfrac{x^3+2xy +y^2}{7x+4y^4}$.
+
+И пусть хотим посчитать $\integral{}{}R(\cos t, \sin t) dt$. Будем делать универсальную замену: $x = \tg \cfrac{t}{2}$
+
+Тогда $\cos t = \cfrac{1-x^2}{1+x^2}$, $\sin t= \cfrac{2x}{1+x^2}$, $dt = 2 \cfrac{dx}{1+x^2}$. То есть на самом деле:
+$$\integral{}{}R(\cos t, \sin t)dt = \integral{}{}R(\cfrac{1-x^2}{1+x^2},\cfrac{2x}{1+x^2})\cfrac{2dx}{1+x^2}$$
+Проблема в том, что такой интеграл считать не вкусно.
+
+Если $R(-x,-y ) = R(x,y)$, поделим на $x$ в максимальной степени. Пример
+$$\cfrac{x^2+3xy}{y^4+4} = \cfrac{\frac{1}{x^2}+3\frac{y}{x}\cdot \frac{1}{x^2}}{(\frac{y}{x})^4 + \frac{4}{x^4}}$$
+Давайте в таком случае сделаем замену $z = \tg t$, $dt = \frac{dz}{1+z^2}, \frac{\sin t}{\cos t} = \tg t = z, \cos^2 t =\frac{1}{1+z^2}$
+
+Пример:
+$$\integral{}{}\cfrac{dt}{2+\cos^2t} = \integral{}{}\cfrac{\frac{dz}{1+z^2}}{2+\frac{1}{1+z^2}} = \integral{}{}\cfrac{dz}{3+2z^2}$$
+\begin{enumerate}
+    \item $\integral{}{}\cfrac{\cos x - \sin x}{\cos x + \sin x}dx$
+    $$\integral{}{}\cfrac{\cos t - \sin t}{\cos t + \sin t}dt = \integral{}{}\cfrac{1 - \tg t}{1 + \tg t}dt =  \integral{}{}\cfrac{1-z}{1+z}\cdot \cfrac{dz}{1+z^2}=\integral{}{}\cfrac{1}{1+z}-\cfrac{z}{1+z^2}dz = \ln(z+1)-\frac{1}{2}\ln(1+z^2)+c$$
+    Не забыть сделать обратную замену!
+    \item $\integral{}{}\cfrac{dx}{2\cos^2 x + \sin x \cdot \cos x + \sin^2 x}$
+    $$\integral{}{}\cfrac{\cfrac{1}{\cos^2t}dt}{2+\tg t + \tg^2 t} =\integral{}{} \cfrac{dz}{2+z+z^2}= \integral{ }{}\cfrac{dz}{(z+\cfrac{1}{2})^2+\cfrac{7}{4}}={\sqrt{\frac{4}{7}}}{\arctg (y \cdot \sqrt{\cfrac{4}{7}})}+c$$
+    Не забыть сделать обратную замену!
+    \item $\integral{}{} \sin^2 t dt$
+    $$\integral{}{} \sin^2 t dt = \integral{}{}\left(\frac{1}{2}-\frac{1}{2}\cos 2t\right)dt$$
+    А дальше очевидно доделывается.
+\end{enumerate}

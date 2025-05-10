@@ -1,0 +1,23 @@
+\subsection{Разные идеи:}
+
+\begin{enumerate}
+    \item $\lim\limits_{x\rightarrow 0 }\cfrac{\integral{0}{x}\cos(t^2)dt}{x}$
+
+    Заметим, что мы можем поспользоваться Лопиталем потому что обе штуки стремятся к нулю, откуда
+
+    $$\lim\limits_{x\rightarrow 0 }\cfrac{\integral{0}{x}\cos(t^2)dt}{x}= \lim\limits_{x\rightarrow 0} \cfrac{\cos x^2}{1} =1$$
+    \item $\lim\limits_{x\rightarrow 0 }\cfrac{\integral{0}{\sin x}\sqrt{\tg t}\cdot dt}{\integral{0}{x} \sqrt{\sin t} dt}$
+
+    Тут тоже Лопиталь, откуда выведем общую формулу:
+    $$\integral{h(x)}{g(x)}f(t)dt =(F(h(x))-F(g(x)))' = f(h(x))h'(x) - f(g(x))g'(x)$$
+    Пользуяст ею получаем, что наш предел равен:
+    $$\lim\limits_{x\rightarrow 0 }\cfrac{\sqrt{\tg (\sin x)}\cos x}{\sqrt{\sin (\tg x)}\cfrac{1}{\cos^2x}}$$
+    
+    \item $\integral{0}{x}e^{t^2}dt \mytilde \cfrac{e^{x^2}}{2x}$, при $x\rightarrow \infty$
+
+    Поделим и посмотрим на предел:
+    $$\lim\limits_{x\rightarrow +\infty}\cfrac{\integral{0}{x}e^{t^2}dt}{\cfrac{e^{x^2}}{2x}} = \lim\limits_{x\rightarrow\infty}\cfrac{e^{x^2}}{\cfrac{4x^2 e^{x^2} - 2 e^{x^2}}{4x^2}}=1$$
+    \item $\lim\limits_{n\rightarrow 0 }\cfrac{1}{\sqrt{n}}\integral{1}{n}\ln(1 + \cfrac{1}{\sqrt{x}})dx$
+    
+    Заменим $n$ на $t$ и воспользуемся Лопиталем.
+\end{enumerate}

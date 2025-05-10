@@ -1,0 +1,48 @@
+\subsection{Определенные интегралы}
+
+$f$ - непрерывные на $[a,b]$. Хотим посчитать площадь подграфика. Более подробно нам говорили на лекции(смотрите конспект лекции).
+
+$\integral{a}{b} f(t)dt = F(b) - F(a)$, где $F$ - какая-то константа - \deff{формула Ньютона-Лейбница}.
+
+Задачи: кто больше?
+
+\begin{enumerate}
+    \item $\integral{0}{\pi/2}\cfrac{\sin x }{x}dx$ или $\integral{0}{\pi}\cfrac{\sin x}{ x}dx$
+
+    Очевидно правая больше из площади подграфика.
+    
+    \item $\integral{0}{-1}e^{-x}\sin x dx$ или $\integral{0}{1}e^{-x^2}\sin x dx$
+
+    $e^{-x}<e^{-x^2}$ на этом интервале. Откуда больше правая
+    
+    \item $\integral{1}{2}\cfrac{dx}{\sqrt{1+x^2}}$ или $\integral{1}{2} \cfrac{dx}{x}$
+
+    Функция слева меньше функции справа, откуда у правой подграфик больше(они положительные)
+\end{enumerate}
+
+\textbf{Доказать:}
+
+\begin{enumerate}
+    \item $\integral{0}{\pi}\cfrac{\sin x }{\sqrt[5]{x^2+2}}<\cfrac{\pi}{\sqrt[5]{2}}$
+    $$\cfrac{\sin x}{\sqrt[5]{x^2+2}}\leq \cfrac{1}{\sqrt[5]{2}}$$
+    Вспользуемся переходом в неравенствах и получим то, что надо
+    
+    \item $\cfrac{1}{\sqrt[3]{9}}<\cfrac{1}{\pi}\integral{-1}{1}\cfrac{\pi + \arctg x}{\sqrt[3]{x^2+8}}dx < \cfrac{3}{2}$
+    $$\integral{-1}{1}\cfrac{\pi + \arctg x}{\sqrt[3]{x^2+8}}dx =\integral{-1}{1}\cfrac{\pi}{\sqrt[3]{x^2+8}}dx + \integral{-1}{1}\cfrac{\arctg x}{\sqrt[3]{x^2+8}}dx =$$
+    Заметим, что правое выржение - интеграл нечетной функции на симметричном интервале откуда это 0. Перепишем:
+    $$=\integral{-1}{1}\cfrac{\pi}{\sqrt[3]{x^2+8}}dx$$
+    Теперь оценим сверху и снизу эту функцию и получим победу.
+    \item $\cfrac{\sqrt{2}}{3}< \integral{-1}{1}\cfrac{\cos x}{2+x^2}<1$
+    $$\integral{-1}{1}\cfrac{\cos x}{2+x^2}dx = 2 \integral{0}{1}\cfrac{\cos x}{2+x^2}dx$$
+    Сверху очевидно оценивается $\cos x = 1, x^2 = 0$, снизу оценивается $x^2 = 1$
+    \item $\cfrac{1}{10\sqrt{2}}<\integral{0}{1}\cfrac{x^9}{\sqrt{1+x}}dx<\cfrac{1}{10}$
+    $$\cfrac{x^9}{\sqrt{2}}\leq \cfrac{x^9}{\sqrt{1+x}}\leq x^9$$
+    Интегрируем неравенство и получаем выигрыш.
+
+    \item $1-\cfrac{1}{n}< \integral{0}{1}e^{-x^n}dx<1, n \in \N$
+
+    $e^t = 1+ t + o(t)$, но мы не умеем в интегралы от $o(t)$, откуда $e^t \geq 1+t$. 
+    $$\integral{0}{1}e^{-x^n}dx \geq \integral{0}{1}(1-x^n)dx = 1- \cfrac{1}{n+1} > 1- \cfrac{1}{n}$$
+    Сверху оценивается очевидно
+    
+\end{enumerate}

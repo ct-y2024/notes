@@ -1,0 +1,86 @@
+\subsection{Неопределенный интеграл}
+
+$f(x)$ - непрерывна. $U \subset \mathbb{R} \rightarrow \mathbb{R}$
+
+\deff{def:} первообразной функции $f$ называется функция $F(x)$, такая что $F'(x) = f(x): \forall x \in U$
+
+\deff{def:} неопределенный интеграл $\integral{}{}fdx =  \{F - \text{ первообразные функции f}\}$
+
+$(F_1-F_2)' = 0$, откуда $F_1-F_2 \equiv c$
+
+Таким образом две первообразные отличаются на константу. То есть теперь:
+
+$\integral{}{}fdx = F + C$, где $F$ - любая первообразная, а $C$ - константа.
+
+Свойства:
+
+\begin{enumerate}
+    \item $\integral{}{}$ линеен
+    \item $\integral{}{}fg = \integral{}{}fg' + \integral{}{}f'g$. Или  $\integral{}{}fdg = fg - \integral{}{}gdf$
+    \item Замена переменных: $\varphi$ - дифф
+    $\integral{}{}f(\varphi (x)) \varphi'(x)dx = \integral{}{}f(\varphi(x))d\varphi(x) = \integral{}{} f(t)dt\Big|_{t = \varphi(x)}$
+\end{enumerate}
+
+\textbf{Замечание:} $f'(x)dx = df(x)$
+
+\textbf{Задачи:} Найти первообразную функции $f$ проходящую через точку $(x_0,y_0):$
+
+\begin{enumerate}
+    \item $f(x) = \cfrac{1}{2\sqrt{x}}+\sin x - \cos (x+1)$, $(x_0,y_0)=(1,1)$
+
+    Можем искать интегралы раздельно из линейности:
+    $$\integral{}{} f dx = \sqrt{x}-\cos x -  \sin(x+1)+c$$
+    Теперь хотим, чтобы в единице была 1: 
+    $$c + 1 - \cos 1 - \sin 2 = 1$$
+    Нашли $c$ и выиграли
+    
+    \item $f(x) = |x|, (x_0,y_0)=(-2,4)$
+    $$f(x) = \begin{cases}
+        x, x\geq0\\
+        -x,x\leq 0
+    \end{cases}; F(x) = \begin{cases}
+        \cfrac{x^2}{2}+c, x \geq 0 \\
+        -\cfrac{x^2}{2}+x,x<0
+    \end{cases} = \cfrac{x|x|}{2}+c$$
+    Подставим точку и выиграем
+    \item $f = x|x|$
+    $$f(x)=\begin{cases}
+        x^2,x\geq 0 \\
+        -x^2, x <0
+    \end{cases}; F(x) = \begin{cases}
+        \cfrac{x^3}{3}+c, x \geq 0 \\
+        \cfrac{-x^3}{3}+c, x <0
+    \end{cases} = \cfrac{|x|^3}{3}+c$$
+    \item $f = e^{|x|}$
+    $$f(x) = \begin{cases}
+        e^x, x\geq 0 \\
+        e^{-x}, x\leq 0
+    \end{cases}; F(x)  \begin{cases}
+        e^x + c_1, x\geq 0 \\
+        -e^{-x}+c_2, x\leq 0
+    \end{cases}$$
+    На выходе должна быть непрерывная функция, откуда в точке ноль они должны совпададать
+    $$F(x) \begin{cases}
+        e^x + c, x \geq 0 \\
+        -e^{-x}+2+c,x<0
+    \end{cases}$$
+    \item $f = \max(1,x^2)$
+
+    Тривиально.
+    \item $\integral{}{}\sin(ax+b)dx , a\neq 0 $
+
+    Хотим найти что-то такое $\integral{}{}\sin(\varphi(x))\cdot \varphi'(x) dx$:
+    $$\integral{}{}\sin (ax+b)dx = \integral{}{}\sin t  \frac{dt}{a} = -\cfrac{1}{a}\cos t + c = -\cfrac{\cos ax+b}{a}+c$$
+    \item $\integral{}{}\cfrac{1}{3x^2+5}dx$
+    $$\cfrac{1}{5}\integral{}{}\cfrac{1}{\frac{3}{5}x^2+1} = \cfrac{1}{5}\integral{}{}\cfrac{\sqrt{\frac{5}{3}}dt}{t^2+1} =\cfrac{1}{\sqrt{15}} \arctg (\sqrt{\frac{3}{5}}x)+c$$    
+    \item $\integral{}{}\cfrac{dx}{x^2-1}$
+    Воспользуемся разложением на простые дроби:
+    $$\cfrac{1}{x^2-1} = \cfrac{1}{(x-1)(x+1)} = \cfrac{A}{x-1}+ \cfrac{B}{x+1}$$
+    $$\integral{}{}\cfrac{dx}{x^2-1}=\integral{}{}\left(\cfrac{\frac{1}{2}}{x-1}-\cfrac{\frac{1}{2}}{x+1}\right) dx = \cfrac{1}{2}\ln (x-1) - \cfrac{1}{2}\ln(x+1)+c$$
+    \item $\integral{}{}\sin^nxdx$
+    $$\integral{}{}\sin^nxdx = \integral{}{} -\sin^{n-1}x d\cos x = -\sin^{n-1}x\cos x + \integral{}{}\cos^2 x(n-1)\cdot \sin^{n-2}x dx = $$$$=-\sin^{n-1}x\cos x  +(n-1) \integral{}{}\sin^{n-2}x dx - \integral{}{}\sin^n x dx$$
+    Откуда если взять эту формулу за $I_n$ получится:
+    $$I_n = \cfrac{n-1}{n}I_{n-2} - \cfrac{\sin^{n-1}x \cos x}{n}$$
+    А это уже можно дорешать.
+\end{enumerate}
+

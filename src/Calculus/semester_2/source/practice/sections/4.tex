@@ -1,0 +1,47 @@
+\subsection{Римановы суммы}
+
+$\sum\limits_{i=1}^n (\Delta x)_i f(x-\xi_i) \rightarrow_{n \rightarrow \infty} \integral{a}{b}fdx$. Об этом есть в конспекте лекций.
+
+\begin{enumerate}
+    \item $\lim\limits_n \sum\limits_{k=1}^n \cfrac{1}{n}\sqrt{1+ \frac{k}{n}}$
+
+    Возьму $x_0 =  a  = 0, x_i = x_{i-1} + \frac{1}{n}, x_n  = 1=b$, $f(x) = \sqrt{x+1}$. В данном случае $\xi_i = x_i$
+    
+    Откуда на самом деле это предел Римановой суммы:
+    $$ \lim\limits_n \sum\limits_{k=1}^n \cfrac{1}{n}\sqrt{1+ \frac{k}{n}}= \integral{0}{1}\sqrt{1+x}dx = \cfrac{(1+x)^{3/2}}{3/2}\Big|^1_0 =\cfrac{4\sqrt{2}-\sqrt{2}}{3}$$
+    \item $\lim\limits_n \sum\limits_{k=1}^n \frac{k}{n^2}$
+    $$\lim\limits_n \sum\limits_{k=1}^n \frac{k}{n^2} = \lim\limits_n \sum\limits_{k=1}^n \frac{1}{n}\frac{k}{n}$$
+    Откуда если $x_0 = a = 0,x_i = x_{i-1}+\frac{1}{n}, x_n = 1 =b, f(x)=x,\xi_{i} = x_i$. Получили Риманову сумму, откуда:
+    $$\lim\limits_n \sum\limits_{k=1}^n \frac{k}{n^2} = \integral{0}{1}xdx = \frac{1}{2}$$
+    
+    \item $\lim\limits_n \sum\limits_{k=1}^n \frac{1}{\sqrt{4n^2-k^2}}$
+
+    Тут что-то не видно ничего. Давайте вынесем $4n^2:$
+    $$\lim\limits_n \sum\limits_{k=1}^n \frac{1}{\sqrt{4n^2-k^2}} = \frac{1}{2}\lim\limits_n \sum\limits_{k=1}^n \frac{1}{n}\frac{1}{\sqrt{1-(\frac{k}{2n})^2}}$$
+    А вот тут уже видно сумму Римана. $x_0 = a = 0,x_i = x_{i-1}+\frac{1}{n}, x_n = 1 =b, f(x)= \frac{1}{\sqrt{1-(\frac{x}{2})^2}}, \xi_i =x_i$. 
+    $$\lim\limits_n \sum\limits_{k=1}^n \frac{1}{\sqrt{4n^2-k^2}}=\frac{1}{2} \integral{0}{1}\frac{dx}{\sqrt{1-\frac{x}{2}^2}} = \frac{\pi}{6}$$
+    \item $\lim\limits_{n}\sum\limits_{k=1}^n \frac{1}{n^2}\sqrt{(an+k)(an+k+1)}$
+    $$\sum \frac{1}{n}\sqrt{(a+\frac{k}{n})(a+\frac{k}{n}+\frac{1}{n})} = \sum\limits\frac{1}{n}\sqrt{(a+\frac{k}{n})^2 + \frac{1}{n}(a+\frac{k}{n})}= \sum \frac{1}{n}(n+\frac{k}{n})\sqrt{1 + \frac{1}{n} \frac{1}{a+k/n}} = $$
+    $$=\sum \frac{1}{n}(a+\frac{k}{n})+\sum (\frac{1}{n}(a+\frac{k}{n})o(1))$$
+    Штуку слева мы уже научились считать, осталась только справа. 
+    (o малая от единицы взялась как то, что мы оценили  то, что под корнем).
+    Теперь оценим то, что под скобками как $\frac{1}{an}$, то есть оно стремится к нулю при увеличении $n$. 
+
+    \item $
+    \lim\limits_{n=1}\sum\limits_{k=1}^n \cfrac{\sin \cfrac{\pi}{n}}{2+\cos(\cfrac{\pi k}{n})}$
+    $$\sum\limits_{k=1}^n \cfrac{\sin \cfrac{\pi}{n}}{2+\cos(\cfrac{\pi k}{n})} = \sum\limits_{k=1}^n \cfrac{\frac{\pi}{n}+o(\frac{1}{n^2})}{2+\cos(\cfrac{\pi k}{n})} =\sum\limits_{k=1}^n \cfrac{\frac{\pi}{n}}{2+\cos(\cfrac{\pi k}{n})} + \sum\limits_{k=1}^n \cfrac{o(\frac{1}{n^2})}{2+\cos(\cfrac{\pi k}{n})} $$
+    Первое - Риманова сумма, ее считать умеем, а справа непонятно.
+$$\left|\sum\limits_{k=1}^n \cfrac{o(\frac{1}{n^2})}{2+\cos(\cfrac{\pi k}{n})}\right | \leq \sum \left|o(\frac{1}{n})\right|\frac{\pi}{n}\cfrac{1}{2+\cos(\frac{\pi k}{m})} = |o(\frac{1}{n})|\ \frac{\pi}{n}\cfrac{1}{2+\cos(\frac{\pi k}{m})} \rightarrow 0 $$
+Наше $o$ не зависит от $k$, откуда можно вынести за скобки и получим, что оно стремится к нул.
+
+    Посчитаем первое:
+    $$\integral{0}{\pi} \cfrac{1}{2+\cos x}dx = \integral{0}{+\infty} \cfrac{1}{2 + \frac{1-t^2}{1+t^2}}\cdot \frac{2dt}{1+t^2} =  2\integral{0}{+\infty} \cfrac{dt}{3+t^2} = 2 \arctg \frac{t}{\sqrt{3}}\cdot \Big|_0^{+\infty}=\cfrac{\pi}{\sqrt{3}}$$
+
+    Тут появился несобственный интеграл, о нем читайте в конспекте
+    \item $\sum\limits_{k=1}^n \cfrac{2^{k/n}}{n+\frac{1}{k}}$
+    $$\sum\limits_{k=1}^n \cfrac{2^{k/n}}{n+\frac{1}{k}} = \sum\limits_{k=1}^n \cfrac{2^{k/n}}{1+\frac{1}{kn}} \cdot \frac{1}{n}= \sum\limits_{k=1}^n \frac{1}{n}\cdot 2^{k/n}(1-\frac{1}{kn}+o(\frac{1}{kn})) =$$
+    Обозначим то, что в скобках $o(1)_k$. Заметим, что мы можем его оценить $o(1)$, которое не зависит от $k$.
+    $$=\sum\limits_{k=1}^n \cfrac{2^{k/n}}{n} + \sum\limits_{k=1}^n \cfrac{2^{k/n}}{n} o(1)_k$$
+    Слева Риманова сумма. Посчитать ее понятно как. Справа какая-то хрень, но мы можем вынести $o(1)$ за скобки по вышесказанному. Откуда останется 0 на ограниченная, получится ноль и победа
+
+\end{enumerate}
