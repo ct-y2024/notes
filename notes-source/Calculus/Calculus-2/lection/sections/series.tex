@@ -1,0 +1,53 @@
+\subsection{Определения.}
+
+\deff{def:} Пусть дана вещ. последовательность $(a_n)$. 
+
+Выражение вида $S_N  = \sum\limits_{n=1}^N a_n$ --- \deff{частичная сумма ряда}.
+
+Если $\exists \lim\limits_{N \rightarrow +\infty}S_n = L \in \overline{\mathbb{R}}$, то говорят, что $L$ - \deff{сумма ряда} $\sum\limits_{n=1}^{+\infty}a_n$.
+
+В случае $L$ конечного будем называть ряд \deff{сходящимся}. В случае $L = \infty$ или не существования предела реда, будем называть ряд \deff{расходящимся}.  
+
+\textbf{Замечание.}  $a_n = S_n - S_{n-1}$.
+
+\textbf{Примеры:}
+\begin{enumerate}
+    \item $(a_n): a_n \equiv 0$, то сумма $0$ - сходится
+    \item $(a_n): a_n \equiv 1$, то сумма $+\infty$ - расходится
+    \item $(a_n): a_n = (-1)^n$, то предела нет и расходится.
+    \item $a_n = q^n$. $S_N = 1+\ldots + q^N =\cfrac{q^{N+1}-1}{q-1}$.
+    
+    Заметим, что это будет сходиться при $q<1$ и $\xrightarrow{n \rightarrow +\infty} \cfrac{1}{1-q}$. 
+\end{enumerate}
+
+$\sum\limits_{n=k}^{+\infty} a_n$ - $k$-ый остаток ряда.
+
+\textbf{Свойства рядов:}
+
+\begin{enumerate}
+    \item $\sum a_n , \sum b_n$ - сх. $c_n = a_n + b_n$.
+
+        Тогда $\sum c_n$ - сходится и $\sum c_n = \sum a_n + \sum b_n$
+    \item $\sum a_n$  - сходится $\lambda\in \mathbb{R} \Rightarrow \sum\lambda a_n$ - сходится и $\sum \lambda a_n = \lambda \sum a_n$.
+    \item $\sum a_n$ - сходится, то любой остаток ряда сходится
+    \item Если какой-нибудь остаток ряда сходится, то ряд сходится
+    \item Ряд сходится $\Leftrightarrow r_n \rightarrow 0 $.
+\end{enumerate}
+
+\thmm{Теорема (грабли) (необходимое условие сходимости)}
+
+$\sum a_n$ - сходится. Тогда $a_n \rightarrow 0$
+
+\textbf{Доказательство:}
+
+Да если бы камень умел думать, да если бы он не думал, он бы сходу сделал доказательство.
+
+\hfill Q.E.D.
+
+\textbf{Замечание.} В ОБРАТНУЮ СТОРОНУ НЕ РАБОТАЕТ!!!
+
+\thmm{Теорема (критерий Больцано-Коши)}
+
+
+
+

@@ -1,0 +1,727 @@
+\subsection{Основные определения.}
+
+Начнем с определений. 
+
+\deff{def:} $V$ - линейное пространство над полем $\mathbb{R}$.
+
+$(\cdot, \cdot ): V\times V \xrightarrow{} \R$ называется \deff{скалярное произведение}, если она удовлетворяет 4-ем аксиомам.
+
+$\forall x,y \in V$, $\forall \lambda \in \R$:
+
+\begin{enumerate}
+    \item $(x,y) = (y,x)$ --- симметричность
+    \item $(x_1 +x_2,y) = (x_1,y)+(x_2,y)$
+    \item $(\lambda x, y) = \lambda (x,y)$
+    \item $\forall x \neq 0: (x,x)>0$
+\end{enumerate}
+
+\deff{def:} $(V, (\cdot, \cdot))$ $\dim V =n<\infty$ называется \deff{евклидовым пространством} или вещественным линейным пространством со скалярным произведением.
+
+\textbf{Замечание:} Если $V$ бесконечномерно, то это называется \deff{гильбертовым пространством}
+
+\deff{def:} $V$ - линейное пространство над полем $\C$.
+
+$(\cdot, \cdot): V\times V \xrightarrow{} \C$ функция называется \deff{псевдоскалярным} произведением.
+
+\begin{enumerate}
+    \item $(x,y) = \overline{(y,x)}$ --- симметричность
+    \item $(x_1 +x_2,y) = (x_1,y)+(x_2,y)$
+    \item $(\lambda x, y) = \lambda (x,y)$
+    \item $\forall x \neq 0: (x,x)>0$
+\end{enumerate}
+
+Такая функция называется \deff{полуторалинейной}.
+
+\deff{def:} $\dim V = n < \infty$, $(V, (\cdot, \cdot))$ называется \deff{унитарным} пространством или эрмитовый или псевдоевклидовой или комплексным линейным пространством с псевдоскаляром.
+
+\textbf{Замечание:} Если вы не напишите слово вещественные или комплексные в работе или на экзамене, то вам инста бан.
+
+\deff{def:} Введем норму: $\forall x \in V: ||x|| =\sqrt{(x,x)}$ --- \deff{евклидова норма}.
+
+Давайте проверим выполняемость свойств нормы.
+
+\begin{enumerate} %todo
+    \item $\forall x \neq 0 \Rightarrow ||x|| \neq 0$ (невырожденность) --- выполнена.
+    \item  $\forall \lambda \in K \Rightarrow ||\lambda x|| = \sqrt{(\lambda x, \lambda x)} = |\lambda|\cdot||x||$ (однородность) --- выполнено.
+    \item  $\forall x, y\in V$ неравенство треугольника. 
+    $$||x+y||\leq ||x|| + ||y||$$
+    Мы будем пользоваться в доказательстве неравенством КБШ. Его доказательство вы можете найти в конспекте первого семестра по матанализу. 
+    $$||x+y||^2 = (x+y,x+y) = ||x||^2 + (x,y) + (y,x) + ||y||^2 \leq ||x||^2 + 2 Re(x,y) + ||y||^2 \leq$$
+    $$\leq ||x||^2 + 2||x||\cdot||y|| + ||y||^2 \leq  (||x|| + ||y||)^2$$
+    $$\Rightarrow ||x+y|| \leq ||x|| + ||y||$$
+\end{enumerate} 
+
+\deff{def:}  $\forall x \in V:$ $||x||$ - \deff{длина вектора}. $\varphi$ называем углом между $x$ и $y$, таким, что $\cos \varphi = \cfrac{(x,y)}{||x||||y||}$
+
+\textbf{Пример:}
+
+\begin{enumerate}
+    \item Возьмем $\mathbb{R}^n$. $\forall x,y \in \C^n$. $(x,y) = \sum\limits_{i=1}^n x_i \overline{y_i}$. Заметим что выполнены все 4 аксиомы скалярного произведения
+    $$||x|| = (\sum\limits_{i=1}^n |x_i|^2)^{1/2} = \sqrt{(x,x)} = \sqrt{\sum\limits_{i=1}^n x_i \overline{x_i}}$$
+    Неравенство КБШ в данном случае будет вот таким:
+    $$\sum\limits_{i=1}^n |x_iy_i| \leq \left(\sum\limits_{i=1}^n |x_i|^2\right)^{\cfrac{1}{2}} \cdot \left ( \sum\limits_{i=1}^{n} |y_i|^2\right)^{\cfrac{1}{2}}$$
+    А неравенство треугольника у нас будет вот таким:
+    $$\left(\sum\limits_{i=1}^n|x_i+y_i|^2\right)^{\cfrac{1}{2}}\leq \left(\sum\limits_{i=1}^n|x_i|^2\right) ^{\cfrac{1}{2}} + \left(\sum\limits_{i=1}^n |y_i|^2\right)^{\cfrac{1}{2}}$$
+    По-другому неравентво треугольника в данном случае будет называться неравенством Минковского.
+    \item Так же мы будем пользоваться вот таким примером. Пусть у нас выбран промежуток $[a,b]$ и $\integral{a}{b}|f|^2dt < \infty$. Тогда введем скалярное произведение: 
+    $$(f,g) = \integral{a}{b} f \overline{g}dt$$
+\end{enumerate}
+
+\pagebreak
+\subsection{Процесс ортогонализация Грама-Шмидта. Орто-нормированный базис. Ортогональное дополнение.}
+
+\deff{def:} Cистема ненулевых векторов $v_1,\ldots, v_m$ называется \deff{ортогональным}, если $\forall (i,j), i\neq j: (v_i,v_j) =0$.  
+
+
+
+\deff{def:} Система ненулевых векторов называется \deff{ортонормированной}, если $v_1,\ldots, v_m: \forall (i,j): (v_i,v_j) = \delta_{ij}$. $||v_i||= 1$
+
+\deff{Утверждение:} $v_1,\ldots, v_m$ ортогональная $\Rightarrow$ $v_1,\ldots , v_m$ \uline{линейно независимы}.
+
+\textbf{Доказательство:}
+
+$v_1,\ldots, v_m$ ортогональны. Хотим показать тривиальность разложения нуля(в принципе ничего нового).
+$$\sum\limits_{i=1}^n \alpha_i v_i =\zero$$
+Давайте применим операцию скалярного произведения с $v_j$ к обеим частям. Таким образом получим:
+$$0 = \sum\limits_{i=1}^n \alpha_i (v_i,v_j)= \alpha_j (v_j,v_j) \Rightarrow \alpha_j =0$$ 
+Таким образом получаю, что каждая $\alpha_j = 0$, то есть вектора линейно независимы.
+
+\hfill Q.E.D.
+
+
+\thmm{Теорема (процесс ортогонализации Грама-Шмидта)}
+
+$\forall a_1,\ldots,a_n \rightarrow \exists b_1,\ldots,b_k \in V$. Причем $b_i$ попарно-ортогонально и $\span (a_1,\ldots, a_n) = \span(b_1,\ldots,b_k)$. При этом $k = \rg (a_1,\ldots,a_m)$
+
+\textbf{Доказательство:}
+
+Пусть $a_1,\ldots,a_m$ линейно независимы, то есть $m=k$
+
+Будем доказывать по индукции.
+
+\textbf{База:}
+
+Рассмотрим $k=2$, пусть $b_1 = a_1$. Мы хотим, чтобы $b_2$ и $b_1$ были ортогональны, то есть $(b_1,b_2) = 0$. Пусть $b_2 = a_2 - c_1 b_1$. Тогда, нам надо, чтобы было выполнено:
+$$0 = (b_2,b_1) = (a_2,b_1)-c_1(b_1,b_1) \Leftrightarrow c_1 = \cfrac{(a_2,b_1)}{(b_1,b_1)}$$
+Заметим, что сейчас мы нашли такое $b_2$, что оно ортогонально и тк мы сделали линейное преобразование, то $\span (b_1,b_2) = \span (a_1,a_2)$
+
+\textbf{Индукционный переход:}
+
+Пусть верно для $m$. Докажем для $m+1$.
+
+Возьму первые $m$. Для них по предположению индукцию построю ортогональные.
+
+Возьму $b_{m+1}=a_{m+1} - \sum\limits_{j=1}^m c_j b_j$
+
+Хотим, понять существуют ли такие $c$. Давайте переберем $r = 1\ldots m $ и возьмем скалярное произведение с $b_r$. Тогда:
+$$0 = (b_{m+1}, b_r) = (a_{m+1},b_r)-\sum\limits_{j=1}^m c_j(b_j,b_r) = (a_{m+1},b_r)-c_r(b_r,b_r)$$
+$c_r = \cfrac{(a_{m+1}, b_r)}{||b_r||^2}$
+
+Заметим, что $b_{m+1}\neq 0$, тк иначе $a_{m+1}\in \span(b_1,\ldots b_n)$, откуда линейно-независимый. Откуда получили $m+1$ ортогональный.
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1:} Для любого пространства $V$ евклидова, унитарного всегда существует ортонормированный базис.
+
+\textbf{Следствие 2:} Любую ортогональную систему в $V$ можно дополнить до о.н.б.
+
+\deff{def:} $L \subset V$ $L^{\perp} = \{y \in V | (x,y)=0, \forall x \in L\}$
+--- \deff{ортогональное дополнение} $L$.
+
+\textbf{Свойства:}
+\begin{enumerate}
+    \item $L^{\perp}$ --- линейное подпространство. 
+    $$\forall y_1,y_2 \in L^{\perp}, \forall \lambda \in K: (x,\lambda y_1 + \lambda y_2) = \overline{\lambda} (x,y_1) + (x,y_2) = 0$$
+    Откуда $\lambda y_1  + y_2 \in L^{\perp}$
+
+    \item $V = L \oplus L^{\perp}$. 
+
+    \textbf{Доказательство:}
+
+    $L$ и $L^\perp$ дизъюнктны: $y\in L, y \in L^\perp, (y,y) = 0 \Leftrightarrow y =\zero \Leftrightarrow L \cap L^\perp = \{\zero\}$. 
+    
+     Теперь хотим понять $L \oplus L^{\perp} = V$. 
+     
+     Пусть $L = \span (a_1,\ldots,a_n)$ - ортогональный базис $L$. Дополним до базиса $V$. $$V = \span(a_1,\ldots,a_k,a_{k+1},\ldots, a_n)$$
+    Тогда очевидно, что $L^\perp = \span (a_{k+1}, \ldots,a_n)$, тк $\forall y \in \span(a_{k+1}\ldots a_n):y = \sum\limits_{j=1}^{n-k} c_j a_{k+j}$ и $\forall x\in L: (x,y) = \sum\limits_{j=1}^{n-k}\overline{c_j}(x, a_{k+j}) = \sum\limits_{j=1}^{n-k}\sum\limits_{m=1}^k \overline{c_j}\alpha_m (a_m,a_{k+j})=0$
+
+    Откуда по эквивалентноёму условию прямой суммы верно.
+
+    \hfill Q.E.D.
+
+    \textbf{Замечание:} $\forall L: \exists L'$ - прямое дополнение и $\exists L^{\perp}$ со свойством, что его элементы $\perp L$. 
+
+    \item $(L_1+L_2)^\perp = L_1^\perp \cap L_2^\perp$ и $(L_1 \cap L_2)^\perp = L_1^{\perp}+ L_2^{\perp}$
+
+    \textbf{Доказательство:}
+
+    $(L_1+L_2)^{\perp} = L_1^{\perp} \cap L_2^{\perp}$.
+
+    Докажем сначала вложенность в левую сторону:
+
+    $\forall  y \in L_1^\perp \, \&\, y\in L_2^\perp \Leftrightarrow y\in L_1^\perp \cap L_2^\perp$. Как мы знаем:
+    $$\forall x_1 \in L_1: (x_1,y)=0$$
+    $$\forall x_2 \in L_2: (x_2,y)=0$$
+    $$\Rightarrow x_1 + x_2 \in L_1 + L_2; (x_1 + x_2, y) = (x_1,y) + (x_2,y)=0$$
+    Откуда $y\in (L_1+L_2)^\perp$.
+
+    Докажем вложенность в правую сторону:
+
+    Пусть $y \in (L_1 + L_2)^\perp \Rightarrow \forall x_1 + x_2 \in L_1 + L_2,x_1 \in L_1, x_2 \in L_2$: $(x_1+x_2,y)=0$. Пусть $x_2 = \zero$. Тогда $\forall x_1 \in L_1: (x_1 , y)=0$. Откуда $y \in L_1^\perp$, аналогично $y \in L_2^\perp$. А это то что нам надо
+
+    Теперь докажем второе равенство:
+$$(L_1 \cap L_2)^\perp = L_1^{\perp}+ L_2^{\perp}$$
+    Применим первое свойство к $L_1^{\perp}$ 
+    $$(L_1^\perp + L_2^\perp)^\perp = (L_1^\perp)^\perp \cap (L_2^\perp)^\perp$$
+   Это равно
+    $$(L_1^\perp + L_2^\perp)^\perp = L_1 \cap L_2$$
+    $$((L_1^\perp + L_2^\perp)^\perp )^\perp= (L_1 \cap L_2)^\perp$$
+        
+    
+    \hfill Q.E.D.
+    \item $V^\perp  = \zero$
+\end{enumerate}
+
+\pagebreak
+\subsection{Матрица Грама и ее свойства. Ортогональные и унитарные матрицы.}
+
+Дано $(V, (\cdot,\cdot))$ - евклидово или унитарное, $e$ - базис $V$. $e=(e_1,\ldots, e_n)$.
+
+$\forall x,y \in V: (x,y) = (\sum\limits_{i=1}^n x_i e_i, \sum\limits_{j=1}^n y_j e_j) = \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_i \overline{y_j} (e_i, e_j)$
+
+\deff{def:} $\Gamma  = ((e_i,e_j))_{n\times n} = \begin{pmatrix}
+    (e_1,e_1) & \ldots & (e_1, e_n)\\
+    \vdots & &\vdots\\
+    (e_n,e_1) & \ldots & (e_n,e_n)
+\end{pmatrix}$ --- \deff{матрицей Грама}(базиса пространства $V$)
+
+Очевидно, что $\overline{\Gamma^T}  = \Gamma$ из свойств скалярного произведения.
+
+\deff{def:} $A = (a_{ij})_{n \times n}, a_{ij} \in K$. $A^* = \overline{A^T}$ называется матрицей, \deff{сопряженной} к $A$.
+
+\textbf{Замечание:} все $def$ пишем для $\mathbb{C}$, для $\R$ надо убрать операцию сопряжения.
+
+\deff{def:} $A^* = A$ называется \deff{самосопряженной}.
+\begin{enumerate}
+    \item[$\R$] $A^T = A$ --- симметричная.
+    \item[$\C$] $\overline{A^T}=A$  --- \deff{эрмитова матрица}.
+\end{enumerate}
+
+$(x,y)   = x^T \cdot \Gamma \cdot \overline{y}$
+
+\textbf{Частный случай.} $e$ - ортонормированный базис $\Gamma = E$.
+
+\textbf{Частный случай.} $e$ - ортогональный базис $\Gamma = diag(||e_1||^2,\ldots,||e_n||^2)$
+
+\deff{def:} Пусть есть $a_1,\ldots, a_k\in V$. Назовем $G = (a_1,\ldots,a_k) =((a_i,a_j))_{k\times k}$ \\--- \deff{матрицей Грама системы векторов}.
+
+Очевидно, что $G^* = G$ - самосопряженная.
+
+Очевидно, что $\Gamma = G(e_1,\ldots, e_n)$ - матрица Грама частный случай.
+
+\deff{def:} $g(a_1,\ldots, a_k) = \det G(a_1,\ldots, a_k)$.
+
+\thmm{Теорема (об определителе матрицы Грама)}
+
+$a_1,\ldots, a_k$ по Граму-Шмидту переводится в попарно-ортогональные $b_1,\ldots,b_k$ (но возможно есть нули).
+
+Тогда $g(a_1,\ldots, a_k) = ||b_1||^2\ldots ||b_k||^2 = g(b_1,\ldots,b_k)$
+
+\textbf{Доказательство:}
+$$g(a_1,\ldots, a_k) = \begin{vmatrix}
+    (a_1,a_1) & (a_1, a_2) & (a_1,a_3) & \ldots & (a_1,a_n)\\
+     (a_2,a_1) & (a_2, a_2) & (a_2,a_3) & \ldots & (a_1,a_n)\\
+      (a_3,a_1) & (a_3, a_2) & (a_3,a_3) & \ldots & (a_1,a_n)\\
+      \vdots & \vdots & \vdots & & \vdots \\
+       (a_n,a_1) & (a_n, a_2) & (a_n,a_3) & \ldots & (a_n,a_n)\\
+\end{vmatrix}$$
+По процессу ортогонализации я заменяю $a_1$ на $b_1$ получу:
+$$g(a_1,\ldots, a_k) = \begin{vmatrix}
+    (b_1,b_1) & (b_1, a_2) & (b_1,a_3) & \ldots & (b_1,a_n)\\
+     (a_2,b_1) & (a_2, a_2) & (a_2,a_3) & \ldots & (a_1,a_n)\\
+      (a_3,b_1) & (a_3, a_2) & (a_3,a_3) & \ldots & (a_1,a_n)\\
+      \vdots & \vdots & \vdots & & \vdots \\
+       (a_n,b_1) & (a_n, a_2) & (a_n,a_3) & \ldots & (a_n,a_n)\\
+\end{vmatrix}$$
+Выполним второй шаг. $b_2 = a_2 -c_1$, где $c_1 = \cfrac{(a_2,b_1)}{||b_1||^2}$.
+
+Из второй строки вычту 1 строку умноженную на $c_1$ получу:
+$$g(a_1,\ldots, a_k) = \begin{vmatrix}
+    (b_1,b_1) & (b_1, a_2) & (b_1,a_3) & \ldots & (b_1,a_n)\\
+     (b_2,b_1) & (b_2, a_2) & (b_2,a_3) & \ldots & (b_1,a_n)\\
+      (a_3,b_1) & (a_3, a_2) & (a_3,a_3) & \ldots & (a_1,a_n)\\
+      \vdots & \vdots & \vdots & & \vdots \\
+       (a_n,b_1) & (a_n, a_2) & (a_n,a_3) & \ldots & (a_n,a_n)\\
+\end{vmatrix}$$
+А теперь из второго столбика вычту первый умноженный на $\overline{c_1}$. Аналогично дальше. Откуда получили то, что нам надо.
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1:} $a_1,\ldots a_k$ - линейно-независимо $\Leftrightarrow$ определитель матрицы Грама $>0$.
+
+\textbf{Следствие 2:} $a_1,\ldots a_{k-1}$ линейно независимы, есть $a_k$. Тогда: $||b_k||^2 = \cfrac{g(a_1,\ldots ,a_k)}{g(a_1,\ldots,a_{k-1})}$.
+
+\deff{def:} $A = (a_{ij})_{n\times n} = \begin{pmatrix}
+        a_{11} & \ldots & a_{1k} & \ldots & a_{1n}\\
+        \vdots & & \vdots & & \vdots\\
+        a_{k1} & \ldots & a_{kk} & \ldots & a_{kn}\\
+        \vdots & & \vdots & & \vdots\\
+        a_{n1} & \ldots & a_{nk} &\ldots & a_{nn}
+    \end{pmatrix}$
+
+\deff{Угловым минором k-ого порядка} называется $\Delta_k = \det A_k = \begin{vmatrix}
+    a_{11} & \ldots & a_{1k} \\
+    \vdots & & \vdots \\
+     a_{k1} & \ldots & a_{kk}
+\end{vmatrix}$
+
+\textbf{Свойства} $\Gamma$:
+\begin{enumerate}
+    \item $\Gamma >0$ \deff{положительно-определенная}. $\Leftrightarrow \begin{cases}
+        \Gamma = \Gamma^*\\
+        \forall x \in K^n, x^T \Gamma \overline{x} >0 
+    \end{cases}$
+
+    Верно из свойств скалярного произведения.   
+
+    \item Для матрицы $\Gamma$ все угловые миноры $\Delta_k >0$. Откуда матрица $\Gamma$ --- невырожденная.
+
+    \item $e,e'$ базисы $V$. $\Gamma = G(e_1,\ldots ,e_n), \Gamma' = G(e_1',\ldots,e_n')$. $\Gamma' = T^T\Gamma \overline{T}$
+
+    \textbf{Доказательство:}
+
+    $\forall x,y \in V: (x,y) = x^T \Gamma \overline{y}$.
+
+    Сделаем замену $x^T \Gamma \cdot \overline{y}  = (x')^T T^T \Gamma \overline{T}\cdot \overline{(y')}= (x')^T \Gamma' \overline{y'}$
+
+    Пусть $x' = E_i, y' = E_j$, тогда подставляя мы получаем поэлементное равенство матриц, откуда доказали
+
+    \item $e,e'$ о.н.б. $V \Rightarrow T^T \overline{T} = E$
+
+\end{enumerate}
+
+\deff{def:} $Q_{n\times n}$ невырожденная. $Q$ называется унитарной, ортогональной, если $Q^* = Q^{-1}$
+
+\textbf{Свойства ортогональной/унитарной матрицы}
+
+\begin{enumerate}
+    \item строки и столбцы попарно-ортогональны и нормированны. (со стандартный ск. п.)
+
+\textbf{Доказательство:}
+    $$Q^* Q = E = Q Q^*$$
+    $$(\overline{Q^T} Q ) =E = (Q \overline{Q^T})$$
+    А это получается, что $(Q_i,Q_j) = \sigma_{ij}$, аналогично $(Q_i^T,Q_j^T) = \sigma_{ij}$
+
+    \hfill Q.E.D.
+
+    \item $Q$ ортог/унитар $\Rightarrow Q^{-1}$ ортог/унитар.
+
+    \item $Q,R$ ортог/унитар $\Rightarrow QR$ ортог/унитар.
+    \item $|\det Q | = 1 :(\R: \det Q = \pm 1 )$
+    \item $e,e'$ о.н.б $\Rightarrow$ $T_{e\rightarrow e'}$ ортогонально унитарно. 
+    
+    $e'$ о.н.б. $\Leftarrow$ $e$ о.н.б. $T = T_{e \rightarrow e'}$ унит./ортог.\textbf{}
+
+    \textbf{Доказательство:}
+
+    Первое утверждения это очевидно из 4-ого свойства матрицы Грама.
+
+    Докажем второе утверждение. $\Gamma' = T^T \Gamma \overline{T} = T^T \overline{T} = E$, откуда $e'$ о.н.б.    
+
+    \hfill Q.E.D.
+
+
+\end{enumerate}
+
+\pagebreak
+\subsection{Теорема Пифагора. Расстояние до линейного подпространства. Задача о перпендикуляре(наилучшем приближении). Объем k-мерного параллелепипеда в n-мерном пространстве}
+
+\thmm{Теорема (Пифагора)}
+
+$\forall y,z \in V: (y,z) = 0 \Rightarrow ||y+z||^2 = ||y||^2 + ||z||^2$
+
+\textbf{Доказательство:}
+
+$$||y+z||^2 = (y+z,y+z) = (y,y) + (y,z) + (z,y) + (z,z)$$
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $\forall x_1,\ldots ,x_k \in V$ попарно-ортогональными: $||\sum\limits_{j=1}^k x_j||^2 = \sum\limits_{j=1}^k||x_j||^2$
+
+
+\deff{def:}
+\begin{center}
+   \includegraphics[width = 10 cm]{assets/9_4-orthogonal-projection.png}
+\end{center}
+
+$V = L \oplus L^\perp$. $\forall x \in V: x = y + z$ представляется единственным образом, где $y\in L, z\in L^\perp$. В таком случае $y$ называется \deff{ортогональной проекцией} $x$ на линейное подпространство $L$. $z$ - \deff{ортогональная составляющая} $x$ относительно линейного подпространства $L$ или \deff{перпендикуляром}, опущенным из $x$ на $L$.
+
+\thmm{Теорема (о наилучшем приближении)}
+
+$L \subset V: \forall  l \in L: ||x-l|| \geq ||x-y||$, причем = при $l=y$
+
+\textbf{Доказательство:}
+
+$||x-l||^2 = ||x-y +y - l||^2 = ||x-y||^2 + ||y-l||^2 \geq ||x-y||^2$
+
+\hfill Q.E.D.
+
+\deff{def:} $L \subset V, x\in V$. $dist(x,L) : = (||z||)$, где $z$ ортогон. сост. (перпендикуляр $x$ относительно $y$).
+
+\textbf{Замечание:} исходя из того, что мы доказали выше $dist(x,L) =\min\limits_{l\in L} ||x-l||$
+
+\deff{Задача о перпендикуляре(о наилучшем приближении)}
+
+Возьму $L = \span(a_1,\ldots, a_m)$, $y= \sum\limits_{j=1}^{m}c_ja_j$. $(x,a_k) = (y,a_k) + (z,a_k)= (y,a_k)$. Хочу найти $c_j$.
+
+$k = 1\ldots m: \left(\sum\limits_{j=1}^m c_j a_j, a_k\right) = (x,a_k)$
+
+$\sum\limits_{j=1}^m c_j (a_j, a_k) =(x,a_k)$. Что же получаем? Да это же СЛОУ!
+$$G^TC = \begin{pmatrix}
+    (x,a_1)\\
+    \vdots \\
+    (x,a_m)
+\end{pmatrix}$$
+Мы знаем, что $a_1,\ldots , a_m$ линейно независимы, откуда определитель матрицы Грама $>0$, откуда матрица невырожденная, а из этого следует, что существует единственное решение. То есть:
+$$C = (G^T)^{-1}\begin{pmatrix}
+    (x,a_1)\\
+    \vdots \\
+    (x,a_m)
+\end{pmatrix}$$
+
+\textbf{Замечание:} аналогично можно искать $z$, раскладывая по базису $L^\perp$ (имеет смысл, если известен базис $L^\perp$)
+
+
+\thmm{Теорема(о расстоянии до линейного пространства) }
+
+$L \subset V $ - линейное подпространство. $L= \span (a_1,\ldots,a_n)$ и $a_1,\ldots a_n$ - базис.
+
+$\forall x \in V \Rightarrow dist^2(x,L) = \cfrac{g(a_1,\ldots, a_m,x)}{g(a_1,\ldots, a_m)} =||z||^2$, где $x = y+z$, $y\in L, z\in L^\perp$.
+
+\textbf{Доказательство:}
+
+Переводим $a_1,\ldots,a_m,x$ по Граму-Шмидту. Получаем $b_1,\ldots , b_{m+1}$, причем первые $m$ $b$-шек точно не нули. 
+
+$\span (a_1,\ldots , a_m) = \span (b_1,\ldots, b_m)$. $b_{m+1} = x -\sum\limits_{j=1}^m c_j b_j$. Немного перекинем и получим, что
+$$x =\sum\limits_{j=1}^m c_j b_j + b_{m+1} $$
+При этом $b_{m+1}\in L^\perp$, а сумма $\in L$. Откуда по единственности разложения $x= y+z$, получаю, что $b_{m+1}=z$. А отсюда уже следует:
+$$dist^2(x, L) = ||z||^2 = ||b_{m+1}||^2 = \cfrac{g(a_1,\ldots, a_m,x)}{g(a_1,\ldots, a_m)}$$
+
+\hfill Q.E.D
+
+\textbf{Следствие 1:} $dist(x, P ) = min ||x-u|| = ||z ||$, где $z+y= x-x_0$, а $P$- линейное многообразие $x_0+L$.
+
+\textbf{Доказательство:}
+$dist(x,P) = \min\limits_{u\in P}||x-u|| = \min\limits_{l\in L} ||x-x_0 + l||$, где $l \in L$
+
+$\min\limits_{l\in L} ||x-x_0 + l||= \min\limits_{l\in L}||y+z + l|| = \min\limits_{l\in L}||z+l||$, так как $y \in L, l \in L$
+
+$\min\limits_{l\in L}||z+l|| = \min\limits_{l \in L}\sqrt{||z||^2 + ||l||^2}= ||z||$
+
+\hfill Q.E.D
+
+\textbf{Следствие 2:} $dist (P_1, P_2) = \min\limits_{u_1\in P_1,u_2\in P_2}||u_2-u_1|| = ||z||$, где $z$ ортогональная составляющая $x_1-x_2$ относительно $L = L_1+L_2$. $P_j = x_j + L_j, j=1,2$ и $x_1-x_2 = y + z$, где $y\in L_1 + L_2$, $z \in (L_1 +L_2)^\perp$
+
+\textbf{Доказательство:}
+$$\min ||u_2-u_1|| = \min\limits_{l_1\in L_1,l_2\in L_2} ||x_2-x_1 + l_1 + l_2|| = \min\limits_{l\in L_1 +L_2}||y+z+l|| = \min\limits_{l\in L}||z+l|| =||z||$$
+\hfill Q.E.D.
+
+\deff{def:} $(V, (\cdot, \cdot))$ - евклидово пространство. Введем \deff{параллелепипед}, натянутый на $a_1,\ldots,a_k$ - линейно-независимые.
+$$\prod (a_1,\ldots, a_k) = \{x\in V | x = \sum\limits_{i=1}^k \alpha_i a_i, \forall \alpha_i \in [0,1]\}$$
+Приложен к точке $M_0$.
+
+$v(\prod(a_1,\ldots, a_k)):= (g(a_1,\ldots,a_k))^{\frac{1}{2}} = (g(b_1,\ldots ,b_k))^{\frac{1}{2}} = (g(a_1,\ldots, a_{k-1}))||b_k|| = v (\prod(a_1,\ldots, a_{k-1}))||b_k||$, где $b_k$ высота. Получаем, что объем не зависит от точки приложения векторов.
+
+\textbf{Примеры:}
+
+\begin{enumerate}
+    \item $k=1$. $\prod(a_1) = \{ \alpha_1 a_1: \forall \alpha_1 \in [0,1]\}$ - отрезок. $v (\prod(a_1)) = ||a_1||$.
+    \item $k=2$. $\prod(a_1, a_2)$ - параллелограмм. $v(\prod(a_1,a_2)) = v(\prod(a_1))||b_2||$ - длина основания на высоту, то есть наша привычная площадь параллелограмма.
+    \item $k=3$. $\prod(a_1,a_2,a_3)$ - параллелепипед. $v(\prod(a_1,a_2,a_3)) = v(\prod(a_1,a_2)) \cdot ||b_3||$. то есть наш привычный объем параллелепипеда.
+\end{enumerate}
+
+Пусть $e_1,\ldots, e_n$ о.н.б., то есть $(x,y) = x^Ty$. $\prod(a_1,\ldots,a_k)$. $a_j \leftrightarrow A_j \in \mathbb{R}^n$ --- координатный столбец. Тогда:
+$$v(\prod (a_1,\ldots ,a_k)) = (g(a_1,\ldots, a_k))^{\frac{1}{2}} = \begin{vmatrix}
+    (a_1,a_1) & \ldots& (a_1,a_k)\\
+    \vdots & & \vdots \\
+    (a_k,a_1) & \ldots& (a_k,a_k)\\
+\end{vmatrix}^{\frac{1}{2}} = \begin{vmatrix}
+    A_1^T A_1 & \ldots& A_1^TA_k\\
+    \vdots & & \vdots \\
+     A_k^TA_1 & \ldots&  A_k^TA_k\\
+\end{vmatrix}^{\frac{1}{2}} = |A^T \cdot A|^{\frac{1}{2}}$$
+В частности, если $k=n$, то ответ просто будет $= |\det A|$. Так же есть ориентированный объем $v^{\pm} = \det A$.
+
+Как меняется объем при линейны преобразованиях?
+
+Пусть $B \in End(V)$ изоморфное и не вырожденное.
+$$B(\prod(a_1,\ldots, a_k)) = \{Bx = \sum\limits_{i=1}^k \alpha_i B a_i =\sum\limits_{i=1}^k \alpha_i w_i | \forall \alpha_i \in [0,1]\} = \prod(w_1,\ldots, w_k)$$
+При этом из изоморфности изображения мы опять получили линейно-независимую систему векторов. 
+
+$v(\prod (w_1,\ldots, w_k)) =v(\prod(Ba_1,\ldots, Ba_k))= (g(Ba_1,\ldots, Ba_k))^{\frac{1}{2}} =\sqrt{(BA)^T BA} = \sqrt{A^TB^TBA}$
+\pagebreak
+\subsection{Коэффициенты Фурье. Тождество Парсеваля.  Неравенство Бесселя. Полиномы Лежандра.}
+
+Пускай у нас есть пространство со скалярным произведением (евклидово или унитарное). $e =(e_1,\ldots, e_n)$ - \deff{ортогональный базис}.
+$$x = \sum\limits_{j=1}^n x_je_j$$
+Умножу это скалярно на $e_k$-ое, получу:
+$$(x,e_k) = x_k (e_k,e_k)$$
+То есть $x_k = \cfrac{(x,e_k)}{||e_k||^2}$ - \deff{коэффициенты Фурье}.
+
+$x = \sum\limits_{j=1}^n x_j e_j$, Посмотрим на $L_j = \span(e_j)$, $V = \bigoplus\limits_{j=1}^nL_j$, $L_j \perp L_k$, при $j\neq k$.
+
+Замечу, что $x_j\perp x_k$, откуда работает теорема пифагора:
+$$||x||^2 =\sum\limits_{j=1}^n ||x_j||^2 = \sum\limits_{j=1}^n |x_j|^2 ||e_j||^2$$ 
+Это \deff{тождество Парсеваля}!
+
+\deff{Неравенство Бесселя:}
+$$\forall k =1,\ldots, n: \sum\limits_{j=1}^k |x_j|^2||e_j||^2\leq ||x||^2$$
+
+В частности, если $e$ о.н.б. $V$. $x_k = (x_,e_k)$. $||x||^2 = \sum\limits_{i=1}^n |x_j|^2$ - тождество Парсеваля.
+
+В частности, если переводить из ортогонального базиса в о.н.б. 
+
+$e_j' = \cfrac{e_j}{||e_j||}$ - ортонормированный. $x = \sum\limits_{k=1}^n x_k' e_k' = \sum\limits_{k=1}^n x_k e_k$.
+
+\deff{def:} $V =\bigoplus\limits_{j=1}^n L_j$, $L_j \subset V$ - линейное подпространство, причем попарно-ортогональные. 
+
+Тогда мы умеем строить проекцию $P_j \in End(V)$ - \deff{операторы ортогонального проектирования}.
+
+$V = \span (e_1,\ldots ,e_n)$ - о.н.б. - объединение базисов $L_j$.
+
+$j = 1\ldots m: P_j x = \sum\limits_{e_k \in L_j}x_k e_k = \sum\limits_{e_k\in L_j}(x,e_k)e_k$
+
+Отсюда получаем формулу для ортогонального проектора:
+$$P_j  = \sum\limits_{e_k\in L_j} (\cdot , e_k)e_k$$
+
+\deff{Полиномы Лежандра:}
+
+$P_n$ многочлены степени $\leq n$. $\forall p,q \in P_n$. где $1, x , \ldots, x^n$ - \deff{канонический базис}.
+
+$(p,q) = \integral{-1}{1}p(x)q(x)dx$.
+
+Мы берем стандартный базис $1,x,\ldots,x^n$ и переводим его Г-Ш в ортог. базис $p_0,\ldots, p_n$
+
+$p_0 = 1$, $p_1 = x$, $p_2 = x^2-\cfrac{1}{3}, p_3 = {x^3}-{\cfrac{3}{5}x}, \ldots$
+
+$l_k(x) = \lambda_k p_k$, $\lambda_k$ - \deff{нормированные множители}, а сами $l_k$ - \deff{полиномы Лежандра}.
+
+$q_k(x) = ((x^2-1)^k)^{(k)} = \lambda_k p_k(x)$ --- \deff{общая форма Родрига для полиномов Лежандра.}
+
+Давайте более подробно на нее посмотрим. 
+
+Покажем, что $q_k \perp x^m: \forall m = 1,\ldots, k-1$:
+
+$$(q_k, x^m) = \integral{0}{1}q_k(x) x^m dx = \integral{-1}{1}((x^2-1)^k)^{(k)}x^m dx = \integral{-1}{1}x^m d ((x^2-1)^k)^{(k-1)} = $$
+$$= x^m ((x^2-1)^k)^{(k-1)}\Big|_{-1}^1 - \integral{-1}{1}((x^2-1)^k)^{(k)}m x^{m-1}dx = $$
+$$ = (-1)^m m! \integral{-1}{1}((x^2-1)^k)^{(k-m)} =0$$
+Откуда $q_k \perp \span(1,\ldots, x^{k-1}) = \span(p_0,\ldots,p_{k-1})$. По Г.Ш. $p_k \perp \span (p_0,\ldots, p_{k-1})$. $q_k\in \span(1,\ldots, x^k) = \span (1,\ldots, p_k)$, откуда $q_k$ пропорционально $p_k$, то есть $q_k = const \cdot p_k$.
+
+$l_k(x) = \lambda q_k(x) = \lambda_k ((x^2-1)^k)^{(k)} = \cfrac{1}{k!2^k}((x^2-1)^k)^{(k)}$ --- \deff{общая формула Родрига}.  $\lambda_1 = \cfrac{2k!}{k!}$
+
+Тут мы выводили $q_k(1)$, если интересно смотрите \href{https://t.me/c/2402207436/2045/2131}{ct notes 9.5}.
+
+\pagebreak
+\subsection{Изометрия евкл/унитарных пространств. Теорема Рисса. Естественный изоморфизм $V$ и $V^*$ (евклидова)}
+
+\deff{def:} $(V, (\cdot,\cdot)), (V', (\cdot,\cdot))$. $V, V'$ называются изометричными ($V$ изометрично $V'$, и наоборот), если $V \cong V'$ и сохраняется скалярное произведение:
+$$(x,y)_V = (x',y')_{V'}$$
+
+Очевидно $||x||^2_V = (x,x)_V =(x',x')_{V'} = ||x'||^2_{V'}$. Она сохраняет норму $\Rightarrow||x-y|| = ||x'-y'||$ сохраняет метрику $\Leftrightarrow$ изометрия.
+
+\textbf{Утверждение:} $\forall V, V'$ одной размерности изометричны.
+
+\textbf{Доказательство:}
+
+$\dim V = \dim V' \Leftrightarrow  V \cong V'$. Пусть $e$ - о.н.б. $V$, а $e'$ - о.н.б. $V'$. Откуда:
+$$x = \sum\limits_{i=1}^n x_i e_i \xleftrightarrow{\text{изоморфны}} x' = \sum\limits_{i=1}^n x_i e_i'$$
+Заметим, что в таком случае $(x,y)_V = \sum\limits_{i=1}^n x_i \overline{y}_i = (x',y')_{V'} \Rightarrow$ изометричны.
+
+\hfill Q.E.D.
+
+$(V, (\cdot,\cdot))$. Пусть $y\in V$ фиксировано. Пусть $f(x) = (x,y)$. Откуда $ f \in V^*$.
+
+Мы знаем, что однозначно $\forall y \in V \rightarrow f \in V^*$, осталось показать $y\in V \leftarrow \forall f \in V^*$.
+
+\thmm{Теорема (Рисса о взаимно однозначным соответствием $V$ и $V^*$)}
+
+
+$\forall f \in V^*: \exists!y\in V : \forall x \in V : f(x) = (x,y)$
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item единственность:
+
+    Пусть $y_1,y_2 \in V$. $f(x) = (x,y_1) =(x,y_2)$. $\forall x\in V: (x,y_1)-(x,y_2) = (x,y_1-y_2)=0$. Пусть $x = (y_1-y_2)$, получу, что $y_1-y_2=0$.
+
+    \item существование:
+
+    Пусть НУО в $V$ выбран о.н.б. $e$.
+
+    $f(x) = \sum\limits_{j=1}^n f(e_j)x_j = \sum\limits_{j=1}^na_j x_j = (x,y) = \sum\limits_{j=1}^n x_i\overline{y_i}$. Откуда уже понятно как выглядит наш $y$.
+\end{enumerate}
+
+%todo: расписать о концептуальном смысле
+
+$y\in V \xleftrightarrow[\text{взаимо однознач.}]{P} f\in V^* \Leftrightarrow \forall x \in V: f(x) = (x,y)$
+
+Хотим понять является ли это изоморфизмом. Возьмем $y_1,y_2 \in V$ и $\lambda \in K$. Хотим показать, что $(y_1 + \lambda y_2) \xleftrightarrow{P} f$, если $y_1 \xleftrightarrow{P}f_1,y_2 \xleftrightarrow{P}f_2$.
+
+$\forall x \in V: f(x) =(x,y_1+\lambda y_2) = (x,y_1) + \overline{\lambda}(x,y_2)$. Изоморфизм у нас будет только для Евклидовых пространств, то есть  $\lambda \in \R$.
+
+Откуда, если $(V,(\cdot, \cdot))$ - евклидово, то $V \cong V^*$ - естественный изоморфизм.
+
+Можно сделать этот изоморфизм изометрией, если определить $(\cdot,\cdot)$ на $V^*$ след. образом:
+$$\forall f,g \in V^* : (f,g) = (y,z)_V$$
+где $f \xleftrightarrow{P}y \in V$, $g \xleftrightarrow{P}z\in V$.
+
+
+\textbf{Замечание:} Пусть $e$ - о.н.б. $V$, а $w$ сопряж. базис $V^*$. $\forall x \in V: w^i(x) = x_i$, где $x_i$ - коэффициенты Фурье. То есть $w_i \xleftrightarrow[]{P}e_i$.
+
+
+
+\pagebreak
+\subsection{Взаимные базисы. Формулы Гиббса. Метрические тензоры. Операции поднятия и опускания индексов. Евклидовы тензоры.}
+
+В этой главе мы работаем с евклидовыми.
+
+\deff{def:} Базисы пространства $V$, $e = (e_1,\ldots,e_n), e^* = (e^1,\ldots e^n)$ называются \deff{взаимными} если $(e_i,e^j) = \delta_i^j$.
+
+$\Gamma = G(e_1,\ldots ,e_n)$
+
+
+\thmm{Теорема 1: (о существовании и единственности взаимного базиса)}
+
+$\forall e = (e_1,\ldots, e_n): \exists!$ взаимный базис $e^* = (e^1,\ldots, e^n): (e_i,e^j) = \delta_i^j$ 
+
+\textbf{Доказательство:}
+
+$e^* = e T_{e\rightarrow e^*}$. $(e^1,\ldots, e^n) = (e_1,\ldots, e_n)T_{e\rightarrow e^*}$. Заметим, что:
+$$E = \begin{pmatrix}
+    e_1\\
+    \vdots\\
+    e_n
+\end{pmatrix} \cdot \begin{pmatrix}
+    e^1 & \ldots & e^n
+\end{pmatrix} = \Gamma T_{e\rightarrow e'}$$
+Откуда $E = \Gamma \cdot T_{e\rightarrow e'}$ и у $\exists \Gamma^{-1}$, откуда $\exists! e^* =e \Gamma^{-1}$
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1.}
+$\begin{cases}
+    e^* = e \Gamma^{-1}\\
+    e = e^* \Gamma
+\end{cases} \Leftrightarrow \begin{cases}
+    e^j =e_i g^{ij}= e_i g^{ji}\\
+    e_i = e^j g_{ji} = e^j g_{ij}
+\end{cases}$
+
+\textbf{Следствие 2:} $\Gamma^{-1} = G(e^1,\ldots, e^n)$ - матрица Грама для взаимного базиса
+
+\textbf{Cледствие 3:} $e$ орто-нормированный базис $\Leftrightarrow e \equiv e^*$
+
+\thmm{Теорема 2 (о матрице перехода для вазимных базисов)}
+
+$e, e^*$ - взаимные базисы. Тогда $e'$ - новый базис $T = T_{e\rightarrow e'}$.  У него есть свой взаимный базис  $(e')^*$ и $T_2 =T_{e^*\rightarrow (e')^*}$.
+
+$e' = eT, (e')^* = e^* T_2 \Rightarrow T_2 = S^T$, где $S = T^{-1}$.
+
+
+\textbf{Доказательство:}
+
+$e' = eT, (e')^T = T^Te^T$, $(e')^* = e^* T_2$, откуда:
+$$(e')^T (e')^* =   T^T e^T e^* T_2 =T^T T_2$$
+и также $(e')^T \cdot (e')^* = E$, откуда уже очевидно искомое.
+
+\hfill Q.E.D.
+
+
+\textbf{Следствие:} $x = x^i e_i = x_je^j$.
+
+$x = \begin{pmatrix}
+    x^1 \\
+    \vdots \\
+    x^n
+\end{pmatrix}, x^* = \begin{pmatrix}
+    x_1 & \ldots & x_n
+\end{pmatrix}$ --- координаты $x$ относительно базиса $e$ и $e'$ соответственно.
+
+$x' = T^{-1} x =Sx$ - по контрвариантному закону, $(x^*)' = x^*T$ - по ковариантному закону.
+
+\thmm{Теорема 3. (о связи сопряженного и взаимного базисов)}
+
+$e$ базис $V$, $w$ сопряженный к $e$ базис $V^*$. Пусть $w^i \xleftrightarrow{P}e^i \Rightarrow e^i$ взаимный базис к $e$. 
+
+\textbf{ Доказательство:}
+
+По теореме Рисса: $\forall w^i:\exists! e^i \in V: \forall x \in V: w^i(x) =(x,e^i)$.
+
+$\forall j = 1,\ldots, n: (e_j,e^i) = w^i(e_j) = \delta_j^i \Rightarrow e^i$ взаимный базис.
+
+\sout{Что тут происходит?}
+
+\hfill Q.E.D.
+
+\textbf{Замечание:} $e$ - о.н.б. $\Leftrightarrow$ $e = e^*$. Очевидно из замечания к теореме Рисса.
+
+$e =(e_1,\ldots, e_n)$ и $e^* =(e^1,\ldots, e^n)$ взаимные. $x = x^ie_i =x_je^j$.
+
+$x = (x,e_i)e^i, x= (x,e^j)e_j$ - \deff{формулы Гиббса}.
+
+\textbf{Замечание:} $e^* = e \Gamma^{-1}$, $T_{e\rightarrow e'} =\Gamma^{-1}  = G(e^1,\ldots, e^n)$, $ \det \Gamma^{-1}>0\Rightarrow \det T_{e\rightarrow e^*}>0 \Leftrightarrow e, e^*$ принадлежат одному классу ориентированности (Например, в $R^3$ они одновременно будут левой/правой тройкой векторов, либо в $R^2$ одновременно будут право/лево ориентированными).
+
+\sout{щас начнется что-то мозговзрывающее}
+
+$\Gamma = G(e_1,\ldots,e_n)=(g_{ij})_{n \times n}$, причем $g_{ij}=g_{ji}$.
+
+$\Gamma^{-1}= G(e^1,\ldots, e^n)= (g^{ij})_{n\times n}$, причем $g^{ij} = g^{ji}$.
+
+$T = T_{e\rightarrow e'}: \Gamma' = T^T \Gamma T \Leftrightarrow g'_{ij}= g_{km}t_j^m t_i^k$
+
+$T_2 = S^T: (\Gamma^{-1})' = T_2^T \Gamma^{-1} T_2 = S \Gamma^{-1}S^T \Leftrightarrow g'^{\, ij} = g^{km}s_k^i s_m^j$
+
+\deff{def:} $\Gamma \in T(2,0), \Gamma^{-1}\in T(0,2)$ - \deff{симметричные тензоры}, метрические тензоры. Соответственно ковариантный и контрвариантный.
+
+\deff{def:} $x = x^ie_i = x_j e^j$ сверткой вектора $x$ с метрическим тензором $\Gamma(\Gamma^{-1})$ называется свертка тензорного произведения контрваинтных(ковариантных) координат $x$:
+
+$x^i g_{ik} = x_k$, $x_j g^{kj}= x^k$.
+
+\deff{def:} $\alpha \in T(p,q), p \geq 1:$ \deff{операцией поднятия индекса} тензора $\alpha$ называется его свертка с контрвариантным метрическим тензором ($\Gamma^{-1}$).
+
+\deff{Операцией  опускания индекса} тензора $\alpha$ называется его свертка с ковариантным метрическим тензором ($\Gamma$).
+
+\deff{Общее правило записи компонент тензора:}
+\begin{enumerate}
+    \item если индекс поднимается, то он всегда записывается крайним правым верхним.
+    \item если индекс опускается, то он всегда записывается крайним левым нижним.
+\end{enumerate}
+
+\textbf{Пример:}
+$$\alpha_{j_2\ldots j_p}^{i_1\ldots i_qk} = \alpha^{i_1\ldots i_q}_{mj_2\ldots j_p} g^{mk}$$
+$$\alpha_{k,j_1\ldots j_p}^{i_1\ldots i_{q-1}} = \alpha^{i_1\ldots i_{q-1},m}_{j_1\ldots j_p} g_{mk}$$
+При этом, если поднимается/опускается не крайний левый нижний/крайний правый верхний, то исходное положение индекса обозначается точкой. 
+
+\textbf{Пример:}
+
+$\alpha^{i \cdot k}_{jm} = \alpha^{i \ae k}_m g_{\ae j}$
+
+\textbf{Правило чтения индексов:}
+
+$i$ - строка, $j$ - столбец, $k$ - слой, $m$ - сечение.
+
+При этом, если опускаются/поднимаются несколько индексов, то опускаю/поднимаю их по очереди слева направо.
+
+
+\textbf{Замечание:} Пусть $e$ - о.н.б. $V$. $\Gamma =E$
+
+$\alpha'^{\overline{i}_1\ldots \overline{i}_q}_{\overline{j}_1 \ldots \overline{j}_p} = \alpha^{i_1 \ldots i_q}_{j_1\ldots j_p} t_{\overline{j}_1}^{j_1}\ldots t_{\overline{j}_p}^{j_p}s_{i_1}^{\overline{i}_1}\ldots s_{i_q}^{\overline{i}_q} $
+
+
+
+
+
+ В о.н.б.  у меня $S = T^T$, поэтому:
+
+после приведения к некоторому о.н.б. тензоры, у которых матрицы совпадают и отличаются только записью в расположении верхних и нижних индексов, будем считать равными и называть \deff{евклидовыми} тензорами.
+

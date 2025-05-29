@@ -1,0 +1,41 @@
+\subsection{Абсолютное схождение}
+
+\textbf{Задачи:}
+
+\begin{enumerate}
+    \item $\integral{0}{1}\cfrac{1-\cos x}{x^{\alpha}}dx$
+
+    Надо доказать сходимость $\integral{0}{\varepsilon}\cfrac{\frac{x^2}{2} + o(x^2)}{x^{\alpha}}dx = c \integral{0}{\varepsilon}\cfrac{1+o(1)}{x^{\alpha-2}} \quad\mytilde \quad \integral{0}{\varepsilon}\cfrac{dx}{x^{\alpha-2}}$
+    
+    Сходится при $\alpha-2 < 1$
+
+    \item $\integral{0}{1}\cfrac{e^{ax}-\sqrt{1+x}}{ch x - \cos x}dx$
+
+    $\integral{0}{\varepsilon} \cfrac{(1 + \alpha x + \cfrac{\alpha^2x^2}{2}+ o(x^2))-(1+ \cfrac{1}{2}x - \cfrac{1}{8}x^2 + o(x^2)}{(1 + \cfrac{x^2}{2} + o(x^2) ) - (1- \cfrac{x^2}{2} + o(x^2)) }dx = \integral{0}{\varepsilon} \cfrac{(\alpha - \cfrac{1}{2})x + (\cfrac{\alpha^2}{2}-\cfrac{1}{8})x^2 +o(x^2)}{x^2 + o(x^2)} = \integral{0}{\varepsilon} \cfrac{\alpha - \cfrac{1}{2} + c_2 x + o(x)}{x + o(x)}dx $
+
+    Пусть $\alpha = \cfrac{1}{2}$, $\integral{0}{\varepsilon} \cfrac{c_2 + o(1)}{1 + o(1)}$ - сходится
+
+    Если $\alpha \neq 0: \integral{0}{\varepsilon} \cfrac{c+ o(1)}{x(1+o(1))} = c \integral{0}{\varepsilon} \cfrac{1}{x}(1+o(1)) dx \mytilde \integral{0}{\varepsilon}\cfrac{dx}{x}$
+
+    \item $\integral{0}{1}{x^{\alpha}}|\sin \cfrac{\pi}{x}|dx$
+
+    $\integral{0}{\varepsilon} x^{\alpha}|\sin \cfrac{\pi}{x}| \alpha \leq \integral{0}{1}x^{\alpha} dx$ - сходится при $\alpha > 1$.
+
+    Идея в том, чтобы оценить интеграл снизу в какой-то стороне на каком-то множестве. Давайте посмотрим множество, где наши синусы $> \cfrac{1}{2}$
+
+    $$A = \bigcup\limits_{k=0}^{\infty} [\cfrac{1}{5/6 + 2k}, \cfrac{1}{1/6  +2k}] = \bigcup\limits_{k \geq k_0} [\cfrac{5}{5+12k}, \cfrac{6}{1+12k}] = $$
+    $$=\integral{0}{\varepsilon} \geq \cfrac{1}{2}\integral{A}{}x^\alpha dx = \cfrac{1}{2} \sum\limits_{k \geq k_0} \integral{6/5 + 12k}{6/1 +12k}x^{\alpha}dx = \cfrac{1}{2}\sum\limits_{k \geq k_0} \cfrac{1}{\alpha+1} \left(\cfrac{6^{\alpha+1}}{(1+12k)^{\alpha+1} }- \cfrac{6^{\alpha+1}}{(5+12k)^{\alpha+1}}\right) $$
+    $$= c \sum\left( \left(\cfrac{1}{1+12k}\right)^{\alpha+1}-\left(\cfrac{1}{5+12k}\right)^{\alpha+1}\right) = c \sum\left( (1 - \cfrac{1}{12}k + o(\cfrac{1}{k})^{\alpha +1})\right)= с \sum \cfrac{1}{k^{\alpha+2}}[\overline{c} + o(1)] = c \sum \cfrac{1}{k^{\alpha +2}}(1+o(1))$$
+\end{enumerate}
+
+Обсудим признаки:
+
+Признак Дирихле: $\integral{a}{b}f(x)g(x)dx$. 
+
+\begin{enumerate}
+    \item $f$ непр. и первообр. определена
+    \item $g \in C^1$, монотон и $\lim\limits_{x \xrightarrow{}b-0}a = 0$
+\end{enumerate}
+
+Тогда интеграл $\integral{a}{b}f(x)g(x)dx$ сходится.
+

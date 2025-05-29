@@ -8,12 +8,14 @@
 
 #### 1 семестр
 
-[Основной конспект](./semester_1/Calculus.pdf).
+[Основной конспект](./Calculus-1.pdf).
 
 #### 2 семестр
 
-[Основной конспект](./semester_2/Calculus.pdf).
+[Основной конспект](./Calculus-2.pdf).
 
-[Конспект практики](./semester_2/CalculusPractice.pdf).
+[Конспект практики](./CalculusPractice-2.pdf).
+
+[Теоритический опрос](./theoretical-survey.pdf).
 
 

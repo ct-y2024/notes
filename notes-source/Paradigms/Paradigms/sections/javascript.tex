@@ -1,0 +1,313 @@
+\subsection{Введение в JavaScript}
+\epigraph{Если вы на практике хотите сравнивать NaN и undefined, то очень жаль, что вам до этого кто-то голову не открутил.}{Георгий Корнеев}
+\subsubsection{О языке:}
+\begin{itemize}
+    \item Изначально создан для добавления интерактивности веб-страницам. Сейчас используется гораздо шире: для разработки веб-приложений (frontend и backend), мобильных приложений, десктопных приложений, игр и многого другого.
+    \item Официально язык стандартизирован как ECMAScript (ECMA-262). JavaScript - это наиболее распространённая реализация стандарта ECMAScript.
+    \item Таким образом, строго говоря, "ECMAScript" - это спецификация языка, а "JavaScript" - конкретная реализация этой спецификации. Но на практике эти термины часто используются как взаимозаменяемые.
+\end{itemize}
+
+\subsubsection{Как пишется код? Основные вещи.}
+
+\textbf{Типы данных и объявление переменных:}
+
+Переменные объявляются с помощью ключевого слова let:\begin{minted}{javascript}
+let v = 10;
+\end{minted}
+С помощью typeof мы можем более точно понять, что за тип:
+\begin{minted}{javascript}
+>> a = 3
+>> typeof(a)
+"number"
+>> a = hello
+>> typeof(a)
+"string"
+>> a = [1, 2, 3]
+>> typeof(a)
+"object"
+\end{minted}
+На следующей лекции мы узнаем, что такое object, пока что забьем.
+
+Так же в Javascript есть не только null, но и undefined. Смысл у этого такой, что:
+\begin{minted}{javascript}
+let a = null; у переменной есть значение и это ничего  === null
+let b; у переменной нет значения === undefined 
+\end{minted}
+
+\textbf{Веселые места в javascript (оператор равенства):}
+
+\epigraph{Не надо интерпретировать массивы как числа и у вас все будет хорошо!}{Георгий Корнеев}
+
+Давайте рассмотрим некоторые \deff{приколы}:
+\begin{minted}{javascript}
+>> "1" == "1"
+true
+\end{minted}
+Ну это звучит максимально логично, пока мы не узнаем, что:
+\begin{minted}{javascript}
+>> "1" == 1
+true
+>> "1" == 1.0
+true
+>> "1.0" == 1
+true
+\end{minted}
+Бывают более интересные вещи:
+\begin{minted}{javascript}
+>> 0 == []
+true
+>> undefined  == null
+true
+>> 10 == [10]
+true
+\end{minted}
+
+Для этого в JavaScript есть 2 типа сравнения: приводящее (`==`) и неприводящее (`===`). Приводящее приводит данные к одному типу, а затем сравнивает, а неприводящее выдаёт `false`, если типы не равны.
+
+\textbf{Типизация.}
+
+Во-первых стоит разделять 2 вида типизации:
+\begin{enumerate}
+    \item \deff{статическую} - во время компиляции.
+    \item \deff{динамическую} - во время исполнения.
+\end{enumerate}
+
+Статической типизации в JavaScript \deff{нет}. В Javascript слабая динамическая типизация.
+
+\textbf{Массивы.}
+
+Посмотрим на примерах, они крайне подробно описывают происходящее:
+\begin{minted}{javascript}
+>> a = [10, 20, 30];
+>> a.push(40,50);
+>> dump(a);
+length: 5, elements: [10, 20, 30 , 40, 50]
+>> a.pop();
+50
+>> a.pop();
+40
+>> a.unshift(100); - вставить в начало, никто не знает за сколько это работает. Приличные люди не задают такие вопросы, особенно JavaScript-у
+>> a.shift();
+100
+>> a[10] = 10;
+>> dump(a);
+length: 11, elements: [10, 20, 30, , , , , , , , 10]
+>> a[5]
+undefined
+>> a["hello"] = "world"
+>> a[-1] = "???"
+>> dump(a)
+length: 11, elements: [10, 20, 30, , , , , , , , 10], other{-1 = ???, hello = world}
+>> as[as]  = as
+length: 11, elements: [10, 20, 30, , , , , , , , 10], other{-1 = ???, hello = world, 10, 20, 30, , , , , , , , 10 = 10, 20, 30, , , , , , , , 10 }
+>> a.pop();
+10
+>> a.dump();
+length: 11, elements: [10, 20, 30, , , , , , , , 10], other{-1 = ???, hello = world, 10, 20, 30, , , , , , , , 10 = 10, 20, 30, , , , , , ,}
+\end{minted}
+Как видно массивы в JavaScript работают превосходно!
+
+\textbf{Константы}
+
+\begin{minted}{javascript}
+>> const c = 10
+>> c = 20
+Uncaught TypeError: Assignment to constant variable.
+\end{minted}
+Константы нельзя обновлять. Но например, если это будет объект, то внутри него можно будет менять значения.
+
+\subsubsection{Функции.}
+
+
+\textbf{Функции - это переменные:}
+
+\begin{minted}{javascript}
+let dumpArgs = function(){
+    println(typeof(arguments));
+    println(arguments.constructor.name);
+}
+>> dumpArgs(10, "hello", null);
+object
+Object  --- иногда Arguments
+\end{minted}
+Вот так создаются функции. Arguments ведет себя как массив:
+
+\begin{minted}{javascript}
+dumpArgs = function() {
+    for (const v of arguments) {
+        println(v);
+    }
+}
+>> dumpArgs(1, 2, "hello", null)
+1
+2
+hello
+null
+\end{minted}
+Вообще у нас const v - неизменняя переменная. Слово переменная говорит о том, что она меняется. А модифактор const говорит, что он не может. Задумайтесь :)
+\begin{minted}{javascript}
+sum = function() {
+    let s = 0;
+    for (const v of arguments) {
+        s += v;
+    }
+    return s;
+}
+>> sum(1, 2, 3)
+6
+\end{minted}
+У javascript есть:
+\begin{minted}{javascript}
+use strict
+\end{minted}
+Он запрещает производить некоторые совсем извращенские штуки.
+
+
+Ещё функции можно объявлять так:
+\begin{minted}{javascript}
+function min(a, b) {
+    return a < b ? a : b;
+}
+>> min(3, 4)
+3
+\end{minted}
+Но это не означает, что мы не можем вызывать функцию с другим количеством аргументов:
+\begin{minted}{javascript}
+>> min(4)
+undefined
+>> min(1, 2, -10)
+1
+\end{minted}
+Формально он просто именует первые $n$ аргументов (в данном примере 2).
+
+
+Можно положить все остальные аргументы в массив:
+\begin{minted}{javascript}
+ function min(first, ...rest) {
+    for (const v of rest) {
+        if (v < first) {
+            first = v;
+        }
+    }
+    return first;
+}
+>> min(1, 2, 3, -10, 5)
+-10
+\end{minted}
+После rest параметра ничего быть не может.
+
+\textbf{Второй вид функций ---стрелочные функции.}
+\begin{minted}{javascript}
+let min = (first, ...rest) =>{
+    for (const v of rest) {
+        if (v < first) {
+            first = v;
+        }
+    }
+    return first;
+}
+\end{minted}
+Существенное отличие --- все аргументы именованные.
+
+Можно писать еще:
+\begin{minted}{javascript}
+const add = (a, b) => a + b.
+\end{minted}
+
+\textbf{Функции в аргументы к функциям. Легко!}
+
+Функции можно передавать в аргументы другим функциям и возвращать как результат! Такие функции называются \deff{функциями высшего порядка}: 
+\begin{minted}{javascript}
+minByComparator = (compare, init = Infinity) => {
+    return (...args) => {
+        let result = init;
+        for (const v of args) {
+            if (compare(result, v) > 0) {
+                result = v;
+            }
+        }
+        return result;
+    };
+}
+>> minBy((a, b) => a - b)(10, 20, -30, 40)
+-30
+>> comparing = (f) => ((a, b) => f(a) - f(b))
+>> minByAbs = minBy(comparing(Math.abs))
+>> minByAbs(10, 20, -30, 40)
+40
+>> regularMin = minBy(compare(identity))
+>> regularMin(10, 20, -30, 40)
+-30
+\end{minted}
+Ещё пример --- \deff{левая свёртка}. Может создать функцию для суммы, максимума, минимума и любой ассоциативной операции, применяемой на множество аргументов:
+\begin{minted}{javascript}
+foldLeft = (f, zero) => {
+    return (...args) => {
+        let result = zero;
+        for (const v of args) {
+            result = f(result, v);
+        }
+        return result;
+    };
+}
+>> sum = foldLeft((a, b) => a + b, 0)
+>> sum(1, 2, 3)
+6
+\end{minted}
+При помощи функций высшего порядка можно сделать универсальную функцию для нахождения производной:
+\begin{minted}{javascript}
+diff = dx => f => x =>(f(x + dx) - f(x - dx)) / (dx * 2)
+>> dSin = diff(1e-7)(Math.sin)
+>> dsin(Math.Pi)
+-1
+\end{minted}
+Ещё пример --- \deff{map}. Позволяет применять функцию на все элементы массива:
+\begin{minted}{javascript}
+map = (f) => {
+    return (...args) => {
+        const result = [];
+        for (const arg of args) {
+            result.push(f(arg));
+        }
+        return result;
+    };
+}
+>> add10 = map((a) => a + 10)
+>> add10(10, 20, 30)
+[20, 30, 40]
+\end{minted}
+Ещё полезная функция --- curry. Позволяет передавать аргументы друг за другом, вместо всех сразу:
+\begin{minted}{javascript}
+>> curry = f => a => b => f(a, b)
+>> add = curry((a, b) => a + b)
+>> add10 = add(10)
+>> add10(20)
+30
+\end{minted}
+
+\subsection{Объекты}
+
+\begin{minted}{javascript}
+>> let p = Object.create({})
+>> p[x] = 10
+>> p[y] = 20
+>> dumpObject(p)
+Object
+x = 10 
+y = 20
+\end{minted}
+
+Можно обращаться p.x  и так далее, есили это корректный Java идентификатор. У объекта могут не определены
+
+\begin{minted}{javascript}
+>> println(p[z])
+undefined
+\end{minted}
+
+\begin{minted}{javascript}
+for (let prop in p){
+
+}
+\end{minted}
+
+Перебирает свойства и печататет их значения

@@ -1,0 +1,46 @@
+\subsection{Признак сравнения}
+
+$|f|\leq g$ и $\integral{a}{b} gdx$ - сходится. Тогда $\integral{a}{b}f dx$ абсолютно сходится.
+
+\textbf{Задачи:} Иследовать на сходимость:
+\begin{enumerate}
+    \item $\integral{0}{1}\cfrac{1}{x^{\alpha}}dx , \alpha\in \mathbb{R}$
+
+    Пусть $\alpha >0$. Тогда $\integral{0}{1}\cfrac{1}{x^{\alpha}}$ сходится $\Leftrightarrow \integral{0}{\varepsilon} \cfrac{1}{x^{\alpha}}$. По определению: ($\alpha \neq 1$)
+    $$\integral{0}{\varepsilon}\cfrac{1}{x^{\alpha}}dx = \lim\limits_{\sigma\rightarrow 0} \integral{\sigma}{\varepsilon}\cfrac{1}{x^{\alpha}}dx = \lim\limits_{\sigma \rightarrow 0 }\cfrac{\varepsilon^{1-\alpha}-\sigma^{1-\alpha}}{1-a}$$
+    Есть предел при $1-\alpha >0$. Случай $\alpha = 1$ разбирается руками и ответа не существует
+    
+     \item $\integral{1}{+\infty}\cfrac{1}{x^{\alpha}}dx , \alpha\in \mathbb{R}$
+
+        Для общей концепции обрабатывания плохи точек:
+        $\integral{1}{+\infty} \cfrac{1}{x^{\alpha}}dx $ сходится $\Leftrightarrow$ $\integral{E>>0}{+\infty} \cfrac{1}{x^{\alpha}dx}$ сходится. $E>>0$ значит $E$ очень большое.
+        $$\integral{E}{+\infty} \cfrac{1}{x^{\alpha}} = \lim\limits_{M\rightarrow +\infty}\integral{E}{M}\cfrac{dx}{x^{\alpha}}=\lim\limits_{M \rightarrow +\infty}\cfrac{M^{1-\alpha}-E^{1-\alpha}}{1-a}$$
+        Тогда этот интеграл сходится, когда $\alpha>1$
+     
+      \item $\integral{0}{+\infty}\cfrac{1}{x^{\alpha}}dx , \alpha\in \mathbb{R}$
+
+      Всегда расходится из прошлых двух.
+
+      \item $\integral{0}{8}\cfrac{dx}{x^2+x^{2/3}}$
+
+      $\cfrac{1}{x^2+x^{2/3}} \leq \cfrac{1}{x^{2/3}}$. Откуда проинтегрируем неравенство и получим то, что нам надо.
+
+      \item $\integral{0}{\pi}\cfrac{\sin x}{x^2}dx$
+
+      сходится когда $\integral{0}{\varepsilon}$ cходится.
+      $$\cfrac{1}{2}<\cfrac{\sin x}{x}< \cfrac{3}{2}$$
+      $\cfrac{1}{2}\integral{0}{\varepsilon}\cfrac{dx}{x}<\integral{0}{\varepsilon}\cfrac{\sin x}{x^2}$. Интеграл слева расходится, откуда наш расходится.
+
+      \item $\integral{0}{2\pi} \cfrac{dx}{\sqrt[3]{\sin x}}$
+
+      Мы ломаемся в $0, \pi, 2\pi$.
+
+      Посмотрим на окрестности 0:
+      $\cfrac{1}{2}x < \sin x < \cfrac{3}{2}x$. Проинтегрируем неравенство - все работает
+
+      $\cfrac{1}{2}(x-2\pi)<\sin x< \cfrac{3}{2}(x-2\pi)$. Проинтегрируем неравенство - все работает.
+
+      Аналогично с последней точке (только нужно подойти с двух сторон к ней)
+
+      \item $\integral{1}{\pi}\sin(\cfrac{1}{\cos x}) \cfrac{dx}{\sqrt{x}}$
+\end{enumerate}

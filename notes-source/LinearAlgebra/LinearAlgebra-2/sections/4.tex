@@ -1,0 +1,893 @@
+\subsection{Сопряженный оператор.}
+
+\deff{def:} $\mathcal{A}\in L(U,V)$. $\mathcal{A}^*: V^*\xrightarrow{} U^*$:
+
+$\forall f \in V^*: \forall x \in U: (\mathcal{A}^*f)(x) = f(\mathcal{A}x) $
+
+$\mathcal{A}^*$ называется \deff{линейным отображением, сопряженным к $\mathcal{A}$}.
+
+Покажем, что $A^* \in L(V^*,U^*)$. 
+$$\forall x \in U:\forall \lambda \in K: \forall f_1,f_2 \in V^*: \mathcal{A}^*(\lambda f_1+f_2)= (\lambda f_1 + f_2)(\mathcal{A}x) = \lambda f_1(\mathcal{A}x)+ f_2(\mathcal{A}x)$$
+Откуда линейное отображение.
+
+Если $U = V, \mathcal{A} \in End(V): \mathcal{A}^*\in End(V^*)$ ----  линейный оператор сопряженный к $\mathcal{A}$ или \deff{сопряженный оператор}.
+
+Пусть $V$ это пространство со скалярным произведением (евклидово или унитарное).
+
+По теореме Рисса: $\forall f \in V^*: \exists! y \in V: \forall x \in  V: f(x) = (x,y)$.
+
+$\mathcal{A} \in End(V)$. Пусть $g = \mathcal{A}^* f \in V^*$, тк $\mathcal{A}^* \in End(V^*)$. Тогда по теореме Рисса $\exists! z \in V: \forall  x \in V: g(x) = (x,z)$.
+
+Тогда $g = \mathcal{A}^* f \xleftrightarrow[\text{взаимоодназначно}]{\text{по т. Рисса}} z = \mathcal{A}^* y$.
+
+\deff{def:} $\mathcal{A}^*: V \xrightarrow{} V: \mathcal{A^*}\in End(V): \forall y \in V: \mathcal{A}^*y = z$
+
+$(x, \mathcal{A}^* y)=(x,z)=g(x)=(\mathcal{A}^* f )(x) = f(\mathcal{A}x) = (\mathcal{A}x,y)$
+
+\deff{def:} $A \in End(V)$. $A^* \in End(V)$ называется сопряженным оператором к $\mathcal{A}$, если $\forall x,y \in V: (\mathcal{A}x,y) = (x,\mathcal{A}^*y)$.
+
+Покажем линейность нашего отображения: $$\forall \lambda \in L, \forall y_1,y_2 \in V: (x, \mathcal{A}^*(\lambda y_1 + y_2))= (\mathcal{A}x, \lambda y_1 + y_2) = \overline{\lambda} (\mathcal{A}x, y_1) + (\mathcal{A}x, y_2) = (x, \lambda \mathcal{A}^* y_1 + \mathcal{A}^* y_2)$$
+
+\textbf{Свойства $\mathcal{A}$:}
+
+\begin{enumerate}
+    \item $(V, (\cdot, \cdot)), e= (e_1,\ldots, e_n)$ - базис.
+
+$$A^\circledast = \overline{\Gamma^{-1}} A^* \overline{\Gamma}$$
+где $A^* = \overline{A^T}$
+
+\textbf{Доказательство:}
+
+$x \xleftrightarrow{e}x, y \xleftrightarrow{e}y$, получаю, что:
+$$\forall x,y \in V: (\mathcal{A}x,y) = (x, \mathcal{A}^* y) \Leftrightarrow (\mathcal{A}x)^T \Gamma\, \overline{y} = x^T \Gamma \overline{A^\circledast y} $$
+$$x^T (A^T \Gamma)\overline{y}=x^T \Gamma \overline{A^\circledast}\overline{y}$$
+Возьму $x = e_i, y= e_j$ и получу, что нужные нам матрицы равны поэлементно.
+
+\hfill Q.E.D.
+
+\item $(\mathcal{A}^*)^* = \mathcal{\mathcal{A}} $.
+\item  $(\mathcal{A} + \lambda B)^* = \mathcal{A}^* +\overline{ \lambda} B^*$
+
+\textbf{Доказательство:}
+
+$\forall \mathcal{A}, \mathcal{B}\in End(V):\forall \lambda \in K:\forall x,y \in V: (x, (\mathcal{A } + \lambda \mathcal{B})^* y) = ((\mathcal{A} + \lambda \mathcal{B})x, y)= (x, (\mathcal{A}^* +\overline{\lambda}\mathcal{B}^* )y)$
+
+\hfill Q.E.D.
+
+\item $\mathcal{A}, \mathcal{B}\in End(V) \Rightarrow (\mathcal{A}\mathcal{B})^* = \mathcal{B}^* \mathcal{A}^*$
+
+Доказывается аналогично прошлому пункту.
+
+\item $\ker \mathcal{A}^* = (\Im \mathcal{A})^\perp$ и $\Im \mathcal{A}^* = (\ker \mathcal{A})^\perp$
+
+\textbf{Доказательство:}
+
+2-ое равенство: $\Im \mathcal{A}^* = (\ker \mathcal{A})^\perp$. Докажем:
+
+$\forall x \in \ker \mathcal{A}: \mathcal{A}x = \zero : \forall y \in V: (x, \mathcal{A}^*y) = (\mathcal{A}x,y)=0$
+
+$\Rightarrow \ker \mathcal{A} \subseteq (\Im \mathcal{A}^*)^\perp$. 
+
+По теореме о ранге и дефекте: 
+$$\rg \mathcal{A} + def \mathcal{A} = n$$
+Хочу показать, что $\rg \mathcal{A} = \rg \mathcal{A}^*$. Мы знаем, что:
+$$A^\circledast = \overline{\Gamma^{-1}}A^* \overline{\Gamma^{}}$$
+При этом $\overline{\Gamma^{-1}}$ и $\overline{\Gamma}$ невырожденные, то есть $\rg A^\circledast = \rg \mathcal{A}^* = \rg \overline{A^T} = \rg \mathcal{A}$.
+
+А это значит, что $\rg \mathcal{A}^* + def \mathcal{A} = n$: $\dim (\Im \mathcal{A}^*) + \dim (\ker \mathcal{A}) = n$.
+Тогда получается, что нужные нам размерности совпадают.
+
+1-ое равенство: $\ker A^* = (\Im \mathcal{A}^*)^\perp$. Докажем:
+
+Воспользуемся выше выведенным правилом для $\mathcal{A}^*$:
+$$\Im(\mathcal{A}^*)^* = \ker (\mathcal{A}^*)^\perp$$
+$$\Im A  =  (\ker A^*) ^\perp \Leftrightarrow (\Im A)^\perp = \ker A^*$$
+\hfill Q.E.D.
+
+\item $\varepsilon^* = \varepsilon$. Если $\mathcal{A}$ невырожденное $\exists \mathcal{A}^{-1} \Rightarrow \mathcal{A}^*$ невырожденно, $(\mathcal{A}^*)^{-1} = (\mathcal{A}^{-1})^*$.
+
+\textbf{Доказательство:}
+
+$\mathcal{A}$ невырожденно $\Leftrightarrow \ker \mathcal{A} = \{\zero\}$ $\Leftrightarrow A^*$ невырожденно.
+
+Посмотрим на $\mathcal{A}\mathcal{A}^{-1}$. $\mathcal{A}\mathcal{A}^{-1}= \mathcal{A}^{-1}\mathcal{A} = \varepsilon$. Так же:
+$(\mathcal{A}\mathcal{A}^{-1})^*= (\mathcal{A}^{-1}\mathcal{A})^* = \varepsilon^* = \varepsilon$
+
+Раскроем скобки по 4-ому свойству и получим, что нам надо.
+
+\hfill Q.E.D.
+
+\item $\chi_\mathcal{A}(\lambda) = 0  \Leftrightarrow \chi_{\mathcal{A}^*}(\overline{\lambda})=0$. 
+
+\textbf{Замечание:}  Из этого следует $\chi_{\mathcal{A}^*}(t)=\overline{\chi_\mathcal{A}(\overline{t})}$.
+
+\textbf{Доказательство:}
+
+$e$ о.н.б. $V$. $\mathcal{A} \xleftrightarrow{e}A, \mathcal{A}^* \xleftrightarrow{e}A^*:$
+$$0 = \overline{ 0} = \overline{\chi_\mathcal{A}(\lambda)}= \overline{\det (A - \lambda E)} = \det (\overline{A^T} - \overline{\lambda} E) = \chi_{\mathcal{A}^*} (\overline{\lambda})$$
+\hfill Q.E.D.
+
+\item $\lambda$ - с.ч. $u$ - с.в. $\mathcal{A}$, $\mu$ - с.ч. $v$ - с.в. $\mathcal{A^*}, \lambda \neq \overline{\mu} \Rightarrow u \perp v$.
+
+\textbf{Доказательство:}
+
+$\lambda(u,v)=(\lambda u,v)=(\mathcal{A}u, v ) = (u,\mathcal{A}^* v) = (u, \mu v) = \overline{\mu}(u,v)$. Откуда:
+
+$(\lambda - \overline{\mu})(u-v) = 0$. Откуда уже и требуется то, что нам надо
+
+\hfill Q.E.D.
+
+\item $L \subset V$ инвариантно относительно $\mathcal{A} \Rightarrow L^\perp$ инвариатно относительно $\mathcal{A}^*$  
+
+\textbf{Доказательство:}
+
+$x\in L: y\in L^\perp: (x,y) =0$.
+
+$(x,\mathcal{A}^*y) = (\mathcal{A}x, y ) = 0 \Rightarrow \mathcal{A}^*y \in L^\perp$
+
+\hfill Q.E.D.
+\end{enumerate}
+
+\newpage
+\subsection{Нормальные операторы.}
+
+$\mathcal{A}\in End(V)$ называется \deff{нормальным оператором}, если $\mathcal{A}\mathcal{A}^* = \mathcal{A}^* \mathcal{A}$ - перестановочны:
+$$\Leftrightarrow \forall x,y \in V: (\mathcal{A}x, \mathcal{A}y) = (\mathcal{A}^* x, \mathcal{A}^*y)$$
+\textbf{Свойства нормальных операторов.}
+
+\begin{enumerate}
+    \item $\mathcal{A}$ нормальный оператор $\Leftrightarrow$ в некотором о.н.б. e :$A A^* = A^*A$.
+
+    \textbf{Доказательство:}
+
+    В правую сторону очевидно, теперь в левую сторону. Пусть $e$ о.н.б $A A^* =A^* A$. Пусть $e'$ другой базис и $T_{e\rightarrow{}e'}$. $A =\xleftrightarrow[]{e'}A', A^* \xleftrightarrow[]{e'}A'^*$
+
+    $A' = T^{-1}AT, A'^* = T^{-1}\overline{A^T}T$
+
+    Покажем, что $A'A'^* = A'^*A':$
+    $$A'A'^* = T^{-1}A A^*T = T^{-1}A^*AT = A'^*\cdot A'$$
+    Откуда $\mathcal{A}$ - нормальный.
+    
+    \hfill Q.E.D.
+
+    \item $\ker \mathcal{A} = \ker A^*,(\ker \mathcal{A})^\perp = \Im \mathcal{A}$. $\ker (\mathcal{A}^2)=\ker (\mathcal{A})$.
+
+    \textbf{Доказательство:}
+
+    \begin{enumerate}
+        \item $x\in \ker A \Leftrightarrow \mathcal{A}x = \zero \Leftrightarrow (\mathcal{A}x, \mathcal{A}x) = 0 \Leftrightarrow (\mathcal{A}^*x, \mathcal{A}^*x) = 0 \Leftrightarrow \mathcal{A}^*x = \zero \Leftrightarrow x\in \ker A^*$
+
+        \item очевидно, из свойства 5 для сопряженного оператора.
+        \item $x\in \ker \mathcal{A}\subseteq \ker \mathcal{ A}^2$.
+
+        Пусть $x \in \ker \mathcal{A}^2 \Leftrightarrow (\mathcal{A}^2 x, \mathcal{A}^2x) = 0 \Leftrightarrow (\mathcal{A}x, \mathcal{A}^* \mathcal{A}^2x) = 0 \Leftrightarrow (\mathcal{A}x, \mathcal{A}(\mathcal{A}^*\mathcal{A}x)) = 0 \Leftrightarrow (\mathcal{A}^*(\mathcal{A}x),\mathcal{A}^*(\mathcal{A}x))$.
+        $\Leftrightarrow \mathcal{A}x \in \ker \mathcal{A}^* =\ker \mathcal{A} \Leftrightarrow \mathcal{A}x = \zero \Leftrightarrow x \in \ker \mathcal{A}$
+    \end{enumerate}
+
+    \hfill Q.E.D
+
+    \item   $B = \mathcal{A}-\lambda \varepsilon$ нормальный оператор, $\forall \lambda \in K$, если $\mathcal{A}$ - нормальный.
+
+    \textbf{Доказательство:}
+
+    $B^* = (\mathcal{A} - \lambda \varepsilon)^* = \mathcal{A}-\overline{\lambda}\varepsilon$
+
+    $BB^* = (\mathcal{A}-\lambda \varepsilon) (A^* - \overline{\lambda} \varepsilon) =B^* \cdot B$, так как это многочлены от $A$ - перестановочные.
+
+    \hfill Q.E.D.
+
+    \item $\lambda$ с.ч.$v$ - с.в. $\Leftrightarrow \overline{\lambda}$ с.ч $v$ с.в $\mathcal{A}^*$
+
+    \textbf{Доказательство:}
+
+    $\lambda$ с.ч. $v$ с.в. $\mathcal{A} \Leftrightarrow v \neq 0 \in \ker (\mathcal{A}-\lambda \varepsilon) = \ker B = \ker B^* \Leftrightarrow v \in \ker B^* \Leftrightarrow v\in \ker(A^*-\overline{\lambda}\varepsilon) \Leftrightarrow \mathcal{A}^*v = \overline{\lambda} v$
+   
+    \hfill Q.E.D.
+
+    \item $\lambda$ с.ч, $v$ с.в $\mathcal{A}$, а также $\mu$ с.ч., а $u$ его с.в. $\mathcal{A}$. Если $\lambda\neq \mu \Rightarrow u \perp v$.
+
+    \textbf{Доказательство:}
+
+    $\mu(u,v)=(\mu u, v)=(\mathcal{A}u,v)=(u,\mathcal{A}^*v) = (u,\overline{\lambda}v)=\lambda(u,v)$, откуда $(u,v)$ - то, что нам и требовалось.
+
+    \hfill Q.E.D.
+
+    \textbf{Замечание:} Из этого следует ортогональность собств. подпространств.    
+
+    
+\end{enumerate}
+
+\thmm{Теорема(о каноническом виде матрицы нормального оператора в унит. пространстве)} 
+
+$\mathcal{A} \in End(V)$. 
+
+$\mathcal{A}$ нормальный оператор $\Leftrightarrow \exists$ о.н.б. $e$ пространства $V$, $\mathcal{A}\xleftrightarrow[]{e}\Lambda= diag(\lambda_1,\ldots,\lambda_n)$, $\lambda_i \in K$
+
+\textbf{Доказательство:}
+
+В левую сторону. $\mathcal{A} \xleftrightarrow[\text{о.н.б}]{e}\Lambda = diag (\lambda_1,\ldots,\lambda_n)$ по условию, а также  $\mathcal{A}^* \xleftrightarrow[\text{о.н.б}]{e}\Lambda^* = diag (\overline{\lambda_1},\ldots,\overline{\lambda_n})$ (см. замечание). 
+
+Откуда $\Lambda \cdot \Lambda^* = \Lambda^* \Lambda$ в некотором о.н.б $\Rightarrow$ по первому свойству нормальный оператор.
+
+Докажем в правую сторону. Пусть $\lambda_1$ корень $\chi_{\mathcal{A}}$, тк мы находимся сейчас в унитарном пространстве, то $\lambda_1$ - собственное число. Пусть $v_1$ его собственный вектор, нормированный. Заметим, что тогда $\overline{\lambda_1}$ с.ч. $v_1$ с.в. $\mathcal{A}^*$.
+
+Пусть $L = \span(v_1). V  = L \oplus L^\perp$. Мы знаем, что $L$ инвариантно относительно $\mathcal{A}$, а также $L$ инвариантно относительно $\mathcal{A}^*$. Из свойства 9 сопряж. оператора, $L^\perp$ инвариантно относительно $A^*$, а также $L^\perp$ инвариантно относительно $\mathcal{A}$. Откуда матрицу можно в блочно-ступенчатый вид из 2 блоков.
+
+Воспользуемся методом математической индукции:
+
+\begin{enumerate}
+    \item База $n=1$ очевидно.
+    \item Пусть верно для $n=k$, что матрица будет иметь диаг. вид.
+
+    Докажем, для $n  =k+1$. $\dim V = k+1$. Пусть $\lambda_1$ с.ч. $v_1$ соотв ей нормированный с.в. $\mathcal{A}$. Пусть $L = \span (v_1)$. $V = L \oplus L^\perp$, $\dim L^\perp = k$. По индукции я знаю, что $\mathcal{A}\Big|_{L^\perp} \xleftrightarrow{v_2,\ldots,v_{k+1} \text{ - о.н.б.}}\begin{pmatrix}
+        \lambda_2 & & \\
+        & \ddots &\\
+        && \lambda_{k+1}
+    \end{pmatrix}$
+
+    Мы знаем $(v_1,\ldots, v_{k+1})$, что это будет о.н.б, откуда уже очевидно следует требуемое нами.
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\textbf{Замечания:}
+\begin{enumerate}
+    \item Очевидно, что $\mathcal{A}^* \xleftrightarrow[\text{о.н.б.}]{e} \overline{\Lambda^T}=\Lambda^* = diag (\overline{\lambda_1},\ldots, \overline{\lambda_n})$
+    \item Очевидно, что $\lambda_j$ с.ч. $\mathcal{A}$ ( $\overline{\lambda_j}$ с.ч. $\mathcal{A}^*$)
+    \item Очевидно, что $\mathcal{A}$ - норм. $\Rightarrow$ о.п.с.
+\end{enumerate}
+
+\textbf{Следствие 1.} $\mathcal{A}$  нормальный оператор в унитарном пространстве $\Leftrightarrow V = \bigoplus\limits_{\lambda}V_\lambda,$ причем  $V_{\lambda}\perp V_{\mu}$ $(\lambda \neq \mu)$.
+
+\textbf{Следствие 2.} $\forall A A^* =A^*A$. $\exists T$ унитарная $(T^* = T^{-1})$, где $T^* AT  = \Lambda$.
+
+\thmm{Теорема (о каноническом виде матрицы нормального оператора в евкл. пространстве)}
+
+$\mathcal{A} \in End(V)$, V - евклидово.
+
+$\mathcal{A}$ норм. $\Leftrightarrow \exists $ о.н.б. $e$. $\mathcal{A}\xleftrightarrow[e]{}\Lambda = \begin{pmatrix}
+    \lambda_1 & & & & &0\\
+    & \ddots & & & &\\
+    & & \lambda_k & & &\\
+    & & & \Phi_1 & &\\
+    & & & & \ddots & \\
+    0& & & & & \Phi_m
+\end{pmatrix}$   имеет вот такой блочно-диагональный вид.
+
+Причем $\lambda_i \in \R$ -  собственные числа (повторяются с учетом кратности), а каждое $\Phi_j$ имеет вид $\begin{pmatrix}
+    \alpha_j & \beta_j \\
+    - \beta_j & \alpha_j
+\end{pmatrix}$, где $\alpha_j \pm i \beta_j$ - пара сопряженных корней $\chi_{\mathcal{A}}(t)$ (повторяются с учетом кратности).
+
+\textbf{Замечание:} $\mathcal{A}^* \xleftrightarrow{\text{e - о.н.б.}} \Lambda^* = \Lambda^T$.
+
+Доказательство будет дальше, но чтобы нам это доказать, сперва позамечаем куда более интересные факты:
+
+Пусть $V_\C$ это комплесификация $V$. $\mathcal{A} \in End(V): \mathcal{A}_\C$ это продолжение $\mathcal{A}$ на $V_\C$
+
+$(V,(\cdot,\cdot)_\R)$ и есть теперь $(V_\C, (\cdot,\cdot)_\C)$.
+
+Введем скалярное произведение на $V_\C$ таким образом:
+
+$\forall z_1,z_2 \in V_\C: (z_1,z_2)_\C = (x_1+y_1i, x_2 + y_2i)_\C =(x_1 +x_2)_\R+ (y_1,y_2)_\R + i ((y_1,x_2)_\R - (x_1,y_2)_\R) \in \C$.
+
+\textbf{Свойства $(\cdot, \cdot)_\C$}:
+
+\begin{enumerate}
+    \item $\forall x,y \in V: (x,y)_\C = (x,y)_\R$
+    \item $\overline{(z_1,z_2)}_\C = (\overline{z_1},\overline{z_2})_\C$
+    \item $(z,\overline{z}) = 0 \Leftrightarrow \begin{cases}
+        ||x|| =||y|| \\
+        (x,y) = 0
+    \end{cases}, x = Re z, y = \Im z$
+
+    \textbf{Доказательство:}
+
+    $0 = (z,\overline{z})= ||x||^2 -||y||^2 + i((y,x) + (x+y))$
+
+    \hfill Q.E.D.
+\end{enumerate}
+
+
+
+
+\textbf{Свойства $\mathcal{A}_\C$}:
+
+$\forall z \in V_\C, \mathcal{A}_\C z=\mathcal{A}x + i \mathcal{A}y$
+
+\begin{enumerate}
+    \item $(\mathcal{A}\mathcal{B})_\C = \mathcal{A}_\C \mathcal{B}_\C$
+    \item $\mathcal{A}$ -  невырожденная $\Rightarrow$ $\mathcal{A}_\C$ невырожденная и $(\mathcal{A}_\C)^{-1} = (\mathcal{A}^{-1})_\C$
+    \item $(\mathcal{A}_\C)^* = (\mathcal{A}^*)_\C$
+    
+    \item $\mathcal{A}$ норм. $\Rightarrow \mathcal{A}_\C$ норм.
+    \item $\lambda$ с.ч. $\mathcal{A}$, $V_{\lambda}$ собственное подпространство $\mathcal{A} \Rightarrow (V_{\lambda})_{\C}$ собственное подпространство $\mathcal{A}_\C$, $\lambda$ с.ч. $\mathcal{A}_\C$. 
+\end{enumerate}
+
+\textbf{Доказательство теоремы:}
+
+\deff{Давайте сначала докажем достаточность} $(\Leftarrow):$
+
+$\Lambda = \begin{pmatrix}
+    \lambda_1 & & & & &0\\
+    & \ddots & & & &\\
+    & & \lambda_k & & &\\
+    & & & \Phi_1 & &\\
+    & & & & \ddots & \\
+    0& & & & & \Phi_m
+\end{pmatrix} \Leftrightarrow\Lambda^* = \Lambda^T = \begin{pmatrix}
+    \lambda_1 & & & & &0\\
+    & \ddots & & & &\\
+    & & \lambda_k & & &\\
+    & & & \Phi_1^T & &\\
+    & & & & \ddots & \\
+    0& & & & & \Phi_m^T
+\end{pmatrix}$ 
+
+Давайте умножим матрицу $\Lambda$ и $\Lambda^*$. Для этого сначала умножу, $$\Phi_j^T \cdot \Phi_j = \begin{pmatrix}
+    \alpha_j &-\beta_j\\
+    \beta_j & \alpha_j
+\end{pmatrix} \begin{pmatrix}
+    \alpha_j & \beta_j \\
+    -\beta_j & \alpha_j
+\end{pmatrix} = \Phi_j \Phi_j^T$$ Откуда при произведении $\Lambda \cdot \Lambda^* = \Lambda^* \cdot \Lambda$, что по первому свойству нормального оператора говорит о том, что $\mathcal{A}$ - нормальный.
+
+\deff{Теперь докажем в другую сторону. }
+
+Пусть $\mathcal{A}$ нормальный оператор. Комплесифицируем и получим $V \rightarrow{} V_\C, \mathcal{A}\rightarrow{} \mathcal{A}_\C$.  
+
+Наша цель: построить базис из вещ. векторов(т.е. $\in V$), в котором матрица $\mathcal{A}_\C$ будет иметь заявленный вид, потому что по свойству матрица $\mathcal{A}$ будет иметь такой же вид.
+
+$\mathcal{A}_\C$ нормальный. Воспользуемся теоремой о канонич. виде матрицы нормального оператора для унитарного пространства.
+
+Из нее существует о.н.б $V_\C$ нормированный и наше $V_\C$ представляется как:
+$$V_\C = \bigoplus\limits_{\lambda \in \R} V_\lambda^\C\bigoplus\limits_{\mu_1,\mu_2 \in \C}V_\mu^\C$$
+$\lambda$ - рациональные корни $\chi_{\mathcal{A}_\C}$, $\mu_1,\mu_2$ - парные корни $\in C$.
+
+$\forall \lambda \in \R: V_\lambda^\C = (V_\lambda)_\C$. Причем как мы помним, $V_\lambda^\C \perp V_\mu^\C$. То есть $(V_\lambda)_\C = (\span(h_1,\ldots,h_{k_\lambda}))_\C$, где $h_1,\ldots,h_k  \in V$ - ортонормированные и вещественные. Теперь посмотрим на вторые виды векторов:
+$$V_{\mu_1,\,u_2}^\C = \bigoplus\limits_j \span_\C (z_j, \overline{z_j}) = \bigoplus\limits_j(\span_\R(u_i,u_j))_\C$$
+Пусть $\alpha + i\beta = \mu_1 = \overline{\mu_2}$, $z$ - собственный вектор $\mu_1$, а $\overline{z}$ с.в.  $\overline{\mathcal{A}_\C z} = \mathcal{A}_\C \overline{z}$.
+$$\mathcal{A}_\C \overline{z} = \overline{\mathcal{A}_\C z} = \overline{\mu_1 z} = \mu_2\overline{z}$$
+Пусть $u_j =\cfrac{z_j + \overline{z_j}}{2}, v_j = \cfrac{z_j -\overline{z_j}}{2i}$. $\span (z_j, \overline{z_j}) = \span(v_j,u_j)$ в таком случае.
+
+Как мы знаем $V_{\mu_1}^\C\perp V_{\mu_2}^\C: z \perp \overline{z} \Rightarrow \begin{cases}
+    ||u || = ||v||\\
+    (u,v) = 0
+\end{cases}$.
+
+Откуда $V_\C = \span(w_1,\ldots,w_k, u_1,v_1,\ldots,u_m,v_m)_\C$ - ортогональный базис, где $w_1,\ldots, w_k$ - сумма ортонормированных базисов $V_\lambda$ для собственных чисел $\lambda \in \R$.
+
+Базис у нас получается состоит из вещественных векторов $\Rightarrow \mathcal{A}_\C\leftrightarrow \Lambda$ вещественный. 
+
+Тогда посмотрим на матрицу оператора в нашем ортогональном базисе. 
+$$\mathcal{A}_\C w_j = \lambda_j w_j$$
+$$ \mathcal{A}_\C u = A_\C (\cfrac{z + \overline{z}}{2}) =\alpha (\cfrac{z+\overline{z}}{2}) + i^2 \beta (\cfrac{z-\overline{z}}{2i})  = au - \beta v$$
+Аналогично:
+$$\mathcal{A}_\C v = av + \beta u$$
+Заметим, что мы получили нужный нам вид матрицы, но мы еще не отнормировали вторую половину векторов!
+
+Как мы знаем: $||z|| = 1 =||u||^2 + ||v ||^2 = 2 ||u||^2 = 1$. Откуда, чтобы отнормировать вектора, я должен умножить все вектора из второй части на $\sqrt{2}$. Получу такой же вид матрицы, откуда теорема доказана!
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $\forall AA^T =A^T A$, $A$ - норм. вещ матрица. Тогда существует ортогональная $T (T^{-1}=T^T)$, такая что $T^TAT = \Lambda$ из теоремы.
+
+
+
+
+
+
+\newpage
+\subsection{Самосопряжение и изометрические операторы.}
+
+
+\deff{def:} $\mathcal{A}\in End(V)$. $\mathcal{A}$ называется \deff{самосопряженным} если $\mathcal{A}^* =\mathcal{A} \Leftrightarrow \forall x,y \in V: (\mathcal{A}x,y) = (x,\mathcal{A}y) $
+
+В $\R$ они будут называться \deff{симметричными}. В $\C$ они будут названы \deff{эрмитовы}. 
+
+Очевидно $\mathcal{A}$ самосопряженный $\Rightarrow$ нормированы.
+
+\textbf{Свойства:}
+
+\begin{enumerate}
+    \item $\mathcal{A}$ самосопряж. $\Leftrightarrow \exists $ о.н.б., где $A = A^*$. 
+    \item $\mathcal{A}, \mathcal{B}$ самосопряж $\Rightarrow (\mathcal{A}+\lambda \mathcal{B})$ самосопряж, $\forall \lambda \in \R$
+    \item $\mathcal{A},\mathcal{B}$ самосопряж. и $\mathcal{A}\mathcal{B}=\mathcal{BA}\Rightarrow \mathcal{AB}$ самосопряженный.
+    \item $\exists \mathcal{A}^{-1},\mathcal{A}$ самосоп. $\Rightarrow \mathcal{A}^{-1}$ самосопряж.
+    \item $\mathcal{A}$ самосопряж. $\Leftrightarrow \begin{cases}
+        \mathcal{A} \text{ - норм.}\\
+        \text{все корни $\chi_{\mathcal{A}}$ веществ.   }
+    \end{cases} \Leftrightarrow$ о.п.с. с вещ. собств числами $V_\lambda \perp V_\mu$, при $\lambda\neq \mu$
+
+    \textbf{Доказательство:}
+
+    \begin{enumerate}
+        \item теорема о каноноч. виде матрицы нормального оператора в унитарном пространстве. $\Lambda = diag (\lambda_1,\ldots, \lambda_n)$, $\Lambda^* = diag(\overline{\lambda_1},\ldots,\overline{\lambda_n})$. $\mathcal{A}$ самосопряж. $\Leftrightarrow A = A^* \Leftrightarrow \Lambda = \Lambda^* \Leftrightarrow \lambda_j = \overline{\lambda_j}$
+        \item пользуемся теоремой о каноническом виде матрицы нормального оператора в евклид. пространстве, получаем $\Phi_j = \Phi_j^T$, то есть комплексных корней нет.
+    \end{enumerate}
+
+    \hfill Q.E.D.
+
+
+    \item $L \subset V$ лин. подпространство инвариантно относительно $\mathcal{A} \Rightarrow L^\perp$ инвариантно относительно $A$
+
+    Очевидно из свойств сопряж. оператора
+\end{enumerate}
+
+
+\deff{def:} $Q\in End(V)$. $Q$ называется \deff{изометрическим},если $Q$ невырождена  и $Q^*=Q^{-1} \Leftrightarrow \forall x,y \in V: (Qx,Qy)= (x,y)$. 
+
+\textbf{Замечание:}  $(Qx,Qy) = (Q^*Qx,y) \rightarrow{ Q \cdot Q^* = \varepsilon}$
+
+\textbf{Свойства:}
+
+\begin{enumerate}
+    \item $Q$ изометрич. $\Leftrightarrow \exists $ о.н.б. $Q^{-1}=Q^*$.
+    \item $Q$ изометрич. $\Leftrightarrow Q$ переводит о.н.б. в о.н.б.
+    
+    \textbf{Доказательство:}
+
+    \deff{В правую сторону:} $Q$ изометрич., $e$ о.н.б.: $(e_i,e_j) = \delta_{i,j}$. Откуда если просто расписать определение, то получим $(e_i,e_j) = (Q e_i,Qe_j) = \delta_{ij}$
+
+    \deff{В обратную сторону:} $Qe_i = e_i'$, $e$ - о.н.б, $e'$ о.н.б.
+
+    $\forall x,y \in V: (Qx,Qy) = \sum\limits_{i}\sum\limits_{j}x_i\overline{y}_j (e_i',e_j') = \sum\limits_{i}\sum\limits_{j}x_i\overline{y}_j \delta_{ij}= (x,y)$, откуда изометрический.
+
+    \hfill Q.E.D.
+
+    \item $Q,R$ изометрич. $\Rightarrow QR$ изометрич.
+    \item $Q$ изометрич. $\Rightarrow Q^{-1}$ изометрич.
+    \item $Q$ изометрич. $\Leftrightarrow \begin{cases}
+        Q \text{ - норм.}\\
+        \text{все корни по модулю равны 1}
+    \end{cases}$
+
+    Доказательство аналогично пункту 5 из сопряж.
+    \item  $L \subset V$ инвариантно относительно $Q \Rightarrow L^\perp$ инвариантно относительно $Q$
+
+    \textbf{Доказательство:}
+
+    $\forall x\in L: \forall y \in L^\perp$. $Q$ - невырожд. оператор
+
+    
+
+    \hfill Q.E.D.    
+\end{enumerate}
+\thmm{Теорема (о каноническом виде матрицы самосопряженного оператора)}
+
+$\mathcal{A}$ самосопр. $\Leftrightarrow \exists$ о.н.б $e$, такой что матрица оператора имеет  диагональный вид: $\Lambda =  diag(\lambda_1,\ldots,\lambda_n), \lambda_j\in\R$ собственные числа.
+
+Это очевидно из теоремы о каноническом виде евклидового оператора.
+
+\textbf{Следствие 1.} $\mathcal{A}$ самосопряж. $\Leftrightarrow V=\bigoplus\limits_{\lambda}V_\lambda$, $V_\lambda \perp V_\mu, \lambda \neq \mu$.
+
+\textbf{Следствие 2.} $\forall \mathcal{A} = \mathcal{A}^*: \exists T$ (унит./ортог.). $T^* AT = \Lambda = diag(\lambda_1,\ldots, \lambda_n)$. $T^*= \overline{T^T}=T^{-1}=T$.
+
+\thmm{Теорема (о каноническом виде матрицы изометрического оператора)}
+
+\begin{enumerate}
+    \item[а)] в унитарном пространстве:
+
+    $Q$ изометрично $\Leftrightarrow \exists$ о.н.б. $e$, такой что матрица диагональная из собственных чисел и $|\lambda_j|=1,$ где $\lambda_j$ собственное число.
+
+      \item[б)] в евклидовом пространстве:
+
+      $Q$ изометрично $\Leftrightarrow \exists$ о.н.б $e$, такой что матрица имеет вид:
+      $$\Lambda = \begin{pmatrix}
+    \lambda_1 & & & & &0\\
+    & \ddots & & & &\\
+    & & \lambda_k & & &\\
+    & & & \Phi_1 & &\\
+    & & & & \ddots & \\
+    0& & & & & \Phi_m
+\end{pmatrix}$$
+где $\lambda_j \in \R$ собственные числа $Q$, а $\Phi_j = \begin{pmatrix}
+    \alpha_j & \beta_j\\
+    -\beta_j &\alpha_j
+\end{pmatrix}$
+, причем $\alpha_j^2 + \beta_j^2 = 1$.
+    
+\end{enumerate}
+
+\pagebreak
+\subsection{Знакоопределенность самосопряженного линейного оператора. Арифметический корень лин. оператора. Полярное разложение.}
+
+\deff{def:} $\mathcal{A} \in End(V): (V, (\cdot,\cdot))$ евклидово или унитарно.
+
+$\mathcal{A} = \mathcal{A}^*$ самосопряженный оператор. 
+
+\begin{enumerate}
+    \item $\mathcal{A} > 0$ положительно определен: $\forall u \neq 0: (\mathcal{A}u,u) = (u, \mathcal{A}u)>0$.
+     \item $\mathcal{A} < 0$ отрицательно определен: $\forall u \neq 0: (\mathcal{A}u,u) = (u, \mathcal{A}u)<0$.
+     \item $\mathcal{A} \geq 0$ положительно полуопределен: $\forall u \neq 0: (\mathcal{A}u,u) = (u, \mathcal{A}u)\geq0$, и существует $u\neq 0,$ что $(u, \mathcal{A}u)=0$
+     \item $\mathcal{A} \leq 0$ отрицательно полуопределен: $\forall u \neq 0: (\mathcal{A}u,u) = (u, \mathcal{A}u)\leq0$, и существует $u\neq 0,$ что $(u, \mathcal{A}u)=0$
+    \item $\mathcal{A} \rightleftharpoons  0$ неопределенно: $\Leftrightarrow  \exists u \in V: (u,\mathcal{A}u) = (\mathcal{A}u,u) >0$ и  $\exists u \in V: (u,\mathcal{A}u) = (\mathcal{A}u,u)<0$
+\end{enumerate}
+
+\textbf{Замечание:} определение дословно переносится на матрицы $A_{n \times n}$. То есть введено стандартное скалярное произведение, $A = \overline{A}^T$, $A>0$ положительно, если $\forall x \in K^n, x \neq \zero: (Ax,x) = (x,Ax) > 0$.
+
+\textbf{Замечание:} $(u,Au) = \overline{(Au, u)} = \overline{(u, Au)}$, то есть  $(u,Au) \in \R$.
+
+\thmm{Теорема (Критерий знакоопределенности самосопряженных операторов)}
+
+$\mathcal{A} = \mathcal{A}^*$ все корни $\chi$ вещественныe. Тогда:
+
+\begin{enumerate}
+    \item $\mathcal{A} > 0 \Leftrightarrow$ все с.ч. $\lambda >0$. 
+     \item $\mathcal{A} < 0 \Leftrightarrow$ все с.ч. $\lambda <0$. 
+     \item $\mathcal{A} \geq 0 \Leftrightarrow$ все с.ч. $\lambda \geq0$, причем есть $\lambda =0 $. 
+     \item $\mathcal{A} \leq0 \Leftrightarrow$ все с.ч. $\lambda \leq0$, причем есть $\lambda =0 $. 
+    \item $\mathcal{A} \rightleftharpoons  0$, то $\exists $ $\lambda,\mu$ с.ч, что $\lambda >0, \mu<0$
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\uline{В правую сторону:}
+
+$ \mathcal{A} = \mathcal{A}^*, V = \bigoplus\limits_{\lambda} V_\lambda: V_\lambda \perp V_\mu, \mu \neq \lambda$.
+
+Возьму $\lambda$ - собственное число $v_\lambda$ собственный вектор этого собственного числа $\neq \zero$.
+
+Тогда выполнено: $$(Av_\lambda, v_\lambda) = (\lambda v_\lambda, v_\lambda) = \lambda ||v_\lambda||^2$$
+Пользуясь этим фактом, докажем пару пунктов:
+
+\begin{enumerate}
+    \item $A >0 \Rightarrow \forall \lambda : \lambda ||v_\lambda|| >0 \Rightarrow \lambda >0$
+    \item $A \geq  0 \Rightarrow \forall \lambda: \lambda ||v_\lambda|| \geq 0 \Rightarrow \lambda \geq 0$, а также:
+    $\exists u: (Au,u) = 0$, так как у нас прямая сумма подпространств, то $\zero \neq u = \sum\limits_\lambda u_\lambda$
+
+    $0=(\mathcal{A}u,u) = \sum\limits_\lambda \lambda||u_\lambda||^2 =0 \Rightarrow u_\lambda =0$, кроме одной $\mu$. Заметим, что получаем, что $\exists \mu = 0$. 
+\end{enumerate}
+Остальные доказываются аналогично.
+
+\uline{В левую сторону:}
+$$\forall u \in V, u =\sum\limits_{\lambda}  u_\lambda, \mathcal{A}u = \sum\limits_{\lambda} \lambda u_\lambda$$
+Как мы знаем $(u_\lambda, u_\mu ) = 0$, при $ \mu \neq \lambda$. Тогда: $$(\mathcal{A}u,u) = (\sum\limits_{\lambda}\lambda u_\lambda, \sum\limits_\mu u_\mu)  = \sum\limits_{\lambda}\lambda ||u_\lambda||^2 $$
+
+Теперь, зная этот факт, рассмотрим пару пунктов:
+
+\begin{enumerate}
+    \item Если у нас все $\lambda > 0 \Rightarrow (\mathcal{A}u,u) > 0$, тк если $u \neq 0 : \exists \mu: u_\mu \neq 0$, такое что $||u_\mu||^2 \neq 0, \mu >0 \Rightarrow \sum\limits_{\lambda}\lambda||u_\lambda||^2 > 0$
+    
+    Получили, что из выше сказанного доказали, что $A > 0$
+
+    \item Если у нас все $\lambda \geq 0$, то аналогичным образом получаем, что $ (\mathcal{A}u,u) \geq 0$. У нас есть $\mu = 0$, возьму его собственный вектор $\neq 0$ и получу, что $(\mathcal{A} v_\mu,v_\mu) = \mu ||v_\mu||^2 = 0$.
+
+     Получили, что из выше сказанного доказали, что $A \geq 0$
+\end{enumerate}
+
+Остальные доказываются аналогично.
+
+\hfill Q.E.D.
+
+\deff{def:} $\mathcal{A} \in End(V)$, $\mathcal{A}$ - о.п.с. и все с.ч $\lambda>0$. Тогда $B \in End(V)$, $\mathcal{B}$ - о.п.с, все с.ч. $\mu \geq 0$ называется \deff{арифметическим корнем} из $\mathcal{A}$, если $B^2 = \mathcal{A}$. $B = \sqrt{A}$.
+
+\textbf{Замечание:} $m \in \N$ аналогично можно ввести $B =\sqrt[n]{\mathcal{A}}$.
+
+\thmm{Теорема (о существовании и единственности арифметического корня)}
+
+$\forall \mathcal{A}\in End(V):$ о.п.с и все с.ч. $\lambda\geq0$, то $\exists! \sqrt{A}$
+
+\textbf{Доказательство:}
+
+\uline{Покажем существование:}
+
+$\mathcal{A}$ - о.п.пс $\Leftrightarrow \mathcal{A} = \sum\limits_{\lambda}\lambda P_\lambda$, где $P_\lambda $ проекторы на $V_\lambda$. 
+
+$B:= \sum\limits_{\lambda}\sqrt{\lambda} P_\lambda$. По теореме о спектральном разложении это о.п.с. со всеми собственными числами больше нуля, а также $B^2 = \mathcal{A}$, откуда существование показано.
+
+
+\uline{Покажем единственность:}
+
+Пусть $\exists C$ о.п.с, все с.ч. $\mu \geq 0$, $C^2 = \mathcal{A}$.
+
+Возьму собственное число $C$ $\mu$  и его собственный вектор $w_\mu$. Посмотрим куда переводит оператор $\mathcal{A}$ наш вектор:
+$$\mathcal{A} w_\mu = C^2 W_\mu = \mu^2 w_\mu$$
+То есть получаю, что $w_\mu$ собственный вектор оператора $\mathcal{A}$ для с.ч. $\lambda = \mu^2$.
+
+Я знаю, что $C$ о.п.с. и $\mathcal{A}$  о.п.с.:
+
+$V = \bigoplus\limits_\mu V_\mu^C$, а также $V = \bigoplus\limits_\lambda V_\lambda$.
+
+Во-первых из вышесказанного мы получили, что $\forall \mu: \exists \lambda = \mu^2: V_\mu^C \subseteq V_\lambda$.
+
+Заметим, что $V = \bigoplus\limits_\mu V_\mu^C\subseteq 
+\bigoplus\limits_{\lambda}V_\lambda = V$
+
+Откуда у меня на самом деле равенсто: $V_\lambda = V_\mu ^C$. $\Rightarrow C = \sum\limits_\lambda \sqrt{\lambda} P_\lambda = B$
+
+\hfill Q.E.D.
+
+\thmm{Теорема (полярное разложение)}
+
+$(V, (\cdot,\cdot))$ - евклидово, унитарное. $\forall \mathcal{A} \in End(V):$
+
+$\exists! \mathcal{H} \in End(V), \mathcal{H}\geq 0$ самосопряженный и $\exists U \in End(V)$ изометрич, что $\mathcal{A} = \mathcal{H}U$.
+
+В частности, если $\mathcal{A}$ невырожденно, то оператор $U \, \exists!$, а также $\mathcal{H} >0$.
+
+\textbf{Доказательство:}
+
+Рассмотрим парочку операторов: $\mathcal{A}^* \mathcal{A}$ и $\mathcal{A}\mathcal{A}^*$. Покажем, что они оба самосопряженные:
+\begin{enumerate}
+    \item $(\mathcal{A}\mathcal{A}^*)^* = \mathcal{A}^{**}\mathcal{A}^* = \mathcal{A}\mathcal{A}^*$
+     \item $(\mathcal{A}^*\mathcal{A})^* = \mathcal{A}^{*}\mathcal{A}^{**} = \mathcal{A}\mathcal{A}^*$
+\end{enumerate}
+Теперь покажем, что они оба $\geq 0$ %todo
+
+$\mathcal{A}^*\mathcal{A} \geq 0$ о.п.с, самосопряженный, откуда спектр вещественный, тогда существует ортонормированный базис из с.в. $V  =span(v_1,\ldots,v_n)$, $\lambda_1,\ldots,\lambda_m$ - собственные числа  $\mathcal{A}^*\mathcal{A}$.
+
+
+Пусть $\lambda_i \neq 0, \lambda_j \neq 0$, $v_i$ собственный вектор, $v_j$ - собственный вектор, тогда:
+$$(\mathcal{A} v_i, \mathcal{A}v_j)=(\mathcal{A}^* \mathcal{A} v_\lambda , v_\mu) = (\lambda v_\lambda,v_\mu) = \lambda (v_\lambda, v_\mu) = 0$$
+А это значит, что $\mathcal{A}$ переводит базис $v_1,\ldots, v_n$ в систему ортог. векторов: $\mathcal{A}v_1,\ldots, \mathcal{A}v_n$.
+
+$(\mathcal{A}^*\mathcal{A}v_i,v_i) = \lambda_i (v_i,v_i) = \lambda_i$, $||\mathcal{A}v_i|| = \sqrt{\lambda_i}$
+
+Тогда получаю, что у меня некоторые из $\mathcal{A}v_i$ могли стать нулями (там где $\lambda = 0$). Дополним векторами из $V_0$ до о.н.б. и получим:
+$$ z_k = \cfrac{\mathcal{A}v_k}{\sqrt{\lambda_k}}, \lambda_k \neq 0 \quad \quad 
+\forall j = 1\ldots n: \mathcal{A}v_j = \sqrt{\lambda_j} z_j$$
+Определим $U$: $U u_i = z_i$, переводит о.н.б в о.н.б, откуда изометрич.
+
+Определим $\mathcal{H}:$ $\mathcal{H}z_i := \sqrt{\lambda_i}z_i$, $i = 1,\ldots, n$.  $\mathcal{H}$ будет о.п.с., так как в базисе $z$ матрица будет иметь диагональный вид. При этом в диагональном виде все $\lambda$ будут больше, откуда $\mathcal{H}\geq 0$.
+
+Покажем корректность выбранных $\mathcal{H},U$:
+$$(HU)u_j = \mathcal{H}(U u_j) = \mathcal{H}z_j =\sqrt{\lambda_j}z_j = \mathcal{A}v_j$$
+по ранее замеченному. То есть для любого вектора из базиса у нас выполнено такое равенство, то есть $\mathcal{A} = \mathcal{H} U$.
+
+\uline{Докажем единственность:} 
+
+$\mathcal{A} = \mathcal{H} U, \mathcal{A}^* = U^* \mathcal{H}^* = U^{-1}\mathcal{H}$
+
+$\mathcal{A}\mathcal{A}^*$ самосопряженный и $\geq 0$, откуда:
+$$\mathcal{A}\mathcal{A}^* = \mathcal{H}^2 $$
+
+А как мы доказали выше (в теореме о единственности арифм. корня), арифм. корень единственный, то есть $\mathcal{H} = \sqrt{\mathcal{A A}^*}$ определяется единственным образом.
+
+Если $\mathcal{A}$ невырожд. $\Rightarrow \mathcal{A}^*$ невырожд. $\Rightarrow \mathcal{A}^* \mathcal{A}$ невырожд.
+
+А это в свою очередь значит, что все $\lambda_i \neq 0$, что  в свою очередь значит, что все собственные числа $\mathcal{H} >0$, что в свою очередь говорит, что $H$ невырожденно.
+
+$\mathcal{A} = \mathcal{H}U \Rightarrow \mathcal{H}^{-1}\mathcal{A} = U$, причем определенно однозначно из новырожденности $\mathcal{A}$ и $\mathcal{H}$.
+
+
+\hfill Q.E.D.
+
+
+\textbf{Следствие:} $\forall \mathcal{A}\in End(V): \exists! \mathcal{H}_1 \geq 0, \exists U_1$ изометрич., так что $\mathcal{A} = U_1,H_1$.
+
+Если $\mathcal{A}$ невырожденный $\Rightarrow \exists! U_1$.
+
+\textbf{Доказательство:}
+
+$\mathcal{A}^* = \mathcal{H}U$. $\mathcal{H} = \sqrt{\mathcal{A}^*\mathcal{A}}$
+
+$\mathcal{A} = (\mathcal{H}U)^* = U^* \mathcal{H}^* = U^{-1}\mathcal{H} = U_1\mathcal{H}_1$
+
+$U^{-1} = U_1$ оба изометричны из свойств изометричности.
+
+\hfill Q.E.D.
+
+\deff{def: }$\mathcal{A} = \mathcal{H} U = U_1 \mathcal{H}_1$
+
+$H  =\sqrt{\mathcal{A}\mathcal{A}^*}$ - \deff{левый модуль} $\mathcal{A}$.
+ 
+$H_1  =\sqrt{\mathcal{A}^*\mathcal{A}}$ - \deff{правый модуль} $\mathcal{A}$.
+
+
+Тут вообще есть замечание, но я не совсем понимаю, как его писать. Оно подразумевает, что мы вроде как концептуально придумали такое разложение для того, чтобы с комплами работать (поворот + растяжение). Но я не знаю какие слова подобрать, мб вы мне поможете.
+
+\pagebreak
+\subsection{Разложения матриц: LDU, Холецкого, QR.}
+
+\deff{def:} $L = (l_{ij})_{n\times n}$  называется \deff{унитреугольной нижней} (левой) матрицы если:
+$$L = \begin{pmatrix}
+    1 & & 0\\
+    & \ddots & \\
+    * &  & 1 
+\end{pmatrix}$$
+\deff{def:} $U = (u_{ij})_{n\times n}$  называется \deff{унитреугольной верхней} (правой) матрицы если: 
+$$L = \begin{pmatrix}
+    1 & & *\\
+    & \ddots & \\
+    0 &  & 1 
+\end{pmatrix}$$
+\textbf{Замечание:} Их определители равны 0.
+
+\deff{def:} $A = (a_{ij})_{n \times n}$, $a_{ij} \in K$. $A_k$ называется \deff{угловой матрицей} $A$, если
+$$A_k = \begin{pmatrix}
+    a_{11} & \ldots & a_{1k}\\
+    \vdots & & \vdots \\
+    a_{k1} & \ldots & a_{kk}
+\end{pmatrix}$$
+
+$\Delta_k = \det A_k $ \deff{угловой минор}.
+
+
+\thmm{Теорема:}
+
+$\forall A : \Delta_k \neq 0 , k = 1\ldots n-1 \Leftrightarrow \exists ! L : \exists! U: \exists ! D $, такие что $L$ - унитреугольная нижняя, $U$ - унитреугольная верхняя, $D = diag (d_1,\ldots, d_n)$, причем $d_k \neq 0: k = 1,\ldots,n-1$.
+$$A = LDU$$
+\textbf{Доказательство:}
+
+    \uline{Докажем в левую сторону:}
+
+    Пусть $A  = LDU$.  Докажем интересный факт:  $A_k = L_k D_k U_k$. Мы знаем:
+    $$A = LDU \Leftrightarrow a_{ij} = \sum\limits_{s =1 }^n \sum\limits_{t=1}^n l_{is}d_{st} u_{tj}$$
+    Из того, что матрица $L$ нижнетреугольная, то есть при $s> i , l_{is} = 0$, а также матрица $u_{tj}$ верхнетреугольная, то есть при $t>j, l_{tj}=0$, то можно сделать замену:
+    $$\sum\limits_{s =1 }^n \sum\limits_{t=1}^n l_{is}d_{st} u_{tj} = \sum\limits_{s =1 }^i \sum\limits_{t=1}^j l_{is}d_{st} u_{tj}$$
+    Пусть $i,j < k$ (мы хотим посмотреть на элементы матрицы $A_k$), то если мы добавим в нашу сумму нулевые элементы, то хуже не станет, то есть:
+    $$a_{ij} =  \sum\limits_{s =1 }^i \sum\limits_{t=1}^j l_{is}d_{st} u_{tj} = \sum\limits_{s =1 }^k \sum\limits_{t=1}^k l_{is}d_{st} u_{tj}$$
+    Что в свою очередь говорит нам, что $a_{ij}, i<k,j<k$ элемент зависит только  от части матриц $L$ и $U$, а если быть точнее, то мы получаем:
+    $$A_k = L_k D_k U_k$$
+
+    Теперь имея это мы получаем $\Delta_k = \det A_k = \det L_k \det D_k \det U_k = d_1 * \ldots * d_k \neq 0$
+
+    $\Rightarrow \Delta_{k+1} = \Delta_k d_{k+1}$, то есть: $d_{k+1} = \cfrac{\Delta_{k+1}}{\Delta_k}, k = 1,\ldots, n$, а так как $d_k\neq 0 $ для 
+    тих $k$ то наше утверждение выполнено и мы доказали теорему в левую сторону.
+
+    \uline{Докажем теорему в правую сторону:}
+
+    Пусть $\Delta_k \neq 0, k = 1\ldots n-1$. Воспользуемся методом математической индукции:
+    \begin{enumerate}
+        \item[] \textbf{База:}
+        
+        $n=1$, $A = (a_{11}), L= (1), U(1) , D = (a_{11})$, очевидно, $A = LDU$ единственно.
+        \item[] \textbf{ИП:}
+
+        Пусть верно для $n =k: A_k  =L_k D_k U_k$ и $d_1,\ldots, d_k \neq 0$
+
+        \item[] Докажем для $n = k+1$:
+
+        $A_{k+1} = \begin{pmatrix}
+            A_k & b \\
+            c & a_{k+1 k+1}
+        \end{pmatrix}$
+
+        Теперь будем делать финт ушами: Я хочу получить: $A_{k+1} = L_{k+1}D_{k+1}U_{k+1}$. При этом если такое разложение существует, то мы можем воспользоваться фактом, который мы доказали в начале этой теоремы: $(A_{k+1})_k = (L_{k+1})_k(D_{k+1})_k (U_{k+1})_k$. При этом из предположения индукции такое разложения у меня единственно, то есть если матрицы $L_{k+1}, D_{k+1}, U_{k+1}$ существуют, то должны иметь вид:
+        $$L_{k+1} = \begin{pmatrix}
+            L_k & 0\\
+            x & 1 
+        \end{pmatrix}, U_{k+1} = \begin{pmatrix}
+            U_k & y\\
+            0 & 1 
+        \end{pmatrix}, D_{k+1} = \begin{pmatrix}
+            d_1 &  &  & 0\\
+             &  \ddots &  &\\
+             &  & d_{k} &\\
+             0 & & & d_{k+1}
+         \end{pmatrix}$$
+         Теперь посмотрим, что у нас должно быть выполнено:
+         $$A_{k+1} = \begin{pmatrix}
+             A_k & b \\
+             c & a_{k+1 k+1}
+         \end{pmatrix} = \begin{pmatrix}
+             L_kD_kU_k & L_kD_ky\\
+             x D_k U_k & x D_ky + d_{k+1}
+         \end{pmatrix}$$
+         $\Leftrightarrow A_k = L_k D_k U_k$ по индукционному предположению. Также по ип: $\det A_k = \Delta_k = d_1\cdot \ldots \cdot d_k \neq 0$.
+        $$\begin{cases}
+            L_kD_k y =b\\
+            x D_k U_k = c\\
+            x D_k y + d_{k+1} = a_{k+1 k+1}
+        \end{cases}$$
+        Заметим, что чтобы найти $y$, мы должны решить СЛНУ с матр. $L_k D_K$, заметим, что $\det L_k D_k = \det D_k\neq 0$, то есть такое $y$ существует и единственно: $y = (L_k D_k)^{-1}b$.
+
+        Аналогичным образом (протранспонировав второе выражение), получаем что существует и единственен $x: x^T = (U_k^T D_k)^{-1}C^T$.
+
+        Откуда существует и единственен $\Rightarrow d_{k+1} = a_{k+1 k+1} -xD_Ky = \cfrac{\Delta_{k+1}}{\Delta_k}$
+
+         То есть ИП доказан.
+         
+         \textbf{Замечание:} на последнем шаге нам не важно, что $d_n=0$.
+    
+    \end{enumerate}
+    
+    
+    \hfill Q.E.D.
+    
+
+\textbf{Замечание:}
+\begin{enumerate}
+    \item $A = LDU$ разложение. $L' =LD$ нижне-треугольная с $d_1,\ldots,d_n$. $U' = DU$ - верхне треугольная с $d_1,\ldots,d_n$ на диагонали.
+    \item $\det A = \det L \det D  \det U = \det D$.
+
+\end{enumerate}
+
+\textbf{Следствие:} $A^* = A$  - самосопряженная, $\Delta_k \neq 0 , k = 1, \ldots, n-1 \Leftrightarrow \exists ! L : \exists! D : \exists! V$, где $d_i\in \R$, а еще:
+$$A = LDL^* = U^*DU$$
+То есть $L^* = U, L = U^*$.
+
+\textbf{Доказательство:}
+
+$\begin{cases}
+    A = LDU\\
+    A^* = U^*DL
+\end{cases}, A = A^*$, откуда пользуясь теоремой получаем, что $LDU$ разложение единственно и получаем то, что надо.
+
+\hfill Q.E.D
+
+
+\thmm{Алгоритм поиска LDU разложения}
+$$(A | E) \rightarrow{} \begin{pmatrix}[ccc|ccc]
+    d_1 & \ldots & * & 1 &        & 0\\
+     & \ddots &\vdots &  \vdots  &\ddots & \\
+     0 & & d_n   & * & &1
+\end{pmatrix}$$
+
+Мы переводим матрицу Гауссом, слева получаем $DU$, справа получаем $L^{-1}$. В Гауссе мы не переставляем строки.
+
+\deff{def:} $L_{ij}(\lambda)$ - \deff{элементарная унитреугольная матрицв}, это единичная матрица с $\lambda$ в $i$-ой строчке $j$-ом столбце.
+
+\textbf{Замечание:} При умножении матрицы $A$ на $L_{ij}$ происходит прибавление к $i$ строке $\lambda \cdot$ j-ая строка. 
+
+\textbf{Замечание:} $(L_{ij}(\lambda))^{-1} = L_{ij}(-\lambda)$.
+
+Покажем почему работает:
+$$(A|E) \rightarrow{} (L_m\ldots L_1 A | L_m\ldots L_1 E)$$
+То есть $A = (L_1^{-1}\ldots L_{m}^{-1})(L_m\ldots L_1A)$. Заметим, что $L_{1}^{-1}\ldots L_m^{-1}$ это унитреугольная нижняя матрица, а вторая часть это $DU$, откуда из единственности $LDU$ получаем, что это корректно.
+
+
+
+
+\thmm{Теорема (Разложение Холецкого, метод квадратного корня)}
+
+$\forall A : A>0: \Delta_k \neq 0, k = 1\ldots n$
+
+Тогда $\exists! L$ нижнетреугольная, $\exists ! U$ верхнетреугольная, что $l_{ii}>0, u_{ii}>0:A = L \cdot L^* = U^*\cdot U$
+
+\textbf{Доказательство:}
+
+$A = L_0D_0 U_0 = L_0 D_0 L_0^* = U_0^* D_0 U_0$, тк $A = A^*$.
+
+$\forall x \neq \zero : (Ax, x)  = (L_0D_0 uU_0x,x) = (D_0 U_0 x, L_0^*x) =   (D_0y,D_0)$.
+
+$y = U_0x \neq 0 $, тк $U$ невырожденно и определитель равен 1.
+
+$\forall y \neq 0: (D_0y,y)>0 = \sum\limits_{k=1}^n d_k |y_k|^2 \Rightarrow d_j > 0: \forall j = 1\ldots n$. Из этого получаем:
+$$A = L_0 D_0 L_0^* = (L \sqrt{D_0})(L_0 \sqrt{D_0})^* = L L^*$$
+Аналогично с $U$-шками.
+
+\hfill Q.E.D.
+
+\thmm{Теорема (QR разложение)}
+
+$\forall A$ невырожденной $\exists Q$ унит/ортог. $\exists R$ верх. треугольная: $A = QR$
+
+\textbf{Доказательство:}
+
+$A$ - невырожденная $\Leftrightarrow \rg A = n, A = (A_1,\ldots ,A_n)$
+
+Возьмем наши столбики, как вектора и приведем их к о.н.б с помощью Грамма-Шмидта.
+
+Получим о.н. систему $q_1,\ldots, q_n$, которая выражается через наши столбики:
+
+$q_1 = u_{11}A_1$\\
+$q_2 = u_{12}A_1 + u_{22}A_2$\\
+$\vdots$\\
+$q_n = u_{1n}A_1 + \ldots + u_{nn}A_n$
+$$Q = (A_1 \ldots A_n) \begin{pmatrix}
+    u_{11} & u_{12} & \ldots & u_{1n}\\
+     & u_{22} & &\vdots\\
+    & & \ddots & u_{n-1n}\\
+   0 & & & u_{nn} 
+\end{pmatrix}$$
+Пусть матрица справа это $R^{-1}$.
+
+$q_{i}^T \overline{q_j} = \delta_{ij}$ по построению.
+
+$\Leftrightarrow Q^T \overline{Q} = E \Leftrightarrow Q$ унит/ортог. 
+
+$Q = AR^{-1}$
+
+$Q$ - невырожденная, $A$ - невырожденная, откуда $R^{-1}$ тоже невырожденная и существует $R$, то есть $QR = A$.
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $\forall A$ - невырожд., $\exists Q$ унит-ортог, $\exists L$ нижнетреугольная $A = LQ$.
+
+\textbf{Доказательство:}
+
+$A^* = QR, A = (QR)^*  = R^*Q^*$. $R^*=L$ - нижнетреугольная $Q^* = Q$ - унит. ортог.
+
+\hfill Q.E.D.

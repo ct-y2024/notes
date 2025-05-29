@@ -5,7 +5,6 @@ multilingual = false
 src = "src"
 title = "CT Notes y2024"
 
-
 [build]
 build-dir = "book"
 
@@ -13,7 +12,7 @@ build-dir = "book"
 default-theme = "ayu"
 mathjax-support = true
 #curly-quotes = false  # Отключает преобразование прямых кавычек в "умные" кавычки
-git-repository-url = "https://github.com/ct-y2024/notes"
+git-repository-url = "https://github.com/VyacheslavChepelin/ct-notes"
 
 
 
