@@ -52,3 +52,91 @@
 Просто делаем 2 сплита для того чтобы в отдельное дерево вынести все значения с _l_ по _r_, а далее смердживаем осавшиеся 2 куска.
 ## Find(x)
 Просто спускаемся до нужно вершины и делаем **splay** от нее.
+# Как это все писать
+Написание splay-tree может доставить вам множество хлопот с правильным управлением ссылками(что уж там говорить, из нашей группы splay никто не сдал, пока мы не выпросили чекер у Первеева), а дебажить splay то еще занятие из-за его непостоянной структуры, так что лучше просто научиться его правильно писать. Для себя я вывел несколько советов :
+1. Создайте функции `add_edge` и `remove_edge`, чтобы не заниматься изменением ссылок вручную. Именно здесь я допускал наибольшее количество ошибок. Ниже приведен код этих функций:
+```c++
+void add_edge(node *v, node *pr, bool is_left_edge) {
+  if (pr) {
+    if (is_left_edge) {
+      pr->l = v;
+    } else {
+      pr->r = v;
+    }
+  }
+  if (v) {
+    v->p = pr;
+  }
+}
+
+void remove_edge(node *v, node *pr, bool is_left_edge) {
+  if (pr) {
+    if (is_left_edge) {
+      pr->l = nullptr;
+    } else {
+      pr->r = nullptr;
+    }
+  }
+  if (v) {
+    v->p = nullptr;
+  }
+}
+```
+2. Если немного присмотреться на `zigzig` и `zigzag`, то окажется, что это просто применение двух `zig` в некотором порядке, получается можно релизовать только `zig`, а в `splay` обмазаться зигами и получить упрощенную реализацию:
+```c++
+bool is_left_son(node *x) {
+  if (x->p == nullptr) {
+    return false;
+  }
+  return x->p->l == x;
+}
+
+void zig(node *v) {
+  if (!v) {
+    return;
+  }
+  auto pr = v->p;
+  if (!pr) {
+    return;
+  }
+  auto gr_pr = pr->p;
+  bool is_left_v = is_left_son(v);
+  bool is_left_pr = is_left_son(pr);
+  node *b;
+  if (is_left_v) {
+    b = v->r;
+  } else {
+    b = v->l;
+  }
+  remove_edge(v, pr, is_left_v);
+  remove_edge(pr, gr_pr, is_left_pr);
+  remove_edge(b, v, !is_left_v);
+  add_edge(v, gr_pr, is_left_pr);
+  add_edge(pr, v, !is_left_v);
+  add_edge(b, pr, is_left_v);
+}
+
+void splay(node *v) {
+  if (!v) {
+    return;
+  }
+  if (!v->p) {
+    return;
+  }
+  if (!v->p->p) {
+    zig(v);
+    return;
+  }
+  if (is_left_son(v) == is_left_son(v->p)) {
+    zig(v->p);
+    zig(v);
+    splay(v);
+  } else {
+    zig(v);
+    zig(v);
+    splay(v);
+  }
+}
+```
+# Неявный ключ и массовые операции 
+Как и большинство других [деревьев поиска](./01-search-tree.md), splay-дерево можно сделать по неявному ключу, для этого в вершине нужно хранить ее `size`, завести `push`, который мы будем применять до `zig` и при входе в вершину, а также `update`, который все нужные значения будет обновлять после `zig`.
