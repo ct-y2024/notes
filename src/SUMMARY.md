@@ -18,7 +18,7 @@
     4. [Персистентное дерево](./Algorithms/09-persistent-tree.md)
     4. [Деревья](./Algorithms/10-trees.md)
     4. [LA, HLD и т.п](./Algorithms/11-LA.md)
-    4. [LA, HLD и т.п](./Algorithms/12-link-cut.md)
+    4. [Link-cut tree](./Algorithms/12-link-cut.md)
 - [Cpp](./Cpp/Cpp.md)
     1. [Ассемблер](./Cpp/01_asm.md)
     2. [Операционные системы](./Cpp/02_os_cpu.md)    
