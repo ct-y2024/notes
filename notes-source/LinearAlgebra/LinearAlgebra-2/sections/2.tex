@@ -18,13 +18,13 @@ $f_1, f_2$ - линейные формы. Введем операции:
     \item \textbf{Сложение:} $(f_1+f_2)(v) = f_1(v) + f_2(v)$
     \item \textbf{Умножение на скаляр:}  $(\lambda f_1) (v) = \lambda f_1(v)$
 \end{enumerate}
-Очевидно существует ноль и противоположные. Откуда выполнены аксиомы 1-8, откуда линейное пространство. 
+Очевидно существует ноль и противоположные. Откуда выполнены аксиомы 1-8 линейного пространства, а откуда $V^*$ - линейное пространство.
 
 $V^* = \{f: V \rightarrow K \text{ - линейная форма}\}$ - называется \deff{сопряженное} пр-во к $V$ или \deff{дуальное}.
 
 Возьмем $V$, зафиксируем  $e_1,\ldots,e_n$ - базис.
 
-$\forall X \in V: X = \sum\limits_{i=1}^nx_i e_i = x^ie_i$ - вспоминаем правило Энштейна из первого семестра. Тогда:
+$\forall X \in V: X = \sum\limits_{i=1}^nx_i e_i = x^ie_i$ - вспоминаем правило Эн  штейна из первого семестра. Тогда:
 $$X \xleftrightarrow{e}\begin{pmatrix}
     x^1 \\
     x^2 \\
@@ -33,13 +33,14 @@ $$X \xleftrightarrow{e}\begin{pmatrix}
 \end{pmatrix} =x$$ 
 $f(X) = f(x^ie_i) = x^if(e_i) = x^ia_i$, где $f(e_i) = a_i \in K$. $f(X) = a_1x^1+a_2x^2 + \ldots + a_n x^n$.
 
-$f \leftrightarrow a= (a_1,\ldots, a_n)$ строка. %Цитата: то есть теперь  у нас функции описываются строками, расписать более подробно(это я себе)
-$V^* = (K^n)^T$. 
-
-Откуда $\dim V^*  = n$. 
-Это взаимооднозначное соответствие, оно очевидно линейно, откуда это изоморфизм.
+$f \leftrightarrow a= (a_1,\ldots, a_n)$ строка. 
 
 То есть теперь на самом деле функции описываются строками --- значениями на базисных векторах.
+
+Поэтому $V^* = (K^n)^T$. А уже откуда следует, что $\dim V^*  = n$. 
+
+Это взаимооднозначное соответствие, оно, очевидно, линейно, откуда это соответствие -  изоморфизм.
+
 
 
 
@@ -68,16 +69,19 @@ $w^i$ называется \deff{координатной функцией}.
 
 \textbf{Доказательство:}
 
-Докажем порождаемость: 
+\uline{Докажем порождаемость}: 
 
 $\forall f \in V^*: \forall x \in V: f(x) = x^i a_i = w^i(x)a_i$, где $a_i \in K$ --- порождаемое
 
-Докажем линейную независимость, показав единственность разложения нуля:
+\uline{Докажем линейную независимость}:
 
-$\zero = \alpha_i w^i $, где $\alpha_i \in K$. Посмотрим на $\forall x \in V: \, \alpha_iw^i(x)=\zero$.
+Покажем единственность разложения нуля: $\zero = \alpha_i w^i $, где $\alpha_i \in K$. 
 
-Пусть $x = e_j$ для $j = 1,\ldots, n$. Как мы знаем, для $i\neq j: w^i(e_j) = 0$. Тогда $\alpha_iw^i(e_j)=\alpha_j =0$,
-$\forall j \Rightarrow $ лин. независим.
+$\forall x \in V$ должно быть выполнено: $ \, \alpha_iw^i(x)=\zero$
+
+Переберем $x = e_j$ для $j = 1,\ldots, n$: Для $i\neq j: w^i(e_j) = 0$. Тогда $\alpha_iw^i(e_j)=\alpha_j =0$
+
+Откуда уже следует единственность разложения нуля.
 
 \hfill Q.E.D.
 
@@ -85,31 +89,30 @@ $\forall j \Rightarrow $ лин. независим.
 $\Rightarrow \forall f \in V^*: f = a_iw^i$, т.е $a=(a_1,\ldots,a_n)$  координаты $f$ в базисе $w = (w^1,\ldots, w^n)$ пространства $V^*$.
 
 \textbf{Доказательство:}
-
 $$\forall f \in V^*, \forall x \in V: f(x) = x^ia_i = w^i(x)a_i = (a_iw^i)(x) \Leftrightarrow f = a_iw^i.$$
-
 \hfill Q.E.D.
 
 
-\deff{def:} $w^1,\ldots, w^n$ называется \deff{сопряженным} (дуальным) к базису $e$ пространства $V$.
+\deff{def:} $w^1,\ldots, w^n$ называется \deff{сопряженным} (дуальным) базисом к базису $e$ пространства $V$.
 
 Очевидно $w^j(e_i) = \delta^i_j$.
 
 \thmm{Теорема 2:}
 
-$\forall$ базиса $w'^1,\ldots, w'^n$ пространства $V^*$.
-
-$\exists$ базис $e'_1, \ldots, e'_n$ пространства $V$ такой, что $w'$ базис, сопряженный к $e'$. То есть $w'^{i} $ это координатные функции относительно $e'$.
+Возьмем $\forall$ базис $w'^{\,1},\ldots, w'^{\,n}$ пространства $V^*$, тогда $\exists$ базис $e'_1, \ldots, e'_n$ пространства $V$ такой, что $w'$ базис, сопряженный к $e'$. То есть $w'^{\,i} $ это координатные функции относительно $e'$.
 
 \textbf{Доказательство:}
 
 
-Пусть $e_1,\dots ,e_n \text{ базис } V$. Тогда, как мы говорили ранее:
+Пусть $e_1,\dots ,e_n \text{ базис } V$.
+
+Тогда, как мы говорили ранее:
 $ w^1,\dots,w^n $ координатные функции относительно $e$, базис $V^*$ сопряженный к $e$.
 
-Возьмем $w'$. Так как он базис и $w$ базис, то: $$ w' =wT_{w \rightarrow w'}$$
-$(T_{w \to w'})^T=S=(S^i_j)_{n\times n}$. Заметим, что $S$ невырожденная, т.к. $T$ матрица перехода. Строки матрицы $S$ --- это координаты элементов нового базиса $w'$ в старом базисе ($w$).
+Возьмем $w'$. Так как он базис и $w$ базис, то:  $w' =wT_{w \rightarrow w'}$
 $$(w'^1,\ldots,w'^n)=(w^1,\ldots,w^n)T_{w \to w'}$$
+\textbf{Замечание:} В данном случае формы записаны, как столбики 
+
 Давайте все транспонируем:
 $$\begin{pmatrix}
     w'^1 \\
@@ -124,12 +127,21 @@ $$\begin{pmatrix}
     \vdots \\
     {w}^n
 \end{pmatrix}$$
-Пусть $S^{-1}=:T=(t^i_j)_{n \times n}$ --- невырожденная, $S^{-1} =T_{e\rightarrow e'}$
+\textbf{Замечание:} В данном случае формы записаны, как строчки и заметим, что строки матрицы $S = (T_{w \to w'})^T$ --- это координаты элементов нового базиса $w'$ в старом базисе ($w$).
 
-Осталось показать, что $w'$ будет сопряженным к $e'$, т.е. показать ${w'}^{ i}(x)={x'}^i, \, x = {x'}^i {e'}_i$, для всех $ x \in V$. Тк $w'^i$ - линейная форма, то:
-$${w'}^i({x'}^i{e'}_j)= {x'}^j {w'}^i(e'_j)$$
-Теперь, давайте заметим, что ${w'}^i=S^i_kw^k$, $e'_j = t^m_je_m$. Откуда 
-$$\omega'^i(x) = (S^i_j\omega^j)(x) = S^i_j\omega^j(x) = S^i_jx^j = S^i_jt^j_kx'^k = (ST)^i_kx'^k = \delta^i_kx'^{k} = x'^i$$
+Заметим, что $S$ невырожденная, т.к. $T_{w \to w'}$ матрица перехода - тоже невырожденная.
+
+Пусть $S^{-1}=:T=(t^i_j)_{n \times n}$ --- невырожденная.  То есть возьмем $e'$ такой, что $e' = e T$ или по-другому $S^{-1} =T_{e\rightarrow e'}$.
+
+
+Надо показать, что $w'$ будет сопряженным к $e'$, т.е. показать ${w'}^{ i}(x)={x'}^i, \, x = {x'}^i {e'}_i$, для всех $ x \in V$. Сперва подставим базисные  вектора:
+$$w'^{\, i}(e'_j)  = (s^i_k w^k)(t_j^me_m) $$
+\textbf{Замечание:} Во-первых здесь  записано 2 суммы, по $k$ и по $m$. Во-вторых, чтобы получить это равенство, мы воспользовались тем, что говорили ранее: строки матрицы $S$ это координаты элементов нового базиса в старом, а также воспользовались матрицей перехода между базисами $e$ и $e'$.
+
+Заметим, что сейчас скаляры умножаются на формы и на координаты. Поэтому, воспользовавшись линейностью, получаем:
+$$(s^i_k w^k)(t_j^me_m) = s^i_k t^m_j \, \,w^k(e_m) = s^i_k t^m_j \delta_m^k =s^i_mt^m_j= (ST)^i_j = (E)^i_j  = \delta^i_j$$
+Откуда $w'^{\, i}(e_j')=\delta^i_j$ или по-другому $w'^{\, i}(x) =x'^{\,i}$. То есть мы получили, что $w'$ сопряженный базис к $e'$.
+
 \hfill Q.E.D.
 
 \textbf{Следствие.} $e,e'$ базисы $V$, $w,w'$ сооответственные сопряженные базисы к $e,e'$ в $V^*$.
@@ -161,7 +173,7 @@ $x' = Sx$
 
 \deff{def:} Преобразование координат векторов пространства $V$ происходит по закону, противоположному преобразованию базисов --- называется \deff{контрвариантным}, а координаты векторов пространства $V$ называются \deff{контрвариантыми} (индексы координат пишутся вверху).
 
-\deff{def:} Преобразование координат векторов пространства $V$ происходит по тому же закону, что преобразование базисов в пространстве $V$ (т.е. согласованно) называется \deff{ковариантным} преобразованиям.
+\deff{def:} Преобразование координат векторов пространства $V^*$ происходит по тому же закону, что преобразование базисов в пространстве $V$ (т.е. согласованно) называется \deff{ковариантным} преобразованиям.
 Координаты векторов пространства $V^* $ называется \deff{ковариантным} (индексы пишутся внизу).
 
 Позамечаем интересные факты:
@@ -237,24 +249,19 @@ $V \cong V^{**}$
 
 \textbf{Доказательство:}
 
-$\forall x \in V \rightarrow "x"\in V^{**}$. Назовем это отображение $\varphi$.
+Возьму изображение $\varphi:$$\forall x \in V \rightarrow "x"\in V^{**}$. Нам надо показать, что оно изоморфизм.
 
-Покажем, что наше взаимооднозначное сопоставление линейно.
+\uline{Покажем, что наше изображение линейно:}
 
-$x_1 + \lambda x_2 \in V: x_1 \rightarrow "x_1"$, $x_2 \rightarrow "x_2"$
+Возьму $x_1 + \lambda x_2 \in V: x_1 \rightarrow "x_1"$, $x_2 \rightarrow "x_2"$:
+$$\forall f\in V^*: "x_1+\lambda x_2"(f) = f(x_1+\lambda x_2) = f(x_1) + \lambda f(x_2) = "x_1"(f) + \lambda"x_2"(f) $$
+Откуда $\varphi$ линейно.
 
+\uline{Покажем, что $\varphi$, это изоморфизм:}
 
-$\forall f\in V^*: "x_1+\lambda x_2"(f) = f(x_1+\lambda x_2) = f(x_1) + \lambda f(x_2) = "x_1"(f) + \lambda"x_2"(f) $. Откуда $\varphi$ линейно.
+Сперва заметим, что по аксиомам $\varphi(x)$ это линейное пространство. Теперь пусть $e_1,\ldots, e_n$ - базис $V$. Им соответствуют $ "e_1"$$,\ldots, "e_n"$. Покажем, что $"e"$ базис в $V^{**}$:
 
-\begin{center}
-    \includegraphics[width =15cm]{assets/8_1-varphi-linear.png}
-\end{center}
-
-Покажем, что $\varphi$, это изоморфизм.
-
-Пусть $e_1,\ldots, e_n$ базис $V$. Им соответствуют $ "e_1"$$,\ldots, "e_n"$. Покажем, что это базис в $V^{**}$:
-
-Мы знаем, что $\dim (V^*)^* = \dim V^* = \dim V = n$. Откуда достаточно показать, что $"e_1"$ $,\ldots, "e_n"$ - линейно независимы. Для этого покажем единственность разложения нуля.
+ $\dim (V^*)^* = \dim V^* = \dim V = n$. Откуда достаточно показать, что $"e_1"$ $,\ldots, "e_n"$ - линейно независимы. Для этого покажем единственность разложения нуля.
 
 $0= \sum\limits_{i=1}^n \alpha_i "e_i"(w^j)=\sum\limits_{i=1}^n\alpha_i w^j(e_j) = \alpha_j \Rightarrow$ линейно независимы, откуда базис.
 
@@ -271,10 +278,6 @@ $e \text{ и }w$ взаимно сопряж.
 $x=x^ie_i, w^i(x)=x^i,$ где $x \in V$
 
 $e_j(f)=f(e_j)=a_j(f \in V^*)$, $e_j \in V^{**}$ - коорд. формы относительно базиса $w^i$.
-
-Я категорически не помню для чего Кучерук это написала, напомните мне пж.
-
-
 
 
 
@@ -323,7 +326,7 @@ for (i1 = 1 ... n):
 
 \deff{Соглашение о записи элементов многомерной матрицы}
 
-$\alpha^{i_1,\ldots,i_q}_{j_1,\ldots, j_p} \in M_{p+q}$ - многомерная матрица порядка $n$. $i_k \in (1,\ldots,n); j_m \in (1,\ldots, m)$
+$\alpha^{i_1,\ldots,i_q}_{j_1,\ldots, j_p} \in M_{p+q}$ - многомерная матрица порядка $n$. $i_k \in (1,\ldots,n); j_m \in (1,\ldots, n)$
 
 Мы читаем сначала верхние индексы, потом нижние в записи
 
@@ -424,7 +427,7 @@ $f(a^ie_i,b^jr_j) = a^ib^j f(e_i,e_j)$
 
 $f: V^p \times (V^*)^q\rightarrow K$
 
-Возьмем $e' = (e_1',\ldots,e_n' )$ и дуальный к нему $w'=(w'_1,\ldots, w'_m)$
+Возьмем $e' = (e_1',\ldots,e_n' )$ и дуальный к нему $w'=(w'^{\,1},\ldots, w'^{\,m})$
 
 $T = T_{(e\rightarrow e')}, S = T^{-1} = (T_{w\to w'}^T)$
 
@@ -458,7 +461,7 @@ $$= (\alpha_{j_1,\ldots, j_p}^{i_1,\ldots,i_q} + \lambda \beta_{j_1,\ldots, j_p}
 
 Заметим, что мы получили равносильность первого и второго определения.
 
-
+\newpage
 \subsection{Произведение тензоров. Базис пространства тензоров. Свертка тензоров.}
 
 \deff{def:} $\alpha \in T(p_1,q_1),\beta \in T(p_2,q_2)$. Тогда \deff{произведением} тензоров называется тензор $\gamma \in T(p_1+p_2,q_1+g_2):$ 
@@ -467,7 +470,7 @@ $$\gamma^{i_1,\ldots i_{q_1},m_1,\ldots,m_{q_2}}_{j_1,\ldots,j_{p_1},k_1,\ldots,
 $$\gamma_{\widetilde{j_1},\ldots,\widetilde{j}_{p_1}, \widetilde{k}_1,\ldots, \widetilde{k}_{p_2}}'^{\, \widetilde{i_1},\ldots,\widetilde{i}_{q_1}, \widetilde{m}_1,\ldots, \widetilde{m}_{q_2}} = \alpha_{\widetilde{j_1},\ldots,\widetilde{j}_{p_1}}'^{\, \widetilde{i_1},\ldots,\widetilde{i}_{q_1}} \cdot \beta_{ \widetilde{k}_1,\ldots, \widetilde{k}_{p_2}}'^{\,\widetilde{m}_1,\ldots, \widetilde{m}_{q_2}} = $$
 $$= \alpha_{j_1,\ldots j_{p_1}}^{i_1,\ldots, i_{q_1}} t_{\widetilde{j}_1}^{j_1}\ldots t_{\widetilde{j}_{p_1}}^{j_{p_1}} s_{i_1}^{\widetilde{i}_1}\ldots s_{i_{q_1}}^{\widetilde{i}_{q_1}}\cdot \beta_{k_1,\ldots k_{p_2}}^{m_1,\ldots, m_{q_2}} t_{\widetilde{k}_1}^{k_1}\ldots t_{\widetilde{k}_{p_2}}^{k_{p_2}} s_{m_1}^{\widetilde{m}_1}\ldots s_{m_{q_2}}^{\widetilde{m}_{q_2}} = $$
 $$=\gamma_{j_1,\ldots,j_{p_1},k_1,\ldots , k_{p_2}}^{i_1,\ldots, i_{q_1}, m_1,\ldots,m_{q_2}}\cdot t_{\widetilde{j}_1}^{j_1}\ldots t_{\widetilde{j}_{p_1}}^{j_{p_1}} s_{i_1}^{\widetilde{i}_1}\ldots s_{i_{q_1}}^{\widetilde{i}_{q_1}}\cdot t_{\widetilde{k}_1}^{k_1}\ldots t_{\widetilde{k}_{p_2}}^{k_{p_2}} s_{m_1}^{\widetilde{m}_1}\ldots s_{m_{q_2}}^{\widetilde{m}_{q_2}}$$
-Откуда получаем, что верно, это тензор!!! \sout{я устал это писать}
+Откуда получаем, что верно, это тензор!!!
 
 Обозначается $\gamma = \alpha \otimes \beta$.
 
@@ -506,7 +509,7 @@ $g_1,\ldots,g_q\in V^{**} = T(0,1)$ --- $g_i:V^*\rightarrow K$
 $\gamma = f^1\otimes \ldots \otimes f^p \otimes g_1 \otimes \ldots \otimes g_q \leftrightarrow a^1_{j1}\ldots a^{p}_{j_p}b_1^{i_1}\ldots b_q^{i_q}= \gamma^{i_1,\ldots, i_q}_{j_1,\ldots, j_p}$, $\gamma \in T(p,q)$.
 
 Воспользуемся только что доказанной формулой и получим:
-$$\gamma(\xi_1,\ldots \xi_p, \eta^1,\ldots, \eta^q)= f^1(\xi_1)\ldots f^q(\xi_q)\cdot g_1(\eta^1)\ldots g_q(\eta^q)$$
+$$\gamma(\xi_1,\ldots \xi_p, \eta^1,\ldots, \eta^q)= f^1(\xi_1)\ldots f^p(\xi_p)\cdot g_1(\eta^1)\ldots g_q(\eta^q)$$
 Продолжим играться с этой формулой:
 
 Пусть $f^j = w^j$, а $g_i = e_i$ (сопряженные базисы), и подставим это в нашу формулу:
@@ -525,17 +528,22 @@ $$=\xi_1^{j_1}\xi_2^{j_2}\ldots \xi_p^{j_p} \cdot \eta_{i_1}^1 \ldots \eta_{i_q}
 
 \textbf{Доказательство:}
 
-\begin{enumerate}
-    \item Докажем, что порождающее. Пусть $f\in T(p,q): \forall \xi_1,\ldots \xi_p \in V, \forall \eta^1,\ldots \eta^q\in V^*:$
+
+     \uline{Покажем порождаемость:}
+    
+    Пусть $f\in T(p,q): \forall \xi_1,\ldots \xi_p \in V, \forall \eta^1,\ldots \eta^q\in V^*:$
 
     Давайте найдем значение функции в этой точке:
     $$f(\xi_1,\ldots, \xi_p,\eta^1,\ldots, \eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q}\xi_1^{j_1}\ldots \xi_{p}^{j_p}\cdot \eta_{i_1}^1 \ldots \eta_{i_q}^q = $$
     Выразим координаты через базис и дуальный к нему:
-    $$=\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}(\xi_1)\ldots w^{j_p}(\xi_p) e_{i_1}(\eta^1)\ldots e_{i_q}(\eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}\otimes \ldots \otimes p_{i_q}(\xi_1,\ldots, \eta^q)$$
+    $$=\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}(\xi_1)\ldots w^{j_p}(\xi_p) e_{i_1}(\eta^1)\ldots e_{i_q}(\eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}\otimes \ldots \otimes e_{i_q}(\xi_1,\ldots, \eta^q)$$
     Что мы получили? Разложение в нашем базисе с коэффициентами: $\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} $
 
     Откуда порождаемо.
-    \item Докажем, что линейно независимо. Для этого, как обычно, покажем единственность разложения нуля:
+    
+    \uline{Покажем линейную независимость:}
+    
+    Для этого, как обычно, покажем единственность разложения нуля:
     $$\gamma = \alpha_{j_1,\ldots, j_p}^{i_1,\ldots,i_q}w^{j_1}\otimes\ldots\otimes w^{j_p}\otimes e_{i_1}\otimes \ldots \otimes e_{i_q}=\zero$$
     Давайте подставим какие-то базисные векторы:
     $$\gamma(e_{\widetilde{j}_1},\ldots, e_{\widetilde{j}_p}, w^{\widetilde{i}_1},\ldots, w^{\widetilde{i}_q}) = $$
@@ -543,7 +551,7 @@ $$=\xi_1^{j_1}\xi_2^{j_2}\ldots \xi_p^{j_p} \cdot \eta_{i_1}^1 \ldots \eta_{i_q}
     Заметим, что каждая из $w^{j_k}(e_{\widetilde{j}_k}) = \delta_{\widetilde{j}_k}^{j_k}$ и $e_{i_k}(w^{\widetilde{i}_k}) = \delta^{\widetilde{i}_k}_{i_k}$, поэтому получим, что:
     $$ = \alpha_{\widetilde{j}_1,\ldots,\widetilde{j}_p}^{\widetilde{i}_1,\ldots, \widetilde{i}_q}$$
     Но с другой стороны это ноль (тк мы смотрим на разложение тензора, выдающего всегда ноль (нуля)). Тогда получаем, что все $\alpha = 0$, откуда единственно
-\end{enumerate}
+
 
 \hfill Q.E.D.
 
@@ -700,7 +708,7 @@ $$\Leftrightarrow \forall (k,m): \alpha(\ldots, \xi_m, \ldots,\xi_k,\ldots) = -\
 \begin{enumerate}
     \item Если $p>n \Rightarrow \alpha \equiv \zero$, тк обязательно в наборе $j_1,\ldots, j_p$ будут одни индексы, а из этого следует, что все компоненты будут нулями
     \item Если $p=n \Rightarrow$ ненулевые элементы матрицы $\alpha$ будут только те, у которых набор нижних индексов $j_1,\ldots j_n$ = перестановка от $1$ до $n$. Все остальные будут нулями , тк совпадают индексы:
-    $$\alpha_{j_1\ldots j_p}^{i_1\ldots i_q} = (-1)^{\varepsilon(\sigma)}\alpha_{1\ldots n}^{i_1* \ldots i_q}$$
+    $$\alpha_{j_1\ldots j_p}^{i_1\ldots i_q} = (-1)^{\varepsilon(\sigma)}\alpha_{1\ldots n}^{i_1 \ldots i_q}$$
 \end{enumerate}
 
 \textbf{Примеры:}
@@ -730,7 +738,7 @@ $$\Leftrightarrow \forall (k,m): \alpha(\ldots, \xi_m, \ldots,\xi_k,\ldots) = -\
 Позамечаем некоторые интересные факты 
 \begin{enumerate}
     \item $\Sim \alpha \in T(p,q), \Alt \alpha \in T(p,q) $ 
-    \item $\Sim, \Alt$ --- линейные операции, так как $\sigma$ - линейные операторы.
+    \item $\Sim, \Alt$ --- линейные операции, так как $\sigma$ - линейная операция.
     \item если $\alpha$ симметричный $\Rightarrow \Sim \alpha = \alpha$
     \item  если $\alpha$ кососимметричный $\Rightarrow \Alt \alpha = \alpha$
     \item $\Sim$ и $\Alt$ можно проводить не по всему набору (нижних) индексов. В этом случае, тот набор по которому происходит симметрирование (альтернирование) заключается в круглые (квадратные) скобки. Индексы, не участвующие в операндах выделяются вертикальными чертами. При этом квадратные и круглые скобки должны быть только одни.
@@ -750,7 +758,7 @@ $$\Alt (\sigma(\alpha))=\cfrac{1}{p!}\sum\limits_{\tau\in S_p}(-1)^{\varepsilon(
 Пусть $r \sigma = \rho$. Заметим, что $\rho$ пробегает все $P$. Тогда заменим и получим:
 $$=  \cfrac{(-1)^{\varepsilon(\sigma)}}{p!}\sum\limits_{\rho \in S_\rho} (-1)^{\varepsilon(\rho)}\rho(\alpha)$$
 Теперь вторая часть:
-$$\sigma(\Alt \alpha) = \sigma\left(\cfrac{1}{p}\sum_{\tau\in S_P}(-1)^{\varepsilon}\tau(\alpha)\right)$$
+$$\sigma(\Alt \alpha) = \sigma\left(\cfrac{1}{p!}\sum_{\tau\in S_P}(-1)^{\varepsilon}\tau(\alpha)\right)$$
 Как мы знаем транспонирование это линейная операция. Сделаем замену на $\rho$, как в прошлой части и получим:
 $$= \cfrac{1}{p!}\sum\limits_{\tau \in S_p}(-1)^{\varepsilon(\tau)}\sigma(\tau(\alpha)) = \cfrac{(-1)^{\varepsilon(\sigma)}}{p!}\sum\limits_{\rho \in S_p}(-1)^{\varepsilon(\tau)} \rho(\alpha)$$
 Получили то, что хотели.
@@ -776,6 +784,9 @@ $$= \cfrac{1}{p!}\sum\limits_{\tau \in S_p}(-1)^{\varepsilon(\tau)}\sigma(\tau(\
 1, 2 очевидно из следствия 1,2.
 $$\Alt(\Sim \alpha) = \cfrac{1}{p!}\sum\limits_{\sigma \in S_p}(-1)^{\varepsilon(\sigma)}\sigma(\Sim \alpha) = \cfrac{\Sim \alpha}{p!}\sum\limits_{\sigma \in S_p}(-1)^{\varepsilon(\sigma)} = \zero$$
 $$\Sim (\Alt \alpha) = \cfrac{1}{p!}\sum\limits_{\sigma \in S_p}\sigma(\Alt(\alpha)) = \Alt\alpha \cdot \cfrac{1}{p!}\sum\limits_{\sigma \in S_p} (-1)^{\sigma(\varepsilon)} =\zero$$
+
+$\sum\limits_{\sigma \in S_p} (-1)^{\sigma(\varepsilon)} = 0$,  
+
 \hfill Q.E.D.
 
 \textbf{Замечание.} Теорема и следствия верны для неполного набора индексов.
@@ -875,7 +886,7 @@ $$f^1 \wedge f^2 = \cfrac{(p_1+p_2)!}{p_1!p_2!}\Alt (f^1\otimes f^2)$$
     \textbf{Доказательство:}
 
     Докажем только последний переход, все остальные очевидны из определения:
-    $$\sigma^{-1}(f^1 \wedge \ldots \wedge f^p ) = p! \sigma^{-1}\Alt (f^1 \otimes \ldots \otimes f^p ) =p!\Alt (\sigma^{-1}(f^1 \otimes \ldots \otimes f^p)) $$
+    $$\sigma^{-1}(f^1 \wedge \ldots \wedge f^p ) = p! \sigma^{-1}(\Alt (f^1 \otimes \ldots \otimes f^p )) =p!\Alt (\sigma^{-1}(f^1 \otimes \ldots \otimes f^p)) $$
 
     \textbf{Следствие:} Если $f^j$--- 1 формы, тогда:
     $$f^1 \wedge \ldots \wedge f^k \wedge \ldots \wedge f^m \wedge \ldots \wedge f^p = -f^1 \wedge \ldots \wedge f^m \wedge \ldots \wedge f^k \wedge \ldots f^P$$
