@@ -1,0 +1,133 @@
+\documentclass{article}
+
+% Основные настройки документа
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[12pt]{extsizes}
+\usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{cmap}
+% Математические пакеты
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{dsfont}
+
+% Графика и рисунки
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usepackage{graphicx}
+\setlength\fboxsep{3pt}
+\setlength\fboxrule{1pt}
+
+% Таблицы и цвет
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{xcolor}
+
+% Списки и текст
+\usepackage[normalem]{ulem}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+
+% Код
+\usepackage{listings}
+
+% Ссылки
+\usepackage{hyperref}
+
+% Оглавление
+\usepackage{tocloft}
+
+% Дополнительные документы
+\usepackage{subfiles}
+
+% Настройки fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{Дискретная математика}
+\fancyhead[L]{КТ ИТМО - 1    Семестр}
+\fancyhead[R]{Станкевич Андрей}
+
+% Настройки гиперссылок
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Discret},
+    pdfpagemode=FullScreen,
+}
+
+% Настройки списков
+\AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
+
+% Настройки оглавления
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\cftsetpnumwidth{0em}
+\cftsetrmarg{0em}
+
+% Пользовательские команды
+\newcommand{\ctd}{\begin{flushright} $\square$ \end{flushright}}
+\newcommand{\updownarrows}{\mathbin\uparrow\hspace{-.5em}\downarrow}
+\newcommand{\downuparrows}{\mathbin\downarrow\hspace{-.5em}\uparrow}
+\newcommand{\defeq}{\stackrel{\mathclap{\normalfont\mbox{def}}}{=}}
+\newcommand{\defLeftrightarrow}{\xLeftrightarrow{def}}
+\newcommand{\deff}[1]{\underline{\textbf{#1}}}
+\newcommand{\thmm}[1]{\underline{\textbf{#1}}}
+\newcommand*\xor{\mathbin{\oplus}}
+\newcommand{\mytilde}{\raisebox{0.5ex}{\texttildelow}}
+
+% Настройки listings
+\lstset{
+  language=C++,                
+  basicstyle=\footnotesize\ttfamily,
+  numbers=left,                   % Нумерация строк слева
+  numberstyle=\footnotesize\color{black},
+  stepnumber=0,                   % Нумеровать каждую строку
+  numbersep=5pt,                  % Отступ номера от кода
+  backgroundcolor=\color{white!95!gray},
+  showspaces=false,               % Не показывать пробелы
+  showstringspaces=false,         % Не показывать пробелы в строках
+  showtabs=false,                 % Не показывать табы
+  frame=single,                   % Рамка вокруг кода
+  rulecolor=\color{black},        % Цвет рамки
+  tabsize=4,                      % Размер табуляции (4 для Python)
+  breaklines=true,                % Переносить длинные строки
+  breakatwhitespace=true,         % Переносить только по пробелам
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}, % Стрелка при переносе
+  identifierstyle=\color{black},  % Стиль идентификаторов
+  keywordstyle=\color{blue},      % Стиль ключевых слов
+  commentstyle=\color{green!50!black}, % Стиль комментариев
+  stringstyle=\color{orange},     % Стиль строк
+  emph={[2]False,True,None},      % Подсветка специальных значений
+  emphstyle=[2]\color{purple},    % Стиль для emph
+  emph={[3]class,def,for,while,if,elif,else,try,except,finally,with,return,break,continue,pass,import,from,as,lambda}, % Доп. ключевые слова
+  emphstyle=[3]\color{blue!80!black}, % Стиль для доп. ключевых слов
+  morecomment=[s][\color{green!50!black}]{"""}{"""}, % Подсветка docstring
+  morecomment=[s][\color{green!50!black}]{'''}{'''}, % Подсветка docstring
+  escapeinside={\%*}{*)},         % Для вставки LaTeX в код
+}
+
+\title{Конспект по Дискретной математике.}
+\author{Чепелин Вячеслав, Давыдов Иван, Амосов Алексей}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\subfile{document.tex}
+\end{document}
