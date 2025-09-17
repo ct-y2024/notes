@@ -1,0 +1,80 @@
+\documentclass[twoside]{book}
+\usepackage[normalem]{ulem}
+\usepackage[12pt]{extsizes}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{mathdots}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{cmap}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage[parfill]{parskip}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{varwidth}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
+\usepackage[russian]{babel}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
+\newcommand{\ctd}{\begin{flushright} \(\square\) \end{flushright}}
+
+\usepackage{graphicx}
+\setlength\fboxsep{3pt}
+\setlength\fboxrule{1pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Alfo},
+    pdfpagemode=FullScreen,
+}
+\newcommand{\updownarrows}{\mathbin\uparrow\hspace{-.5em}\downarrow}
+\newcommand{\downuparrows}{\mathbin\downarrow\hspace{-.5em}\uparrow}
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newcommand{\defLeftrightarrow}{\xLeftrightarrow{def}}
+\newcommand{\skewed}{\mathrel{\raisebox{3pt}{\(\underline{\,\cdot\,}\)}}}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+% Дополнительные документы
+\usepackage{subfiles}
+
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\inv}{inv}
+\newcommand{\mytilde}{\raisebox{0.5ex}{\texttildelow}}
+\newcommand{\deff}[1]{\underline{\textbf{#1}}}
+\newcommand{\thmm}[1]{\underline{\textbf{#1}}}
+\newcommand{\prooff}[1]{{\underline{Доказательство:}} \\ }
+
+\title{\Huge Линейная алгебра}
+\author{Леонид Альжанов, Вячеслав Чепелин и другие}
+\date{ }
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\subfile{document.tex}
+
+\end{document}

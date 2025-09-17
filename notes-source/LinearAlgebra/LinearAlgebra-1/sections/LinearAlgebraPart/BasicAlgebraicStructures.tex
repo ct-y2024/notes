@@ -1,0 +1,148 @@
+\section{Основные алгебраические структуры}
+\subsection{Операции, группа, кольцо, поле}
+\subsubsection{Законы композиции.}
+
+$f: A \times B \rightarrow C$ - функция, отображение.
+
+$\forall (a,b): a \in A, b \in B: \exists! c \in C$ --- \deff{закон внешней композиции.}
+
+$f: A \times A \rightarrow A$ --- \deff{закон внутренней композиции} или алгебраическая операция, бинарная операция.
+
+\subsubsection{Ассоциативность, коммутативность алгебраических операций.}
+
+Возьмем операцию $*: A \times A \rightarrow A$:
+
+$a * b = b * a$ --- \deff{коммутативность}.
+
+$a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
+
+
+\subsubsection{Алгебраическая структура, группа, кольцо, поле. Свойства.}
+
+\deff{Алгебраическая структура} --- множество с набором $\Omega$ --- операция и отношений на ней, с некоторой системой аксиом. Обозначают $(A, \Omega)$
+
+\deff{Группа} (A, \{*\}):
+
+* --- групповая операция, чаще всего обозначается как ``$\cdot$'' --- умножение, или как ``$+$'' --- сложение.
+
+``$\cdot$'' --- мультипликативная запись, где $e$ --- единица, а $-a$ --- обратный.
+
+``$+$'' --- аддитивная запись, где $e$ заменяется на $0$ --- нулевой, а $-a$ --- противоположный.
+
+\begin{enumerate}
+    \item $a * (b * c) = (a * b) * c$ --- ассоциативность.
+    \item $\exists e:\forall a: a * e = e * a = a$ --- существование нейтрального элемента $e$.
+    \item $\forall a: \exists (-a): a+ (-a) = e$ --- существование обратного элемента $(-a)$.
+\end{enumerate}
+
+Если группа обладает еще и коммутативностью, то такая группа --- \deff{абелева}:
+
+\begin{enumerate}[resume]
+    \item $a * b = b * a$
+\end{enumerate}
+
+\deff{Кольцо} (A, \{+, $\cdot$\}):
+
+\begin{enumerate}
+    \item[1--4.] Абелева групппа по сложению.
+    \setcounter{enumi}{4}
+    \item $a \cdot (b+c) = a\cdot b + a\cdot c$ --- левая дистрибутивность.
+    \item $(b+c)\cdot a  = b \cdot a + c \cdot a$  --- правая дистрибутивность.
+\end{enumerate}
+
+\deff{Поле}  (A, \{+, $\cdot$\}):
+\begin{enumerate}
+    \item[1--5.] Кольцо по сложению.
+    \item[6--9.] Абелева группа по умножению для ненулевых элементов.
+\end{enumerate}
+
+Поле --- это ассоциативное коммутативное кольцо с единицей, то есть для $\forall$ ненулевого элемента $\exists$ обратный, а вот у нуля обратного нет и это нормально.
+
+Свойства кольца:
+
+\begin{enumerate}
+    \item $0 \cdot a = 0$
+    \item $a+x = a+ y \rightarrow x=y$
+    \item $a + x = b$ имеет единственное решение $x = -a + b$
+    \item $0$ --- единственен.
+    \item $1$ --- единственна в кольце с единицей.
+\end{enumerate}
+
+\subsection{Линейное пространство, алгебра, свойства.}
+
+$K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot: K\times V \rightarrow V$. Если все, что сказано ниже выполнено  $\forall \phi, \lambda \in K, a,b \in V$.
+
+\begin{enumerate}
+    \item[1--4.] Абелева группа по сложению.
+    \setcounter{enumi}{4}
+    \item $ \phi(\lambda(a)) = \lambda(\phi(a))$.
+    \item $\lambda (a+b) = \lambda a + \lambda b$.
+    \item $a ( \phi + \lambda) = a\phi + a \lambda $.
+    \item $\exists 1: a \cdot 1 =a$.
+\end{enumerate}
+
+То тогда такую систему называют \deff{линейным пространством} над полем $K$.
+
+Если добавить еще одну операцию $\times: V \times V \rightarrow V$.
+
+\begin{enumerate}[resume]
+    \item $(a+b)\times c = a \times c + b \times c $
+
+          $c\times (a+b) = c \times a + c \times b$
+
+    \item $\lambda (a \times b) = (\lambda a )\times b = a \times (\lambda b)$
+\end{enumerate}
+
+То такую структуру называют \deff{алгеброй}.
+
+\begin{enumerate}[resume]
+    \item добавим коммутативность $\times$ --- коммутативная алгебра.
+
+    \item добавим ассоциативность $\times$ --- ассоциативная алгебра.
+
+    \item добавим единицу --- унитальная алгебра.
+
+    \item добавим обратное (для ненулевых элементов) --- алгебра с делением.
+\end{enumerate}
+
+\subsection{Нормированные линейные пространства и алгебры.}
+
+\deff{Нормированное пространство} --- линейное пространство над $\mathbb{R}(\mathbb{C})$ с нормой.
+
+\deff{Норма} $||\cdot||:V \rightarrow \mathbb{R}(\mathbb{C})$, удовлетворящее:
+
+\begin{enumerate}
+    \item $\forall x, y \in V : ||x|| + ||y||\geq ||x+y||$.
+    \item $\forall x \in V : ||x||\geq 0$, причем $||x||=0 \Leftrightarrow$ $x = 0$.
+    \item $\forall x \in V : \forall \alpha \in \mathbb{R}(\mathbb{C}) : ||\alpha x|| = |\alpha|||x||$.
+\end{enumerate}
+
+Алгебра называется \deff{нормированной}, если существует норма согласованная с умножением:
+
+$||ab||\leq ||a|| \cdot ||b||$.
+
+\subsection{Отношение эквивалентности, фактор-структуры.}
+
+
+
+\deff{Бинарное отношение} $\sim$ на множестве $X$ --- \deff{отношение эквивалентности}, если оно
+\begin{itemize}
+    \item Рефлексивно: $\forall x\in X~x\sim x$.
+    \item Симметрично: $\forall x,y\in X~x\sim y\leftrightarrow y\sim x$.
+    \item Транзитивно: $\forall x,y,z\in X~x\sim y\land y\sim z\rightarrow x\sim z$.
+\end{itemize}
+Если $\sim$ --- бинарное отношение на $X$, то множества $M_a=\{x\in X\mid x\sim a\}$ называются классами эквивалентности , а множество $X/\sim=\{M_a\mid a\in X\}$ --- \deff{фактормножеством} (или {факторпространством}) $X$ по $\sim$.
+
+\thmm{Свойства классов эквивалентности.}
+\begin{enumerate}
+    \item $\forall a\in X~M_a\neq\varnothing$.
+    \item $\forall a,b\in X$ выполнено либо $M_a=M_b$, либо $M_a\cap M_b=\varnothing$.
+    \item $\bigcup\limits_{a\in X}M_a=X$.
+\end{enumerate}
+
+Если у нас есть множество $X$, а $M$ --- какое-то множество, состоящее из непустых взаимно непересекающихся подмножеств $X$, в объединении дающих $X$. Тогда $M$ называется \deff{разбиением} $X$.
+
+
+Любое разбиение $X$ является факторпространством $X$ по некоторому отношению эквивалентности. Доказательство этого тривиально, если вы представите отношения как ребра в графе, а классы эквивалентности - компоненты
+
+

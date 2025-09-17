@@ -1,0 +1,344 @@
+\section{Матрицы}
+\subsection{Основные понятия}
+\textbf{\underline{def:} Матрица} --- множество некоторых объектов (элементов), записанных в виде таблицы (не обязательно числа).
+\[ A = (a_{ij})_{m \times n} =
+    \begin{pmatrix}
+        a_{11} & \ldots & a_{1n} \\
+        \vdots & \ddots & \vdots \\
+        a_{m1} & \ldots & a_{mn}
+    \end{pmatrix}\]
+$m$ --- число строк
+$n$ --- число столбцов
+"Матрица размерности $m$ на $n$".
+
+Матрица, где $ \forall i,j\ a_{ij} \in \mathbb{R}(\mathbb{C}) $ --- числовая (вещественная/комплексная).
+
+
+\( A =
+\begin{pmatrix}
+    A_{1} & \ldots & A_{m}
+\end{pmatrix}\) --- столбцовый вид записи.
+$A_j$ --- столбец матрицы.
+\( A_j =
+\begin{pmatrix}
+    a_{1j} \\
+    \vdots \\
+    a_{mj}
+\end{pmatrix}
+\in \mathbb{R}^m(\mathbb{C}^m)\)
+
+\( A =
+\begin{pmatrix}
+    S_1    \\
+    \vdots \\
+    S_m
+\end{pmatrix}\) --- строчный вид записи.
+$S_i$ --- строка матрицы.
+\( S_i =
+\begin{pmatrix}
+    a_{i1} & \ldots & a_{in}
+\end{pmatrix}
+\in \mathbb{R}_n(\mathbb{C}_n)\)
+
+\( span(A_1, \ldots, A_n) \subset \mathbb{R}^m(\mathbb{C}^m)\)
+
+Если $m = n$, матрица называется \deff{квадратной}.
+
+
+\( A =
+\begin{pmatrix}
+    a_{11} & *      & *      \\
+    *      & \ddots & *      \\
+    *      & *      & a_{nn}
+\end{pmatrix}\) --- главная диагональ.
+
+
+\( A =
+\begin{pmatrix}
+    *      & *       & a_{1n} \\
+    *      & \iddots & *      \\
+    a_{n1} & *       & *
+\end{pmatrix}\) --- побочная диагональ.
+
+\( \forall i \neq j \quad a_{ij} = 0\:
+\begin{pmatrix}
+    a_{11} & 0      & 0      \\
+    0      & \ddots & 0      \\
+    0      & 0      & a_{nn}
+\end{pmatrix} =
+\begin{pmatrix}
+    \alpha_{1} & 0      & 0          \\
+    0          & \ddots & 0          \\
+    0          & 0      & \alpha_{n}
+\end{pmatrix}
+= diag(\alpha_1, \ldots \alpha_n)
+\) --- \deff{диагональная} матрица.
+
+\( E = diag(\alpha_1, \ldots \alpha_n), \forall i\: \alpha_i=1\) --- \deff{единичная} матрица.
+
+$\mathbb{0} = diag(0, \ldots, 0)$ --- \deff{нулевая} матрица.
+
+\( \forall A_{n \times n} \quad tr(A) = \displaystyle{\sum^{n}_{i=1}}a_{ii}\) --- след матрицы (от англ. trace)
+
+\(
+\begin{pmatrix}
+    a_{11} & *      & *      \\
+    0      & \ddots & *      \\
+    0      & 0      & a_{nn}
+\end{pmatrix}
+\) --- верхнетреугольная матрица.
+
+\(
+\begin{pmatrix}
+    a_{11} & 0      & 0      \\
+    *      & \ddots & 0      \\
+    *      & *      & a_{nn}
+\end{pmatrix}
+\) --- нижнетреугольная матрица.
+
+\subsection{Основные операции с матрицами}
+\(a_{ij} \in \mathbb{K} \newline
+A_{m \times n}, B_{m \times n} \newline\)
+\textbf{\underline{def:}} \( C = A + B = (c_{ij})\quad \forall i,j \  c_{ij}=a_{ij}+b_{ij} \newline\)
+'+' --- сложение матриц (одной размерности)
+\( \newline \mathbb{0} \) --- нейтральный элемент относительно сложения
+
+\( \lambda \in \mathbb{K} \newline
+C = \lambda A = (\lambda a_{ij})\)
+$\newline \lambda \times$ --- умножение на скаляр.
+\(\newline -1 A \) --- противоположная A матрица (не путать с обратной)
+
+
+\textbf{Свойства:}
+\begin{enumerate}
+    \item $ A+B = B+A $
+    \item $ (A+B)+C = A+(B+C) $
+    \item $ \exists \ \mathbb{0} $
+    \item $ \exists \ -A $
+    \item $ \alpha(A + B) = \alpha A + \alpha B $
+    \item $ (\alpha + \beta)A = \alpha A + \beta A $
+    \item $ (\alpha \beta)A = \alpha( \beta A ) = \beta( \alpha A )$
+    \item $ 1A = A $
+
+\end{enumerate} => Линейное пространство (8 аксиом выполнены) $ M_{m \times n}$
+
+\( E_{ij} =
+\begin{pmatrix}
+    0 & 0       & 0          & 0       & 0 \\
+    0 & \ddots  & \vdots     & \iddots & 0 \\
+    0 & \ldots  & a_{ij} = 1 & \ldots  & 0 \\
+    0 & \iddots & \vdots     & \ddots  & 0 \\
+    0 & 0       & 0          & 0       & 0
+\end{pmatrix}
+\) --- канонический базис пространства $ M_{m \times n}$
+\( A = \displaystyle{\sum^m_{i=1}\sum^{n}_{j=1}a_{ij}E_{ij}} = (\alpha_{ij})_{m \times n} = \mathbb{0}_{m \times n} \Leftrightarrow a_{ij} = 0 \ \forall i,j\)
+
+\( A \leftrightarrow
+\begin{pmatrix}
+    a_{11} \\
+    \vdots \\
+    a_{1n} \\
+    a_{21} \\
+    \vdots \\
+    a_{2n} \\
+    a_{m1} \\
+    \vdots \\
+    a_{mn}
+\end{pmatrix} \in \mathbb{R(C)}^{mn}
+\quad \Leftrightarrow \quad A \cong \mathbb{K}^{mn}
+\quad \Leftrightarrow \quad dim(M_{m \times n}) = mn\)
+
+\textbf{\underline{def:}} Матрицы $A$ и $B$ согласованы, если число столбцов $A$ совпадает с числом строк $B$.
+
+Если A и B согласованы, то
+\( A_{m \times k}, B_{k \times n} \newline
+C = A \times B = A B = (C_{ij})_{m \times n} \quad C_{ij} = \displaystyle{\sum^{k}_{r=1}a_{ir}b_{rj}} \)
+--- "$\times$" умножение матриц.
+
+\textbf{\underline{def:}} Матрицы $A$ и $B$ перестановочны, если $ AB = BA $ (очевидно, должны быть квадратными).
+
+$A$, $B$, $C$ --- квадратные матрицы $ n \times n \newline
+    \forall \lambda \in \mathbb{K}$
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item $ A(B+C) = AB + AC \newline
+              (A+B)C = AC + BC $
+\end{enumerate} => кольцо
+
+\begin{enumerate}
+    \setcounter{enumi}{9}
+    \item $ \lambda (AB) = (\lambda A)B = A(\lambda B)$
+\end{enumerate} => алгебра ($ M_{n \times n} $)
+
+\begin{enumerate}
+    \setcounter{enumi}{11}
+    \item $ A(BC) = (AB)C$
+\end{enumerate} => ассоциативная алгебра
+
+\begin{enumerate}
+    \setcounter{enumi}{12}
+    \item $ \exists E \quad EA=AE=A$
+\end{enumerate} => унитальная алгебра
+
+Обратный элемент может не существовать, так что не выполняется 14. И ещё нет коммутативности, так что не выполняется 11.
+
+\textbf{Доказательства:} упражнение на дом :) Но, вообще, там несложно, просто глина.
+
+
+\subsection{Операция транспонирования}
+
+\textbf{\underline{def:}} Операция транспонирования заменяет матрицу $ A_{m \times n} $ на $ A^T_{n \times m} $, где строки новой матрицы - столбцы исходной (для квадратной матрицы это попросту отражение относительно главной диагонали).
+
+\( B = A^T = (b_{ij}) = (a_{ji}) \)
+
+\textbf{Свойства:}
+\begin{enumerate}
+    \item $ (A^T)^T = A $
+    \item $ (A+\lambda B)^T = A^T+\lambda B^T $
+    \item A и B согласованы $ (AB)^T = B^T A^T $ 
+\end{enumerate}
+
+\textbf{\underline{def:}} $ A_{m \times n} $ называется симметричной, если $ A = A^T$
+
+\textbf{\underline{def:}} $ A_{m \times n} $ называется кососимметричной, если $ A = -A^T$ (у кососимметричной все диагональные элементы --- нули).
+
+\subsection{Обратная матрица}
+
+\textbf{\underline{def:}}
+\( A_{n \times n} \newline\)
+Матрица $ A^{-1} $ называется обратной к $ A $, а $ A $ называется обратимой, если $ A^{-1}A = AA^{-1} = E $
+
+Пока мы не знаем условий существования (в лекциях позже)
+
+\textbf{Свойства:}
+\begin{enumerate}
+    \item $ A^{-1} $ --- единственная (док-во очевидное через ассоциативность)
+    \item $ (A^{-1})^{-1} = A $ (из определения)
+    \item $ \forall \lambda, \lambda \in \mathbb{K}, \lambda \ne 0 \quad (\lambda A)^{-1} = \frac{1}{\lambda}A^{-1}$
+    \item $ E^{-1} = E $
+    \item $ (A^T)^{-1} = (A^{-1})^T $
+    \item $ \exists B^{-1} \Rightarrow \exists (AB)^{-1} = B^{-1}A^{-1}$
+\end{enumerate}
+
+\subsection{Ранг матрицы}
+
+\textbf{\underline{def:}} $ rg_{line}(A) = rg(S_1, \ldots S_m)$ --- строчный ранг матрицы A (берем строки как вектора, находим ранг системы векторов) $ 1 \leq rg_{line}(A) \leq n \  (A \neq \mathbb{0})$
+
+\textbf{\underline{def:}} $ rg_{col}(A) = rg(A_1, \ldots A_n)$ --- столбцовый ранг матрицы A (берем строки как вектора, находим ранг системы векторов) $ 1 \leq rg_{col}(A) \leq m \  (A \neq \mathbb{0})$
+
+\( A_j \quad 1 \leq i_1 < \ldots <i_k \leq n \newline
+\widetilde{A}_j =
+\begin{pmatrix}
+    a_{i_1j} \\
+    a_{i_2j} \\
+    \vdots   \\
+    a_{i_kj}
+\end{pmatrix}
+\) --- отрезок длины k столбца $ A_j $
+
+\( S_i \quad 1 \leq j_1 < \ldots < j_k \leq m \newline
+\widetilde{S}_i =
+\begin{pmatrix}
+    a_{ij_1} & a_{ij_2} & \ldots & a_{ij_k}
+\end{pmatrix}
+\) --- отрезок длины k строки $ S_i $
+
+
+
+
+\textbf{\underline{Утверждение 1:}} $ A_1, A_2, \ldots A_n $ линейно зависимы => любые отрезки длины $k$ $ \widetilde{A}_1 \ldots \widetilde{A}_n $ линейно зависимы.
+\begin{enumerate}
+    \item[] \prooff{}
+          Есть нетривиальная линейная комбинация столбцов $ A_1, A_2, \ldots A_n $, равная нулю, и если мы удалим часть строк, линейная комбинация всё так же будет давать 0, при этом получим нетривиальную линейную комбинацию отрезков $A_1, \ldots A_n \Rightarrow$ линейно зависимы.
+\end{enumerate}
+
+
+\textbf{\underline{Следствие:}} Отрезки длины $k$ $ \widetilde{A}_1 \ldots \widetilde{A}_n $ линейно независимы => $ A_1, A_2, \ldots A_n $ линейно независимы.
+
+\textbf{\underline{Утверждение 2:}}
+\( rg_{line}(A) = k \quad S_{i_1} \ldots S_{i_k}\) --- база строк. Тогда, если $ \widetilde{A}_1 \ldots \widetilde{A}_n $ отрезки, отвечающие $ S_{i_1} \ldots S_{i_k} $, линейно зависимы, то и $ A_1, A_2, \ldots A_n $ линейно зависимы.
+
+\begin{enumerate}
+    \item[] \prooff{}
+          н.у.о. $i_1,\ldots,i_k = 1,2,\ldots, k$. Значит все оставшиеся - линейно комбинация.
+          Значит любую строку можно записать, как линейную комбинацию наших строк:
+
+          $s_{k+l}= \sum\limits_{r=1}^k \alpha_{rl}s_r$. $a_{{k+l}_j}=\sum\limits_{r=1}^k \alpha_{rl}a_{r_j}, \quad l= 1, \ldots, m - k$:
+
+          $ \widetilde{A}_1 \ldots \widetilde{A}_n $ отрезки, отвечающие $S_{1} \ldots S_{k} $, линейно зависимы $\Leftrightarrow$ $\exists \beta_j \in K$ не все нули.
+
+          $\sum\limits_{j=1}^n{b_j \widetilde{A}_j}=0 \Leftrightarrow \sum\limits_{j=1}^n \beta_j a_{rj} = 0, \forall r = 1, \ldots, k$. Докажем, что с этими же $\beta_j$
+
+          $\sum\limits_{j=1}^n b_j A_j = 0$. Первые $k$ - нули. Докажем, что и оставшиеся нули.
+
+          Посмотрим на $k+1$ координату: $\sum\limits_{j=1}^n \beta_j a_{k+1_{j}} = \sum\limits_{j=1}^n \beta_j \sum\limits_{r=1}^k \alpha_{r1}a_{r_{j}} = \sum\limits_{r=1}^k \alpha_{r_1}\sum\limits_{j=1}^n \beta_j a_{r_{j}} =0$
+
+          Далее будем смотреть на следующую $k + l$ координату, и дальнейшее доказательство будет аналогично.
+
+
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\textbf{Замечание}: Утверждение 2 справедливо для любой подсистемы отрезков столбцов $A_{j_1}, \ldots, A_{j_r}$.
+
+\deff{Теорема} (о ранге матрицы)
+
+\( rg_{line}(A) = rg_{col}(A) = rg(A) \)
+\begin{enumerate}
+    \item[] \prooff{}
+          $\rg A = k: 1 \leq k \leq n,m$
+
+          н.у.о. Пусть первые $k$ строк --- база строк матрицы.
+
+          Рассмотрим отрезки столбцов, соответствующие этим элементам.
+
+          $$r = \rg (\widetilde{A}_1 \ldots \widetilde{A}_n) \leq k$$
+
+          Пусть $\widetilde{A}_{j_1} \ldots \widetilde{A}_{j_r}$ --- база отрезков.
+
+          Тогда по следствию к утверждению 1: $\widetilde{A}_{j_1} \ldots \widetilde{A}_{j_r}$ --- линейно независимые столбцы. При этом, по утверждению 2 (и замечанию) любая система из $r + 1$ столбца будет зависима, т.к. будут зависимы их отрезки $\Rightarrow rg_{col} = r$
+
+          Откуда получаем, что ранг столбцов меньше ранга строк. Заметим, что то же самое будет верно и для строк.
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\textbf{Свойства ранга:}
+\begin{enumerate}
+    \item $ rg(A^T) = rg(A) $
+    \item $ rg(\lambda A) = rg(A), \forall \lambda \in \mathbb{R},  \lambda \ne 0 $
+    \item $ rg(A+B) \leq rg(A)+rg(B) $ (лайт версия т. Грассмана)
+    \item A и B согласованы, $ rg(AB) \leq \min(rg(A),rg(B)) $
+\end{enumerate}
+\begin{enumerate}
+    \item[] \textbf{\uline{Доказательство:}}
+    \item[1.] Заметим, что у транспонированной столбцы и строки просто местами поменяются.
+    \item[2.] тут даже говорить нечего...
+    \item[3.] $rg(A+B) \leq \dim(L_1 + L_2) \leq \dim(L_1) +\dim(L_2)$
+    \item[4.] Зафиксируйте $A$. Тогда столбцы, полученные умножением матрицы $A$ поочерёдно на столбцы матрицы $B$ будут лин. комбинацией столбцов матрицы $A$, откуда $\rg (AB)\leq\rg A$. Транспонируйте произведение и повторите, получите $\rg (AB)\leq\rg (B)^T = \rg(B)$
+\end{enumerate}
+
+\textbf{\underline{def:}} Элементарными преобразованиями над строками (столбцами) матрицы A называются элементарные преобразования 1-4, которые производятся с ними, как с векторами пространства $K^n$ и $K^m$ соответственно.
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item rg(A) не меняется при элементарных преобразованиях над её строками/столбцами
+\end{enumerate}
+
+\textbf{\underline{Теорема:}}
+\( A_{m \times n} \newline
+rg(A) = k \newline
+1 \leq k \leq min(n, m) \newline
+\forall A\) может быть элементарными преобразованиями строк и перестановкой столбцов приведена к трапециевидной форме. Причем, число строк в трапециевидной форме равно k (соответственно, если число столбцов равно k, можно привести к треугольной форме)
+
+\textbf{Матрица трапециевидной формы (н.у.о. n <= m):}
+
+\(
+\begin{pmatrix}
+    a_{11} & *      & *      & * & * \\
+    0      & \ddots & *      & * & * \\
+    0      & 0      & a_{nn} & * & *
+\end{pmatrix}
+\) % TODO: доказательство НЕ НАПисано, мой мозг не воспринимает индексы в 7.40
+
